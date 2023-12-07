@@ -12,8 +12,8 @@ public class DistributionReceiptC extends HttpServlet {
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("sidebar","distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","distribution/receipt.jsp");
+		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
+		request.setAttribute("contentPage","sb/distribution/receipt.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 
