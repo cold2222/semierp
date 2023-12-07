@@ -1,6 +1,7 @@
 package com.semi.sales.bbs;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -51,6 +52,24 @@ public class TestDAO {
 	public static void regTest(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		String sql = "insert into distri_record_test values(distri_record_test_seq.nextval, ?, sysdate, ?)";
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("record_num"));
+			pstmt.setString(2, request.getParameter("sell_date"));
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("등록 성공");
+			}
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
 		
 		
 		
