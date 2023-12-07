@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DistributionNoticeC")
-public class DistributionNoticeC extends HttpServlet {
+@WebServlet("/DistributionNoticeViewC")
+public class DistributionNoticeViewC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		NoticeDAO.getBBS(request);
+		NoticeDAO.getOneBBS(request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/notice.jsp");
+		request.setAttribute("contentPage","sb/distribution/noticeview.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 
