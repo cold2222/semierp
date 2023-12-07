@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/receipt.css">
+<link rel="stylesheet" href="sb/distribution_css/receipt.css">
 </head>
 <body>
 	<div class="contents">

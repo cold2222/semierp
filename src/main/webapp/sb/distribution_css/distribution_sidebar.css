@@ -1,1 +1,23 @@
 @charset "UTF-8";
+.sidebar{
+	height: 100%;
+	width: 100%;
+}
+.sidebar-1{
+	margin-top: 35px;
+	margin-left: 35px;
+}
+.sidebar-index{
+	font-size : 18px;
+	font-weight : 800;
+}
+.sidebar ul{
+	margin-bottom: 20px;
+	list-style-type: none;
+}
+.sidebar li{
+	cursor: pointer;
+	margin-top : 5px;
+	font-weight: bold;
+	list-style-type: none;
+}

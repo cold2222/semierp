@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="sb/distribution_css/distribution_sidebar.css">
 </head>
 <body>
 	<div class="sidebar">

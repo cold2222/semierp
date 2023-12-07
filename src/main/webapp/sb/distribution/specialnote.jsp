@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/receipt.css">
+<link rel="stylesheet" href="sb/distribution_css/specialnote.css">
 </head>
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">수령예정확인</div>
+			<div class="content-head-text">주의사항/특이사항 게시판</div>
 		</div>
 		<div class="content-body">
 			<div class="bbs-content">
