@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class DistributionDeliveryC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("sidebar","distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","distribution/delivery.jsp");
+		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
+		request.setAttribute("contentPage","sb/distribution/delivery.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 
