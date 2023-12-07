@@ -9,7 +9,7 @@
 <body>
 
 		<div>
-			<div style="border: 1px;">
+			<div>
 				<div>
 					품목 ID <input value="">	
 				</div>
