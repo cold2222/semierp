@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/main_bbs.css">
+<link rel="stylesheet" href="sb/distribution_css/main_bbs.css">
 </head>
 <body>
 	<div class="contents">
