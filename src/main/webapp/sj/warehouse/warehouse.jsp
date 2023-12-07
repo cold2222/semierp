@@ -8,31 +8,33 @@
 </head>
 <body>
 
-	<form action="InwarehouseC">
 		<div>
-			<div style="border: 1px;">
+			<div>
 				<div>
-					품목 ID <input name="p_id" value="">	
+					품목 ID <input value="">	
 				</div>
 				<div>
-					제품 이름<input name="p_name">	
+					제품 이름<input name="p_name" value="">	
 				</div>
 				<div>
-					타입<input name="p_type">	
+					타입<input name="p_type" value="">	
 				</div>
 				<div>
-					단위<input name="p_si">	
+					단위<input name="p_si" value="">	
 				</div>
 				<div>
-					제조사<input name="p_manufacturer">	
+					제조사<input name="p_manufacturer" value="">	
 				</div>
 				<div>
-					수량<input name="p_quantity">
+					수량<input name="p_quantity" value="">
 				</div>
-				<button>창고 이동 확인</button>	
+				<button>등록(?)</button>	
 			</div>	
 		</div>
-	</form>
+
+
+
+
 
 </body>
 </html>
