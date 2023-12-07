@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,32 +12,38 @@
 <body>
 
 	<form action="TestwarehouseC" method="get">
+		<c:forEach var="t" items="${testWarehouse }">
 		<div>
+		
 			<div> 등록된것 </div>
 			<div>
 				<div>
-					p_si<input>
+							 
+					p_id : ${t.p_id}
 				</div>
 				<div>
-					p_type<input>
+					p_si : ${t.p_si} 
 				</div>
 				<div>
-					p_quantity<input>
+					p_type : ${t.p_type}
 				</div>
 				<div>
-					p_name<input>
+					p_quantity : ${t.p_quantity}
 				</div>
 				<div>
-					p_unicost<input>
+					p_name  : ${t. }
 				</div>
 				<div>
-					p_minstock<input>
+					p_unicost  : <input>
 				</div>
 				<div>
-					p_maxstock<input>
+					p_minstock  : <input>
 				</div>
 				<div>
-					p_manufacturer<input>
+					p_maxstock  : <input>
+				</div>
+				<div>
+					p_manufacturer  : <input>
 				</div>
 			</div>
 			
@@ -65,6 +74,7 @@
 				<button>창고 이동 확인</button>
 			</div>
 		</div>
+		</c:forEach>
 	</form>
 
 </body>

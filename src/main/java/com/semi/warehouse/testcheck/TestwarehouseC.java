@@ -18,7 +18,7 @@ public class TestwarehouseC extends HttpServlet {
 		
 		
 		
-	//	request.setAttribute("contentPage", "sj/warehouse/in_warehouse_interface.jsp");
+		request.setAttribute("contentPage", "sj/warehouse/in_warehouse_interface.jsp");
 		request.getRequestDispatcher("sj/warehouse/test_db.jsp").forward(request, response);
 	
 		
