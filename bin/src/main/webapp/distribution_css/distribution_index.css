@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;/* 보더 안으로 그리기용 나중에 지우기 */
+}
+.header{
+/* 예비헤더 나중에 지울꺼임 */
+	border: 1px solid black;
+	width: 100%;
+	height: 100px;
+}
+.contents{
+	display: flex;
+}
+.side-menu{
+/* 예비 사이드바 나중에 지울꺼임 */
+	width: 30%;
+	height: 600px;
+	border: 1px solid red; /* 보더 */
+}
+
+
+.content{
+	width: 70%;
+	height: 600px;
+	border: 1px solid blue; /* 보더 */
+}
+.footer{
+/* 예비 푸터 나중에 지울꺼임 */
+	width: 100%;
+	height: 300px;
+	border: 1px solid green;
+}

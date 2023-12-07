@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.contents{
+	display: flex;
+	flex-direction: column;
+	justify-content : center;
+	align-items : center;
+	width:100%;
+}
+.content-head{
+	width: 100%;
+	height: 120px;
+}
+.content-head-text{
+	display : flex;
+	margin-left : 2.5%;
+	margin-right : 2.5%;
+	margin-top : 20px;
+	background-color: #B6BBC4;
+	width : 300px;
+	height: 60px;
+	font-size: 24px;
+	font-weight : 800;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+}
+.content-body{
+	width: 91%;
+	background-color: white;
+	display: flex;
+	padding: 0px 30px;
+	padding-bottom: 40px;
+}
+.bbs-content{
+	width: 50%;
+}
+.bbs-content-title{
+	width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	margin-top: 50px;
+}
+.bbs-content-title div{
+	display: flex;
+	align-items: center;
+	justify-content : center;
+	width : 150px;
+	height : 40px;
+	font-size: 20px;
+	font-weight : 800;
+	border-radius: 10px;
+	background-color: #B6BBC4;
+}
+.bbs-content-bbs{
+	width: 95%;
+	height: 300px;
+	 
+}
+.bbs-main{
+	display: flex;
+	margin-left: 10px;
+}
+.bbs-main-title{
+	font-weight: bold;
+	border-bottom: 2px solid black;
+}
+.bbs-main-text{
+	padding : 5px;
+	font-size: 20px;
+	height: 40px;
+	border-bottom: 1px solid black;
+}
+.bbs-main-text1{
+	width: 75%;
+}
+.bbs-main-text2{
+	width: 25%;
+}

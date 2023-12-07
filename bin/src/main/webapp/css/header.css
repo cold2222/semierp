@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+.header{
+	width: 100%;
+	height: 120px;
+}
+.header1{
+	height: 50%;
+	width : 100%;
+	display: flex;
+
+}
+.header1-logo{
+	position: relative;
+	width: 200px;
+	height: 100px;
+}
+.header1-logo-img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50%;
+	margin-left: 120px;
+}
+#header1-empty{
+	height: 100%;
+	width: 1000px;
+}
+.header1-atag{
+	display: flex;
+	width: 150px;
+	height: 100%;
+	font-size: 18px;
+	justify-content: center;
+	align-items: center;
+	font-weight: 800;
+	cursor: pointer;
+}
+.header1-select1{
+	display: flex;
+	width: 110px;
+	height: 100%;
+	font-size: 16px;
+	justify-content: center;
+	align-items: center;
+}
+.header1-select1 select{
+	font-size: 16px;
+}
+.header2{
+	/* background-color: #1450A3; */
+	background-color: #337CCF;
+	height: 50%;
+	width : 100%;
+	display: flex;
+}
+.header2 div{
+	color: #FFC436;
+	height: 100%;
+	width: 120px;
+	font-size: 26px;
+	font-weight : 800;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	margin-left: 100px;
+	z-index: 5;
+}

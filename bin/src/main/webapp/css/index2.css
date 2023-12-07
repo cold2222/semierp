@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.index-contents{
+	width: 100vw;
+	display: flex;
+}
+.index-side-menu{
+/* 예비 사이드바 나중에 지울꺼임 */
+	width: 17%;
+	border: 1px solid black;
+	background-color: #B6BBC4;
+}
+
+.index-content{
+	width: 83%;
+	border: 1px solid red; 
+	background-color: #F0ECE5;
+}
+.footer{
+/* 예비 푸터 나중에 지울꺼임 */
+	width: 100%;
+	height: 100px;
+	border: 1px solid green; 
+/* 	background-color: #337CCF; */
+	background-color: #1450A3;
+}
