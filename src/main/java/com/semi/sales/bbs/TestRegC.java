@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 public class TestRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	TestDAO.regTest(request);
-	TestDAO.getAllTest(request);
+	
+	
 	
 	request.setAttribute("mainPage", "test_reg.jsp");
-	request.getRequestDispatcher("test.jsp").forward(request, response);
+	request.getRequestDispatcher("jh/test.jsp").forward(request, response);
 	
 	
 	
@@ -24,6 +24,12 @@ public class TestRegC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		TestDAO.regTest(request);
+		TestDAO.getAllTest(request);
+		request.setAttribute("mainPage", "output_reg.jsp");
+		request.getRequestDispatcher("jh/test.jsp").forward(request, response);
+	
 	}
 
 }
