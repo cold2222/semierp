@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="InwarehouseC">
+	<form action="InwarehouseC" method="post">
 		<div>
 			<div style="border: 1px;">
 				<div>

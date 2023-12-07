@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="InwarehouseC" method="post">
+<form action="InwarehouseC" method="get">
 		<div>
 			<div style="border: 1px;">
 				<div>
