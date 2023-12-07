@@ -22,13 +22,15 @@ public class TestDAO {
 			ArrayList<Test> tests = new ArrayList<Test>();
 			while (rs.next()) {
 				t = new Test();
-				t.getRecord_num();
-				t.getCompany_sell();
-				t.getDelivery_date();
-				t.getSell_date();
+				t.setRecord_num(rs.getInt("record_num"));
+				t.setCompany_sell(rs.getInt("company_sell"));
+				t.setDelivery_date(rs.getDate("delivery_date"));
+				t.setSell_date(rs.getDate("sell_date"));
 				tests.add(t);
 			}
 			request.setAttribute("tests", tests);
+			
+			
 
 			
 			
@@ -49,6 +51,7 @@ public class TestDAO {
 	public static void regTest(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		
 		
 		
 		

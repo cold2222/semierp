@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class DistributionSpecialNoteC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("sidebar","distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","distribution/specialnote.jsp");
+		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
+		request.setAttribute("contentPage","sb/distribution/specialnote.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 
