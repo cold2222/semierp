@@ -2,26 +2,15 @@ package com.semi.warehouse.testcheck;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/TestwarehouseC")
-public class TestwarehouseC extends HttpServlet {
+public class TestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		TestwarehouseDAO.getAllTest(request);
-		
-		
-		
-		
-//		request.setAttribute("contentPage", "sj/warehouse/warehouse.jsp");
-		request.getRequestDispatcher("sj/warehouse/in_warehouse_interface.jsp").forward(request, response);
-	
-		
+		request.getRequestDispatcher("sj/warehouse/test_db.jsp").forward(request, response);
+				
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

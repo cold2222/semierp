@@ -18,6 +18,7 @@ public class TestwarehouseDAO {
 		String sql = "select * from product_test_ksj";
 		
 		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -37,7 +38,7 @@ public class TestwarehouseDAO {
 			int p_maxstock = rs.getInt("p_maxstock");
 			int p_manufacturer = rs.getInt("p_manufacturer");
 				// p_id로 pk
-			t = new TestwarehouseDTO(p_id,p_si ,p_type,p_quantity, p_name,p_unicost, p_minstock, p_maxstock,p_manufacturer);
+			t = new TestwarehouseDTO(p_id,p_si,p_type,p_quantity,p_name,p_unicost,p_minstock,p_maxstock,p_manufacturer);
 			testWarehouse.add(t);
 			
 			}

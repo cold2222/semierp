@@ -12,26 +12,26 @@
 <body>
 
 	<form action="TestwarehouseC" method="get">
-		<c:forEach var="t" items="${testWarehouse }">
+	
 		<div>
-		
-			<div> 등록된것 </div>
+		<c:forEach var="t" items="${testWarehouse }">
+		 <div> 등록된것 </div>
 			<div>
 				<div>
 							 
 					p_id : ${t.p_id}
 				</div>
 				<div>
-					p_si : ${t.p_si} 
+					p_si : 
 				</div>
 				<div>
-					p_type : ${t.p_type}
+					p_type : 
 				</div>
 				<div>
-					p_quantity : ${t.p_quantity}
+					p_quantity : 
 				</div>
 				<div>
-					p_name  : ${t. }
+					p_name  : 
 				</div>
 				<div>
 					p_unicost  : <input>
@@ -46,8 +46,9 @@
 					p_manufacturer  : <input>
 				</div>
 			</div>
+		</c:forEach>
 			
-			
+		
 			<div>창고로 보내는 것 확인 </div>
 			
 			
@@ -74,7 +75,6 @@
 				<button>창고 이동 확인</button>
 			</div>
 		</div>
-		</c:forEach>
 	</form>
 
 </body>
