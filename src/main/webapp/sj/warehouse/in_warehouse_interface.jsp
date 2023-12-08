@@ -22,7 +22,7 @@
 					p_id : ${t.p_id}
 				</div>
 				<div>
-					p_si : 
+					p_si : ${t.p_id}
 				</div>
 				<div>
 					p_type : 

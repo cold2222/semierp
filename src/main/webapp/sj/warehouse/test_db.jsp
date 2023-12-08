@@ -9,7 +9,7 @@
 <body>
 
         
-       <a href="TestwarehouseC"><h1>시작</h1> </a> 
+       <a href="TestwarehouseC"><h1>물품 창고 입고 게시판</h1></a> 
        
 
 
