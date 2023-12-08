@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 public class DBManager {
 	
-	public static Connection connect() throws SQLException {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		
+	public static Connection connect() throws SQLException, ClassNotFoundException {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
 		return DriverManager.getConnection(url, "c##jh0102", "jh0102");
 	}
 
@@ -21,8 +21,12 @@ public class DBManager {
 				rs.close();
 			}
 			
-			pstmt.close();
-			con.close();
+				pstmt.close();
+			
+				con.close();
+			
+			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
