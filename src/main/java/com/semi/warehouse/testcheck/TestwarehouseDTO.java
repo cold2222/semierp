@@ -3,126 +3,88 @@ package com.semi.warehouse.testcheck;
 public class TestwarehouseDTO {
 
 	private int p_id;
+	private String p_name;
 	private String p_si;
 	private String p_type;
-	private int p_quantity;
-	private String p_name;
-	private int p_unicost;
-	private int p_minstock;
-	private int p_maxstock;
-	private int p_manufacturer;
-	
+	private int record_count;
+	private String in_warehouse_date;
+	private int status;
 	
 	public TestwarehouseDTO() {
-	// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub
 	}
 
-
-	public TestwarehouseDTO(int p_id, String p_si, String p_type, int p_quantity, String p_name, int p_unicost,
-			int p_minstock, int p_maxstock, int p_manufacturer) {
+	public TestwarehouseDTO(int p_id, String p_name, String p_si, String p_type, int record_count,
+			String in_warehouse_date, int status) {
 		super();
 		this.p_id = p_id;
+		this.p_name = p_name;
 		this.p_si = p_si;
 		this.p_type = p_type;
-		this.p_quantity = p_quantity;
-		this.p_name = p_name;
-		this.p_unicost = p_unicost;
-		this.p_minstock = p_minstock;
-		this.p_maxstock = p_maxstock;
-		this.p_manufacturer = p_manufacturer;
+		this.record_count = record_count;
+		this.in_warehouse_date = in_warehouse_date;
+		this.status = status;
 	}
-
 
 	public int getP_id() {
 		return p_id;
 	}
 
-
 	public void setP_id(int p_id) {
 		this.p_id = p_id;
 	}
-
-
-	public String getP_si() {
-		return p_si;
-	}
-
-
-	public void setP_si(String p_si) {
-		this.p_si = p_si;
-	}
-
-
-	public String getP_type() {
-		return p_type;
-	}
-
-
-	public void setP_type(String p_type) {
-		this.p_type = p_type;
-	}
-
-
-	public int getP_quantity() {
-		return p_quantity;
-	}
-
-
-	public void setP_quantity(int p_quantity) {
-		this.p_quantity = p_quantity;
-	}
-
 
 	public String getP_name() {
 		return p_name;
 	}
 
-
 	public void setP_name(String p_name) {
 		this.p_name = p_name;
 	}
 
-
-	public int getP_unicost() {
-		return p_unicost;
+	public String getP_si() {
+		return p_si;
 	}
 
-
-	public void setP_unicost(int p_unicost) {
-		this.p_unicost = p_unicost;
+	public void setP_si(String p_si) {
+		this.p_si = p_si;
 	}
 
-
-	public int getP_minstock() {
-		return p_minstock;
+	public String getP_type() {
+		return p_type;
 	}
 
-
-	public void setP_minstock(int p_minstock) {
-		this.p_minstock = p_minstock;
+	public void setP_type(String p_type) {
+		this.p_type = p_type;
 	}
 
-
-	public int getP_maxstock() {
-		return p_maxstock;
+	public int getRecord_count() {
+		return record_count;
 	}
 
-
-	public void setP_maxstock(int p_maxstock) {
-		this.p_maxstock = p_maxstock;
+	public void setRecord_count(int record_count) {
+		this.record_count = record_count;
 	}
 
-
-	public int getP_manufacturer() {
-		return p_manufacturer;
+	public String getIn_warehouse_date() {
+		return in_warehouse_date;
 	}
 
-
-	public void setP_manufacturer(int p_manufacturer) {
-		this.p_manufacturer = p_manufacturer;
+	public void setIn_warehouse_date(String in_warehouse_date) {
+		this.in_warehouse_date = in_warehouse_date;
 	}
 
+	public int getStatus() {
+		return status;
+	}
 
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
+	
+	
+	
 	
 	
 	

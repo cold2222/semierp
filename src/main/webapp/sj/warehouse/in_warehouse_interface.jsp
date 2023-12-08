@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<form action="TestwarehouseC" method="get">
+	<form action="TestwarehouseC" method="post">
 	
 		<div>
 		<c:forEach var="t" items="${testWarehouse }">
@@ -22,36 +22,28 @@
 					p_id : ${t.p_id}
 				</div>
 				<div>
-					p_si : ${t.p_id}
+					p_name  : ${t.p_name}
 				</div>
 				<div>
-					p_type : 
+					p_si : ${t.p_si}
 				</div>
 				<div>
-					p_quantity : 
+					p_type : ${t.p_type} 
 				</div>
 				<div>
-					p_name  : 
+					record_count :${t.record_count} 
 				</div>
 				<div>
-					p_unicost  : <input>
+					in_warehouse_date  : ${t.in_warehouse_date}
 				</div>
 				<div>
-					p_minstock  : <input>
-				</div>
-				<div>
-					p_maxstock  : <input>
-				</div>
-				<div>
-					p_manufacturer  : <input>
+					status : ${t.status} 
 				</div>
 			</div>
 		</c:forEach>
 			
 		
 			<div>창고로 보내는 것 확인 </div>
-			
-			
 			
 			<div>
 				<div>
