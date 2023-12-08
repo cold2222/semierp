@@ -21,6 +21,9 @@
 								<div class="bbs-main">
 									<div class="bbs-main-title">${bbs.n_title }</div>
 								</div>
+								<div class="bbs-main-img">
+									<div class="bbs-main-img">${bbs.n_img }</div>
+								</div>
 								<div class="bbs-main-date">
 									<div class="bbs-main-date">${bbs.n_date }</div>
 								</div>
