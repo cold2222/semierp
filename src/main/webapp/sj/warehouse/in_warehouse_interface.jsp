@@ -33,7 +33,7 @@
 }
 </style>
 
-<!-- <script>
+ <script>
 	function submitForm() {
 		var form = document.getElementById("warehouseForm");
 		var checkboxes = document.querySelectorAll('input[name="selectedItems"]:checked');
@@ -63,9 +63,9 @@
 		return true
 	}
 </script>
- -->
 
-<script>
+
+<!-- <script>
 	function submitForm() {
 		var form = document.getElementById("warehouseForm");
 		var checkboxes = document
@@ -127,7 +127,7 @@
 	 */
 </script>
 
-
+ -->
 
 </head>
 <body>
@@ -178,8 +178,8 @@
 				</div>
 				<div>
 					<input type="checkbox" name="selectedItems" value="${t.p_id}"
-						data-record-count="${t.record_count}"
-						data-in-warehouse-date="${t.in_warehouse_date}">
+						<%-- data-record-count="${t.record_count}"
+						data-in-warehouse-date="${t.in_warehouse_date}" --%>>
 				</div>
 			</div>
 		</c:forEach>
