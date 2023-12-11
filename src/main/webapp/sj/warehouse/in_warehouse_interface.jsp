@@ -109,7 +109,6 @@
 	    hiddenRecordCountsField.setAttribute("value", selectedRecordCounts.join(','));
 	    form.appendChild(hiddenRecordCountsField);
 
-	    
 	    var hiddenInWarehouseDatesField = document.createElement("input");
 	    hiddenInWarehouseDatesField.setAttribute("type", "hidden");
 	    hiddenInWarehouseDatesField.setAttribute("name", "selectedInWarehouseDates");
@@ -167,6 +166,7 @@
 						data-in-warehouse-date="${t.in_warehouse_date}">
 				</div>
 				<div>
+				<!-- warehouse_id 뒤에 t.p_id 를 툼으로써 창고번호 가져갈 수 있게함  -->
 					<select name="warehouse_id_${t.p_id}" id="warehouse_id_${t.p_id}">
 						<option value="1">1창고</option>
 						<option value="2">2창고</option>

@@ -150,6 +150,8 @@ public class TestwarehouseDAO {
 		            pstmt.setString(2, selectedInWarehouseDates[i].split(" ")[0]);
 		            System.out.println(selectedInWarehouseDates[i]);
 		            pstmt.setInt(3, Integer.parseInt(selectedRecordCounts[i]));
+		            
+		            // 선택한 창고 값을 받아오기 위해서 만듬 
 		            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
 		            String selectedWarehouseIdString = request.getParameter(warehouseIdParameterName);
 		            int selectedWarehouseId = Integer.parseInt(selectedWarehouseIdString);
@@ -185,8 +187,69 @@ public class TestwarehouseDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		String sql = "SELECT\n"
+				+ "    in_warehouse_test.in_warehouse_id,\n"
+				+ "    product_test_ksj.p_name,\n"
+				+ "    product_test_ksj.p_si,\n"
+				+ "    product_test_ksj.p_type,\n"
+				+ "    in_warehouse_test.in_warehouse_date,\n"
+				+ "    in_warehouse_test.in_warehouse_quantity,\n"
+				+ "    warehouse_test.warehouse_name\n"
+				+ "FROM\n"
+				+ "    in_warehouse_test\n"
+				+ "JOIN\n"
+				+ "    product_test_ksj ON in_warehouse_test.p_id = product_test_ksj.p_id\n"
+				+ "JOIN\n"
+				+ "    warehouse_test ON in_warehouse_test.warehouse_id = warehouse_test.warehouse_id";
+
 		
-		
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			ArrayList<InWarehouseDTO> inWarehouse = new ArrayList<InWarehouseDTO>();
+			InWarehouseDTO in = null;
+			
+			
+			while (rs.next()) {
+				String p_name = rs.getString("p_name");
+				String p_si = rs.getString("p_si");
+				String p_type = rs.getString("p_type");
+				String in_warehouse_date = rs.getString("in_warehouse_date");
+				int in_warehouse_id = rs.getInt("in_warehouse_id");
+				int in_warehouse_quantity = rs.getInt("in_warehouse_quantity");
+				String warehouse_name = rs.getString("warehouse_name");
+				// p_id로 pk
+								
+				
+				in = new InWarehouseDTO(p_name, p_si, p_type, in_warehouse_date, in_warehouse_id, in_warehouse_quantity, warehouse_name);
+				inWarehouse.add(in);
+
+				System.out.println(p_name);
+				System.out.println(p_si);
+				System.out.println(p_type);
+				System.out.println(in_warehouse_id);
+				System.out.println(in_warehouse_quantity);
+				System.out.println(in_warehouse_date);
+				System.out.println(warehouse_name);
+
+			}
+			request.setAttribute("inWarehouse", inWarehouse);
+			
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
 		
 		
 		

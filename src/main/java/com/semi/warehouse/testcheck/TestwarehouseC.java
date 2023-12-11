@@ -30,7 +30,7 @@ public class TestwarehouseC extends HttpServlet {
 		
 		TestwarehouseDAO.regInWareTest(request);
 		TestwarehouseDAO.updateInWareTest(request);
-//		TestwarehouseDAO.getInWareTest(request);
+		TestwarehouseDAO.getInWareTest(request);
 		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
 	}
 

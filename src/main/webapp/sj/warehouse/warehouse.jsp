@@ -35,51 +35,45 @@
 </head>
 <body>
 
-	<form action="TestwarehouseC" method="post"">
 
 		<div class="input-box input-container">
-			<div class="in_name">품목 ID</div>
-			<div class="in_name">타입</div>
+			<div class="in_name">입고 번호</div>
 			<div class="in_name">제품 이름</div>
+			<div class="in_name">타입</div>
 			<div class="in_name">수량</div>
 			<div class="in_name">단위</div>
 			<div class="in_name">날짜</div>
 			<div class="in_name">창고</div>
 		</div>
 
-		<c:forEach var="t" items="${testWarehouse}">
+		<c:forEach var="in" items="${inWarehouse}">
 			<div class="input-box input-container">
 				<div>
-					<input name="p_id" value="${t.p_id}" readonly="readonly">
+					<input name="warehouse_id" value="${in.in_warehouse_id}" readonly="readonly">
 				</div>
 				<div>
-					<input name="p_type" value="${t.p_type}" readonly="readonly">
+					<input name="p_name" value="${in.p_name}" readonly="readonly">
 				</div>
 				<div>
-					<input name="p_name" value="${t.p_name}" readonly="readonly">
+					<input name="p_type" value="${in.p_type}" readonly="readonly">
 				</div>
 				<div>
-					<input name="record_count" value="${t.record_count}"
+					<input name="in_warehouse_quantity" value="${in.in_warehouse_quantity}"
 						readonly="readonly">
 				</div>
 				<div>
-					<input name="p_si" value="${t.p_si}" readonly="readonly">
+					<input name="p_si" value="${in.p_si}" readonly="readonly">
 				</div>
 				<div>
-					<input name="in_warehouse_date" value="${t.in_warehouse_date}"
+					<input name="in_warehouse_date" value="${in.in_warehouse_date}"
 						readonly="readonly">
 				</div>
 				<div>
-					<select name="warehouse_id">
-						<option value="warehouse_one">인천1창고</option>
-						<option value="warehouse_two">인천2창고</option>
-						<option value="warehouse_three">인천3창고</option>
-					</select>
+					<input name="warehouse_name" value="${in.warehouse_name}"
+						readonly="readonly">
 				</div>
 			</div>
 		</c:forEach>
 		<div>일단 확인</div>
-		<button>수령확인</button>
-	</form>
 </body>
 </html>
