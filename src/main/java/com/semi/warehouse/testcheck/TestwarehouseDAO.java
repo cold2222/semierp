@@ -41,11 +41,12 @@ public class TestwarehouseDAO {
 				int record_count = rs.getInt("record_count");
 				String in_warehouse_date = rs.getString("in_warehouse_date");
 				int status = rs.getInt("status");
-//				int in_warehouse_id = rs.getInt("in_warehouse_id");
+//				int warehouse_id = rs.getInt("warehouse_id");
 //				int in_warehouse_quantity = rs.getInt("in_warehouse_quantity");
-//				String warehouse_id = rs.getString("warehouse_id");
+//				String warehouse_name = rs.getString("warehouse_name");
 				// p_id로 pk
-				t = new TestwarehouseDTO(p_id, p_name, p_si, p_type, record_count, in_warehouse_date, status );
+				
+				t = new TestwarehouseDTO(p_id, p_name, p_si, p_type, record_count, in_warehouse_date, status);
 				testWarehouse.add(t);
 
 				System.out.println(p_id);
@@ -68,16 +69,18 @@ public class TestwarehouseDAO {
 	}
 
 	public static void updateInWareTest(HttpServletRequest request) {
-		
+	//status를 3에서 4로 업테이트 해주는 구문
 		
 	    String selectedIdsString = request.getParameter("selectedIds");
 
 	    // 콤마로 스플릿 
-	    String[] selectedIdsArray = selectedIdsString.split(",");
+	    String[] selectedIds = selectedIdsString.split(",");
 
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
-
+	    
+// 나중에 status가 3에서 4로 넘어갈떄 날짜 스템프 추가 해줄것 
+	    
 	    String sql = "UPDATE Purchase_recordall_ksj " +
 	            "SET status = 4 " +
 	            "WHERE recordall_num IN (" +
@@ -95,7 +98,7 @@ public class TestwarehouseDAO {
 	        con = DBManager.connect();
 	        pstmt = con.prepareStatement(sql);
 	        // for 문으로돌리기  
-	        for (String id : selectedIdsArray) {
+	        for (String id : selectedIds) {
 	            int productId = Integer.parseInt(id);
 
 	            pstmt.setInt(1, productId);
@@ -133,7 +136,7 @@ public class TestwarehouseDAO {
 			Connection con = null;
 		    PreparedStatement pstmt = null;
 
-		    String sql = "INSERT INTO in_warehouse_test VALUES (in_warehouse_test_seq.NEXTVAL, ?, ?, ?, '인천창고')";
+		    String sql = "INSERT INTO in_warehouse_test VALUES (in_warehouse_test_seq.NEXTVAL, ?, ?, ?, ?)";
 
 		    try {
 		        Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -144,9 +147,15 @@ public class TestwarehouseDAO {
 		        
 		        for (int i = 0; i < selectedIds.length; i++) {
 		            pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
-		            pstmt.setString(2, selectedInWarehouseDates[i]);
+		            pstmt.setString(2, selectedInWarehouseDates[i].split(" ")[0]);
+		            System.out.println(selectedInWarehouseDates[i]);
 		            pstmt.setInt(3, Integer.parseInt(selectedRecordCounts[i]));
-
+		            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
+		            String selectedWarehouseIdString = request.getParameter(warehouseIdParameterName);
+		            int selectedWarehouseId = Integer.parseInt(selectedWarehouseIdString);
+		            pstmt.setInt(4, selectedWarehouseId);
+		            System.out.println(selectedWarehouseId);
+		            
 		            //  이게 pstmt.executeUpdate(); 한번에 처리 할 수 있는 문장
 		            pstmt.addBatch();
 		        }
@@ -173,7 +182,13 @@ public class TestwarehouseDAO {
 
 
 	public static void getInWareTest(HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		
+		
+		
 		
 	}
 

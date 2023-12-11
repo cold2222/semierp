@@ -33,7 +33,7 @@
 }
 </style>
 
- <script>
+<!--   <script>
 	function submitForm() {
 		var form = document.getElementById("warehouseForm");
 		var checkboxes = document.querySelectorAll('input[name="selectedItems"]:checked');
@@ -41,7 +41,7 @@
 		var selectedIds = Array.from(checkboxes).map(function(checkbox) {
 			return checkbox.value;
 		});
-		
+				
 		console.log(selectedIds)
 
 		var hiddenField = document.createElement("input");
@@ -63,9 +63,10 @@
 		return true
 	}
 </script>
+ -->
 
-
-<!-- <script>
+ <script>
+ // 
 	function submitForm() {
 		var form = document.getElementById("warehouseForm");
 		var checkboxes = document
@@ -95,39 +96,35 @@
 		console.log(selectedInWarehouseDates)
 //		console.log(selectedWarehouseIds)
 		alert('콘솔창 확인 ')
-		
-		document.getElementById("selectedIds").value = selectedIds.join(',');
-		document.getElementById("selectedRecordCounts").value = selectedRecordCounts.join(',');
-		document.getElementById("selectedInWarehouseDates").value = selectedInWarehouseDates.join(',');
-//		document.getElementById("selectedWarehouseIds").value = selectedWarehouseIds.join(',');
 
+		var hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", "selectedIds");
+		hiddenField.setAttribute("value", selectedIds.join(','));		
+		form.appendChild(hiddenField);
+
+		var hiddenRecordCountsField = document.createElement("input");
+	    hiddenRecordCountsField.setAttribute("type", "hidden");
+	    hiddenRecordCountsField.setAttribute("name", "selectedRecordCounts");
+	    hiddenRecordCountsField.setAttribute("value", selectedRecordCounts.join(','));
+	    form.appendChild(hiddenRecordCountsField);
+
+	    
+	    var hiddenInWarehouseDatesField = document.createElement("input");
+	    hiddenInWarehouseDatesField.setAttribute("type", "hidden");
+	    hiddenInWarehouseDatesField.setAttribute("name", "selectedInWarehouseDates");
+	    hiddenInWarehouseDatesField.setAttribute("value", selectedInWarehouseDates.join(','));
+	    form.appendChild(hiddenInWarehouseDatesField);
+		
+		
 //		form.submit();
 
 		return true;
 	}
 	
-/* 	function updateSelectedWarehouseId(selectElement) {
-	    var selectedWarehouseId = selectElement.value;
-
-	    var form = selectElement.closest('form');
-
-	    var selectedWarehouseIdsInput = form.querySelector('input[name="selectedWarehouseIds"]');
-
-	    var checkboxValue = selectElement.parentElement.parentElement.querySelector('input[name="selectedItems"]').value;
-
-	    var selectedWarehouseIds = selectedWarehouseIdsInput.value.split(',');
-
-	    var index = selectedWarehouseIds.indexOf(checkboxValue);
-
-	    if (index !== -1) {
-	        selectedWarehouseIds[index] = selectedWarehouseId;
-	    }
-	    selectedWarehouseIdsInput.value = selectedWarehouseIds.join(',');
-	}
-	 */
 </script>
 
- -->
+
 
 </head>
 <body>
@@ -170,16 +167,16 @@
 						data-in-warehouse-date="${t.in_warehouse_date}">
 				</div>
 				<div>
-					<select name="warehouse_id">
-						<option value="inchon_one_warehouse">인천1창고</option>
-						<option value="inchon_two_warehouse">인천2창고</option>
-						<option value="inchon_three_warehouse">인천3창고</option>
+					<select name="warehouse_id_${t.p_id}" id="warehouse_id_${t.p_id}">
+						<option value="1">1창고</option>
+						<option value="2">2창고</option>
+						<option value="3">3창고</option>
 					</select>
 				</div>
 				<div>
 					<input type="checkbox" name="selectedItems" value="${t.p_id}"
-						<%-- data-record-count="${t.record_count}"
-						data-in-warehouse-date="${t.in_warehouse_date}" --%>>
+						 data-record-count="${t.record_count}"
+						data-in-warehouse-date="${t.in_warehouse_date}">
 				</div>
 			</div>
 		</c:forEach>
