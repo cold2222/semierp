@@ -25,6 +25,13 @@ public class TestwarehouseC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
+		TestwarehouseDAO.regInWareTest(request);
+		TestwarehouseDAO.updateInWareTest(request);
+//		TestwarehouseDAO.getInWareTest(request);
+		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
 	}
 
 }

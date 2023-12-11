@@ -9,7 +9,11 @@ public class TestwarehouseDTO {
 	private int record_count;
 	private String in_warehouse_date;
 	private int status;
-	
+
+//	private int in_warehouse_id;
+//	private int in_warehouse_quantity;
+//	private String warehouse_id;
+
 	public TestwarehouseDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -81,13 +85,5 @@ public class TestwarehouseDTO {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
