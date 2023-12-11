@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 public class DistributionMainBBSC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MainBBSDAO.getBbsdao().getNotice(request);
+		MainBBSDAO.getBbsdao().getSpecialNote(request);
+		
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/main_bbs/main_bbs.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

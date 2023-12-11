@@ -7,18 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DistributionSpecialNoteC")
-public class DistributionSpecialNoteC extends HttpServlet {
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+@WebServlet("/DistributionSpecialNoteUpdateC")
+public class DistributionSpecialNoteUpdateC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SpecialNoteDAO.getSdao().getBBS(request);
-		SpecialNoteDAO.getSdao().paging(1, request);
+		SpecialNoteDAO.getSdao().getOneBBS(request);
+		SpecialNoteDAO.getSdao().contentEnter(request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/specialnote/specialnote.jsp");
+		request.setAttribute("contentPage","sb/distribution/specialnote/specialnoteupdate.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SpecialNoteDAO.getSdao().updateBBS(request);
+		String s_num = (String)request.getAttribute("s_num");
+		response.sendRedirect("DistributionSpecialNoteViewC?s_num="+s_num);
 	}
 
 }
