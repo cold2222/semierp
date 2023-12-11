@@ -14,7 +14,7 @@ public class DistributionNoticePageC extends HttpServlet {
 		NoticeDAO.getNdao().getBBS(request);
 		NoticeDAO.getNdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/notice.jsp");
+		request.setAttribute("contentPage","sb/distribution/notice/notice.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

@@ -1,99 +1,110 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>통합 알림 게시판</title>
-    <link rel="stylesheet" href="your_css_file.css">
-</head>
-
-<style>
-	.contents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-/* 상단 제목 */
-.content-head {
+  <meta charset="UTF-8">
+  <title>유통부 사원 조회</title>
+<style type="text/css">
+.search-container {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
-.content-head-text {
-    font-size: 28px;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: #f5f5f5; /* 연한 회색 배경 */
-    padding: 10px 20px; /* 내부 여백 설정 */
-    border: 1px solid #ddd; /* 테두리 설정 */
-    border-radius: 5px; /* 테두리의 모서리를 둥글게 설정 */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 입체적인 박스 효과 */
-}
-
-/* 게시판 */
-.bbs-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.board {
-    width: calc(50% - 20px);
-    background-color: #fff;
+.search-input {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
+    margin-right: 5px;
 }
 
-.board-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.search-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
 }
 
-.post {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-}
-
-.post-title {
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 5px;
-}
-
-.post-info {
-    font-style: italic;
-    color: #888;
+.search-button {
+    padding: 10px 20px;
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 </style>
+</head>
 <body>
-    <div class="contents">
-        <div class="content-head">
-            <div class="content-head-text">통합 알림 게시판</div>
-        </div>
-        <div class="content-body">
-            <div class="bbs-content">
-                <div class="board">
-                    <div class="board-title">게시판 1</div>
-                    <div class="post">
-                        <div class="post-title">제목 1-1</div>
-                        <div class="post-info">날짜 1-1</div>
-                    </div>
-                    <div class="post">
-                        <div class="post-title">제목 1-2</div>
-                        <div class="post-info">날짜 1-2</div>
-                    </div>
-                </div>
+<div class="search-container">
+    <form action="검색결과페이지 URL" method="GET">
+        <select name="Field" id="searchField" class="search-select" onchange="showInput()">
+            <option value="all">全体検索</option>
+            <option value="title">タイトル</option>
+            <option value="content">内容</option>
+        </select>
+        <input type="text" placeholder="検索するキーワードを入力してください" name="Word" id="searchWord" class="search-input" style="display: none;">
+        <button type="submit" class="search-button">検索</button>
+    </form>
+</div>
+  <div class="container">
+    <h1>유통부 사원 조회</h1>
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>직급</th>
+          <th>전화번호</th>
+          <th>이메일</th>
+          <th>입사일</th>
+          <th>수정</th>
+          <th>삭제</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>Manager</td>
+          <td>123-456-7890</td>
+          <td>johndoe@example.com</td>
+          <td>2023-01-15</td>
+          <td><button class="edit-btn">수정</button></td>
+          <td><button class="delete-btn">삭제</button></td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>Sales Representative</td>
+          <td>987-654-3210</td>
+          <td>janesmith@example.com</td>
+          <td>2023-03-20</td>
+          <td><button class="edit-btn">수정</button></td>
+          <td><button class="delete-btn">삭제</button></td>
+        </tr>
+        <tr>
+          <td>Alex Johnson</td>
+          <td>Analyst</td>
+          <td>456-789-0123</td>
+          <td>alexjohnson@example.com</td>
+          <td>2023-05-10</td>
+          <td><button class="edit-btn">수정</button></td>
+          <td><button class="delete-btn">삭제</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="register-btn">등록하기</button>
+  </div>
+  <script type="text/javascript">
+  function showInput() {
+	    var selectedValue = document.getElementById("searchField").value;
+	    var searchInput = document.getElementById("searchWord");
 
-                <!-- ... (각 게시판 별로 2개의 글이 있는 형식을 2x3으로 추가) -->
-
-            </div>
-        </div>
-    </div>
+	    // 선택된 값이 'all'이면 입력창 숨김
+	    if (selectedValue === 'all') {
+	        searchInput.style.display = "none";
+	    } else {
+	        searchInput.style.display = "inline-block";
+	    }
+	}
+  </script>
 </body>
 </html>

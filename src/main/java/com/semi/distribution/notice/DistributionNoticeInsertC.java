@@ -12,7 +12,7 @@ public class DistributionNoticeInsertC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/noticeinsert.jsp");
+		request.setAttribute("contentPage","sb/distribution/notice/noticeinsert.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

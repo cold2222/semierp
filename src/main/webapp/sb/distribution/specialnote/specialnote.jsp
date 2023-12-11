@@ -6,22 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="sb/distribution_css/notice/notice.css">
+<link rel="stylesheet"
+	href="sb/distribution_css/specialnote/specialnote.css">
 <script type="text/javascript" src="sb/distribution_js/search.js"></script>
 </head>
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">공지</div>
+			<div class="content-head-text">注意/特異事項</div>
 		</div>
 		<div class="content-body">
 			<div class="search-container">
-				<form action="DistributionNoticeC" method="GET">
+				<form action="DistributionSpecialNoteC" method="GET">
 					<select name="field" id="searchField" class="search-select"
 						onchange="showInput()">
 						<option value="all">全体検索</option>
-						<option value="bbs1_title">タイトル</option>
-						<option value="bbs1_content">内容</option>
+						<option value="bbs2_title">タイトル</option>
+						<option value="bbs2_content">内容</option>
 					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
 						id="searchWord" class="search-input" style="display: none;">
 					<button type="submit" class="search-button">検索</button>
@@ -36,10 +37,10 @@
 									<div class="dis-post-container">
 										<c:forEach var="b" items="${bbsList }">
 											<div class="dis-post">
-												<div class="dis-title">${b.n_title }</div>
-												<div class="dis-date">作成日:${b.n_date }</div>
+												<div class="dis-title">${b.s_title }</div>
+												<div class="dis-date">作成日:${b.s_date }</div>
 												<a
-													href="DistributionNoticeViewC?n_num=${b.n_num}&pageNum=${pageNum }"
+													href="DistributionSpecialNoteViewC?s_num=${b.s_num}&pageNum=${pageNum }"
 													class="dis-btn">詳しく見る</a>
 											</div>
 										</c:forEach>
@@ -49,7 +50,7 @@
 									<c:choose>
 										<c:when test="${pageNum != 1}">
 											<button
-												onclick="location.href='DistributionNoticePageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
+												onclick="location.href='DistributionSpecialNotePageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
 										</c:when>
 									</c:choose>
 
@@ -58,13 +59,11 @@
 										step="1">
 										<c:choose>
 											<c:when test="${i eq pageNum}">
-												<a
-													href="DistributionNoticePageC?pageNum=${i}&field=${param.field }&word=${param.word }"
+												<a href="DistributionSpecialNotePageC?pageNum=${i}&field=${param.field }&word=${param.word }"
 													style="color: black; font-weight: bold;">${i}</a>
 											</c:when>
 											<c:otherwise>
-												<a
-													href="DistributionNoticePageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
+												<a href="DistributionSpecialNotePageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -72,14 +71,14 @@
 									<c:choose>
 										<c:when test="${pageNum != totalPage}">
 											<button
-												onclick="location.href='DistributionNoticePageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
+												onclick="location.href='DistributionSpecialNotePageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
 										</c:when>
 									</c:choose>
 								</div>
 							</div>
 							<!-- 권한설정 해야됨 -->
 							<div class="insert-btn">
-								<button onclick="location.href='DistributionNoticeInsertC'">掲示物作成</button>
+								<button onclick="location.href='DistributionSpecialNoteInsertC'">掲示物作成</button>
 							</div>
 						</div>
 					</div>

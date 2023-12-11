@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 @WebServlet("/DistributionNoticeUpdateC")
 public class DistributionNoticeUpdateC extends HttpServlet {
 
@@ -14,12 +17,15 @@ public class DistributionNoticeUpdateC extends HttpServlet {
 		NoticeDAO.getNdao().getOneBBS(request);
 		NoticeDAO.getNdao().contentEnter(request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/noticeupdate.jsp");
+		request.setAttribute("contentPage","sb/distribution/notice/noticeupdate.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		NoticeDAO.getNdao().updateBBS(request);
+		String n_num = (String)request.getAttribute("n_num");
+		response.sendRedirect("DistributionNoticeViewC?n_num="+n_num);
 	}
 
 }

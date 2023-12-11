@@ -34,8 +34,9 @@
 			</ul>
 			<div class="sidebar-index">유통부 출근표 등록/관리</div>
 			<ul>
-				<li onclick="">&nbsp;- 출근표 확인</li>
+				<li onclick="location.href='DistributionSelectEmployeeC'">&nbsp;- 운송부 사원관리</li>
 				<li onclick="">&nbsp;- 출근표 등록</li>
+				<li onclick="">&nbsp;- 출근표 확인</li>
 				<li onclick="">&nbsp;- 유급휴가 습득확인</li>
 			</ul>
 			<div class="sidebar-index">차량 관리</div>
