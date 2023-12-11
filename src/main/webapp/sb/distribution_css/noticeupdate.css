@@ -45,43 +45,74 @@
 
 .bbs-content-bbs{
 	width: 95%;
+	margin-top: 30px;
 	 
 }
 .bbs-main{
 	display: flex;
+	flex-direction : column;
 	margin-left: 10px;
+	justify-content: center;
+	align-items: center;
 }
-.bbs-main-title{
-	font-weight: bold;
-	border-bottom: 2px solid black;
-	padding : 5px;
+.input-title{
+	width: 70%;
+	height: 40px;
 	font-size: 20px;
-	height: 40px;
-	border-bottom: 1px solid black;
-	width: 25%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.bbs-main-text{
 	padding : 5px;
+	margin-bottom: 30px;
+}
+.input-content{
+	padding : 5px;
+	margin-bottom: 30px;
+	width: 70%;
+	height: 500px;
 	font-size: 18px;
-	height: 40px;
-	border-bottom: 1px solid black;
-	width: 25%;
+	resize: none;
+}
+.insert-btn{
+	margin-top : 10px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-end;
 }
-.bbs-main-text button{
-	padding: 5px 5px;
+.insert-btn button{
+	font-weight : bold;
+	padding: 5px 10px;
 	font-size: 18px;
+	margin-right: 228px;
 }
-.paging{
-	margin: 30px;
-	display : flex;
-	justify-content: center;
-	align-items: center;
-	
+.filebox{
+	display: flex;
+	width : 73%;
+	justify-content: flex-start;
 }
-
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 20px;
+    margin-left: 10px;
+}
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+.back-btn{
+	position: absolute;
+}
