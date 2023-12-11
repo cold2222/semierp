@@ -1,4 +1,4 @@
-package com.semi.warehouse.testcheck;
+package com.semi.warehouse.outcheck;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class TestwarehouseDAO {
+public class ExWarehouseTestDAO {
 
 	public static void getAllTest(HttpServletRequest request) {
 
@@ -30,8 +30,8 @@ public class TestwarehouseDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			ArrayList<TestwarehouseDTO> testWarehouse = new ArrayList<TestwarehouseDTO>();
-			TestwarehouseDTO t = null;
+			ArrayList<ExWarehouseTestDTO> testWarehouse = new ArrayList<ExWarehouseTestDTO>();
+			ExWarehouseTestDTO t = null;
 
 			while (rs.next()) {
 				int p_id = rs.getInt("p_id");
@@ -46,7 +46,7 @@ public class TestwarehouseDAO {
 //				String warehouse_name = rs.getString("warehouse_name");
 				// p_id로 pk
 				
-				t = new TestwarehouseDTO(p_id, p_name, p_si, p_type, record_count, in_warehouse_date, status);
+				t = new ExWarehouseTestDTO(p_id, p_name, p_si, p_type, record_count, in_warehouse_date, status);
 				testWarehouse.add(t);
 
 				System.out.println(p_id);
@@ -211,8 +211,8 @@ public class TestwarehouseDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			ArrayList<InWarehouseDTO> inWarehouse = new ArrayList<InWarehouseDTO>();
-			InWarehouseDTO in = null;
+			ArrayList<ExWarehouseDTO> inWarehouse = new ArrayList<ExWarehouseDTO>();
+			ExWarehouseDTO in = null;
 			
 			
 			while (rs.next()) {
@@ -227,7 +227,7 @@ public class TestwarehouseDAO {
 				// p_id로 pk
 								
 				
-				in = new InWarehouseDTO(p_name, p_si, p_type,p_quantity, in_warehouse_date, in_warehouse_id, in_warehouse_quantity, warehouse_name);
+				in = new ExWarehouseDTO(p_name, p_si, p_type,p_quantity, in_warehouse_date, in_warehouse_id, in_warehouse_quantity, warehouse_name);
 				inWarehouse.add(in);
 
 				System.out.println(p_name);
