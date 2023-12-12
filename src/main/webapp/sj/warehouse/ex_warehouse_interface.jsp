@@ -61,10 +61,10 @@
 				});
  */	
  		console.log(selectedIds)
-		console.log(selectedRecordCounts)
+		console.log(selectedRecordSalesCounts)
 		console.log(selectedSellDates)
 //		console.log(selectedWarehouseIds)
-		alert('콘솔창 확인 ')
+		alert('콘솔창 확인용  ')
 
 		var hiddenField = document.createElement("input");
 		hiddenField.setAttribute("type", "hidden");
@@ -72,17 +72,17 @@
 		hiddenField.setAttribute("value", selectedIds.join(','));		
 		form.appendChild(hiddenField);
 
-		var hiddenRecordCountsField = document.createElement("input");
-	    hiddenRecordCountsField.setAttribute("type", "hidden");
-	    hiddenRecordCountsField.setAttribute("name", "selectedRecordCounts");
-	    hiddenRecordCountsField.setAttribute("value", selectedRecordCounts.join(','));
-	    form.appendChild(hiddenRecordCountsField);
+		var hiddenRecordSalesCountsField = document.createElement("input");
+		hiddenRecordSalesCountsField.setAttribute("type", "hidden");
+		hiddenRecordSalesCountsField.setAttribute("name", "selectedRecordSalesCounts");
+		hiddenRecordSalesCountsField.setAttribute("value", selectedRecordSalesCounts.join(','));
+	    form.appendChild(hiddenRecordSalesCountsField);
 
-	    var hiddenInWarehouseDatesField = document.createElement("input");
-	    hiddenInWarehouseDatesField.setAttribute("type", "hidden");
-	    hiddenInWarehouseDatesField.setAttribute("name", "selectedInWarehouseDates");
-	    hiddenInWarehouseDatesField.setAttribute("value", selectedInWarehouseDates.join(','));
-	    form.appendChild(hiddenInWarehouseDatesField);
+	    var hiddenSellDatesField = document.createElement("input");
+	    hiddenSellDatesField.setAttribute("type", "hidden");
+	    hiddenSellDatesField.setAttribute("name", "selectedSellDates");
+	    hiddenSellDatesField.setAttribute("value", selectedSellDates.join(','));
+	    form.appendChild(hiddenSellDatesField);
 		
 		
 //		form.submit();
@@ -136,7 +136,7 @@
 				<div>
 					<input name="sell_date" value="${t.sell_date}"
 						readonly="readonly"
-						data-sell_date="${t.sell_date}">
+						data-sell-date="${t.sell_date}">
 				</div>
 				<div>
 				<!-- warehouse_id 뒤에 t.p_id 를 툼으로써 창고번호 가져갈 수 있게함  -->
@@ -149,7 +149,7 @@
 				<div>
 					<input type="checkbox" name="selectedItems" value="${t.p_id}"
 						 data-record-sales-count="${t.record_sales_count}"
-						data-sell_date="${t.sell_date}">
+						data-sell-date="${t.sell_date}">
 				</div>
 			</div>
 		</c:forEach>

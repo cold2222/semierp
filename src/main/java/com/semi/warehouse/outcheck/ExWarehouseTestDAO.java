@@ -90,16 +90,16 @@ public class ExWarehouseTestDAO {
 	    
 // 나중에 status가 3에서 4로 넘어갈떄 날짜 스템프 추가 해줄것 
 	    
-	    String sql = "UPDATE Purchase_recordall_ksj " +
-	            "SET status = 4 " +
-	            "WHERE recordall_num IN (" +
-	            "    SELECT Purchase_recordall_ksj.recordall_num " +
-	            "    FROM product_test_ksj " +
-	            "    JOIN Purchase_record_ksj ON product_test_ksj.p_id = Purchase_record_ksj.p_id " +
-	            "    JOIN Purchase_recordall_ksj ON Purchase_record_ksj.recordall_num = Purchase_recordall_ksj.recordall_num " +
-	            "    WHERE product_test_ksj.p_id = ? " +
-	            "      AND Purchase_recordall_ksj.status = 3 " +
-	            ")";
+	    String sql = "UPDATE sales_contract_ksj\n"
+	    		+ "SET status = 4\n"
+	    		+ "WHERE recordall_sell_num IN (\n"
+	    		+ "    SELECT sales_contract_ksj.recordall_sell_num\n"
+	    		+ "    FROM product_test_ex\n"
+	    		+ "    JOIN sales_contract_items ON product_test_ex.p_id = sales_contract_items.p_id\n"
+	    		+ "    JOIN sales_contract_ksj ON sales_contract_items.recordall_sell_num = sales_contract_ksj.recordall_sell_num\n"
+	    		+ "    WHERE product_test_ex.p_id = ?\n"
+	    		+ "      AND sales_contract_ksj.status = 3\n"
+	    		+ ")";
 
 	    try {
 	        Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -131,21 +131,19 @@ public class ExWarehouseTestDAO {
 	
 	
 	public static void regExWareTest(HttpServletRequest request) {
-
+			// 출고 테이블에 insert into 할 수 있게해주는 곳 
 			String selectedIdsString = request.getParameter("selectedIds");
-	        String selectedRecordCountsString = request.getParameter("selectedRecordCounts");
-	        String selectedInWarehouseDatesString = request.getParameter("selectedInWarehouseDates");
-//	        String selectedWarehouseIdsString = request.getParameter("selectedWarehouseIds");
+	        String selectedRecordSalesCountsString = request.getParameter("selectedRecordSalesCounts");
+	        String selectedSellDatesString = request.getParameter("selectedSellDates");
 
 	        String[] selectedIds = selectedIdsString.split(",");
-	        String[] selectedRecordCounts = selectedRecordCountsString.split(",");
-	        String[] selectedInWarehouseDates = selectedInWarehouseDatesString.split(",");
-//	        String[] selectedWarehouseIds = selectedWarehouseIdsString.split(",");
+	        String[] selectedRecordSalesCounts = selectedRecordSalesCountsString.split(",");
+	        String[] selectedSellDates = selectedSellDatesString.split(",");
 	        
 			Connection con = null;
 		    PreparedStatement pstmt = null;
 
-		    String sql = "INSERT INTO in_warehouse_test VALUES (in_warehouse_test_seq.NEXTVAL, ?, ?, ?, ?)";
+		    String sql = "INSERT INTO ex_warehouse_test VALUES (ex_warehouse_test_seq.NEXTVAL, ?, ?, ?, ?)";
 
 		    try {
 		        Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -156,9 +154,9 @@ public class ExWarehouseTestDAO {
 		        
 		        for (int i = 0; i < selectedIds.length; i++) {
 		            pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
-		            pstmt.setString(2, selectedInWarehouseDates[i].split(" ")[0]);
-		            System.out.println(selectedInWarehouseDates[i]);
-		            pstmt.setInt(3, Integer.parseInt(selectedRecordCounts[i]));
+		            pstmt.setString(2, selectedSellDates[i].split(" ")[0]);
+		            System.out.println(selectedSellDates[i]);
+		            pstmt.setInt(3, Integer.parseInt(selectedRecordSalesCounts[i]));
 		            
 		            // 선택한 창고 값을 받아오기 위해서 만듬 
 		            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
@@ -197,20 +195,20 @@ public class ExWarehouseTestDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT\n"
-				+ "    in_warehouse_test.in_warehouse_id,\n"
-				+ "    product_test_ksj.p_name,\n"
-				+ "    product_test_ksj.p_si,\n"
-				+ "    product_test_ksj.p_quantity,\n"
-				+ "    product_test_ksj.p_type,\n"
-				+ "    in_warehouse_test.in_warehouse_date,\n"
-				+ "    in_warehouse_test.in_warehouse_quantity,\n"
+				+ "    ex_warehouse_test.ex_warehouse_id,\n"
+				+ "    product_test_ex.p_name,\n"
+				+ "    product_test_ex.p_si,\n"
+				+ "    product_test_ex.p_quantity,\n"
+				+ "    product_test_ex.p_type,\n"
+				+ "    ex_warehouse_test.ex_warehouse_date,\n"
+				+ "    ex_warehouse_test.ex_warehouse_quantity,\n"
 				+ "    warehouse_test.warehouse_name\n"
 				+ "FROM\n"
-				+ "    in_warehouse_test\n"
+				+ "    ex_warehouse_test\n"
 				+ "JOIN\n"
-				+ "    product_test_ksj ON in_warehouse_test.p_id = product_test_ksj.p_id\n"
+				+ "    product_test_ex ON ex_warehouse_test.p_id = product_test_ex.p_id\n"
 				+ "JOIN\n"
-				+ "    warehouse_test ON in_warehouse_test.warehouse_id = warehouse_test.warehouse_id";
+				+ "    warehouse_test ON ex_warehouse_test.warehouse_id = warehouse_test.warehouse_id";
 
 		
 		try {
@@ -220,8 +218,8 @@ public class ExWarehouseTestDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			ArrayList<ExWarehouseDTO> inWarehouse = new ArrayList<ExWarehouseDTO>();
-			ExWarehouseDTO in = null;
+			ArrayList<ExWarehouseDTO> exWarehouse = new ArrayList<ExWarehouseDTO>();
+			ExWarehouseDTO ex = null;
 			
 			
 			while (rs.next()) {
@@ -229,27 +227,27 @@ public class ExWarehouseTestDAO {
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
 				int p_quantity = rs.getInt("p_quantity");
-				String in_warehouse_date = rs.getString("in_warehouse_date");
-				int in_warehouse_id = rs.getInt("in_warehouse_id");
-				int in_warehouse_quantity = rs.getInt("in_warehouse_quantity");
+				String ex_warehouse_date = rs.getString("ex_warehouse_date");
+				int ex_warehouse_id = rs.getInt("ex_warehouse_id");
+				int ex_warehouse_quantity = rs.getInt("ex_warehouse_quantity");
 				String warehouse_name = rs.getString("warehouse_name");
 				// p_id로 pk
 								
 				
-				in = new ExWarehouseDTO(p_name, p_si, p_type,p_quantity, in_warehouse_date, in_warehouse_id, in_warehouse_quantity, warehouse_name);
-				inWarehouse.add(in);
+				ex = new ExWarehouseDTO(p_name, p_si, p_type,p_quantity, ex_warehouse_date, ex_warehouse_id, ex_warehouse_quantity, warehouse_name);
+				exWarehouse.add(ex);
 
 				System.out.println(p_name);
 				System.out.println(p_si);
 				System.out.println(p_type);
 				System.out.println(p_quantity);
-				System.out.println(in_warehouse_id);
-				System.out.println(in_warehouse_quantity);
-				System.out.println(in_warehouse_date);
+				System.out.println(ex_warehouse_id);
+				System.out.println(ex_warehouse_quantity);
+				System.out.println(ex_warehouse_date);
 				System.out.println(warehouse_name);
 
 			}
-			request.setAttribute("inWarehouse", inWarehouse);
+			request.setAttribute("exWarehouse", exWarehouse);
 			
 			
 			

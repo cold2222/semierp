@@ -6,9 +6,9 @@ public class ExWarehouseDTO {
 	private String p_si;
 	private String p_type;
 	private int p_quantity;
-	private String in_warehouse_date;
-	private int in_warehouse_id;
-	private int in_warehouse_quantity;
+	private String ex_warehouse_date;
+	private int ex_warehouse_id;
+	private int ex_warehouse_quantity;
 	private String warehouse_name; 
 	
 	
@@ -17,16 +17,16 @@ public class ExWarehouseDTO {
 	}
 
 
-	public ExWarehouseDTO(String p_name, String p_si, String p_type, int p_quantity, String in_warehouse_date,
-			int in_warehouse_id, int in_warehouse_quantity, String warehouse_name) {
+	public ExWarehouseDTO(String p_name, String p_si, String p_type, int p_quantity, String ex_warehouse_date,
+			int ex_warehouse_id, int ex_warehouse_quantity, String warehouse_name) {
 		super();
 		this.p_name = p_name;
 		this.p_si = p_si;
 		this.p_type = p_type;
 		this.p_quantity = p_quantity;
-		this.in_warehouse_date = in_warehouse_date;
-		this.in_warehouse_id = in_warehouse_id;
-		this.in_warehouse_quantity = in_warehouse_quantity;
+		this.ex_warehouse_date = ex_warehouse_date;
+		this.ex_warehouse_id = ex_warehouse_id;
+		this.ex_warehouse_quantity = ex_warehouse_quantity;
 		this.warehouse_name = warehouse_name;
 	}
 
@@ -71,33 +71,33 @@ public class ExWarehouseDTO {
 	}
 
 
-	public String getIn_warehouse_date() {
-		return in_warehouse_date;
+	public String getEx_warehouse_date() {
+		return ex_warehouse_date;
 	}
 
 
-	public void setIn_warehouse_date(String in_warehouse_date) {
-		this.in_warehouse_date = in_warehouse_date;
+	public void setEx_warehouse_date(String ex_warehouse_date) {
+		this.ex_warehouse_date = ex_warehouse_date;
 	}
 
 
-	public int getIn_warehouse_id() {
-		return in_warehouse_id;
+	public int getEx_warehouse_id() {
+		return ex_warehouse_id;
 	}
 
 
-	public void setIn_warehouse_id(int in_warehouse_id) {
-		this.in_warehouse_id = in_warehouse_id;
+	public void setEx_warehouse_id(int ex_warehouse_id) {
+		this.ex_warehouse_id = ex_warehouse_id;
 	}
 
 
-	public int getIn_warehouse_quantity() {
-		return in_warehouse_quantity;
+	public int getEx_warehouse_quantity() {
+		return ex_warehouse_quantity;
 	}
 
 
-	public void setIn_warehouse_quantity(int in_warehouse_quantity) {
-		this.in_warehouse_quantity = in_warehouse_quantity;
+	public void setEx_warehouse_quantity(int ex_warehouse_quantity) {
+		this.ex_warehouse_quantity = ex_warehouse_quantity;
 	}
 
 
@@ -110,6 +110,7 @@ public class ExWarehouseDTO {
 		this.warehouse_name = warehouse_name;
 	}
 
+	
 
 	
 	

@@ -95,7 +95,6 @@
 		console.log(selectedRecordCounts)
 		console.log(selectedInWarehouseDates)
 //		console.log(selectedWarehouseIds)
-		alert('콘솔창 확인 ')
 
 		var hiddenField = document.createElement("input");
 		hiddenField.setAttribute("type", "hidden");
