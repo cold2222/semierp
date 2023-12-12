@@ -1,4 +1,4 @@
-package com.semi.distribution.notice;
+package com.semi.distribution.specialnote;
 
 
 import java.sql.Connection;
@@ -14,16 +14,16 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.semi.distribution.db.DBManger;
 
-public class NoticeDAO {
+public class SpecialNoteDAO {
 	
-	private ArrayList<NoticeDTO> bbsList;
-	private static final NoticeDAO NDAO = new NoticeDAO();
+	private ArrayList<SpecialNoteDTO> bbsList;
+	private static final SpecialNoteDAO SDAO = new SpecialNoteDAO();
 	
-	private NoticeDAO() {
+	private SpecialNoteDAO() {
 	}
 	
-	public static NoticeDAO getNdao() {
-		return NDAO;
+	public static SpecialNoteDAO getSdao() {
+		return SDAO;
 	}
 
 	public void paging(int pageNum, HttpServletRequest request) {
@@ -34,7 +34,7 @@ public class NoticeDAO {
 		int startDataNum = totalData - (pageSize * (pageNum - 1));
 		int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
 		
-		ArrayList<NoticeDTO> items = new ArrayList<NoticeDTO>();
+		ArrayList<SpecialNoteDTO> items = new ArrayList<SpecialNoteDTO>();
 		for (int i = startDataNum-1; i > endDataNum; i--) {
 			items.add(bbsList.get(i));
 		}
@@ -48,7 +48,7 @@ public class NoticeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		HashMap<String,String> search = new HashMap<String, String>();
 		String field = request.getParameter("field");
 		String word = request.getParameter("word");
@@ -57,12 +57,12 @@ public class NoticeDAO {
 			search.put("word", word);
 		}
 		
-		String sql = "select * from distribution_bbs1";
+		String sql = "select * from distribution_bbs2";
 		if(search.get("word") != null && !search.get("field").equals("all")) {
 			sql += " where " + search.get("field") + " " + "like '%" + search.get("word") +"%'";
 		}
 		
-		sql += " order by bbs1_num";
+		sql += " order by bbs2_num";
 		
 		try {
 			con = DBManger.connect();
@@ -70,15 +70,18 @@ public class NoticeDAO {
 			
 			rs = pstmt.executeQuery();
 			System.out.println("공지 조회성공");
-			NoticeDTO bbs = null;
-			bbsList = new ArrayList<NoticeDTO>();
+			SpecialNoteDTO bbs = null;
+			bbsList = new ArrayList<SpecialNoteDTO>();
 			while (rs.next()) {
-				bbs = new NoticeDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5));
+				bbs = new SpecialNoteDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5));
 				bbsList.add(bbs);
 			}
 			
 			request.setAttribute("field", field);
 			request.setAttribute("word", word);
+			
+			search.remove("field");
+			search.remove("word");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("공지 조회 실패");
@@ -92,21 +95,21 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from distribution_bbs1 where bbs1_num = ?";
+		String sql = "select * from distribution_bbs2 where bbs2_num = ?";
 		
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			String n_num = request.getParameter("n_num");
-			pstmt.setString(1, n_num);
+			String s_num = request.getParameter("s_num");
+			pstmt.setString(1, s_num);
 			
 			rs = pstmt.executeQuery();
 			
-			NoticeDTO bbs = null;
+			SpecialNoteDTO bbs = null;
 			if(rs.next()) {
 				String content = rs.getString(3);
 				System.out.println("공지 뷰 조회성공");
-				bbs = new NoticeDTO(rs.getString(1),rs.getString(2),content,rs.getString(4),rs.getDate(5));
+				bbs = new SpecialNoteDTO(rs.getString(1),rs.getString(2),content,rs.getString(4),rs.getDate(5));
 			}
 			
 			request.setAttribute("bbs", bbs);
@@ -130,13 +133,13 @@ public class NoticeDAO {
 			MultipartRequest mr = new MultipartRequest(request, path, 30 * 1024 * 1024, "utf-8",
 					new DefaultFileRenamePolicy());
 
-			String name = mr.getParameter("n_title");
-			String content = mr.getParameter("n_content");
-			String img = mr.getFilesystemName("n_img");
+			String name = mr.getParameter("s_title");
+			String content = mr.getParameter("s_content");
+			String img = mr.getFilesystemName("s_img");
 
 			content = content.replaceAll("\r\n", "<br/>");
 
-			String sql = "insert into distribution_bbs1 values(distribution_bbs1_seq.nextval,?,?,?,sysdate)";
+			String sql = "insert into distribution_bbs2 values(bbs2_seq.nextval,?,?,?,sysdate)";
 
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
@@ -161,11 +164,11 @@ public class NoticeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = "delete distribution_bbs1 where bbs1_num = ?";
+		String sql = "delete distribution_bbs2 where bbs2_num = ?";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("n_num"));
+			pstmt.setString(1, request.getParameter("s_num"));
 			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("삭제 성공");
@@ -182,10 +185,10 @@ public class NoticeDAO {
 	}
 
 	public void contentEnter(HttpServletRequest request) {
-		NoticeDTO bbs  = (NoticeDTO)request.getAttribute("bbs");
+		SpecialNoteDTO bbs  = (SpecialNoteDTO)request.getAttribute("bbs");
 		
-		String content = bbs.getN_content().replaceAll("<br/>", "\r\n");
-		bbs.setN_content(content);
+		String content = bbs.getS_content().replaceAll("<br/>", "\r\n");
+		bbs.setS_content(content);
 		
 		request.setAttribute("bbs", bbs);
 	}
@@ -200,10 +203,10 @@ public class NoticeDAO {
 			MultipartRequest mr = new MultipartRequest(request, path, 30 * 1024 * 1024, "utf-8",
 					new DefaultFileRenamePolicy());
 			
-			String num = mr.getParameter("n_num");
-			String title = mr.getParameter("n_title");
-			String content = mr.getParameter("n_content");
-			String new_img = mr.getFilesystemName("n_img");
+			String num = mr.getParameter("s_num");
+			String title = mr.getParameter("s_title");
+			String content = mr.getParameter("s_content");
+			String new_img = mr.getFilesystemName("s_img");
 			String old_img = mr.getParameter("old_img");
 			String img = new_img != null ? new_img : old_img;
 			
@@ -215,7 +218,7 @@ public class NoticeDAO {
 			System.out.println("img"+img);
 			content = content.replaceAll("\r\n", "<br/>");
 
-			String sql = "update distribution_bbs1 set bbs1_title = ?, bbs1_content = ?, bbs1_img = ? where bbs1_num = ?";
+			String sql = "update distribution_bbs2 set bbs2_title = ?, bbs2_content = ?, bbs2_img = ? where bbs2_num = ?";
 
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
@@ -226,7 +229,7 @@ public class NoticeDAO {
 
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("bbs1 수정 성공");
-				request.setAttribute("n_num", num);
+				request.setAttribute("s_num", num);
 			}
 
 		} catch (Exception e) {

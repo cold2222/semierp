@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 public class DistributionNoticeViewC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		NoticeDAO.getOneBBS(request);
+		NoticeDAO.getNdao().getOneBBS(request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/noticeview.jsp");
+		request.setAttribute("contentPage","sb/distribution/notice/noticeview.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

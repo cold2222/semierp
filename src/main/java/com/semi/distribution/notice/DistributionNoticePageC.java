@@ -1,4 +1,4 @@
-package com.semi.distribution.specialnote;
+package com.semi.distribution.notice;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DistributionSpecialNoteC")
-public class DistributionSpecialNoteC extends HttpServlet {
+@WebServlet("/DistributionNoticePageC")
+public class DistributionNoticePageC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SpecialNoteDAO.getSdao().getBBS(request);
-		SpecialNoteDAO.getSdao().paging(1, request);
+		NoticeDAO.getNdao().getBBS(request);
+		NoticeDAO.getNdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/specialnote/specialnote.jsp");
+		request.setAttribute("contentPage","sb/distribution/notice/notice.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

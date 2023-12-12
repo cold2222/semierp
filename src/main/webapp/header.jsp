@@ -33,8 +33,8 @@
 			<div onclick="">在庫管理</div>
 			<div onclick="">輸入</div>
 			<div onclick="">販売</div>
-			<div onclick="">運送</div>
-			<div onclick="location.href='DistributionMainBBSC'">決算</div>
+			<div onclick="location.href='DistributionMainBBSC'">運送</div>
+			<div onclick="">決算</div>
 		</div>
 	</div>
 </body>
