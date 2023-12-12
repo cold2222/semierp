@@ -1,4 +1,4 @@
-package com.semi.warehouse.outcheck;
+package com.semi.warehouse.warehouseboard;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
