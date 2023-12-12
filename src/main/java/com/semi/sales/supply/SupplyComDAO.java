@@ -512,6 +512,105 @@ public class SupplyComDAO {
 		}
 	}
 
+	public static void regProduct(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into product values(product_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+			
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("p_si"));
+			pstmt.setString(2, request.getParameter("p_type"));
+			pstmt.setString(3, request.getParameter("p_quantity"));
+			pstmt.setString(4, request.getParameter("p_name"));
+			pstmt.setString(5, request.getParameter("p_unitCost"));
+			pstmt.setString(6, request.getParameter("p_minStock"));
+			pstmt.setString(7, request.getParameter("p_maxStock"));
+			pstmt.setString(8, request.getParameter("p_manufacturer"));
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("등록 성공");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+	}
+
+	public static void getP(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from product where p_id=?";
+		try {
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("id")));
+			rs = pstmt.executeQuery();
+			Product p = null;
+			if (rs.next()) {
+				p = new Product();
+				p.setP_id(rs.getInt("p_id"));
+				p.setP_si(rs.getString("p_si"));
+				p.setP_type(rs.getString("p_type"));
+				p.setP_quantity(rs.getInt("p_quantity"));
+				p.setP_name(rs.getString("p_name"));
+				p.setP_unitCost(rs.getString("p_unitCost"));
+				p.setP_minStock(rs.getString("p_minStock"));
+				p.setP_maxStock(rs.getString("p_maxStock"));
+				p.setP_manufacturer(rs.getInt("p_manufacturer"));
+				request.setAttribute("p", p);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+	}
+
+	public static void updateProduct(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "update product set p_si=?, p_type=?, p_quantity=?, p_name=?, p_unitCost=?, p_minStock=?, p_maxStock=?, p_manufacturer=? where p_id = ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("p_si"));
+			pstmt.setString(2, request.getParameter("p_type"));
+			pstmt.setString(3, request.getParameter("p_quantity"));
+			pstmt.setString(4, request.getParameter("p_name"));
+			pstmt.setString(5, request.getParameter("p_unitCost"));
+			pstmt.setString(6, request.getParameter("p_minStock"));
+			pstmt.setString(7, request.getParameter("p_maxStock"));
+			pstmt.setString(8, request.getParameter("p_manufacturer"));
+			pstmt.setString(9, request.getParameter("id"));
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("수정 성공");
+				request.setAttribute("isSuccess", "Success");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+	}
+
 	
 
 }
