@@ -52,12 +52,17 @@ public class TestDAO {
 	public static void regTest(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into distri_record_test values(distri_record_test_seq.nextval, ?, sysdate, ?)";
+		String sql = "insert into distri_record_test values(distri_record_test_seq.nextval, ?, ?, ?)";
 		try {
+			
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("record_num"));
-			pstmt.setString(2, request.getParameter("sell_date"));
+			pstmt.setString(1, request.getParameter("company_sell"));
+			pstmt.setString(2, request.getParameter("delivery_date"));
+			pstmt.setString(3, request.getParameter("sell_date"));
+			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("등록 성공");
 			}
