@@ -10,9 +10,9 @@ import java.sql.SQLException;
 public class DBManger {
 	
 
-	public static Connection connect() throws SQLException {
-		
+	public static Connection connect() throws SQLException, ClassNotFoundException {
 		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 		
 		return DriverManager.getConnection(url,"c##ysb836","tmdqls510");
 	}
