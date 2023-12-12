@@ -24,8 +24,7 @@ public class InExBoardTestC extends HttpServlet {
 	        }
 		
 		
-//		ExWarehouseTestDAO.getExWareTest(request);
-//		TestwarehouseDAO.getInWareTest(request);
+
 		request.getRequestDispatcher("sj/warehouse/in_ex_board.jsp").forward(request, response);
 				
 	}

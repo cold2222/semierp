@@ -36,21 +36,7 @@
 <body>
 
 
-	<h1 style="font-size: 30pt;">입고 출고 테이블</h1>
-
-
-	<form action="InExBoardTestC" method="get">
-		<div class="input-container">
-			<label for="operationType">구분 :</label> 
-			<select name="operationType" id="operationType">
-				<option value="all">전체</option>
-				<option value="inWarehouse">입고</option>
-				<option value="exWarehouse">출고</option>
-			</select>
-			<button type="submit">확인</button>
-		</div>
-	</form>
-
+	<h1 style="font-size: 30pt;">창고 테이블</h1>
 
 	<div class="input-box input-container">
 
