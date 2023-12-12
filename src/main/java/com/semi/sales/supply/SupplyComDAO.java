@@ -11,8 +11,43 @@ import com.semi.sales.bbs.DBManager;
 import com.semi.sales.product.Product;
 
 public class SupplyComDAO {
+	private ArrayList<SupplyCompany> scs;
+	private static final SupplyComDAO SDAO = new SupplyComDAO();
+	
+	private SupplyComDAO() {
+	}
 
-	public static void getAllCom(HttpServletRequest request) {
+
+	public static SupplyComDAO getSdao() {
+		return SDAO;
+	}
+	
+	public void paging(int page, HttpServletRequest request) {
+		request.setAttribute("curPageNo", page);
+		int cnt = 30;	// 한페이지당 보여줄 개수
+		int total = scs.size();	// 총 데이터 개수
+		// 총페이지수
+		int pageCount = (int)Math.ceil((double)total / cnt);
+		request.setAttribute("pageCount", pageCount);
+		
+		int start = total - (cnt * (page - 1));
+		
+		int end = (page == pageCount) ? - 1 : start - (cnt + 1);
+		
+		ArrayList<SupplyCompany> items = new ArrayList<SupplyCompany>();
+		for (int i = start - 1; i > end; i--) {
+			items.add(scs.get(i));
+		}
+		request.setAttribute("scs", items);
+		
+		
+		
+	}
+	
+
+
+
+	public void getAllCom(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -24,7 +59,7 @@ public class SupplyComDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			SupplyCompany sc = null;
-			ArrayList<SupplyCompany> scs = new ArrayList<SupplyCompany>();
+			scs = new ArrayList<SupplyCompany>();
 			while (rs.next()) {
 				sc = new SupplyCompany();
 				sc.setSupply_num(rs.getInt("supply_num"));
@@ -47,7 +82,7 @@ public class SupplyComDAO {
 		
 	}
 	
-	public static void regCom(HttpServletRequest request) {
+	public void regCom(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into supply_status values(supply_status_seq.nextval, ?, ?, ?, ?, ?)";
@@ -75,7 +110,7 @@ public class SupplyComDAO {
 		
 	}
 
-	public static void getCom(HttpServletRequest request) {
+	public void getCom(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -238,7 +273,7 @@ public class SupplyComDAO {
 
 	
 
-	public static void searchCom(HttpServletRequest request) {
+	public void searchCom(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -277,7 +312,7 @@ public class SupplyComDAO {
 		
 	}
 
-	public static void updateCom(HttpServletRequest request) {
+	public void updateCom(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "update supply_status set supply_company=?, supply_name=?, supplied_name=?, supply_addr=?, purchase_text=? where supply_num = ?";

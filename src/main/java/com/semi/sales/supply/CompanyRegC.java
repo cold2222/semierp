@@ -19,8 +19,8 @@ public class CompanyRegC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.regCom(request);
-		SupplyComDAO.getAllCom(request);
+		SupplyComDAO.getSdao().regCom(request);
+		SupplyComDAO.getSdao().getAllCom(request);
 		request.setAttribute("page", "company/output_supply.jsp");
 		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	

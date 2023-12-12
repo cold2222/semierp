@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UpdateComC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	SupplyComDAO.getCom(request);
+	SupplyComDAO.getSdao().getCom(request);
 	request.setAttribute("page", "company/updateCom.jsp");
 	request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 		
@@ -22,7 +22,7 @@ public class UpdateComC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	SupplyComDAO.updateCom(request);
+	SupplyComDAO.getSdao().updateCom(request);
 	response.sendRedirect("UpdateComC?num="+request.getParameter("num")+"&isSuccess="
 			+ request.getAttribute("isSuccess"));	
 	

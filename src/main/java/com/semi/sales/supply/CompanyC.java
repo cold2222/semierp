@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class CompanyC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getAllCom(request);
-		
+		SupplyComDAO.getSdao().getAllCom(request);
+		SupplyComDAO.getSdao().paging(1, request);
 		request.setAttribute("page", "company/supply_company.jsp");
 		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 		
