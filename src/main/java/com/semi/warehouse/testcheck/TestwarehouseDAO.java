@@ -220,7 +220,7 @@ public class TestwarehouseDAO {
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
 				int p_quantity = rs.getInt("p_quantity");
-				String in_warehouse_date = rs.getString("in_warehouse_date");
+				String in_warehouse_date = rs.getString("in_warehouse_date").split(" ")[0];
 				int in_warehouse_id = rs.getInt("in_warehouse_id");
 				int in_warehouse_quantity = rs.getInt("in_warehouse_quantity");
 				String warehouse_name = rs.getString("warehouse_name");

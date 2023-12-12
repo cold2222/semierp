@@ -1,4 +1,4 @@
-package com.semi.warehouse.outcheck;
+package com.semi.warehouse.testcheck;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -227,7 +227,7 @@ public class ExWarehouseTestDAO {
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
 				int p_quantity = rs.getInt("p_quantity");
-				String ex_warehouse_date = rs.getString("ex_warehouse_date");
+				String ex_warehouse_date = rs.getString("ex_warehouse_date").split(" ")[0];
 				int ex_warehouse_id = rs.getInt("ex_warehouse_id");
 				int ex_warehouse_quantity = rs.getInt("ex_warehouse_quantity");
 				String warehouse_name = rs.getString("warehouse_name");

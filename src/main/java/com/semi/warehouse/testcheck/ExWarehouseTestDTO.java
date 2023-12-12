@@ -1,4 +1,4 @@
-package com.semi.warehouse.outcheck;
+package com.semi.warehouse.testcheck;
 
 public class ExWarehouseTestDTO {
 

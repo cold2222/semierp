@@ -40,8 +40,8 @@
 				<h1 style="font-size: 30pt;">출고 테이블 </h1>
 		<div class="input-box input-container">
 		
+			<div class="in_name">구분</div>
 			<div class="in_name">제품 이름</div>
-			<div class="in_name">상태</div>
 			<div class="in_name">타입</div>
 			<div class="in_name">p_quantity</div>
 			<div class="in_name">단위</div>
@@ -53,7 +53,7 @@
 		<c:forEach var="ex" items="${exWarehouse}">
 			<div class="input-box input-container">
 				<div>
-					<input name="in_warehouse_id" value="출고" readonly="readonly">
+					<input name="ex_warehouse_id" value="출고" readonly="readonly">
 				</div>
 				<div>
 					<input name="p_name" value="${ex.p_name}" readonly="readonly">
