@@ -41,6 +41,7 @@
 		<div class="input-box input-container">
 		
 			<div class="in_name">제품 이름</div>
+			<div class="in_name">상태</div>
 			<div class="in_name">타입</div>
 			<div class="in_name">p_quantity</div>
 			<div class="in_name">단위</div>
@@ -48,9 +49,12 @@
 			<div class="in_name">날짜</div>
 			<div class="in_name">창고</div>
 		</div>
-
+		<!-- 1줄씩 나타내줄 것들 -->
 		<c:forEach var="in" items="${inWarehouse}">
 			<div class="input-box input-container">
+				<div>
+					<input name="in_warehouse_id" value="구매" readonly="readonly">
+				</div>
 				<div>
 					<input name="p_name" value="${in.p_name}" readonly="readonly">
 				</div>

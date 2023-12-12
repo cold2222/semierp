@@ -4,90 +4,115 @@ public class ExWarehouseTestDTO {
 
 	private int p_id;
 	private String p_name;
-	private String p_si;
 	private String p_type;
-	private int record_count;
-	private String in_warehouse_date;
+	private int p_quantity;
+	private String p_si;
+	private int record_sales_count;
+	private String sell_date;
 	private int status;
 
-//	private int warehouse_id;
-//	private int in_warehouse_quantity;
-//	private String warehouse_name;
-
-
+	
 	public ExWarehouseTestDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-public ExWarehouseTestDTO(int p_id, String p_name, String p_si, String p_type, int record_count, String in_warehouse_date,
-		int status) {
-	super();
-	this.p_id = p_id;
-	this.p_name = p_name;
-	this.p_si = p_si;
-	this.p_type = p_type;
-	this.record_count = record_count;
-	this.in_warehouse_date = in_warehouse_date;
-	this.status = status;
-}
 
-public int getP_id() {
-	return p_id;
-}
-
-public void setP_id(int p_id) {
-	this.p_id = p_id;
-}
-
-public String getP_name() {
-	return p_name;
-}
-
-public void setP_name(String p_name) {
-	this.p_name = p_name;
-}
-
-public String getP_si() {
-	return p_si;
-}
-
-public void setP_si(String p_si) {
-	this.p_si = p_si;
-}
-
-public String getP_type() {
-	return p_type;
-}
-
-public void setP_type(String p_type) {
-	this.p_type = p_type;
-}
-
-public int getRecord_count() {
-	return record_count;
-}
-
-public void setRecord_count(int record_count) {
-	this.record_count = record_count;
-}
-
-public String getIn_warehouse_date() {
-	return in_warehouse_date;
-}
-
-public void setIn_warehouse_date(String in_warehouse_date) {
-	this.in_warehouse_date = in_warehouse_date;
-}
-
-public int getStatus() {
-	return status;
-}
-
-public void setStatus(int status) {
-	this.status = status;
-}
+	public ExWarehouseTestDTO(int p_id, String p_name, String p_type, int p_quantity, String p_si,
+			int record_sales_count, String sell_date, int status) {
+		super();
+		this.p_id = p_id;
+		this.p_name = p_name;
+		this.p_type = p_type;
+		this.p_quantity = p_quantity;
+		this.p_si = p_si;
+		this.record_sales_count = record_sales_count;
+		this.sell_date = sell_date;
+		this.status = status;
+	}
 
 
+	public int getP_id() {
+		return p_id;
+	}
+
+
+	public void setP_id(int p_id) {
+		this.p_id = p_id;
+	}
+
+
+	public String getP_name() {
+		return p_name;
+	}
+
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
+
+
+	public String getP_type() {
+		return p_type;
+	}
+
+
+	public void setP_type(String p_type) {
+		this.p_type = p_type;
+	}
+
+
+	public int getP_quantity() {
+		return p_quantity;
+	}
+
+
+	public void setP_quantity(int p_quantity) {
+		this.p_quantity = p_quantity;
+	}
+
+
+	public String getP_si() {
+		return p_si;
+	}
+
+
+	public void setP_si(String p_si) {
+		this.p_si = p_si;
+	}
+
+
+	public int getRecord_sales_count() {
+		return record_sales_count;
+	}
+
+
+	public void setRecord_sales_count(int record_sales_count) {
+		this.record_sales_count = record_sales_count;
+	}
+
+
+	public String getSell_date() {
+		return sell_date;
+	}
+
+
+	public void setSell_date(String sell_date) {
+		this.sell_date = sell_date;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
+	
+	
 	
 	
 	
