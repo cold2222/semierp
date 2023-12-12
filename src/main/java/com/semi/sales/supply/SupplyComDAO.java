@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import com.semi.sales.bbs.DBManager;
+import com.semi.sales.product.Product;
 
 public class SupplyComDAO {
 
@@ -168,43 +169,14 @@ public class SupplyComDAO {
 		
 	}
 
-	public static void getContent(HttpServletRequest request) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "select * from purchase_buy_recordall where recordall_buy_num=?";
-		try {
-			request.setCharacterEncoding("utf-8");
-
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(request.getParameter("num")));
-			rs = pstmt.executeQuery();
-			SupplyContract st = null;
-			if (rs.next()) {
-				st = new SupplyContract();
-				st.setRecordall_buy_num(rs.getInt("recordall_buy_num"));
-				st.setSupply_num(rs.getInt("supply_num"));
-				st.setPurchase_date(rs.getDate("purchase_date"));
-				st.setTransaction_date(rs.getDate("transaction_date"));
-				st.setIn_warehouse_date(rs.getDate("in_warehouse_date"));
-				st.setStatus(rs.getInt("status"));
-				request.setAttribute("st", st);
-			}
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(con, pstmt, rs);
-		}
+	
+	
 		
 		
 		
 		
 		
-		
-	}
+	
 
 	public static void regContents(HttpServletRequest request) {
 		Connection con = null;
@@ -413,6 +385,131 @@ public class SupplyComDAO {
 		
 		
 	
+	}
+
+	public static void getCont(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from purchase_buy_recordall where recordall_buy_num=?";
+		try {
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("num")));
+			rs = pstmt.executeQuery();
+			SupplyContract st = null;
+			if (rs.next()) {
+				st = new SupplyContract();
+				st.setRecordall_buy_num(rs.getInt("recordall_buy_num"));
+				st.setSupply_num(rs.getInt("supply_num"));
+				st.setPurchase_date(rs.getDate("purchase_date"));
+				st.setTransaction_date(rs.getDate("transaction_date"));
+				st.setIn_warehouse_date(rs.getDate("in_warehouse_date"));
+				st.setStatus(rs.getInt("status"));
+				request.setAttribute("st", st);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+
+	public static void updateCont(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "update purchase_buy_recordall set supply_num=?, purchase_date=?, transaction_date=?, in_warehouse_date=?, status=? where recordall_buy_num = ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("supply_num"));
+			pstmt.setString(2, request.getParameter("purchase_date"));
+			pstmt.setString(3, request.getParameter("transaction_date"));
+			pstmt.setString(4, request.getParameter("in_warehouse_date"));
+			pstmt.setString(5, request.getParameter("status"));
+			pstmt.setString(6, request.getParameter("num"));
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("수정 성공");
+				request.setAttribute("isSuccess", "Success");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+	}
+
+	public static void getContent(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from purchase_buy_record where record_buy_num=?";
+		try {
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("num")));
+			rs = pstmt.executeQuery();
+			SupplyContents c = null;
+			if (rs.next()) {
+				c = new SupplyContents();
+				c.setRecord_buy_num(rs.getInt("record_buy_num"));
+				c.setRecordall_buy_num(rs.getInt("recordall_buy_num"));
+				c.setP_id(rs.getInt("p_id"));
+				c.setRecord_count(rs.getInt("record_count"));
+				c.setRecord_price(rs.getInt("record_price"));
+				request.setAttribute("c", c);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+		
+		
+		
+		
+	}
+
+	public static void updateContent(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "update purchase_buy_record set recordall_buy_num=?, p_id=?, record_count=?, record_price=? where record_buy_num = ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("recordall_buy_num"));
+			pstmt.setString(2, request.getParameter("p_id"));
+			pstmt.setString(3, request.getParameter("record_count"));
+			pstmt.setString(4, request.getParameter("record_price"));
+			pstmt.setString(5, request.getParameter("num"));
+			
+			if (pstmt.executeUpdate() >= 1) {
+				System.out.println("수정 성공");
+				request.setAttribute("isSuccess", "Success");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
 	}
 
 	

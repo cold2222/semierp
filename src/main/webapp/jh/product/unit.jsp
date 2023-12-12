@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div> 
-	<form action="DetailComC">
+<form action="DetailComC">
 	<input name="search" placeholder="검색"> <button >검색</button> 
 	</form> 
 	</div>
@@ -29,5 +28,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+
+
 </body>
 </html>

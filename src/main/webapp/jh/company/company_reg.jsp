@@ -15,11 +15,9 @@
 			<td> <input name="supplied_name" placeholder="구매업체쪽 담당자"> </td>
 			<td> <input name="supply_addr" placeholder="연락처"> </td>
 			<td> <input name="purchase_text" placeholder="비고"> </td>
+			<td><button>등록</button></td>
 		</tr>
 </table>
-<button>등록</button>
-<button>수정</button>
-<button onclick="DeleteComC?name=">삭제</button>
 
 </form>
 </body>

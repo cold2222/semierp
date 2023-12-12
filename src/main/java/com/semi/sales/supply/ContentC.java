@@ -12,7 +12,7 @@ public class ContentC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		SupplyComDAO.getAllContents(request);
-		request.setAttribute("page", "final_contents.jsp");
+		request.setAttribute("page", "content/content_company.jsp");
 		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	
 	}

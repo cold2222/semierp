@@ -12,7 +12,7 @@ public class DetailComC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		SupplyComDAO.searchCom(request);
-		request.setAttribute("page", "supply_company.jsp");
+		request.setAttribute("page", "company/supply_company.jsp");
 		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	
 	}

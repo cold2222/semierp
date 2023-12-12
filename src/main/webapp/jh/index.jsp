@@ -10,7 +10,6 @@
 <table>
 <tr>
 	<td> <button onclick="location.href='CompanyRegC'">회사 등록하기</button> </td>
-	<td> <button onclick="location.href='UpdateComC'">회사 수정하기</button> </td>
 	<td> <button onclick="location.href='CompanyC'">회사 조회하기</button> </td>
 	<td> <button onclick="location.href='ContractC'">거례서 조회하기</button> </td>
 	<td> <button onclick="location.href='ContentC'">거례서 내용 조회하기</button> </td>

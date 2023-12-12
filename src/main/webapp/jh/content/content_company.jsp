@@ -20,7 +20,7 @@
 				<td>${c.p_id }</td>
 				<td>${c.record_count }</td>
 				<td>${c.record_price }</td>
-				<td> <button onclick="location.href='UpdateContC?num=${c.recordall_buy_num }'">수정</button> </td>
+				<td> <button onclick="location.href='UpdateContentC?num=${c.record_buy_num }'">수정</button> </td>
 			</tr>
 		</c:forEach>
 	</table>

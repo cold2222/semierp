@@ -12,7 +12,7 @@ public class MakeContentsC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		SupplyComDAO.getContent(request);
-		request.setAttribute("page", "contents_reg.jsp");
+		request.setAttribute("page", "content/contents_reg.jsp");
 		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	
 	

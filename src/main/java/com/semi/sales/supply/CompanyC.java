@@ -13,7 +13,7 @@ public class CompanyC extends HttpServlet {
 	
 		SupplyComDAO.getAllCom(request);
 		
-		request.setAttribute("page", "supply_company.jsp");
+		request.setAttribute("page", "company/supply_company.jsp");
 		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 		
 	}

@@ -1,4 +1,4 @@
-package com.semi.sales.supply;
+package com.semi.sales.product;
 
 public class Product {
 	private int p_id;

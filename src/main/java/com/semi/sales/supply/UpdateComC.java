@@ -11,7 +11,7 @@ public class UpdateComC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	SupplyComDAO.getCom(request);
-	request.setAttribute("page", "updateCom.jsp");
+	request.setAttribute("page", "company/updateCom.jsp");
 	request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 		
 		

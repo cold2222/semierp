@@ -10,9 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/UpdateContC")
 public class UpdateContC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		SupplyComDAO.getCont(request);
+		request.setAttribute("page", "contract/updateCont.jsp");
+		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+	
+	
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		SupplyComDAO.updateCont(request);
+		response.sendRedirect("UpdateContC?num="+request.getParameter("num")+"&isSuccess="
+				+ request.getAttribute("isSuccess"));	
+	
 	}
 
 }
