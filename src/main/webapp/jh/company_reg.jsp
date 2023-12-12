@@ -18,6 +18,9 @@
 		</tr>
 </table>
 <button>등록</button>
+<button>수정</button>
+<button onclick="DeleteComC?name=">삭제</button>
+
 </form>
 </body>
 </html>

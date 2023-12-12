@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +8,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<table border="1" style="width: 1800px; height: 800px;">
+	<div> 
+	<form action="DetailComC">
+	<input name="search" placeholder="검색"> <button >검색</button> 
+	</form> 
+	</div>
+	<table border="1" style="width: 1800px; height: 800px;">
+		<c:forEach var="sc" items="${scs }">
 			<tr>
-				<td>
-				<jsp:include page="${page}"></jsp:include>
-				</td>
+				<td>${sc.supply_num }</td>
+				<td>${sc.supply_company }</td>
+				<td>${sc.supply_name }</td>
+				<td>${sc.supplied_name }</td>
+				<td>${sc.supply_addr }</td>
+				<td>${sc.purchase_text }</td>
+				<td> <button onclick="location.href='UpdateComC?num=${sc.supply_num }'">수정</button> </td>
 			</tr>
-		</table>
-		
-				<button onclick="location.href='CompanyRegC'">등록하기</button>
+		</c:forEach>
+	</table>
+
 
 </body>
 </html>

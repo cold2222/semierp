@@ -15,7 +15,7 @@ public class SupplyComDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from supply_status";
+		String sql = "select * from supply_status order by supply_num desc";
 		try {
 			request.setCharacterEncoding("utf-8");
 
@@ -112,7 +112,7 @@ public class SupplyComDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from purchase_buy_recordall";
+		String sql = "select * from purchase_buy_recordall order by status asc, purchase_date asc";
 		try {
 			request.setCharacterEncoding("utf-8");
 
@@ -236,7 +236,7 @@ public class SupplyComDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from purchase_buy_record";
+		String sql = "select * from purchase_buy_record order by record_buy_num desc";
 		try {
 			request.setCharacterEncoding("utf-8");
 
@@ -262,6 +262,157 @@ public class SupplyComDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
+	}
+
+	
+
+	public static void searchCom(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from supply_status where supply_company like ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+request.getParameter("search")+"%");
+			rs = pstmt.executeQuery();
+			
+			SupplyCompany sc = null;
+			ArrayList<SupplyCompany> scs = new ArrayList<SupplyCompany>();
+			while (rs.next()) {
+				sc = new SupplyCompany();
+				sc.setSupply_num(rs.getInt("supply_num"));
+				sc.setSupply_company(rs.getString("supply_company"));
+				sc.setSupply_name(rs.getString("supply_name"));
+				sc.setSupplied_name(rs.getString("supplied_name"));
+				sc.setSupply_addr(rs.getString("supply_addr"));
+				sc.setPurchase_text(rs.getString("purchase_text"));
+				scs.add(sc);
+			}
+			request.setAttribute("scs", scs);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+		
+		
+		
+		
+	}
+
+	public static void updateCom(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "update supply_status set supply_company=?, supply_name=?, supplied_name=?, supply_addr=?, purchase_text=? where supply_num = ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("supply_company"));
+			pstmt.setString(2, request.getParameter("supply_name"));
+			pstmt.setString(3, request.getParameter("supplied_name"));
+			pstmt.setString(4, request.getParameter("supply_addr"));
+			pstmt.setString(5, request.getParameter("purchase_text"));
+			pstmt.setString(6, request.getParameter("num"));
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("수정 성공");
+				request.setAttribute("isSuccess", "Success");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+	}
+
+	
+
+	public static void getAllProduct(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from product";
+		try {
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			Product p = null;
+			ArrayList<Product> ps = new ArrayList<Product>();
+			while (rs.next()) {
+				p = new Product();
+				p.setP_id(rs.getInt("p_id"));
+				p.setP_si(rs.getString("p_si"));
+				p.setP_type(rs.getString("p_type"));
+				p.setP_quantity(rs.getInt("p_quantity"));
+				p.setP_name(rs.getString("p_name"));
+				p.setP_unitCost(rs.getString("p_unitCost"));
+				p.setP_minStock(rs.getString("p_minStock"));
+				p.setP_maxStock(rs.getString("p_maxStock"));
+				p.setP_manufacturer(rs.getInt("p_manufacturer"));
+				ps.add(p);
+			}
+			request.setAttribute("ps", ps);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+	}
+
+	public static void getAllUnit(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from unit";
+		try {
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			Product p = null;
+			ArrayList<Product> ps = new ArrayList<Product>();
+			while (rs.next()) {
+				p = new Product();
+				p.setP_id(rs.getInt("p_id"));
+				p.setP_si(rs.getString("p_si"));
+				p.setP_type(rs.getString("p_type"));
+				p.setP_quantity(rs.getInt("p_quantity"));
+				p.setP_name(rs.getString("p_name"));
+				p.setP_unitCost(rs.getString("p_unitCost"));
+				p.setP_minStock(rs.getString("p_minStock"));
+				p.setP_maxStock(rs.getString("p_maxStock"));
+				p.setP_manufacturer(rs.getInt("p_manufacturer"));
+				ps.add(p);
+			}
+			request.setAttribute("ps", ps);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+		
+		
+		
+		
+	
 	}
 
 	

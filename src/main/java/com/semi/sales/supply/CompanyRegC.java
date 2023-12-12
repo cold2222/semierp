@@ -12,7 +12,7 @@ public class CompanyRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setAttribute("page", "company_reg.jsp");
-		request.getRequestDispatcher("jh/supply_company.jsp").forward(request, response);
+		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	
 	
 	}
@@ -22,7 +22,7 @@ public class CompanyRegC extends HttpServlet {
 		SupplyComDAO.regCom(request);
 		SupplyComDAO.getAllCom(request);
 		request.setAttribute("page", "output_supply.jsp");
-		request.getRequestDispatcher("jh/supply_company.jsp").forward(request, response);
+		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	
 	
 	}

@@ -13,7 +13,7 @@ public class MakeContentsC extends HttpServlet {
 		
 		SupplyComDAO.getContent(request);
 		request.setAttribute("page", "contents_reg.jsp");
-		request.getRequestDispatcher("jh/supply_company.jsp").forward(request, response);
+		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	
 	
 	}
@@ -22,7 +22,7 @@ public class MakeContentsC extends HttpServlet {
 		SupplyComDAO.regContents(request);
 		SupplyComDAO.getAllContents(request);
 		request.setAttribute("page", "final_contents.jsp");
-		request.getRequestDispatcher("jh/supply_company.jsp").forward(request, response);
+		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	
 	
 	
