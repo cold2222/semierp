@@ -9,9 +9,11 @@
 <body>
 
         
-       <a href="TestwarehouseC"><h1>시작</h1> </a> 
-       
-
+       <a href="TestwarehouseC"><h1>물품 창고 입고 게시판</h1></a> 
+       <a href="ExWarehouseTestC"><h1>물품 창고 출고 게시판</h1></a> 
+       <a href="InExBoardTestC"><h1>물품 입출고 확인 게시판</h1></a> 
+       <a href="WareHouseBoardTestC"><h1>창고 확인 게시판</h1></a> 
+       		
 
 
 </body>

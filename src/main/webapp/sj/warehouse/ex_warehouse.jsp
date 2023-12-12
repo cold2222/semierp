@@ -37,9 +37,10 @@
 <body>
 
 
-				<h1 style="font-size: 30pt;">입고 테이블 </h1>
+				<h1 style="font-size: 30pt;">출고 테이블 </h1>
 		<div class="input-box input-container">
 		
+			<div class="in_name">구분</div>
 			<div class="in_name">제품 이름</div>
 			<div class="in_name">타입</div>
 			<div class="in_name">p_quantity</div>
@@ -48,31 +49,34 @@
 			<div class="in_name">날짜</div>
 			<div class="in_name">창고</div>
 		</div>
-
-		<c:forEach var="in" items="${inWarehouse}">
+		<!-- 1줄씩 나타내줄 것들 -->
+		<c:forEach var="ex" items="${exWarehouse}">
 			<div class="input-box input-container">
 				<div>
-					<input name="p_name" value="${in.p_name}" readonly="readonly">
+					<input name="ex_warehouse_id" value="출고" readonly="readonly">
 				</div>
 				<div>
-					<input name="p_type" value="${in.p_type}" readonly="readonly">
+					<input name="p_name" value="${ex.p_name}" readonly="readonly">
 				</div>
 				<div>
-					<input name="in_warehouse_quantity" value="${in.in_warehouse_quantity}"
+					<input name="p_type" value="${ex.p_type}" readonly="readonly">
+				</div>
+				<div>
+					<input name="ex_warehouse_quantity" value="${ex.ex_warehouse_quantity}"
 						readonly="readonly">
 				</div>
 				<div>
-					<input name="p_si" value="${in.p_si}" readonly="readonly">
+					<input name="p_si" value="${ex.p_si}" readonly="readonly">
 				</div>
 				<div>
-					<input name="p_quantity" value="${in.p_quantity}" readonly="readonly">
+					<input name="p_quantity" value="${ex.p_quantity}" readonly="readonly">
 				</div>
 				<div>
-					<input name="in_warehouse_date" value="${in.in_warehouse_date}"
+					<input name="ex_warehouse_date" value="${ex.ex_warehouse_date}"
 						readonly="readonly">
 				</div>
 				<div>
-					<input name="warehouse_name" value="${in.warehouse_name}"
+					<input name="warehouse_name" value="${ex.warehouse_name}"
 						readonly="readonly">
 				</div>
 			</div>
