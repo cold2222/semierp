@@ -1,0 +1,27 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.content{
+	border: 1px solid black;
+}
+.content-top{
+	width: 90%;
+	display: flex;
+	border: 1px solid red;
+	margin: 30px 30px;
+}
+.content-top div{
+	margin: 0px 10px;
+}
+.content-body{
+	border: 1px solid greed;
+	width: 100%;
+	display: flex;
+}
+.content-body{
+	border : 1px solid blue;
+	width: 90%;
+	display: flex;
+	margin: 30px 30px;
+}

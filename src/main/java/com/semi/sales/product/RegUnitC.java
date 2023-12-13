@@ -8,21 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.sales.supply.SupplyComDAO;
-@WebServlet("/UnitC")
-public class UnitC extends HttpServlet {
+
+@WebServlet("/RegUnitC")
+public class RegUnitC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		SupplyComDAO.getAllUnit(request);
-		SupplyComDAO.getAllType(request);
-		
-		request.setAttribute("page", "product/unit.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
-	
-	
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		SupplyComDAO.regUnit(request);
+		SupplyComDAO.getAllUnit(request);
+		SupplyComDAO.getAllType(request);
+		request.setAttribute("page", "product/unit.jsp");
+		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+	
 	}
 
 }

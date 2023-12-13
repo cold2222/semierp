@@ -8,14 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.sales.supply.SupplyComDAO;
-@WebServlet("/UnitC")
-public class UnitC extends HttpServlet {
+
+@WebServlet("/UpdateUnitC")
+public class UpdateUnitC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getAllUnit(request);
-		SupplyComDAO.getAllType(request);
-		
-		request.setAttribute("page", "product/unit.jsp");
+		SupplyComDAO.getUnit(request);
+		request.setAttribute("page", "product/updateUnit.jsp");
 		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
 	
 	
@@ -23,6 +22,14 @@ public class UnitC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		SupplyComDAO.updateUnit(request);
+		SupplyComDAO.getAllUnit(request);
+		SupplyComDAO.getAllType(request);
+		request.setAttribute("page", "product/unit.jsp");
+		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+	
+	
 	}
 
 }

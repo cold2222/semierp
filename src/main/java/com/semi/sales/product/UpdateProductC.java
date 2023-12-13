@@ -24,8 +24,8 @@ public class UpdateProductC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		SupplyComDAO.updateProduct(request);
-		response.sendRedirect("UpdateProductC?id="+request.getParameter("id")+"&isSuccess="
-				+ request.getAttribute("isSuccess"));
+		response.sendRedirect("UpdateProduct?id="+request.getParameter("id")+"&isSuccess="
+				+ request.getAttribute("isSuccess"));	
 	
 	
 	
