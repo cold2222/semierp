@@ -40,7 +40,6 @@
 
 	<div class="input-box input-container">
 
-		<div class="in_name">구분</div>
 		<div class="in_name">제품 이름</div>
 		<div class="in_name">타입</div>
 		<div class="in_name">p_quantity</div>
