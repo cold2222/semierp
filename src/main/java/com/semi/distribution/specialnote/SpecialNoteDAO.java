@@ -35,8 +35,10 @@ public class SpecialNoteDAO {
 		int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
 		
 		ArrayList<SpecialNoteDTO> items = new ArrayList<SpecialNoteDTO>();
-		for (int i = startDataNum-1; i > endDataNum; i--) {
-			items.add(bbsList.get(i));
+		if(bbsList.size() > 0) {
+			for (int i = startDataNum-1; i > endDataNum; i--) {
+				items.add(bbsList.get(i));
+			}
 		}
 		request.setAttribute("bbsList", items);
 		request.setAttribute("pageNum", pageNum);
