@@ -8,17 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.sales.supply.SupplyComDAO;
-@WebServlet("/UnitC")
-public class UnitC extends HttpServlet {
+
+@WebServlet("/DeleteUnitC")
+public class DeleteUnitC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		SupplyComDAO.getUnit(request);
+		SupplyComDAO.deleteUnit(request);
 		SupplyComDAO.getAllUnit(request);
 		SupplyComDAO.getAllType(request);
-		
 		request.setAttribute("page", "product/unit.jsp");
 		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
-	
-	
 	
 	}
 

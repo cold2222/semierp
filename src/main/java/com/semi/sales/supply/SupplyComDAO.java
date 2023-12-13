@@ -391,22 +391,14 @@ public class SupplyComDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			Product p = null;
-			ArrayList<Product> ps = new ArrayList<Product>();
-			while (rs.next()) {
-				p = new Product();
-				p.setP_id(rs.getInt("p_id"));
-				p.setP_si(rs.getString("p_si"));
-				p.setP_type(rs.getString("p_type"));
-				p.setP_quantity(rs.getInt("p_quantity"));
-				p.setP_name(rs.getString("p_name"));
-				p.setP_unitCost(rs.getString("p_unitCost"));
-				p.setP_minStock(rs.getString("p_minStock"));
-				p.setP_maxStock(rs.getString("p_maxStock"));
-				p.setP_manufacturer(rs.getInt("p_manufacturer"));
-				ps.add(p);
+			Unit u = null;
+			ArrayList<Unit> us = new ArrayList<Unit>();
+			while(rs.next()) {
+				u = new Unit();
+				u.setUnit(rs.getString("unit"));
+				us.add(u);
 			}
-			request.setAttribute("ps", ps);
+			request.setAttribute("us", us);
 			
 			
 		} catch (Exception e) {
@@ -637,6 +629,242 @@ public class SupplyComDAO {
 				System.out.println("수정 성공");
 				request.setAttribute("isSuccess", "Success");
 			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+	}
+
+
+	public static void getAllType(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from type";
+		try {
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			Type t = null;
+			ArrayList<Type> ts = new ArrayList<Type>();
+			while(rs.next()) {
+				t = new Type();
+				t.setType(rs.getString("type"));
+				ts.add(t);
+			}
+			request.setAttribute("ts", ts);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+
+
+	public static void regUnit(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into unit values(?)";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+			
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("unit"));
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("등록 성공");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+	}
+
+
+	public static void regType(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into type values(?)";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+			
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("type"));
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("등록 성공");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+		
+	}
+
+
+	public static void updateUnit(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "update unit set unit=? where unit = ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("unit"));
+			pstmt.setString(2, request.getParameter("u"));
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("수정 성공");
+				request.setAttribute("isSuccess", "Success");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+	}
+
+
+	public static void getUnit(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from unit where unit=?";
+		try {
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("u"));
+			rs = pstmt.executeQuery();
+			Unit u = null;
+			if (rs.next()) {
+				u = new Unit();
+				u.setUnit(rs.getString("unit"));
+				request.setAttribute("u", u);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+
+
+	public static void getType(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from type where type=?";
+		try {
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("t"));
+			rs = pstmt.executeQuery();
+			Type t = null;
+			if (rs.next()) {
+				t = new Type();
+				t.setType(rs.getString("type"));
+				request.setAttribute("t", t);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+	}
+
+
+	public static void updateType(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "update type set type=? where type = ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("type"));
+			pstmt.setString(2, request.getParameter("t"));
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("수정 성공");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+	}
+
+
+	public static void deleteUnit(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete unit where unit=?";
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("u"));
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("삭제 성공");
+				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, null);
+		}
+		
+	}
+
+
+	public static void deleteType(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete type where type=?";
+		try {
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("t"));
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("삭제 성공");
+				
+			}
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
