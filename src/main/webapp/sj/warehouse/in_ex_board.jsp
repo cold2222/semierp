@@ -54,6 +54,7 @@
 
 	<div class="input-box input-container">
 
+		<div class="in_name">p_id</div>
 		<div class="in_name">구분</div>
 		<div class="in_name">제품 이름</div>
 		<div class="in_name">타입</div>
@@ -67,6 +68,7 @@
 			<!-- 전체 데이터 표시 -->
 			<c:forEach var="al" items="${allInExWarehouse}">
 				<div class="input-box input-container">
+					<div class="in_name">${al.p_id}</div>
 					<div class="in_name">${al.warehouse_type}</div>
 					<div class="in_name">${al.p_name}</div>
 					<div class="in_name">${al.p_type}</div>
