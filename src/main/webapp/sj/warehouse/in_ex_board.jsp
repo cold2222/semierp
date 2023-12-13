@@ -39,7 +39,7 @@
 	<h1 style="font-size: 30pt;">입고 출고 테이블</h1>
 
 
-	<!-- <form action="InExBoardTestC" method="get">
+	 <form action="InExBoardTestC" method="get">
 		<div class="input-container">
 			<label for="operationType">구분 :</label> 
 			<select name="operationType" id="operationType">
@@ -49,7 +49,7 @@
 			</select>
 			<button type="submit">확인</button>
 		</div>
-	</form> -->
+	</form> 
 
 
 	<div class="input-box input-container">
@@ -64,7 +64,7 @@
 		<div class="in_name">창고</div>
 	</div>
 	<!-- 1줄씩 나타내줄 것들 -->
-			<!-- 입고 데이터 표시 -->
+			<!-- 전체 데이터 표시 -->
 			<c:forEach var="al" items="${allInExWarehouse}">
 				<div class="input-box input-container">
 					<div class="in_name">${al.warehouse_type}</div>
@@ -77,19 +77,6 @@
 					<div class="in_name">${al.warehouse_name}</div>
 				</div>
 			</c:forEach>
-			<!-- 출고 데이터 표시 -->
-<%-- 			<c:forEach var="ex" items="${exWarehouse}">
-				<div class="input-box input-container">
-					<div class="in_name">출고</div>
-					<div class="in_name">${ex.p_name}</div>
-					<div class="in_name">${ex.p_type}</div>
-					<div class="in_name">${ex.ex_warehouse_quantity}</div>
-					<div class="in_name">${ex.p_si}</div>
-					<div class="in_name">${ex.p_quantity}</div>
-					<div class="in_name">${ex.ex_warehouse_date}</div>
-					<div class="in_name">${ex.warehouse_name}</div>
-				</div>
-			</c:forEach>--%>	
 			
 			
 			<div>일단 확인</div>
