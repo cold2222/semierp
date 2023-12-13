@@ -25,9 +25,9 @@ public class InExBoardTestC extends HttpServlet {
 //	        	ExWarehouseTestDAO.getExWareTest(request);
 //	        	TestwarehouseDAO.getInWareTest(request);
 //			}
-//		 
+//		  		
 		
-		
+		// 날짜별로 나열가능하도록 바꾼 것 
 		 if ("exWarehouse".equals(request.getParameter("operationType"))) {
 			 // 출고만 선택한 경우 출고 데이터만 가져옴
 			 InExWarehouseDAO.getExWare(request);
