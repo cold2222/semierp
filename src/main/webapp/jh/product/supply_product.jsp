@@ -13,6 +13,11 @@
 	<input name="search" placeholder="검색"> <button >검색</button> 
 	</form> 
 	</div>
+	<div>
+	<form action="UnitC">
+	<button >단위와 타입</button> 
+	</form> 
+	</div>
 	<form action="RegProductC" method="post"> 
 	<table border="1" style="width: 1800px; height: 100px;">
 			<tr>
