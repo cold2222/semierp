@@ -8,18 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/TestwarehouseC")
-public class TestwarehouseC extends HttpServlet {
+@WebServlet("/ExWarehouseTestC")
+public class ExWarehouseTestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		TestwarehouseDAO.getAllTest(request);
+		ExWarehouseTestDAO.getExAllTest(request);
 		
 		
 		
 		
-//		request.setAttribute("contentPage", "sj/warehouse/warehouse.jsp");
-		request.getRequestDispatcher("sj/warehouse/in_warehouse_interface.jsp").forward(request, response);
+		request.getRequestDispatcher("sj/warehouse/ex_warehouse_interface.jsp").forward(request, response);
 	
 		
 	}
@@ -28,10 +27,10 @@ public class TestwarehouseC extends HttpServlet {
 		
 		
 		
-		TestwarehouseDAO.regInWareTest(request);
-		TestwarehouseDAO.updateInWareTest(request);
-		TestwarehouseDAO.getInWareTest(request);
-		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
+		ExWarehouseTestDAO.regExWareTest(request);
+		ExWarehouseTestDAO.updateExWareTest(request);
+		ExWarehouseTestDAO.getExWareTest(request);
+		request.getRequestDispatcher("sj/warehouse/ex_warehouse.jsp").forward(request, response);
 	}
 
 }
