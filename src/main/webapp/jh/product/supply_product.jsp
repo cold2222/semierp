@@ -19,7 +19,7 @@
 	</form> 
 	</div>
 	<form action="RegProductC" method="post"> 
-	<table border="1" style="width: 1800px; height: 100px;">
+	<table border="1" style="width: 83%; height: 100px;">
 			<tr>
 				<td><input name="p_si" placeholder="단위"></td>
 				<td><input name="p_type" placeholder="타입"></td>
@@ -33,7 +33,7 @@
 			</tr>
 	</table>
 	</form>
-	<table border="1" style="width: 1800px; height: 800px;">
+	<table border="1" style="width: 83%; height: 800px;">
 		<c:forEach var="p" items="${ps }">
 			<tr>
 				<td>${p.p_id }</td>

@@ -12,8 +12,9 @@ public class MakeContentsC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		SupplyComDAO.getContent(request);
-		request.setAttribute("page", "content/contents_reg.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/content/contents_reg.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	
 	}
@@ -21,8 +22,9 @@ public class MakeContentsC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SupplyComDAO.regContents(request);
 		SupplyComDAO.getAllContents(request);
-		request.setAttribute("page", "final_contents.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/content/final_contents.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	
 	

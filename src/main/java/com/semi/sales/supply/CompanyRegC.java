@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 public class CompanyRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		request.setAttribute("page", "company/company_reg.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/company/company_reg.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	
 	}
@@ -21,8 +22,9 @@ public class CompanyRegC extends HttpServlet {
 	
 		SupplyComDAO.getSdao().regCom(request);
 		SupplyComDAO.getSdao().getAllCom(request);
-		request.setAttribute("page", "company/output_supply.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/company/output_supply.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	
 	}

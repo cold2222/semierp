@@ -13,7 +13,7 @@
 	<input name="search" placeholder="검색"> <button >검색</button> 
 	</form> 
 	</div>
-	<table border="1" style="width: 1800px; height: 800px;">
+	<table border="1" style="width: 83%; height: 800px;">
 		<c:forEach var="st" items="${sts }">
 			<tr>
 				<td>${st.recordall_buy_num }</td>

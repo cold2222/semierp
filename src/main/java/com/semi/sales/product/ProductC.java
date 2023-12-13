@@ -15,8 +15,9 @@ public class ProductC extends HttpServlet {
 	
 		SupplyComDAO.getAllProduct(request);
 		
-		request.setAttribute("page", "product/supply_product.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/product/supply_product.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	
 	}

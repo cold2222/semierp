@@ -16,8 +16,9 @@ public class DeleteTypeC extends HttpServlet {
 		SupplyComDAO.deleteType(request);
 		SupplyComDAO.getAllUnit(request);
 		SupplyComDAO.getAllType(request);
-		request.setAttribute("page", "product/unit.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/product/unit.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

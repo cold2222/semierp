@@ -14,8 +14,9 @@ public class UpdateUnitC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		SupplyComDAO.getUnit(request);
-		request.setAttribute("page", "product/updateUnit.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/product/updateUnit.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	
 	
@@ -26,8 +27,9 @@ public class UpdateUnitC extends HttpServlet {
 		SupplyComDAO.updateUnit(request);
 		SupplyComDAO.getAllUnit(request);
 		SupplyComDAO.getAllType(request);
-		request.setAttribute("page", "product/unit.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/product/unit.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	
 	}

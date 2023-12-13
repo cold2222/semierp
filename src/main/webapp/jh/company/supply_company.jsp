@@ -14,7 +14,7 @@
 			<button>검색</button>
 		</form>
 	</div>
-	<table border="1" style="width: 1800px; height: 800px;">
+	<table border="1" style="width: 83%; height: 800px;">
 		<c:forEach var="sc" items="${scs }">
 			<tr>
 				<td>${sc.supply_num }</td>

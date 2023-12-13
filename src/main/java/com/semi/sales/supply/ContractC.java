@@ -13,8 +13,9 @@ public class ContractC extends HttpServlet {
 			throws ServletException, IOException {
 
 		SupplyComDAO.getAllCont(request);
-		request.setAttribute("page", "contract/contract_company.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		request.setAttribute("contentPage", "jh/contract/contract_company.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 
 	}
 
