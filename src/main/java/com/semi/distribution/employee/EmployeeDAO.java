@@ -34,8 +34,10 @@ public class EmployeeDAO {
 		int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
 		
 		ArrayList<EmployeeDTO> items = new ArrayList<EmployeeDTO>();
-		for (int i = startDataNum-1; i > endDataNum; i--) {
-			items.add(empList.get(i));
+		if(empList.size() > 0) {
+			for (int i = startDataNum-1; i > endDataNum; i--) {
+				items.add(empList.get(i));
+			}
 		}
 		request.setAttribute("empList", items);
 		request.setAttribute("pageNum", pageNum);
