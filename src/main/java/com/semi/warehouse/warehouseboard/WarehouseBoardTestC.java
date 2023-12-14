@@ -8,12 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/WareHouseBoardTestC")
-public class WareHouseBoardTestC extends HttpServlet {
+
+@WebServlet("/WarehouseBoardTestC")
+public class WarehouseBoardTestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		WarehouseBoardTestDAO.getWBTest(request);
+String operationType = request.getParameter("operationType");
+        
+        WarehouseBoardTestDAO.getWBTest(request, operationType);
+	
+		
+		
 		request.getRequestDispatcher("sj/warehouse_board/warehouse_board.jsp").forward(request, response);
 				
 	}

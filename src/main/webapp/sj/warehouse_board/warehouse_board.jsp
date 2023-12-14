@@ -36,45 +36,52 @@
 <body>
 
 
+
 	<h1 style="font-size: 30pt;">창고 테이블</h1>
+
+	 <form action="WarehouseBoardTestC" method="get">
+		<div class="input-container">
+			<label for="operationType">창고별 :</label> 
+			<select name="operationType" id="operationType">
+				<option value="all">전체</option>
+				<option value="one">1창고</option>
+				<option value="two">2창고</option>
+				<option value="three">3창고</option>
+			</select>
+			<button type="submit">확인</button>
+		</div>
+	</form> 
+
 
 	<div class="input-box input-container">
 
+		<div class="in_name">날짜</div>
 		<div class="in_name">제품 이름</div>
 		<div class="in_name">타입</div>
-		<div class="in_name">p_quantity</div>
 		<div class="in_name">단위</div>
-		<div class="in_name">수량</div>
-		<div class="in_name">날짜</div>
+		<div class="in_name">p_quantity</div>
+		<div class="in_name">제조사</div>
+		<div class="in_name">재고수량</div>
 		<div class="in_name">창고</div>
+		<div class="in_name">비고</div>
 	</div>
 	<!-- 1줄씩 나타내줄 것들 -->
 			<!-- 입고 데이터 표시 -->
-			<c:forEach var="in" items="${inWarehouse}">
+			<c:forEach var="wb" items="${warehouseBoard}">
 				<div class="input-box input-container">
-					<div class="in_name">입고</div>
-					<div class="in_name">${in.p_name}</div>
-					<div class="in_name">${in.p_type}</div>
-					<div class="in_name">${in.in_warehouse_quantity}</div>
-					<div class="in_name">${in.p_si}</div>
-					<div class="in_name">${in.p_quantity}</div>
-					<div class="in_name">${in.in_warehouse_date}</div>
-					<div class="in_name">${in.warehouse_name}</div>
+					<div class="in_name">${wb.today_date}</div>
+					<div class="in_name">${wb.p_name}</div>
+					<div class="in_name">${wb.p_type}</div>
+					<div class="in_name">${wb.p_si}</div>
+					<div class="in_name">${wb.p_quantity}</div>
+					<div class="in_name">${wb.manufacture_name}</div>
+					<div class="in_name">${wb.stock}</div>
+					<div class="in_name">${wb.warehouse_name}</div>
+					<div class="in_name"></div>
 				</div>
 			</c:forEach>
-			<!-- 출고 데이터 표시 -->
-			<c:forEach var="ex" items="${exWarehouse}">
-				<div class="input-box input-container">
-					<div class="in_name">출고</div>
-					<div class="in_name">${ex.p_name}</div>
-					<div class="in_name">${ex.p_type}</div>
-					<div class="in_name">${ex.ex_warehouse_quantity}</div>
-					<div class="in_name">${ex.p_si}</div>
-					<div class="in_name">${ex.p_quantity}</div>
-					<div class="in_name">${ex.ex_warehouse_date}</div>
-					<div class="in_name">${ex.warehouse_name}</div>
-				</div>
-			</c:forEach>
-	<div>일단 확인</div>
+			
+			
+	<div>창고 확인 완료</div>
 </body>
 </html>

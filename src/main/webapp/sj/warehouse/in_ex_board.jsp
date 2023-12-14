@@ -38,7 +38,9 @@
 
 	<h1 style="font-size: 30pt;">입고 출고 테이블</h1>
 
-
+	
+	
+	
 	 <form action="InExBoardTestC" method="get">
 		<div class="input-container">
 			<label for="operationType">구분 :</label> 
