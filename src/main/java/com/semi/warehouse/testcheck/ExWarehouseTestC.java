@@ -29,6 +29,7 @@ public class ExWarehouseTestC extends HttpServlet {
 		
 		ExWarehouseTestDAO.regExWareTest(request);
 		ExWarehouseTestDAO.updateExWareTest(request);
+		ExWarehouseTestDAO.upStockMTest(request);
 		ExWarehouseTestDAO.getExWareTest(request);
 		request.getRequestDispatcher("sj/warehouse/ex_warehouse.jsp").forward(request, response);
 	}

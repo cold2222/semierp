@@ -267,7 +267,55 @@ public class ExWarehouseTestDAO {
 
 	public static void upStockMTest(HttpServletRequest request) {
 		
+		String selectedIdsString = request.getParameter("selectedIds");
 		
+	    // 받아온 것을 콤마로 스플릿 후 배열  
+	    String[] selectedIds = selectedIdsString.split(",");
+	    
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    // quantity를 늘려주는 sql 문 p_id 와 warehouse_id가 가지고 있는 quantity 값을 - 해줌 
+	    String sql = "UPDATE stock_test\n"
+	    		+ "SET stock = stock - (\n"
+	    		+ "    SELECT NVL(SUM(ex_warehouse_test.ex_warehouse_quantity), 0)\n"
+	    		+ "    FROM ex_warehouse_test\n"
+	    		+ "    WHERE p_id = ? AND warehouse_id = ?\n"
+	    		+ ")\n"
+	    		+ "WHERE p_id = ? AND warehouse_id = ?";
+
+	    try {
+	        Class.forName("oracle.jdbc.driver.OracleDriver");
+
+	        con = DBManager.connect();
+	        pstmt = con.prepareStatement(sql);
+	        // for 문으로돌리기  
+
+	        for (int i = 0; i < selectedIds.length; i++) {
+	            pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
+	            pstmt.setInt(3, Integer.parseInt(selectedIds[i]));
+
+	            
+	            // 선택한 창고 값을 받아오기 위해서 만듬 
+	            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
+	            String selectedWarehouseIdString = request.getParameter(warehouseIdParameterName);
+	            int selectedWarehouseId = Integer.parseInt(selectedWarehouseIdString);
+	            pstmt.setInt(2, selectedWarehouseId);
+	            pstmt.setInt(4, selectedWarehouseId);
+	            System.out.println(selectedWarehouseId);
+	            
+	            //  이게 pstmt.executeUpdate(); 한번에 처리 할 수 있는 문장
+	            pstmt.addBatch();
+	        }
+	        // 일괄 처리 가능 
+	        pstmt.executeBatch();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        DBManager.close(con, pstmt, null);
+	    }
+		
+	
+	
 		
 		
 		
