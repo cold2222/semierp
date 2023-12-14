@@ -14,12 +14,10 @@ public class WarehouseBoardTestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-String operationType = request.getParameter("operationType");
-        
+		String operationType = request.getParameter("operationType");
         WarehouseBoardTestDAO.getWBTest(request, operationType);
-	
-		
-		
+        WarehouseBoardTestDAO.calcStock(request, operationType);
+        
 		request.getRequestDispatcher("sj/warehouse_board/warehouse_board.jsp").forward(request, response);
 				
 	}

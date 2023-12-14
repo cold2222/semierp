@@ -58,11 +58,11 @@
 		<div class="in_name">날짜</div>
 		<div class="in_name">제품 이름</div>
 		<div class="in_name">타입</div>
-		<div class="in_name">단위</div>
 		<div class="in_name">p_quantity</div>
+		<div class="in_name">단위</div>
 		<div class="in_name">제조사</div>
-		<div class="in_name">재고수량</div>
 		<div class="in_name">창고</div>
+		<div class="in_name">재고수량</div>
 		<div class="in_name">비고</div>
 	</div>
 	<!-- 1줄씩 나타내줄 것들 -->
@@ -72,16 +72,27 @@
 					<div class="in_name">${wb.today_date}</div>
 					<div class="in_name">${wb.p_name}</div>
 					<div class="in_name">${wb.p_type}</div>
-					<div class="in_name">${wb.p_si}</div>
 					<div class="in_name">${wb.p_quantity}</div>
+					<div class="in_name">${wb.p_si}</div>
 					<div class="in_name">${wb.manufacture_name}</div>
-					<div class="in_name">${wb.stock}</div>
 					<div class="in_name">${wb.warehouse_name}</div>
+					<div class="in_name">${wb.stock}</div>
 					<div class="in_name"></div>
 				</div>
 			</c:forEach>
 			
-			
+	<div class="input-box input-container">
+		<div class="in_name">결산</div>
+		<div class="in_name"></div>
+		<div class="in_name"></div>
+		<div class="in_name"></div>
+		<div class="in_name"></div>
+		<div class="in_name"></div>
+		<div class="in_name"></div>
+		<div class="in_name"></div>
+		<div class="in_name"></div>
+		
+	</div>		
 	<div>창고 확인 완료</div>
 </body>
 </html>
