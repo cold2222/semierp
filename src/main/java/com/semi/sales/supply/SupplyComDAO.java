@@ -12,6 +12,9 @@ import com.semi.sales.product.Product;
 
 public class SupplyComDAO {
 	private ArrayList<SupplyCompany> scs;
+	private ArrayList<SupplyContract> sts;
+	private ArrayList<SupplyContents> contents;
+	private ArrayList<Product> ps;
 	private static final SupplyComDAO SDAO = new SupplyComDAO();
 	
 	private SupplyComDAO() {
@@ -228,7 +231,7 @@ public class SupplyComDAO {
 			pstmt.setString(3, request.getParameter("record_count"));
 			pstmt.setString(4, request.getParameter("record_price"));
 			
-			if (pstmt.executeUpdate() == 1) {
+			if (pstmt.executeUpdate() >= 1) {
 				System.out.println("등록 성공");
 			}
 			
@@ -495,8 +498,8 @@ public class SupplyComDAO {
 				c.setP_id(rs.getInt("p_id"));
 				c.setRecord_count(rs.getInt("record_count"));
 				c.setRecord_price(rs.getInt("record_price"));
-				request.setAttribute("c", c);
 			}
+			request.setAttribute("c", c);
 			
 			
 		} catch (Exception e) {
@@ -870,6 +873,118 @@ public class SupplyComDAO {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, null);
+		}
+		
+	}
+
+
+	public void searchCont(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM supply_status INNER JOIN purchase_buy_recordall ON supply_status.supply_num = purchase_buy_recordall.supply_num WHERE supply_company like ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+request.getParameter("search")+"%");
+			rs = pstmt.executeQuery();
+			
+			SupplyContract st = null;
+			sts = new ArrayList<SupplyContract>();
+			while (rs.next()) {
+				st = new SupplyContract();
+				st.setRecordall_buy_num(rs.getInt("recordall_buy_num"));
+				st.setSupply_num(rs.getInt("supply_num"));
+				st.setPurchase_date(rs.getDate("purchase_date"));
+				st.setTransaction_date(rs.getDate("transaction_date"));
+				st.setIn_warehouse_date(rs.getDate("in_warehouse_date"));
+				st.setStatus(rs.getInt("status"));
+				sts.add(st);
+			}
+			request.setAttribute("sts", sts);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		
+	}
+
+
+	public void searchContent(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * "
+				+ "FROM (SELECT * FROM supply_status "
+				+ "INNER JOIN purchase_buy_recordall ON supply_status.supply_num = purchase_buy_recordall.supply_num) InnerJoinTable INNER JOIN purchase_buy_record ON InnerJoinTable.recordall_buy_num = purchase_buy_record.recordall_buy_num "
+				+ "WHERE InnerJoinTable.supply_company LIKE ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+request.getParameter("search")+"%");
+			rs = pstmt.executeQuery();
+			
+			SupplyContents content = null;
+			contents = new ArrayList<SupplyContents>();
+			while (rs.next()) {
+				content = new SupplyContents();
+				content.setRecord_buy_num(rs.getInt("record_buy_num"));
+				content.setRecordall_buy_num(rs.getInt("recordall_buy_num"));
+				content.setP_id(rs.getInt("p_id"));
+				content.setRecord_count(rs.getInt("record_count"));
+				content.setRecord_price(rs.getInt("record_price"));
+				contents.add(content);
+			}
+			request.setAttribute("contents", contents);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+	}
+
+
+	public void searchProduct(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from product where p_name like ?";
+		try {
+			
+			request.setCharacterEncoding("utf-8");
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+request.getParameter("search")+"%");
+			rs = pstmt.executeQuery();
+			
+			Product p = null;
+			ps = new ArrayList<Product>();
+			while (rs.next()) {
+				p = new Product();
+				p.setP_id(rs.getInt("p_id"));
+				p.setP_si(rs.getString("p_si"));
+				p.setP_type(rs.getString("p_type"));
+				p.setP_quantity(rs.getInt("p_quantity"));
+				p.setP_name(rs.getString("p_name"));
+				p.setP_unitCost(rs.getString("p_unitCost"));
+				p.setP_minStock(rs.getString("p_minStock"));
+				p.setP_maxStock(rs.getString("p_maxStock"));
+				p.setP_manufacturer(rs.getInt("p_manufacturer"));
+				ps.add(p);
+			}
+			request.setAttribute("ps", ps);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
 		}
 		
 	}

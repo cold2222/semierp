@@ -12,7 +12,7 @@
 	<form action="DetailContC">
 	<input name="search" placeholder="검색"> <button >검색</button> 
 	</form> 
-	<a href="contract_company2.jsp">회사 번호 회사 이름으로 바꾸기</a>
+	<a href="">회사 번호 회사 이름으로 바꾸기</a>
 	</div>
 	<table border="1" style="width: 83%; height: 800px;">
 		<c:forEach var="st" items="${sts }">

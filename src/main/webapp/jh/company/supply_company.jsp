@@ -26,19 +26,24 @@
 				<td>
 					<button onclick="location.href='UpdateComC?num=${sc.supply_num }'">수정</button>
 				</td>
+				<td>
+					<button
+						onclick="location.href='MakeContractC?num=${sc.supply_num }'">계약서
+						작성</button>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	
-			<div>
-			<c:if test="${curPageNo != 1 }">
+
+	<div>
+		<c:if test="${curPageNo != 1 }">
 			<a href="CompanyPageC?p=${curPageNo - 1 }"><button>이전</button></a>
-			</c:if>
-			<c:if test="${curPageNo != pageCount }">
+		</c:if>
+		<c:if test="${curPageNo != pageCount }">
 			<a href="CompanyPageC?p=${curPageNo + 1 }"><button>다음</button></a>
-			</c:if>
-			</div>	
-		
+		</c:if>
+	</div>
+
 
 </body>
 </html>

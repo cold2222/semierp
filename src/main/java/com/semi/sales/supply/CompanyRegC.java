@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/CompanyRegC")
 public class CompanyRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		SupplyComDAO.getSdao().getCom(request);
 		request.setAttribute("contentPage", "jh/company/company_reg.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

@@ -104,6 +104,10 @@ insert into unit values('mL');
 
 select * from unit;
 
+SELECT supply_status.supply_company
+FROM supply_status
+INNER JOIN purchase_buy_recordall ON supply_status.supply_num = purchase_buy_recordall.supply_num
+WHERE supply_company like '%Си%';
 
 
 

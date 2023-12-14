@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="DetailContC">
+<div>
+<form action="DetailContentC">
 	<input name="search" placeholder="검색"> <button >검색</button> 
 	</form> 
 	</div>
