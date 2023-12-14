@@ -265,4 +265,12 @@ public class ExWarehouseTestDAO {
 		
 	}
 
+	public static void upStockMTest(HttpServletRequest request) {
+		
+		
+		
+		
+		
+	}
+
 }

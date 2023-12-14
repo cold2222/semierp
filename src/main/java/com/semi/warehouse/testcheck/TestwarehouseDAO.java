@@ -261,16 +261,29 @@ public class TestwarehouseDAO {
 	public static void regStockTest(HttpServletRequest request) {
 		
 		String selectedIdsString = request.getParameter("selectedIds");
-		String selectedRecordCountsString = request.getParameter("selectedRecordCounts");
+		String selectedInWarehouseDatesString = request.getParameter("selectedInWarehouseDates");
 
 	    // 받아온 것을 콤마로 스플릿 후 배열  
 	    String[] selectedIds = selectedIdsString.split(",");
-	    String[] selectedRecordCounts = selectedRecordCountsString.split(",");
+	    String[] selectedInWarehouseDates = selectedInWarehouseDatesString.split(",");
 
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
-	
-	    String sql = "INSERT INTO stock_test VALUES (0, ?, 0);";
+	    // 받아온 것의 p_id와 warehouse_id를 가지고 온 후 stock에 등록하는 sql 문 quantity는 늘리지 않음.
+	    String sql = "MERGE INTO stock_test st\n"
+	    		+ "USING (\n"
+	    		+ "    SELECT\n"
+	    		+ "        0 AS in_warehouse_quantity, \n"
+	    		+ "        p_id,\n"
+	    		+ "        warehouse_id\n"
+	    		+ "    FROM\n"
+	    		+ "        in_warehouse_test\n"
+	    		+ "    WHERE\n"
+	    		+ "        p_id = ? AND warehouse_id = ?\n"
+	    		+ ") src ON (st.p_id = src.p_id AND st.warehouse_id = src.warehouse_id)\n"
+	    		+ "WHEN NOT MATCHED THEN\n"
+	    		+ "    INSERT (stock, p_id, warehouse_id)\n"
+	    		+ "    VALUES (src.in_warehouse_quantity, src.p_id, src.warehouse_id)";
 
 	    try {
 	        Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -281,13 +294,13 @@ public class TestwarehouseDAO {
 
 	        for (int i = 0; i < selectedIds.length; i++) {
 	            pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
-	            pstmt.setInt(2, Integer.parseInt(selectedRecordCounts[i]));
 	            
 	            // 선택한 창고 값을 받아오기 위해서 만듬 
 	            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
 	            String selectedWarehouseIdString = request.getParameter(warehouseIdParameterName);
 	            int selectedWarehouseId = Integer.parseInt(selectedWarehouseIdString);
-	            pstmt.setInt(3, selectedWarehouseId);
+	            pstmt.setInt(2, selectedWarehouseId);
+	            
 	            System.out.println(selectedWarehouseId);
 	            
 	            //  이게 pstmt.executeUpdate(); 한번에 처리 할 수 있는 문장
@@ -309,21 +322,22 @@ public class TestwarehouseDAO {
 
 	public static void upStockTest(HttpServletRequest request) {
 		String selectedIdsString = request.getParameter("selectedIds");
-		String selectedRecordCountsString = request.getParameter("selectedRecordCounts");
+		String selectedInWarehouseDatesString = request.getParameter("selectedInWarehouseDates");
 
 	    // 받아온 것을 콤마로 스플릿 후 배열  
 	    String[] selectedIds = selectedIdsString.split(",");
-	    String[] selectedRecordCounts = selectedRecordCountsString.split(",");
-
+	    String[] selectedInWarehouseDates = selectedInWarehouseDatesString.split(",");
+	    
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
-	
+	    // quantity를 늘려주는 sql 문 p_id 와 warehouse_id가 가지고 있는 quantity 값을 + 해줌 
 	    String sql = "UPDATE stock_test\n"
 	    		+ "SET stock = stock + (\n"
 	    		+ "    SELECT NVL(SUM(in_warehouse_test.in_warehouse_quantity), 0)\n"
 	    		+ "    FROM in_warehouse_test\n"
-	    		+ "    WHERE in_warehouse_test.p_id = stock_test.p_id\n"
-	    		+ ")";
+	    		+ "    WHERE p_id = ? AND warehouse_id = ?\n"
+	    		+ ") \n"
+	    		+ "WHERE p_id = ? AND warehouse_id = ?";
 
 	    try {
 	        Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -334,13 +348,15 @@ public class TestwarehouseDAO {
 
 	        for (int i = 0; i < selectedIds.length; i++) {
 	            pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
-	            pstmt.setInt(2, Integer.parseInt(selectedRecordCounts[i]));
+	            pstmt.setInt(3, Integer.parseInt(selectedIds[i]));
+
 	            
 	            // 선택한 창고 값을 받아오기 위해서 만듬 
 	            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
 	            String selectedWarehouseIdString = request.getParameter(warehouseIdParameterName);
 	            int selectedWarehouseId = Integer.parseInt(selectedWarehouseIdString);
-	            pstmt.setInt(3, selectedWarehouseId);
+	            pstmt.setInt(2, selectedWarehouseId);
+	            pstmt.setInt(4, selectedWarehouseId);
 	            System.out.println(selectedWarehouseId);
 	            
 	            //  이게 pstmt.executeUpdate(); 한번에 처리 할 수 있는 문장

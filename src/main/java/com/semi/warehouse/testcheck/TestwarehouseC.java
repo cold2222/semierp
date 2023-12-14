@@ -29,9 +29,11 @@ public class TestwarehouseC extends HttpServlet {
 		
 		
 		TestwarehouseDAO.regInWareTest(request);
-	//	TestwarehouseDAO.regStockTest(request);
 		TestwarehouseDAO.updateInWareTest(request);
-	//	TestwarehouseDAO.upStockTest(request);
+		// 계산테이블에 등록
+		TestwarehouseDAO.regStockTest(request);
+		// 계산테이블에 + 
+		TestwarehouseDAO.upStockTest(request);
 		TestwarehouseDAO.getInWareTest(request);
 		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
 	}

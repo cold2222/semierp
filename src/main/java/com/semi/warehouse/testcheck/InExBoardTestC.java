@@ -12,20 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class InExBoardTestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
-//		 if ("exWarehouse".equals(request.getParameter("operationType"))) {
-//	            // 출고만 선택한 경우 출고 데이터만 가져옴
-//	            ExWarehouseTestDAO.getExWareTest(request);
-//	        } else if ("inWarehouse".equals(request.getParameter("operationType"))) {
-//	            // 입고만 선택한 경우 입고 데이터만 가져옴
-//	            TestwarehouseDAO.getInWareTest(request);
-//	        } else if ("all".equals(request.getParameter("operationType"))) {
-//	        	ExWarehouseTestDAO.getExWareTest(request);
-//	        	TestwarehouseDAO.getInWareTest(request);
-//			} else {
-//	        	ExWarehouseTestDAO.getExWareTest(request);
-//	        	TestwarehouseDAO.getInWareTest(request);
-//			}
-//		  		
+
 		
 		// 날짜별로 나열가능하도록 바꾼 것 
 		 if ("exWarehouse".equals(request.getParameter("operationType"))) {
@@ -34,6 +21,7 @@ public class InExBoardTestC extends HttpServlet {
 		 } else if ("inWarehouse".equals(request.getParameter("operationType"))) {
 			 // 입고만 선택한 경우 입고 데이터만 가져옴
 			 InExWarehouseDAO.getInWare(request);
+			 // 전체 선택한 경우 
 		 } else if ("all".equals(request.getParameter("operationType"))) {
 			 InExWarehouseDAO.getallWare(request);
 		 } else {
