@@ -24,7 +24,7 @@
 				<c:forEach var="e" items="${emps }">
 					<tr>
 						<td>${e.e_name }</td>
-						<c:forEach var="list" items="${paidVacation[e.e_id] }" varStatus="i">
+						<c:forEach var="list" items="${paidVacation[e.e_no] }" varStatus="i">
 							<c:forEach var="p" items="${list }">
 								<td>${list }</td>
 							</c:forEach>

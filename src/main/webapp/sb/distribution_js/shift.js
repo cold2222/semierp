@@ -46,7 +46,7 @@ $(function() {
     url: 'ShiftAPI', 
     type: 'get', 
     data: {
-		e_id : pArr[0],
+		e_no : pArr[0],
 		e_date : pArr[1],
 		e_status : status
 	},

@@ -59,21 +59,21 @@
             <c:forEach var="e" items="${emps }">
                 <tr>
                     <td>${e.e_name }</td>
-                    <c:forEach var="list" items="${calendarMap[e.e_id] }" varStatus="i">
+                    <c:forEach var="list" items="${calendarMap[e.e_no] }" varStatus="i">
                         <c:choose>
                             <c:when test="${list == 1}">
                                 <td><input class="p-input" readonly="readonly" type="text" 
-                                           value="${e.e_id }/${year }-${month}-${i.count}/${list }"
+                                           value="${e.e_no }/${year }-${month}-${i.count}/${list }"
                                            style="color : white" ></td>
                             </c:when>
                             <c:when test="${list == 2}">
                                 <td><input class="p-input" readonly="readonly" type="text"
-                                           value="${e.e_id }/${year }-${month}-${i.count}/${list }"
+                                           value="${e.e_no }/${year }-${month}-${i.count}/${list }"
                                            style="color: red; background-color: red;"></td>
                             </c:when>
                             <c:otherwise>
                                 <td><input class="p-input" readonly="readonly" type="text"
-                                           value="${e.e_id }/${year }-${month}-${i.count}/${list }"
+                                           value="${e.e_no }/${year }-${month}-${i.count}/${list }"
                                            style="color: green; background-color: green;"></td>
                             </c:otherwise>
                         </c:choose>
