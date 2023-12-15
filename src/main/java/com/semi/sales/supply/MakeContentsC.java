@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MakeContentsC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		SupplyComDAO.getCont(request);
+		SupplyComDAO.getSdao().getCont(request);
 		request.setAttribute("contentPage", "jh/content/contents_reg.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
@@ -20,8 +20,8 @@ public class MakeContentsC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SupplyComDAO.regContents(request);
-		SupplyComDAO.getAllContents(request);
+		SupplyComDAO.getSdao().regContents(request);
+		SupplyComDAO.getSdao().getAllContents(request);
 		request.setAttribute("contentPage", "jh/content/final_contents.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

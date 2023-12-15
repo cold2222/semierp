@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UpdateContentC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getContent(request);
+		SupplyComDAO.getSdao().getContent(request);
 		request.setAttribute("contentPage", "jh/content/updateContent.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
@@ -22,7 +22,7 @@ public class UpdateContentC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.updateContent(request);
+		SupplyComDAO.getSdao().updateContent(request);
 		response.sendRedirect("UpdateContentC?num="+request.getParameter("num")+"&isSuccess="
 				+ request.getAttribute("isSuccess"));	
 	

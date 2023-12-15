@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ContentC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getAllContents(request);
+		SupplyComDAO.getSdao().getAllContents(request);
 		request.setAttribute("contentPage", "jh/content/content_company.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

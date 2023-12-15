@@ -12,7 +12,7 @@ public class ContractC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		SupplyComDAO.getAllCont(request);
+		SupplyComDAO.getSdao().getAllCont(request);
 		request.setAttribute("contentPage", "jh/contract/contract_company.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

@@ -33,6 +33,7 @@
 						</c:forEach>
 				</select></td>
 				<td><input name="p_quantity" placeholder="단위량"></td>
+				<td><button onclick="openPopup()">상품명</button></td>
 				<td><input name="p_name" placeholder="상품명"></td>
 				<td><input name="p_unitCost" placeholder="가격"></td>
 				<td><input name="p_minStock" placeholder="최소 스톡량"></td>
@@ -63,4 +64,18 @@
 		</c:forEach>
 	</table>
 </body>
+<script>
+// function openPopup() {
+//     // 팝업 창 열기
+//     var popup = window.open("jh/product/popup.jsp", "popup", "width=400,height=300");
+//     // 팝업이 차단되었을 경우에 대한 처리
+//     if (!popup || popup.closed || typeof popup.closed == 'undefined') {
+//         alert('팝업이 차단되었습니다. 팝업 차단을 해제해주세요.');
+//     }
+// }
+// function updateValue(data) {
+//     // 전달받은 데이터 처리 (예: 어떤 동작을 수행하거나 입력 필드에 값 반영 등)
+//     document.getElementById("resultField").value = data;
+// }
+</script>
 </html>

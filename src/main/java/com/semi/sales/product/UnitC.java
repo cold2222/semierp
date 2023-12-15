@@ -12,8 +12,8 @@ import com.semi.sales.supply.SupplyComDAO;
 public class UnitC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getAllUnit(request);
-		SupplyComDAO.getAllType(request);
+		ProductDAO.getPdao().getAllUnit(request);
+		ProductDAO.getPdao().getAllType(request);
 		request.setAttribute("contentPage", "jh/product/unit.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

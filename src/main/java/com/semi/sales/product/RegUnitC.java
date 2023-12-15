@@ -16,9 +16,9 @@ public class RegUnitC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.regUnit(request);
-		SupplyComDAO.getAllUnit(request);
-		SupplyComDAO.getAllType(request);
+		ProductDAO.getPdao().regUnit(request);
+		ProductDAO.getPdao().getAllUnit(request);
+		ProductDAO.getPdao().getAllType(request);
 		request.setAttribute("contentPage", "jh/product/unit.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

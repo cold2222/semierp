@@ -19,8 +19,8 @@ public class MakeContractC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	SupplyComDAO.regCont(request);
-	SupplyComDAO.getAllCont(request);
+	SupplyComDAO.getSdao().regCont(request);
+	SupplyComDAO.getSdao().getAllCont(request);
 	request.setAttribute("contentPage", "jh/contract/contract_output.jsp");
 	request.setAttribute("sidebar", "jh/sidebar.jsp");
 	request.getRequestDispatcher("index2.jsp").forward(request, response);

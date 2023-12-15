@@ -13,7 +13,7 @@ import com.semi.sales.supply.SupplyComDAO;
 public class UpdateProductC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getP(request);
+		ProductDAO.getPdao().getP(request);
 		request.setAttribute("contentPage", "jh/product/updateProduct.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
@@ -24,7 +24,7 @@ public class UpdateProductC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.updateProduct(request);
+		ProductDAO.getPdao().updateProduct(request);
 		response.sendRedirect("UpdateProduct?id="+request.getParameter("id")+"&isSuccess="
 				+ request.getAttribute("isSuccess"));	
 	
