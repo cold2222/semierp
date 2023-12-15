@@ -1,6 +1,6 @@
-function DistributionEmployeeDel(e_id){
+function DistributionEmployeeDel(e_no){
 	if(confirm("削除しますか?")){
-		location.href="DistributionEmployeeDelC?e_id="+e_id;
+		location.href="DistributionEmployeeDelC?e_no="+e_no;
 	}
 	
 }

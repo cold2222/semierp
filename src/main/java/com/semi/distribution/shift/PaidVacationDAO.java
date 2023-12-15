@@ -14,8 +14,8 @@ public class PaidVacationDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select employee_id, work_num, TO_CHAR(work_date, 'YYYY-MM-DD') as work_date"
-				+ " from distribution_shift where work_num = 3 order by EMPLOYEE_ID";
+		String sql = "select ds.e_no, ds.work_num, TO_CHAR(ds.work_date, 'YYYY-MM-DD') as work_date, e.e_name"
+				+ " from distribution_shift ds inner join employee e on ds.e_no = e.e_no where work_num = 3 order by e_name";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);

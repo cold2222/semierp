@@ -3,7 +3,6 @@ package com.semi.distribution.shift;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,12 +20,12 @@ public class PaidVacationLogic {
 			ArrayList<String> paidVacationDate = new ArrayList<String>();
 			for (int i = 0; i < paidVacation.size(); i++) {
 				
-				if (paidVacation.get(i).getE_id().equals(emp.getE_id())) {
+				if (paidVacation.get(i).getE_id().equals(emp.getE_no())) {
 					paidVacationDate.add(paidVacation.get(i).getW_date());
 				}
 			
 			}
-			empPaidVacation.put(emp.getE_id(), paidVacationDate);
+			empPaidVacation.put(emp.getE_no(), paidVacationDate);
 		}
 		
 		HashMap<String, String[]> empsPaidVacationNum = new HashMap<String, String[]>();
@@ -37,7 +36,7 @@ public class PaidVacationLogic {
 			int nowYearUse = 0;
 			int lastYearUse = 0;
 			
-			LocalDate hireDate = emp.getE_hire_date().toLocalDate();
+			LocalDate hireDate = emp.getE_joined_company().toLocalDate();
 			int nowYear = LocalDate.now().getYear();
 			int month = hireDate.getMonthValue() + 6;
 			if(month > 12) {
@@ -67,7 +66,7 @@ public class PaidVacationLogic {
 			 * System.out.println("날짜나옴?"+hireDate);
 			 */
 			
-			ArrayList<String> temp = empPaidVacation.get(emp.getE_id());
+			ArrayList<String> temp = empPaidVacation.get(emp.getE_no());
 			for (String pV : temp) {
 				LocalDate pVDate = LocalDate.parse(pV);
 				if(!pVDate.isBefore(lastYearStart) && !pVDate.isAfter(lastYearEnd)) {
@@ -82,7 +81,7 @@ public class PaidVacationLogic {
 			nowAndLast[1] = lastYearUse+"";
 			nowAndLast[2] = paidMonth;
 			
-			empsPaidVacationNum.put(emp.getE_id(), nowAndLast);
+			empsPaidVacationNum.put(emp.getE_no(), nowAndLast);
 			
 		}
 		
