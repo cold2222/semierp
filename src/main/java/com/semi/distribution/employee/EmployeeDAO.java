@@ -50,7 +50,7 @@ public class EmployeeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from distribution_employees order by employee_id";
+		String sql = "select * from employee where e_deptno = 201 order by e_name";
 		
 		try {
 			con = DBManger.connect();
@@ -61,7 +61,15 @@ public class EmployeeDAO {
 			EmployeeDTO emp = null;
 			empList = new ArrayList<EmployeeDTO>();
 			while (rs.next()) {
-				emp = new EmployeeDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6));
+				emp = new EmployeeDTO();
+				emp.setE_no(rs.getString(1));
+				emp.setE_pw(rs.getString(2));
+				emp.setE_deptno(rs.getString(3));
+				emp.setE_name(rs.getString(4));
+				emp.setE_rank(rs.getString(5));
+				emp.setE_tel(rs.getString(6));
+				emp.setE_email(rs.getString(7));
+				emp.setE_joined_company(rs.getDate(8));
 				empList.add(emp);
 			}
 			
@@ -79,28 +87,30 @@ public class EmployeeDAO {
 		PreparedStatement pstmt = null;
 		
 		request.setCharacterEncoding("utf-8");
-		String name = request.getParameter("name");
-		String position = request.getParameter("position");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
-		String hireDate = request.getParameter("hireDate");
+		String e_pw = request.getParameter("e_pw");
+		String e_name = request.getParameter("e_name");
+		String e_rank = request.getParameter("e_rank");
+		String e_tel = request.getParameter("e_tel");
+		String e_email = request.getParameter("e_email");
+		String e_joined_company = request.getParameter("e_joined_company");
 		
-		System.out.println(name);
-		System.out.println(position);
-		System.out.println(phone);
-		System.out.println(email);
-		System.out.println(hireDate);
+		System.out.println(e_name);
+		System.out.println(e_rank);
+		System.out.println(e_tel);
+		System.out.println(e_email);
+		System.out.println(e_joined_company);
 		
 		
-		String sql = "INSERT INTO distribution_employees values(d_employees_seq.nextval,?,?,?,?,?)";
+		String sql = "INSERT INTO employee values(employee_seq.nextval,?,201,?,?,?,?,?)";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, position);
-			pstmt.setString(3, phone);
-			pstmt.setString(4, email);
-			pstmt.setString(5, hireDate);
+			pstmt.setString(1, e_pw);
+			pstmt.setString(2, e_name);
+			pstmt.setString(3, e_rank);
+			pstmt.setString(4, e_tel);
+			pstmt.setString(5, e_email);
+			pstmt.setString(6, e_joined_company);
 			
 			if(pstmt.executeUpdate() == 1) {
 				System.out.println("사원등록 성공");
@@ -118,11 +128,11 @@ public class EmployeeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = "delete distribution_employees where employee_id = ?";
+		String sql = "delete employee where e_no = ?";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("e_id"));
+			pstmt.setString(1, request.getParameter("e_no"));
 			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("사원삭제 성공");
@@ -141,21 +151,28 @@ public class EmployeeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from distribution_employees where employee_id = ?";
+		String sql = "select * from employee where e_no = ?";
 		
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			String e_id = request.getParameter("e_id");
-			pstmt.setString(1, e_id);
+			String e_no = request.getParameter("e_no");
+			pstmt.setString(1, e_no);
 			
 			rs = pstmt.executeQuery();
 			
 			EmployeeDTO emp = null;
 			if(rs.next()) {
-				String content = rs.getString(3);
 				System.out.println("사원1 조회성공");
-				emp = new EmployeeDTO(rs.getString(1),rs.getString(2),content,rs.getString(4),rs.getString(5),rs.getDate(6));
+				emp = new EmployeeDTO();
+				emp.setE_no(rs.getString(1));
+				emp.setE_pw(rs.getString(2));
+				emp.setE_deptno(rs.getString(3));
+				emp.setE_name(rs.getString(4));
+				emp.setE_rank(rs.getString(5));
+				emp.setE_tel(rs.getString(6));
+				emp.setE_email(rs.getString(7));
+				emp.setE_joined_company(rs.getDate(8));
 			}
 			
 			request.setAttribute("emp", emp);
@@ -173,30 +190,28 @@ public class EmployeeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = "UPDATE distribution_employees SET employee_name = ?, employee_position = ?, phone_number = ?, email = ?, hire_date = ? WHERE employee_id = ?";
+		String sql = "UPDATE employee SET e_pw = ?, e_name = ?, e_rank = ?, e_tel = ?, e_email = ?, e_joined_company = ? WHERE e_no = ?";
 		request.setCharacterEncoding("utf-8");
-		String name = request.getParameter("name");
-		String position = request.getParameter("position");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
-		String hireDate = request.getParameter("hireDate");
-		String id = request.getParameter("id");
 		
-		System.out.println(name);
-		System.out.println(position);
-		System.out.println(phone);
-		System.out.println(email);
-		System.out.println(hireDate);
+		String e_no = request.getParameter("e_no");
+		String e_pw = request.getParameter("e_pw");
+		String e_name = request.getParameter("e_name");
+		String e_rank = request.getParameter("e_rank");
+		String e_tel = request.getParameter("e_tel");
+		String e_email = request.getParameter("e_email");
+		String e_joined_company = request.getParameter("e_joined_company");
+		
 		
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, position);
-			pstmt.setString(3, phone);
-			pstmt.setString(4, email);
-			pstmt.setString(5, hireDate);
-			pstmt.setString(6, id);
+			pstmt.setString(1, e_pw);
+			pstmt.setString(2, e_name);
+			pstmt.setString(3, e_rank);
+			pstmt.setString(4, e_tel);
+			pstmt.setString(5, e_email);
+			pstmt.setString(6, e_joined_company);
+			pstmt.setString(7, e_no);
 			
 			if(pstmt.executeUpdate() == 1) {
 				System.out.println("사원1 수정성공");

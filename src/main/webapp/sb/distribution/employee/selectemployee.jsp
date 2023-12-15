@@ -28,12 +28,12 @@
 				<c:forEach var="e" items="${empList }">
 					<tr>
 						<td>${e.e_name }</td>
-						<td>${e.e_position }</td>
-						<td>${e.e_phone_number }</td>
+						<td>${e.e_rank }</td>
+						<td>${e.e_tel }</td>
 						<td>${e.e_email }</td>
-						<td>${e.e_hire_date }</td>
-						<td><button onclick="location.href='DistributionEmployeeUpdateC?e_id=${e.e_id}'" class="edit-btn">修正</button></td>
-						<td><button onclick="DistributionEmployeeDel('${e.e_id}')" class="delete-btn">削除</button></td>
+						<td>${e.e_joined_company }</td>
+						<td><button onclick="location.href='DistributionEmployeeUpdateC?e_no=${e.e_no}'" class="edit-btn">修正</button></td>
+						<td><button onclick="DistributionEmployeeDel('${e.e_no}')" class="delete-btn">削除</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
