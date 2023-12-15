@@ -32,16 +32,33 @@ public class WarehouseBoardTestDAO {
 	            + "JOIN\n"
 	            + "    warehouse_test ON stock_test.warehouse_id = warehouse_test.warehouse_id\n"
 	            + "JOIN\n"
-	            + "    manufacture_test ON product_test_ksj.p_manufacturer = manufacture_test.p_manufacturer";
+	            + "    manufacture_test ON product_test_ksj.p_manufacturer = manufacture_test.p_manufacturer\n";
 		
 			
 		if ("one".equals(operationType)) {
-            sql += " WHERE warehouse_test.warehouse_id = 1";
+            sql += " WHERE warehouse_test.warehouse_id = 1 "
+            		+ "ORDER BY\n"
+            		+ "    product_test_ksj.p_type ASC,\n"
+            		+ "    product_test_ksj.p_name ASC,\n"
+            		+ "    product_test_ksj.p_quantity ASC";
         } else if ("two".equals(operationType)) {
-            sql += " WHERE warehouse_test.warehouse_id = 2";
+            sql += " WHERE warehouse_test.warehouse_id = 2"
+            		+ "ORDER BY\n"
+            		+ "    product_test_ksj.p_type ASC,\n"
+            		+ "    product_test_ksj.p_name ASC,\n"
+            		+ "    product_test_ksj.p_quantity ASC";
         } else if ("three".equals(operationType)) {
-            sql += " WHERE warehouse_test.warehouse_id = 3";
-        }
+            sql += " WHERE warehouse_test.warehouse_id = 3"
+            		+ "ORDER BY\n"
+            		+ "    product_test_ksj.p_type ASC,\n"
+                                   		+ "    product_test_ksj.p_name ASC,\n"
+            		+ "    product_test_ksj.p_quantity ASC";
+        } else {
+			sql += "ORDER BY\n"
+					+ "    product_test_ksj.p_type ASC,\n"
+					+ "    product_test_ksj.p_name ASC,\n"
+					+ "    product_test_ksj.p_quantity ASC";
+		}
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

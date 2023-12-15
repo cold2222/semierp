@@ -16,7 +16,7 @@ public class WarehouseBoardTestC extends HttpServlet {
 		
 		String operationType = request.getParameter("operationType");
         WarehouseBoardTestDAO.getWBTest(request, operationType);
-        WarehouseBoardTestDAO.calcStock(request, operationType);
+//        WarehouseBoardTestDAO.calcStock(request, operationType);
         
 		request.getRequestDispatcher("sj/warehouse_board/warehouse_board.jsp").forward(request, response);
 				
