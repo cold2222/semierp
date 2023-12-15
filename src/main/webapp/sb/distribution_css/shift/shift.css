@@ -1,0 +1,67 @@
+@charset "UTF-8";
+.content{
+	margin: 20px;
+	padding : 20px;
+	background-color: white;
+}
+.menu-top{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.selectym{
+margin-bottom: 30px;
+margin-top: 30px;
+}
+.workstatus{
+	display: flex;
+	font-size: 20px;
+	font-weight: bold;
+}
+.content-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+.name-line{
+	width: 50px;
+}
+.content-table th,
+.content-table td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+.content-table th {
+    background-color: #f2f2f2;
+}
+
+.content-table input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    text-align: center;
+}
+.dis-btn {
+	display: inline-block;
+	padding: 8px 16px;
+	font-size : 18px;
+	font-weight : bold;
+	background-color: #007bff;
+	color: #fff;
+	border : none;
+	text-decoration: none;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+.day-label{
+	font-size: 24px;
+}
+
+#year,#month{
+	padding: 10px;
+	font-size: 18px;
+}
