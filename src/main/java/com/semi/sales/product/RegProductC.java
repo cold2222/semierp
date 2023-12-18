@@ -20,10 +20,7 @@ public class RegProductC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		ProductDAO.getPdao().regProduct(request);
-		ProductDAO.getPdao().getAllProduct(request);
-		request.setAttribute("contentPage", "jh/product/supply_product.jsp");
-		request.setAttribute("sidebar", "jh/sidebar.jsp");
-		request.getRequestDispatcher("index2.jsp").forward(request, response);
+		response.sendRedirect("ProductC");
 	
 	
 	
