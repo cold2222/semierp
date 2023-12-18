@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form action="RegUnitC" method="post">
-		<table border="1" style="width: 1800px; height: 80px;">
+		<table border="1" style="width: 83%; height: 80px;">
 			<tr>
 				<td><input name="unit"></td>
 				<td>
@@ -19,7 +19,7 @@
 		</table>
 	</form>
 	<form action="RegTypeC" method="post">
-		<table border="1" style="width: 1800px; height: 80px;">
+		<table border="1" style="width: 83%; height: 80px;">
 			<tr>
 				<td><input name="type"></td>
 				<td>
@@ -29,7 +29,7 @@
 		</table>
 	</form>
 
-	<table border="1" style="width: 1800px; height: 800px;">
+	<table border="1" style="width: 83%; height: 800px;">
 
 		<c:forEach var="u" items="${us }">
 			<tr>
@@ -40,7 +40,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<table border="1" style="width: 1800px; height: 800px;">
+	<table border="1" style="width: 83%; height: 800px;">
 		<c:forEach var="t" items="${ts }">
 			<tr>
 				<td>Type</td>
