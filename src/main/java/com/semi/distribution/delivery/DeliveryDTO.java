@@ -1,8 +1,8 @@
-package com.semi.distribution.receipt;
+package com.semi.distribution.delivery;
 
 import java.sql.Date;
 
-public class ReceiptDTO {
+public class DeliveryDTO {
 	private String c_contract_no;
 	private String c_c_no;
 	private String c_e_id;
@@ -229,7 +229,7 @@ public class ReceiptDTO {
 	private String s_no;
 	private String s_memo;
 	
-	public ReceiptDTO() {
+	public DeliveryDTO() {
 	}
 	
 	

@@ -16,7 +16,7 @@
 			</ul>
 			<div class="sidebar-index">주문 처리 밑 관리</div>
 			<ul>
-				<li onclick="location.href='DistributionDeliveryC'">&nbsp;- 납품배차등록</li>
+				<li onclick="location.href='DistributionDeliverySaleC'">&nbsp;- 납품배차등록</li>
 				<li onclick="location.href='DistributionReceiptC'">&nbsp;- 수령배차등록</li>
 			</ul>
 			<div class="sidebar-index">배송관리</div>
