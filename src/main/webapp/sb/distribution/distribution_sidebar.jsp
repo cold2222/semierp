@@ -16,12 +16,13 @@
 			</ul>
 			<div class="sidebar-index">주문 처리 밑 관리</div>
 			<ul>
-				<li onclick="location.href='DistributionDeliveryC'">&nbsp;- 납품예정확인</li>
-				<li onclick="location.href='DistributionReceiptC'">&nbsp;- 수령예정확인</li>
+				<li onclick="location.href='DistributionDeliveryC'">&nbsp;- 납품배차등록</li>
+				<li onclick="location.href='DistributionReceiptC'">&nbsp;- 수령배차등록</li>
 			</ul>
 			<div class="sidebar-index">배송관리</div>
 			<ul>
-				<li onclick="">&nbsp;- 배송 상태확인</li>
+				<li onclick="location.href=''">&nbsp;- 납품확인등록</li>
+				<li onclick="location.href=''">&nbsp;- 수령확인등록</li>
 			</ul>
 			<div class="sidebar-index">유통부 공통 게시판</div>
 			<ul>
