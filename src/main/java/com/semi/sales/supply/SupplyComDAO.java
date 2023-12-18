@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,25 +27,29 @@ public class SupplyComDAO {
 	}
 	
 	public void paging(int page, HttpServletRequest request) {
-	    request.setAttribute("curPageNo", page);
-	    cs = new ArrayList<Company>();
+	    
+	    
 	    int cnt = 30; // 한 페이지당 보여줄 개수
 	    int total = cs.size(); // 총 데이터 개수
 	    int pageCount = (int) Math.ceil((double) total / cnt); // 총 페이지 수
-	    request.setAttribute("pageCount", pageCount);
 
-	    int start = total - (cnt * (page - 1)); 
-	    int end = (page == total) ? - 1 : start - (cnt + 1);
+	    if (page > pageCount) {
+	        page = pageCount;
+	    }
+
+	    // 시작과 끝 인덱스 계산
+	    int start = (page - 1) * cnt;
+	    int end = Math.min(start + cnt, total);
 
 	    ArrayList<Company> items = new ArrayList<>();
-	    if(cs.size() > 0) {
-			for (int i = start-1; i > end; i--) {
-				items.add(cs.get(i));
-			}
-		}
+	    if (total > 0 && start < total) {
+	        for (int i = start; i < end; i++) {
+	            items.add(cs.get(i));
+	        }
+	    }
 	    request.setAttribute("cs", items);
 		request.setAttribute("pageNum", page);
-		request.setAttribute("totalPage", total);
+		request.setAttribute("pageCount", pageCount);
 	}
 
 
@@ -53,7 +58,20 @@ public class SupplyComDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from company order by c_no desc";
+		HashMap<String,String> search = new HashMap<String, String>();
+		String field = request.getParameter("field");
+		String word = request.getParameter("word");
+		if(word != null) {
+			search.put("field", field);
+			search.put("word", word);
+		}
+		
+		String sql = "select * from company";
+		if(search.get("word") != null && !search.get("field").equals("all")) {
+			sql += " where " + search.get("field") + " " + "like '%" + search.get("word") +"%'";
+		}
+		
+		sql += " order by c_no desc";
 		try {
 			request.setCharacterEncoding("utf-8");
 
@@ -73,7 +91,8 @@ public class SupplyComDAO {
 				c.setC_text(rs.getString("c_text"));
 				cs.add(c);
 			}
-			request.setAttribute("cs", cs);
+			request.setAttribute("field", field);
+			request.setAttribute("word", word);
 			
 			
 		} catch (Exception e) {

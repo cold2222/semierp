@@ -6,13 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="jh/js/search.js"></script>
 </head>
 <body>
 	<div>
-		<form action="DetailComC">
-			<input name="search" placeholder="검색">
-			<button>검색</button>
-		</form>
+		<form action="CompanyC" method="GET">
+					<select name="field" id="searchField" onchange="showInput()">
+						<option value="all">全体検索</option>
+						<option value="c_name">会社名</option>
+						<option value="c_keeper">取引先の担当者</option>
+						<option value="c_addr">住所</option>
+					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
+						id="searchWord" class="search-input" style="display: none;">
+					<button type="submit" class="search-button">検索</button>
+				</form>
 	</div>
 	<table border="1" style="width: 83%; height: 800px;">
 		<c:forEach var="c" items="${cs }">
@@ -37,12 +44,35 @@
 	</table>
 
 	<div>
-		<c:if test="${curPageNo != 1 }">
-			<a href="CompanyPageC?p=${curPageNo - 1 }"><button>이전</button></a>
-		</c:if>
-		<c:if test="${curPageNo != pageCount }">
-			<a href="CompanyPageC?p=${curPageNo + 1 }"><button>다음</button></a>
-		</c:if>
+		<c:choose>
+										<c:when test="${pageNum != 1}">
+											<button
+												onclick="location.href='CompanyPageC?p=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
+										</c:when>
+									</c:choose>
+
+									<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
+										end="${pageNum + 3 <= pageCount ? pageNum + 3 : pageCount}"
+										step="1">
+										<c:choose>
+											<c:when test="${i eq pageNum}">
+												<a
+													href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }"
+													style="color: black; font-weight: bold;">${i}</a>
+											</c:when>
+											<c:otherwise>
+												<a
+													href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }">${i}</a>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+
+									<c:choose>
+										<c:when test="${pageNum != pageCount}">
+											<button
+												onclick="location.href='CompanyPageC?p=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
+										</c:when>
+									</c:choose>
 	</div>
 
 
