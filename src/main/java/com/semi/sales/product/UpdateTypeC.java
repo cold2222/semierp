@@ -12,18 +12,20 @@ import com.semi.sales.supply.SupplyComDAO;
 @WebServlet("/UpdateTypeC")
 public class UpdateTypeC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SupplyComDAO.getType(request);
-		request.setAttribute("page", "product/updateType.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		ProductDAO.getPdao().getType(request);
+		request.setAttribute("contentPage", "jh/product/updateType.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SupplyComDAO.updateType(request);
-		SupplyComDAO.getAllUnit(request);
-		SupplyComDAO.getAllType(request);
-		request.setAttribute("page", "product/unit.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		ProductDAO.getPdao().updateType(request);
+		ProductDAO.getPdao().getAllUnit(request);
+		ProductDAO.getPdao().getAllType(request);
+		request.setAttribute("contentPage", "jh/product/unit.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	}
 

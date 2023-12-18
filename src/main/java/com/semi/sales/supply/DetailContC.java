@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/UpdateContentC")
-public class UpdateContentC extends HttpServlet {
+@WebServlet("/DetailContC")
+public class DetailContC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getSdao().getContent(request);
-		request.setAttribute("contentPage", "jh/content/updateContent.jsp");
+		SupplyComDAO.getSdao().searchCont(request);
+		request.setAttribute("contentPage", "jh/contract/contract_company.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
@@ -21,13 +21,6 @@ public class UpdateContentC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		SupplyComDAO.getSdao().updateContent(request);
-		response.sendRedirect("UpdateContentC?num="+request.getParameter("num")+"&isSuccess="
-				+ request.getAttribute("isSuccess"));	
-	
-	
-	
 	}
 
 }

@@ -12,12 +12,13 @@ import com.semi.sales.supply.SupplyComDAO;
 @WebServlet("/DeleteUnitC")
 public class DeleteUnitC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SupplyComDAO.getUnit(request);
-		SupplyComDAO.deleteUnit(request);
-		SupplyComDAO.getAllUnit(request);
-		SupplyComDAO.getAllType(request);
-		request.setAttribute("page", "product/unit.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		ProductDAO.getPdao().getUnit(request);
+		ProductDAO.getPdao().deleteUnit(request);
+		ProductDAO.getPdao().getAllUnit(request);
+		ProductDAO.getPdao().getAllType(request);
+		request.setAttribute("contentPage", "jh/product/unit.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	}
 
