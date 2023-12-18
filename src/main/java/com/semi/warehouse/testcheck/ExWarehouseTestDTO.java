@@ -7,9 +7,9 @@ public class ExWarehouseTestDTO {
 	private String p_type;
 	private int p_quantity;
 	private String p_si;
-	private int record_sales_count;
-	private String sell_date;
-	private int status;
+	private int ci_count;
+	private String c_completed_date;
+	private int c_status;
 
 	
 	public ExWarehouseTestDTO() {
@@ -17,17 +17,17 @@ public class ExWarehouseTestDTO {
 	}
 
 
-	public ExWarehouseTestDTO(int p_id, String p_name, String p_type, int p_quantity, String p_si,
-			int record_sales_count, String sell_date, int status) {
+	public ExWarehouseTestDTO(int p_id, String p_name, String p_type, int p_quantity, String p_si, int ci_count,
+			String c_completed_date, int c_status) {
 		super();
 		this.p_id = p_id;
 		this.p_name = p_name;
 		this.p_type = p_type;
 		this.p_quantity = p_quantity;
 		this.p_si = p_si;
-		this.record_sales_count = record_sales_count;
-		this.sell_date = sell_date;
-		this.status = status;
+		this.ci_count = ci_count;
+		this.c_completed_date = c_completed_date;
+		this.c_status = c_status;
 	}
 
 
@@ -81,34 +81,35 @@ public class ExWarehouseTestDTO {
 	}
 
 
-	public int getRecord_sales_count() {
-		return record_sales_count;
+	public int getCi_count() {
+		return ci_count;
 	}
 
 
-	public void setRecord_sales_count(int record_sales_count) {
-		this.record_sales_count = record_sales_count;
+	public void setCi_count(int ci_count) {
+		this.ci_count = ci_count;
 	}
 
 
-	public String getSell_date() {
-		return sell_date;
+	public String getC_completed_date() {
+		return c_completed_date;
 	}
 
 
-	public void setSell_date(String sell_date) {
-		this.sell_date = sell_date;
+	public void setC_completed_date(String c_completed_date) {
+		this.c_completed_date = c_completed_date;
 	}
 
 
-	public int getStatus() {
-		return status;
+	public int getC_status() {
+		return c_status;
 	}
 
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setC_status(int c_status) {
+		this.c_status = c_status;
 	}
+
 
 
 	

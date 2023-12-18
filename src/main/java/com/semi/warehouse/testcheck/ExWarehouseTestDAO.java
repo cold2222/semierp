@@ -15,22 +15,23 @@ public class ExWarehouseTestDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT \n"
-				+ "    product_test_ksj.p_id,\n"
-				+ "    product_test_ksj.p_name,\n"
-				+ "    product_test_ksj.p_type,\n"
-				+ "    product_test_ksj.p_quantity,\n"
-				+ "    product_test_ksj.p_si,\n"
-				+ "    sales_contract_items.record_sales_count,\n"
-				+ "    sales_contract_ksj.sell_date,\n"
-				+ "    sales_contract_ksj.status\n"
+				+ "    product_test.p_id,\n"
+				+ "    product_test.p_name,\n"
+				+ "    product_test.p_type,\n"
+				+ "    product_test.p_quantity,\n"
+				+ "    product_test.p_si,\n"
+				+ "    contract_items.ci_count,\n"
+				+ "    contract.c_completed_date,\n"
+				+ "    contract.c_status\n"
 				+ "FROM \n"
-				+ "    product_test_ksj, \n"
-				+ "    sales_contract_items, \n"
-				+ "    sales_contract_ksj \n"
+				+ "    product_test, \n"
+				+ "    contract_items, \n"
+				+ "    contract \n"
 				+ "WHERE \n"
-				+ "    product_test_ksj.p_id = sales_contract_items.p_id\n"
-				+ "    AND sales_contract_items.recordall_sell_num = sales_contract_ksj.recordall_sell_num\n"
-				+ "    AND sales_contract_ksj.status = 3";
+				+ "    product_test.p_id = contract_items.p_id\n"
+				+ "    AND contract_items.recordall_sell_num = sales_contract_ksj.recordall_sell_num\n"
+				+ "    AND contract.c_status = 2"
+				+ "		AND contract.c_type = 2";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -48,13 +49,21 @@ public class ExWarehouseTestDAO {
 				String p_type = rs.getString("p_type");
 				int p_quantity = rs.getInt("p_quantity");
 				String p_si = rs.getString("p_si");
-				int record_sales_count = rs.getInt("record_sales_count");
-				String sell_date = rs.getString("sell_date");
-				int status = rs.getInt("status");
+				int ci_count = rs.getInt("ci_count");
+				String c_completed_date = rs.getString("c_completed_date");
+				int c_status = rs.getInt("c_status");
 				
 				// p_id로 pk
 				
-				t = new ExWarehouseTestDTO(p_id, p_name, p_type, p_quantity, p_si, record_sales_count,sell_date, status);
+				t = new ExWarehouseTestDTO();
+				t.setC_completed_date(c_completed_date);
+				t.setC_status(c_status);
+				t.setCi_count(ci_count);
+				t.setP_id(p_id);
+				t.setP_name(p_name);
+				t.setP_quantity(p_quantity);
+				t.setP_si(p_si);
+				t.setP_type(p_type);
 				testExWarehouse.add(t);
 
 				System.out.println(p_id);
@@ -62,9 +71,9 @@ public class ExWarehouseTestDAO {
 				System.out.println(p_type);
 				System.out.println(p_quantity);
 				System.out.println(p_si);
-				System.out.println(record_sales_count);
-				System.out.println(sell_date);
-				System.out.println(status);
+				System.out.println(ci_count);
+				System.out.println(c_completed_date);
+				System.out.println(c_status);
 
 			}
 			request.setAttribute("testExWarehouse", testExWarehouse);
@@ -88,17 +97,18 @@ public class ExWarehouseTestDAO {
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    
-// 나중에 status가 3에서 4로 넘어갈떄 날짜 스템프 추가 해줄것 
+// 출고 status가 2에서 3으로 넘어가는 순간 날짜 스템프 추가 해줄것 
 	    
-	    String sql = "UPDATE sales_contract_ksj\n"
-	    		+ "SET status = 4\n"
-	    		+ "WHERE recordall_sell_num IN (\n"
-	    		+ "    SELECT sales_contract_ksj.recordall_sell_num\n"
-	    		+ "    FROM product_test_ksj\n"
-	    		+ "    JOIN sales_contract_items ON product_test_ksj.p_id = sales_contract_items.p_id\n"
-	    		+ "    JOIN sales_contract_ksj ON sales_contract_items.recordall_sell_num = sales_contract_ksj.recordall_sell_num\n"
-	    		+ "    WHERE product_test_ksj.p_id = ?\n"
-	    		+ "      AND sales_contract_ksj.status = 3\n"
+	    String sql = "UPDATE contract\n"
+	    		+ "SET c_status = 3\n"
+	    		+ "WHERE c_contract_no IN (\n"
+	    		+ "    SELECT contract.c_contract_no\n"
+	    		+ "    FROM product_test\n"
+	    		+ "    JOIN contract_items ON product_test.p_id = contract_items.ci_p_id\n"
+	    		+ "    JOIN contract ON contract_items.ci_c_contract_no = contract.c_contract_no\n"
+	    		+ "    WHERE product_test.p_id = ?\n"
+	    		+ "      AND contract.c_status = 2\n"
+	    		+ "      AND contract.c_type = 2\n"
 	    		+ ")";
 
 	    try {
@@ -113,7 +123,7 @@ public class ExWarehouseTestDAO {
 	            pstmt.setInt(1, productId);
 	            pstmt.executeUpdate();
 
-	            System.out.println("Selected Product ID : " + productId + " - Status 4로 업데이트");
+	            System.out.println("Selected Product ID : " + productId + " - Status 3로 업데이트");
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -143,7 +153,7 @@ public class ExWarehouseTestDAO {
 			Connection con = null;
 		    PreparedStatement pstmt = null;
 
-		    String sql = "INSERT INTO ex_warehouse_test VALUES (ex_warehouse_test_seq.NEXTVAL, ?, ?, ?, ?)";
+		    String sql = "INSERT INTO ex_warehouse VALUES (ex_warehouse_seq.NEXTVAL, ?, ?, ?, ?)";
 
 		    try {
 		        Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -195,20 +205,20 @@ public class ExWarehouseTestDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT\n"
-				+ "    ex_warehouse_test.ex_warehouse_id,\n"
-				+ "    product_test_ksj.p_name,\n"
-				+ "    product_test_ksj.p_si,\n"
-				+ "    product_test_ksj.p_quantity,\n"
-				+ "    product_test_ksj.p_type,\n"
-				+ "    ex_warehouse_test.ex_warehouse_date,\n"
-				+ "    ex_warehouse_test.ex_warehouse_quantity,\n"
+				+ "    ex_warehouse.ex_warehouse_id,\n"
+				+ "    product_test.p_name,\n"
+				+ "    product_test.p_si,\n"
+				+ "    product_test.p_quantity,\n"
+				+ "    product_test.p_type,\n"
+				+ "    ex_warehouse.ex_warehouse_date,\n"
+				+ "    ex_warehouse.ex_warehouse_quantity,\n"
 				+ "    warehouse_test.warehouse_name\n"
 				+ "FROM\n"
-				+ "    ex_warehouse_test\n"
+				+ "    ex_warehouse\n"
 				+ "JOIN\n"
-				+ "    product_test_ksj ON ex_warehouse_test.p_id = product_test_ksj.p_id\n"
+				+ "    product_test ON ex_warehouse.p_id = product_test.p_id\n"
 				+ "JOIN\n"
-				+ "    warehouse_test ON ex_warehouse_test.warehouse_id = warehouse_test.warehouse_id";
+				+ "    warehouse_test ON ex_warehouse.warehouse_id = warehouse_test.warehouse_id";
 
 		
 		try {
@@ -277,8 +287,8 @@ public class ExWarehouseTestDAO {
 	    // quantity를 늘려주는 sql 문 p_id 와 warehouse_id가 가지고 있는 quantity 값을 - 해줌 
 	    String sql = "UPDATE stock_test\n"
 	    		+ "SET stock = stock - (\n"
-	    		+ "    SELECT NVL(SUM(ex_warehouse_test.ex_warehouse_quantity), 0)\n"
-	    		+ "    FROM ex_warehouse_test\n"
+	    		+ "    SELECT NVL(SUM(ex_warehouse.ex_warehouse_quantity), 0)\n"
+	    		+ "    FROM ex_warehouse\n"
 	    		+ "    WHERE p_id = ? AND warehouse_id = ?\n"
 	    		+ ")\n"
 	    		+ "WHERE p_id = ? AND warehouse_id = ?";
