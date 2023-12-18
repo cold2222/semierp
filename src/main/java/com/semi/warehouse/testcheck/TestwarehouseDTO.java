@@ -6,87 +6,130 @@ public class TestwarehouseDTO {
 	private String p_name;
 	private String p_si;
 	private String p_type;
-	private int record_count;
-	private String in_warehouse_date;
-	private int status;
+	private int p_quantity;
+	private int ci_count;
+	private String c_completed_date;
+	private int c_status;
 
-//	private int warehouse_id;
-//	private int in_warehouse_quantity;
-//	private String warehouse_name;
 
 
 	public TestwarehouseDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-public TestwarehouseDTO(int p_id, String p_name, String p_si, String p_type, int record_count, String in_warehouse_date,
-		int status) {
-	super();
-	this.p_id = p_id;
-	this.p_name = p_name;
-	this.p_si = p_si;
-	this.p_type = p_type;
-	this.record_count = record_count;
-	this.in_warehouse_date = in_warehouse_date;
-	this.status = status;
-}
 
-public int getP_id() {
-	return p_id;
-}
 
-public void setP_id(int p_id) {
-	this.p_id = p_id;
-}
+	public TestwarehouseDTO(int p_id, String p_name, String p_si, String p_type, int p_quantity, int ci_count,
+			String c_completed_date, int c_status) {
+		super();
+		this.p_id = p_id;
+		this.p_name = p_name;
+		this.p_si = p_si;
+		this.p_type = p_type;
+		this.p_quantity = p_quantity;
+		this.ci_count = ci_count;
+		this.c_completed_date = c_completed_date;
+		this.c_status = c_status;
+	}
 
-public String getP_name() {
-	return p_name;
-}
 
-public void setP_name(String p_name) {
-	this.p_name = p_name;
-}
 
-public String getP_si() {
-	return p_si;
-}
+	public int getP_id() {
+		return p_id;
+	}
 
-public void setP_si(String p_si) {
-	this.p_si = p_si;
-}
 
-public String getP_type() {
-	return p_type;
-}
 
-public void setP_type(String p_type) {
-	this.p_type = p_type;
-}
+	public void setP_id(int p_id) {
+		this.p_id = p_id;
+	}
 
-public int getRecord_count() {
-	return record_count;
-}
 
-public void setRecord_count(int record_count) {
-	this.record_count = record_count;
-}
 
-public String getIn_warehouse_date() {
-	return in_warehouse_date;
-}
+	public String getP_name() {
+		return p_name;
+	}
 
-public void setIn_warehouse_date(String in_warehouse_date) {
-	this.in_warehouse_date = in_warehouse_date;
-}
 
-public int getStatus() {
-	return status;
-}
 
-public void setStatus(int status) {
-	this.status = status;
-}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
 
+
+
+	public String getP_si() {
+		return p_si;
+	}
+
+
+
+	public void setP_si(String p_si) {
+		this.p_si = p_si;
+	}
+
+
+
+	public String getP_type() {
+		return p_type;
+	}
+
+
+
+	public void setP_type(String p_type) {
+		this.p_type = p_type;
+	}
+
+
+
+	public int getP_quantity() {
+		return p_quantity;
+	}
+
+
+
+	public void setP_quantity(int p_quantity) {
+		this.p_quantity = p_quantity;
+	}
+
+
+
+	public int getCi_count() {
+		return ci_count;
+	}
+
+
+
+	public void setCi_count(int ci_count) {
+		this.ci_count = ci_count;
+	}
+
+
+
+	public String getC_completed_date() {
+		return c_completed_date;
+	}
+
+
+
+	public void setC_completed_date(String c_completed_date) {
+		this.c_completed_date = c_completed_date;
+	}
+
+
+
+	public int getC_status() {
+		return c_status;
+	}
+
+
+
+	public void setC_status(int c_status) {
+		this.c_status = c_status;
+	}
+
+
+	
 
 	
 	
