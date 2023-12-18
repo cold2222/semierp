@@ -148,11 +148,7 @@ public class WarehouseBoardTestDAO {
 	        		+ "    stock_test ON warehouse_test.warehouse_id = stock_test.warehouse_id\n"
 	        		+ "LEFT JOIN\n"
 	        		+ "    product_test_ksj ON stock_test.p_id = product_test_ksj.p_id\n"
-	        		+ "WHERE warehouse_test.warehouse_id = 1\n"
-	        		+ "GROUP BY\n"
-	        		+ "    warehouse_test.warehouse_id, warehouse_test.warehouse_name\n"
-	        		+ "ORDER BY\n"
-	        		+ "    warehouse_test.warehouse_id";
+	        		+ "WHERE warehouse_test.warehouse_id = 1\n";
         } else if ("two".equals(operationType)) {
 	        sql = "SELECT\n"
 	        		+ "    COALESCE(SUM(stock_test.stock * product_test_ksj.p_unicost), 0) AS total_stock\n"
@@ -162,11 +158,7 @@ public class WarehouseBoardTestDAO {
 	        		+ "    stock_test ON warehouse_test.warehouse_id = stock_test.warehouse_id\n"
 	        		+ "LEFT JOIN\n"
 	        		+ "    product_test_ksj ON stock_test.p_id = product_test_ksj.p_id\n"
-	        		+ "WHERE warehouse_test.warehouse_id = 2\n"
-	        		+ "GROUP BY\n"
-	        		+ "    warehouse_test.warehouse_id, warehouse_test.warehouse_name\n"
-	        		+ "ORDER BY\n"
-	        		+ "    warehouse_test.warehouse_id";
+	        		+ "WHERE warehouse_test.warehouse_id = 2\n";
         } else if ("three".equals(operationType)) {
 	        sql = "SELECT\n"
 	        		+ "    COALESCE(SUM(stock_test.stock * product_test_ksj.p_unicost), 0) AS total_stock\n"
@@ -176,11 +168,7 @@ public class WarehouseBoardTestDAO {
 	        		+ "    stock_test ON warehouse_test.warehouse_id = stock_test.warehouse_id\n"
 	        		+ "LEFT JOIN\n"
 	        		+ "    product_test_ksj ON stock_test.p_id = product_test_ksj.p_id\n"
-	        		+ "WHERE warehouse_test.warehouse_id = 3\n"
-	        		+ "GROUP BY\n"
-	        		+ "    warehouse_test.warehouse_id, warehouse_test.warehouse_name\n"
-	        		+ "ORDER BY\n"
-	        		+ "    warehouse_test.warehouse_id";
+	        		+ "WHERE warehouse_test.warehouse_id = 3\n";
         } else {
 	        sql = "SELECT\n"
 	        		+ "    COALESCE(SUM(stock_test.stock * product_test_ksj.p_unicost), 0) AS total_stock\n"
@@ -231,8 +219,6 @@ public class WarehouseBoardTestDAO {
 	            int total_stock = rs.getInt("total_stock");
 
 	            WarehouseBoardTestDTO ts = new WarehouseBoardTestDTO();
-	          //  ts.setWarehouse_id(warehouse_id);
-	           // ts.setWarehouse_name(warehouse_name);
 	            ts.setTotal_stock(total_stock);
 
 	            totalStockList.add(ts);
