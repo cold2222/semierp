@@ -31,6 +31,10 @@
 .input-container input, .input-container select {
 	width: 70px;
 }
+
+.right-align {
+	margin-left: auto;
+}
 </style>
 </head>
 <body>
@@ -39,60 +43,69 @@
 
 	<h1 style="font-size: 30pt;">창고 테이블</h1>
 
-	 <form action="WarehouseBoardTestC" method="get">
+	<form action="WarehouseBoardTestC" method="get">
 		<div class="input-container">
-			<label for="operationType">창고별 :</label> 
-			<select name="operationType" id="operationType">
+			<label for="operationType">창고별 :</label> <select name="operationType"
+				id="operationType">
 				<option value="all">전체</option>
 				<option value="one">1창고</option>
 				<option value="two">2창고</option>
 				<option value="three">3창고</option>
 			</select>
+			<div>검색창 넣을 곳</div>
 			<button type="submit">확인</button>
+			<div class="right-align">
+					재고 값 : 
+				<c:choose>
+    <c:when test="${operationType eq 'all' or operationType eq null}">
+        <c:set var="totalValue" value="0" />
+        <c:forEach var="ts" items="${totalStockList}">
+            <c:set var="totalValue" value="${totalValue + ts.total_stock}" />
+        </c:forEach>
+        ${totalValue}
+    </c:when>
+    <c:otherwise>
+        <c:forEach var="ts" items="${totalStockList}">
+            <c:if test="${ts.warehouse_name eq operationType}">
+                	 ${operationType}: ${ts.total_stock}
+            </c:if>
+        </c:forEach>
+    </c:otherwise>
+</c:choose>
+			</div>
 		</div>
-	</form> 
-
-
+	</form>
 	<div class="input-box input-container">
 
-		<div class="in_name">날짜</div>
 		<div class="in_name">제품 이름</div>
 		<div class="in_name">타입</div>
 		<div class="in_name">p_quantity</div>
 		<div class="in_name">단위</div>
 		<div class="in_name">제조사</div>
-		<div class="in_name">창고</div>
+		<div class="in_name">단가</div>
 		<div class="in_name">재고수량</div>
-		<div class="in_name">비고</div>
+		<div class="in_name">현 재고 값</div>
+		<div class="in_name">창고</div>
+		<div class="in_name">담당자</div>
 	</div>
 	<!-- 1줄씩 나타내줄 것들 -->
-			<!-- 입고 데이터 표시 -->
-			<c:forEach var="wb" items="${warehouseBoard}">
-				<div class="input-box input-container">
-					<div class="in_name">${wb.today_date}</div>
-					<div class="in_name">${wb.p_name}</div>
-					<div class="in_name">${wb.p_type}</div>
-					<div class="in_name">${wb.p_quantity}</div>
-					<div class="in_name">${wb.p_si}</div>
-					<div class="in_name">${wb.manufacture_name}</div>
-					<div class="in_name">${wb.warehouse_name}</div>
-					<div class="in_name">${wb.stock}</div>
-					<div class="in_name"></div>
-				</div>
-			</c:forEach>
-			
-	<div class="input-box input-container">
-		<div class="in_name">결산</div>
-		<div class="in_name"></div>
-		<div class="in_name"></div>
-		<div class="in_name"></div>
-		<div class="in_name"></div>
-		<div class="in_name"></div>
-		<div class="in_name"></div>
-		<div class="in_name"></div>
-		<div class="in_name"></div>
-		
-	</div>		
+	<!-- 입고 데이터 표시 -->
+	<c:forEach var="wb" items="${warehouseBoard}">
+		<div class="input-box input-container">
+			<div class="in_name">${wb.p_name}</div>
+			<div class="in_name">${wb.p_type}</div>
+			<div class="in_name">${wb.p_quantity}</div>
+			<div class="in_name">${wb.p_si}</div>
+			<div class="in_name">${wb.manufacture_name}</div>
+			<div class="in_name">${wb.p_unicost}</div>
+			<div class="in_name">${wb.stock}</div>
+			<div class="in_name">${wb.stock * wb.p_unicost}</div>
+			<div class="in_name">${wb.warehouse_name}</div>
+			<div class="in_name">${wb.e_name}</div>
+		</div>
+	</c:forEach>
+
+	
 	<div>창고 확인 완료</div>
 </body>
 </html>

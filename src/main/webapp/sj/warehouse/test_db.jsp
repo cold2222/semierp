@@ -13,6 +13,7 @@
        <a href="ExWarehouseTestC"><h1>물품 창고 출고 게시판</h1></a> 
        <a href="InExBoardTestC"><h1>물품 입출고 확인 게시판</h1></a> 
        <a href="WarehouseBoardTestC"><h1>창고 확인 게시판</h1></a> 
+       <a href="WarehouseStockBoardTestC"><h1>재고현황 확인</h1></a> 
        		
 
 
