@@ -15,21 +15,21 @@
 		</form>
 	</div>
 	<table border="1" style="width: 83%; height: 800px;">
-		<c:forEach var="ic" items="${ics }">
+		<c:forEach var="c" items="${cs }">
 			<tr>
-				<td>${ic.ic_no }</td>
-				<td>${ic.ic_e_id }</td>
-				<td>${ic.ic_name }</td>
-				<td>${ic.ic_keeper }</td>
-				<td>${ic.ic_phone }</td>
-				<td>${ic.ic_addr }</td>
-				<td>${ic.ic_text }</td>
+				<td>${c.c_no }</td>
+				<td>${c.c_e_id }</td>
+				<td>${c.c_name }</td>
+				<td>${c.c_keeper }</td>
+				<td>${c.c_phone }</td>
+				<td>${c.c_addr }</td>
+				<td>${c.c_text }</td>
 				<td>
-					<button onclick="location.href='UpdateComC?num=${ic.ic_no }'">수정</button>
+					<button onclick="location.href='UpdateComC?num=${c.c_no }'">수정</button>
 				</td>
 				<td>
 					<button
-						onclick="location.href='MakeContractC?num=${ic.ic_no }'">계약서
+						onclick="location.href='MakeContractC?num=${c.c_no }'">계약서
 						작성</button>
 				</td>
 			</tr>

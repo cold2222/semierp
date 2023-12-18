@@ -9,19 +9,20 @@
 </head>
 <body>
 
-		<c:forEach var="s" items="${scs }">
+		<c:forEach var="c" items="${cs }">
 	<table>
 			<tr>
-				<td>${s.supply_num}</td>
-				<td>${s.supply_company}</td>
-				<td>${s.supply_name}</td>
-				<td>${s.supplied_name}</td>
-				<td>${s.supply_addr}</td>
-				<td>${s.purchase_text}</td>
+				<td>${c.c_no}</td>
+				<td>${c.c_e_id}</td>
+				<td>${c.c_name}</td>
+				<td>${c.c_keeper}</td>
+				<td>${c.c_phone}</td>
+				<td>${c.c_addr}</td>
+				<td>${c.c_text}</td>
 			</tr>
 			
 	</table>
-		<button onclick="location.href='MakeContractC?num=${s.supply_num}'">계약서 작성</button>	
+		<button onclick="location.href='MakeContractC?num=${c.c_no}'">계약서 작성</button>	
 		</c:forEach>
 </body>
 

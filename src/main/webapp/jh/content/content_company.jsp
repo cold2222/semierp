@@ -14,14 +14,14 @@
 	</form> 
 	</div>
 	<table border="1" style="width: 83%; height: 800px;">
-		<c:forEach var="c" items="${contents }">
+		<c:forEach var="cti" items="${ctis }">
 			<tr>
-				<td>${c.record_buy_num }</td>
-				<td>${c.recordall_buy_num }</td>
-				<td>${c.p_id }</td>
-				<td>${c.record_count }</td>
-				<td>${c.record_price }</td>
-				<td> <button onclick="location.href='UpdateContentC?num=${c.record_buy_num }'">수정</button> </td>
+				<td>${cti.ci_no }</td>
+				<td>${cti.ci_c_contract_no}</td>
+				<td>${cti.ci_p_id }</td>
+				<td>${cti.ci_count }</td>
+				<td>${cti.ci_unit_price }</td>
+				<td> <button onclick="location.href='UpdateContentC?num=${cti.ci_no }'">수정</button> </td>
 			</tr>
 		</c:forEach>
 	</table>

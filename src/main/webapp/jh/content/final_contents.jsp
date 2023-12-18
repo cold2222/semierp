@@ -8,14 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach var="co" items="${contents }">
+<c:forEach var="cti" items="${ctis }">
 <table>
 		<tr>
-			<td> ${co.record_buy_num } </td>
-			<td> ${co.recordall_buy_num } </td>
-			<td> 품목ID${co.p_id } </td>
-			<td> ${co.record_count }개 구매</td>
-			<td> ${co.record_price }원 구매</td>
+			<td> ${cti.ci_no } </td>
+			<td> ${cti.ci_c_contract_no } </td>
+			<td> 품목ID${cti.ci_p_id } </td>
+			<td> ${cti.ci_count }개 구매</td>
+			<td> ${cti.ci_unit_price }원 구매</td>
 		</tr>
 </table>
 </c:forEach>

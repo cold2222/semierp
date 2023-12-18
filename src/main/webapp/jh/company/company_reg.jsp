@@ -12,12 +12,12 @@
 		<table>
 			<tr>
 				
-				<td><input name="supply_company" placeholder="구매처 회사 이름"></td>
-				<td><input name="supply_name" placeholder="구매 담당자"></td>
-				<td><input name="supplied_name" placeholder="구매업체쪽 담당자">
-				</td>
-				<td><input name="supply_addr" placeholder="연락처"></td>
-				<td><input name="purchase_text" placeholder="비고"></td>
+				<td><input type="number" name="c_e_id" placeholder="사원이이디 담당자"></td>
+				<td><input name="c_name" placeholder="회사 이름"></td>
+				<td><input name="c_keeper" placeholder="업체쪽 담당자"></td>
+				<td><input name="c_phone" placeholder="업체쪽 연락처"></td>
+				<td><input name="c_addr" placeholder="회사 주소"></td>
+				<td><input name="c_text" placeholder="비고"></td>
 				<td><button>등록</button></td>
 			</tr>
 		</table>

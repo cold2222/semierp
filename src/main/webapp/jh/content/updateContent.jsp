@@ -27,13 +27,13 @@ document.addEventListener("DOMContentLoaded", isSuccess);
 </script>
 </head>
 <body>
-<form action="UpdateContentC?num=${c.record_buy_num }" method="post">
+<form action="UpdateContentC?num=${cti.ci_no }" method="post">
 <table>
 		<tr>
-			<td> 계약서 번호<input readonly="readonly" name="recordall_buy_num" value="${c.recordall_buy_num }"></td>
-			<td> 상품 번호<input name="p_id" value="${c.p_id }"> </td>
-			<td> 몇 개 구매할건지<input name="record_count" value="${c.record_count }"></td>
-			<td> 얼마로 구매할건지<input name="record_price" value="${c.record_price }"></td>
+			<td> 계약서 번호<input readonly="readonly" name="ci_c_contract_no" value="${cti.ci_c_contract_no }"></td>
+			<td> 상품 번호<input name="ci_p_id" value="${cti.ci_p_id }"> </td>
+			<td> 몇 개 구매할건지<input name="ci_count" value="${cti.ci_count }"></td>
+			<td> 얼마로 구매할건지<input name="ci_unit_price" value="${cti.ci_unit_price }"></td>
 		</tr>
 </table>
 <button>수정 확인</button>

@@ -10,10 +10,10 @@
 <form action="MakeContentsC" method="post">
 <table>
 		<tr>
-			<td> <input readonly="readonly" name="recordall_buy_num" value="${st.recordall_buy_num }"></td>
-			<td> 품목ID<input name="p_id"> </td>
-			<td> 몇개 구매할건지<input name="record_count"></td>
-			<td> 얼마에 구매할건지<input name="record_price"></td>
+			<td> <input readonly="readonly" name="ci_c_contract_no" value="${ct.c_contract_no }"></td>
+			<td> 품목ID<input name="ci_p_id"> </td>
+			<td> 몇개 구매할건지<input name="ci_count"></td>
+			<td> 얼마에 구매할건지<input name="ci_unit_price"></td>
 		</tr>
 </table>
 <button>계약서 확인</button>
