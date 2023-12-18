@@ -22,7 +22,7 @@
 			<div class="sidebar-index">배송관리</div>
 			<ul>
 				<li onclick="location.href=''">&nbsp;- 납품확인등록</li>
-				<li onclick="location.href=''">&nbsp;- 수령확인등록</li>
+				<li onclick="location.href='DistributionReceiptClearC'">&nbsp;- 수령확인등록</li>
 			</ul>
 			<div class="sidebar-index">유통부 공통 게시판</div>
 			<ul>
@@ -31,7 +31,7 @@
 			</ul>
 			<div class="sidebar-index">운송일정 대시보드</div>
 			<ul>
-				<li onclick="">&nbsp;- 운송일정 달력</li>
+				<li onclick="location.href='DistributionShippingC'">&nbsp;- 운송일정 달력</li>
 			</ul>
 			<div class="sidebar-index">유통부 출근표 등록/관리</div>
 			<ul>

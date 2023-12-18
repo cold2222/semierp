@@ -4,6 +4,7 @@ package com.semi.distribution.receipt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -234,18 +235,103 @@ public class ReceiptDAO {
 		
 	}
 
-	public void Shift(ArrayList<EmployeeDTO> empList, ArrayList<ShiftDTO> restMemberList, HttpServletRequest request) {
+	public void statusLevelUp2(HttpServletRequest request) {
+
+		Connection con= null;
+		PreparedStatement pstmt = null;
 		
-		ArrayList<EmployeeDTO> ShiftList = new ArrayList<EmployeeDTO>();
+		String sql = "update contract set c_status = 2 where c_contract_no = ?";
 		
-		for (EmployeeDTO emp : empList) {
-			for (ShiftDTO restMember : restMemberList) {
-				
-				
-			}
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("c_contract_no"));
+			
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("스테이터스2 성공");
+			} 
+		
+		} catch (Exception e) {
+			System.out.println("스테이터스2 실패");
+			e.printStackTrace();
+		}finally {
+			DBManger.close(con, pstmt, null);
 		}
 	}
 
+	public void insertShipping(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "insert into shipping values(shipping_seq.nextval,?,?,?)";
+		try {
+			request.setCharacterEncoding("utf-8");
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("e_no"));
+			pstmt.setString(2, request.getParameter("c_contract_no"));
+			pstmt.setString(3, request.getParameter("s_memo"));
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("배차등록 성공");
+			}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("배차등록 실패");
+		}finally {
+			DBManger.close(con, pstmt, null);
+		}
+		
+	}
 
+	public void getClearList(HttpServletRequest request) {
+		
+		Connection con= null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT a.c_contract_no, c.e_name, "
+				+ "a.c_created_date, a.c_due_date, a.c_status, d.c_name "
+				+ "FROM contract a "
+				+ "INNER JOIN shipping b ON a.c_contract_no = b.s_contract_no "
+				+ "INNER JOIN employee c ON b.s_e_no = c.e_no "
+				+ "INNER JOIN company d ON a.c_c_no = d.c_no "
+				+ "WHERE a.c_type = 1 "
+				+ "AND a.c_status = 2 "
+				+ "AND a.c_due_date <= SYSDATE "
+				+ "ORDER BY a.c_due_date ";
+		
+		
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			ArrayList<ReceiptDTO> clearList = new ArrayList<ReceiptDTO>();
+			ReceiptDTO rec = null;
+			while (rs.next()) {
+				rec = new ReceiptDTO();
+				rec.setC_contract_no(rs.getString("c_contract_no"));
+				rec.setC_name(rs.getString("c_name"));
+				rec.setE_name(rs.getString("e_name"));
+				rec.setC_created_date(rs.getDate("c_created_date"));;
+				rec.setC_due_date(rs.getDate("c_due_date"));
+				rec.setC_status(rs.getString("c_status"));
+				
+				clearList.add(rec);
+				
+			}
+			System.out.println("clearList 조회 성공");
+			request.setAttribute("clearList", clearList);
+		
+		
+		} catch (Exception e) {
+			System.out.println("clearList 조회 실패");
+			e.printStackTrace();
+		}finally {
+			DBManger.close(con, pstmt, rs);
+		}
+	}
 
 }
