@@ -19,7 +19,7 @@ public class ShiftDAO {
 		ResultSet rs = null;
 		ArrayList<EmployeeDTO> emps = new ArrayList<EmployeeDTO>();
 		
-		String sql = "select * from distribution_employees order by EMPLOYEE_ID";
+		String sql = "select * from employee where e_deptno = 201 order by e_no";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
@@ -28,7 +28,15 @@ public class ShiftDAO {
 			
 			EmployeeDTO emp = null;
 			while(rs.next()) {
-				emp = new EmployeeDTO(rs.getString(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDate(6));
+				emp = new EmployeeDTO();
+				emp.setE_no(rs.getString(1));
+				emp.setE_pw(rs.getString(2));
+				emp.setE_deptno(rs.getString(3));
+				emp.setE_name(rs.getString(4));
+				emp.setE_rank(rs.getString(5));
+				emp.setE_tel(rs.getString(6));
+				emp.setE_email(rs.getString(7));
+				emp.setE_joined_company(rs.getDate(8));
 				emps.add(emp);
 			}
 			return emps;
@@ -75,8 +83,8 @@ public class ShiftDAO {
 		}
 		
 		
-		String sql = "select employee_id, work_num, TO_CHAR(work_date, 'YYYY-MM-DD') as work_date"
-				+ " from distribution_shift where to_char(work_date,'YYYY-MM') = ? order by EMPLOYEE_ID";
+		String sql = "select e_no, work_num, TO_CHAR(work_date, 'YYYY-MM-DD') as work_date"
+				+ " from distribution_shift where to_char(work_date,'YYYY-MM') = ? order by e_no";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
@@ -154,18 +162,18 @@ public class ShiftDAO {
 			for(int j=0; j<arr.length; j++) {
 				arr[j] = "1";
 			}
-			calendarList.put(emp.getE_id(), arr);
+			calendarList.put(emp.getE_no(), arr);
 		}
 		
 		
 		for (int j = 0; j < calendarList.size(); j++) {
 			
 			for(EmployeeDTO emp : emps) {
-				String[] empMapArr = calendarList.get(emp.getE_id());
+				String[] empMapArr = calendarList.get(emp.getE_no());
 					
 				for (ShiftDTO test : workStatus) {
 						
-					if(emp.getE_id().equals(test.getE_id())) {
+					if(emp.getE_no().equals(test.getE_id())) {
 						String[] temp = test.getW_date().split("-");
 							int arrIndex = Integer.parseInt(temp[2])-1;
 							empMapArr[arrIndex] = test.getW_n();

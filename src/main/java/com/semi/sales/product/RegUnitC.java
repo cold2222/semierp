@@ -16,11 +16,12 @@ public class RegUnitC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.regUnit(request);
-		SupplyComDAO.getAllUnit(request);
-		SupplyComDAO.getAllType(request);
-		request.setAttribute("page", "product/unit.jsp");
-		request.getRequestDispatcher("jh/index.jsp").forward(request, response);
+		ProductDAO.getPdao().regUnit(request);
+		ProductDAO.getPdao().getAllUnit(request);
+		ProductDAO.getPdao().getAllType(request);
+		request.setAttribute("contentPage", "jh/product/unit.jsp");
+		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	}
 

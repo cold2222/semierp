@@ -4,62 +4,96 @@ import java.sql.Date;
 
 public class EmployeeDTO {
 	
-	private String e_id;
+	private String e_no;
+	private String e_pw;
+	private String e_deptno;
 	private String e_name;
-	private String e_position;
-	private String e_phone_number;
+	private String e_rank;
+	private String e_tel;
 	private String e_email;
-	private Date e_hire_date;
+	private Date e_joined_company;
 	
 	public EmployeeDTO() {
 		super();
 	}
-	public EmployeeDTO(String e_id, String e_name, String e_position, String e_phone_number, String e_email,
-			Date e_hire_date) {
+
+	public EmployeeDTO(String e_no, String e_pw, String e_deptno, String e_name, String e_rank, String e_tel,
+			String e_email, Date e_joined_company) {
 		super();
-		this.e_id = e_id;
+		this.e_no = e_no;
+		this.e_pw = e_pw;
+		this.e_deptno = e_deptno;
 		this.e_name = e_name;
-		this.e_position = e_position;
-		this.e_phone_number = e_phone_number;
+		this.e_rank = e_rank;
+		this.e_tel = e_tel;
 		this.e_email = e_email;
-		this.e_hire_date = e_hire_date;
+		this.e_joined_company = e_joined_company;
 	}
-	public String getE_id() {
-		return e_id;
+
+	public String getE_no() {
+		return e_no;
 	}
-	public void setE_id(String e_id) {
-		this.e_id = e_id;
+
+	public void setE_no(String e_no) {
+		this.e_no = e_no;
 	}
+
+	public String getE_pw() {
+		return e_pw;
+	}
+
+	public void setE_pw(String e_pw) {
+		this.e_pw = e_pw;
+	}
+
+	public String getE_deptno() {
+		return e_deptno;
+	}
+
+	public void setE_deptno(String e_deptno) {
+		this.e_deptno = e_deptno;
+	}
+
 	public String getE_name() {
 		return e_name;
 	}
+
 	public void setE_name(String e_name) {
 		this.e_name = e_name;
 	}
-	public String getE_position() {
-		return e_position;
+
+	public String getE_rank() {
+		return e_rank;
 	}
-	public void setE_position(String e_position) {
-		this.e_position = e_position;
+
+	public void setE_rank(String e_rank) {
+		this.e_rank = e_rank;
 	}
-	public String getE_phone_number() {
-		return e_phone_number;
+
+	public String getE_tel() {
+		return e_tel;
 	}
-	public void setE_phone_number(String e_phone_number) {
-		this.e_phone_number = e_phone_number;
+
+	public void setE_tel(String e_tel) {
+		this.e_tel = e_tel;
 	}
+
 	public String getE_email() {
 		return e_email;
 	}
+
 	public void setE_email(String e_email) {
 		this.e_email = e_email;
 	}
-	public Date getE_hire_date() {
-		return e_hire_date;
+
+	public Date getE_joined_company() {
+		return e_joined_company;
 	}
-	public void setE_hire_date(Date e_hire_date) {
-		this.e_hire_date = e_hire_date;
+
+	public void setE_joined_company(Date e_joined_company) {
+		this.e_joined_company = e_joined_company;
 	}
+	
 	
 	
 	

@@ -10,12 +10,12 @@ import com.semi.distribution.db.DBManger;
 
 public class ShiftAPIDAO {
 	public static void changeShift(HttpServletRequest request) {
-		String e_id = request.getParameter("e_id");
+		String e_no = request.getParameter("e_no");
 		String e_date = request.getParameter("e_date");
 		String e_status = request.getParameter("e_status");
 
 		System.out.println("ajax");
-		System.out.println(e_id);
+		System.out.println(e_no);
 		System.out.println(e_date);
 		System.out.println(e_status);
 
@@ -23,12 +23,12 @@ public class ShiftAPIDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Boolean insertOrUpdate = null;
-		String sql = "select * from distribution_shift where employee_id = ? and work_date = ?";
+		String sql = "select * from distribution_shift where e_no = ? and work_date = ?";
 
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, e_id);
+			pstmt.setString(1, e_no);
 			pstmt.setString(2, e_date);
 			rs = pstmt.executeQuery();
 			System.out.println("ajax조회성공");
@@ -45,12 +45,12 @@ public class ShiftAPIDAO {
 		pstmt = null;
 
 		if (insertOrUpdate) {
-			sql = "update distribution_shift set work_num = ? where employee_id = ? and work_date = ?";
+			sql = "update distribution_shift set work_num = ? where e_no = ? and work_date = ?";
 			try {
 				con = DBManger.connect();
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, e_status);
-				pstmt.setString(2, e_id);
+				pstmt.setString(2, e_no);
 				pstmt.setString(3, e_date);
 
 				if (pstmt.executeUpdate() == 1) {
@@ -69,7 +69,7 @@ public class ShiftAPIDAO {
 			try {
 				con = DBManger.connect();
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, e_id);
+				pstmt.setString(1, e_no);
 				pstmt.setString(2, e_status);
 				pstmt.setString(3, e_date);
 

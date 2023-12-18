@@ -6,13 +6,19 @@
 .sidebar-1{
 	margin-top: 35px;
 	margin-left: 35px;
+	margin-right: 35px;
 }
 .sidebar-index{
+	background-color: #ffc436;
+	border-radius: 5px;
+	padding-left: 15px;
+	color: #191d88;
 	font-size : 18px;
-	font-weight : 800;
+	font-weight : 900;
 }
 .sidebar ul{
 	margin-bottom: 20px;
+	padding: 5px;
 	list-style-type: none;
 }
 .sidebar li{

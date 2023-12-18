@@ -1,0 +1,44 @@
+@charset "UTF-8";
+body{
+    margin: 0;
+    padding: 0;
+}
+.loginTop{
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid black;
+}
+
+.topArea{
+    margin-top: 100px;
+    width: 95vw;
+    margin-left: auto;
+    margin-right:auto;
+    border: 1px solid black;
+    display: flex;
+}
+.topArea-img > img {
+    width: 1120px;
+    height: 630px;
+}
+.topArea-login{
+    border: 1px solid black;
+    margin-left:50px;
+}
+.topArea-login > img{
+    margin-top: 250px;
+    width: 300px;
+    height: 100px;
+}
+.loginForm{
+    font-size: 20pt;
+}
+.inputText{
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    border: 1px solid black;
+}
+.loginBtn{
+
+}
