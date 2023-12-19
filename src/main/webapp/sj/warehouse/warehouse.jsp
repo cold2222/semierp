@@ -55,10 +55,10 @@
 
 				<h1 style="font-size: 30pt;">입고 테이블 </h1>
 		
-		<form action="TestwarehouseC" method="get">
+		<form action="TestwarehouseC" method="post">
 			<div class="input-container">
 			 검색 : <select id="searchOption" name="searchOption">
-				<option value="x">검색조건선택</option>
+				<option value="x">전체</option>
 				<option value="p_name">제품명</option>
 				<option value="p_type">타입</option>
 			</select> <input type="text" name="word" class="searchInput"

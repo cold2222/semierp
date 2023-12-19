@@ -25,16 +25,24 @@ public class TestwarehouseC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
+		if (request.getParameter("selectedIds") != null) {
+			TestwarehouseDAO.getTwdao().regInWareTest(request);
+			TestwarehouseDAO.getTwdao().updateInWareTest(request);
+			// 계산테이블에 등록
+			TestwarehouseDAO.getTwdao().regStockTest(request);
+			// 계산테이블에 + 
+			TestwarehouseDAO.getTwdao().upStockTest(request);
+			
+			//계산 테이블 보여주기
+			TestwarehouseDAO.getTwdao().getInWareTest(request);
+			
+		} else {
+			TestwarehouseDAO.getTwdao().getInWareTest(request);
+			
+		}
 		
-		
-		TestwarehouseDAO.getTwdao().regInWareTest(request);
-		TestwarehouseDAO.getTwdao().updateInWareTest(request);
-		// 계산테이블에 등록
-		TestwarehouseDAO.getTwdao().regStockTest(request);
-		// 계산테이블에 + 
-		TestwarehouseDAO.getTwdao().upStockTest(request);
-		TestwarehouseDAO.getTwdao().getInWareTest(request);
 		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
 	}
 

@@ -59,7 +59,7 @@
 	<form action="ExWarehouseTestC" method="post">
 		<div class="input-container">
 	 검색 : <select id="searchOption" name="searchOption">
-				<option value="x">검색조건선택</option>
+				<option value="x">전체</option>
 				<option value="p_name">제품명</option>
 				<option value="p_type">타입</option>
 			</select> <input type="text" name="word" class="searchInput"

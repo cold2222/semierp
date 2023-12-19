@@ -259,11 +259,12 @@ public class ExWarehouseTestDAO {
 		
         
         HashMap<String,String> search = new HashMap<String, String>();
-        search.put("searchOption", searchOption);
+        if (searchOption != null) {
+        	search.put("searchOption", searchOption);
+		}
         if(searchWord != null) {
         	search.put("searchWord", searchWord);	        	
         }
-
 		
 		
 		PreparedStatement pstmt = null;
@@ -282,11 +283,10 @@ public class ExWarehouseTestDAO {
 				+ "JOIN\n"
 				+ "    product_test ON ex_warehouse.p_id = product_test.p_id\n"
 				+ "JOIN\n"
-				+ "    warehouse_test ON ex_warehouse.warehouse_id = warehouse_test.warehouse_id";
-				if(!search.get("searchOption").equals("x") && search.get("searchWord") != null) {
-					sql += "where product_test."+search.get("searchOption")+" like '%"+ search.get("searchWord")+"%' ";
-				}
-
+				+ "    warehouse_test ON ex_warehouse.warehouse_id = warehouse_test.warehouse_id \n";
+				if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
+			        sql += "where product_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
+			    }
 		
 		try {
 

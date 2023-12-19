@@ -251,6 +251,21 @@ public class TestwarehouseDAO {
 
 
 	public void getInWareTest(HttpServletRequest request) {
+		
+		String searchOption = request.getParameter("searchOption");
+        String searchWord = request.getParameter("word");
+		
+        
+        HashMap<String,String> search = new HashMap<String, String>();
+        
+        if (searchOption != null) {
+        	search.put("searchOption", searchOption);
+		}
+        if(searchWord != null) {
+        	search.put("searchWord", searchWord);	        	
+        }
+		
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -268,9 +283,14 @@ public class TestwarehouseDAO {
 				+ "JOIN\n"
 				+ "    product_test ON in_warehouse.p_id = product_test.p_id\n"
 				+ "JOIN\n"
-				+ "    warehouse_test ON in_warehouse.warehouse_id = warehouse_test.warehouse_id";
-
-		
+				+ "    warehouse_test ON in_warehouse.warehouse_id = warehouse_test.warehouse_id \n";
+			if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
+				sql += "where product_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
+			}
+				
+			System.out.println(searchWord);
+			
+			
 		try {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
