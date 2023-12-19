@@ -16,25 +16,25 @@ public class WarehouseBoardTestDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT\n"
-				+ "    product_test_ksj.p_id,\n"
-				+ "    product_test_ksj.p_name,\n"
-				+ "    product_test_ksj.p_quantity,\n"
-				+ "    product_test_ksj.p_si,\n"
-				+ "    product_test_ksj.p_type,\n"
-				+ "    product_test_ksj.p_unicost,\n"
+				+ "    product_test.p_id,\n"
+				+ "    product_test.p_name,\n"
+				+ "    product_test.p_quantity,\n"
+				+ "    product_test.p_si,\n"
+				+ "    product_test.p_type,\n"
+				+ "    product_test.p_unicost,\n"
 				+ "    warehouse_test.warehouse_name,\n"
 				+ "    manufacture_test.manufacture_name,\n"
 				+ "    stock_test.stock,\n"
 				+ "    sysdate AS today_date,\n"
 				+ "    employee.e_name\n"
 				+ "FROM\n"
-				+ "    product_test_ksj\n"
+				+ "    product_test\n"
 				+ "JOIN\n"
-				+ "    stock_test ON product_test_ksj.p_id = stock_test.p_id\n"
+				+ "    stock_test ON product_test.p_id = stock_test.p_id\n"
 				+ "JOIN\n"
 				+ "    warehouse_test ON stock_test.warehouse_id = warehouse_test.warehouse_id\n"
 				+ "JOIN\n"
-				+ "    manufacture_test ON product_test_ksj.p_manufacturer = manufacture_test.p_manufacturer\n"
+				+ "    manufacture_test ON product_test.p_manufacturer = manufacture_test.p_manufacturer\n"
 				+ "JOIN\n"
 				+ "    employee ON warehouse_test.e_employee_id = employee.e_employee_id\n";
 		
@@ -42,26 +42,26 @@ public class WarehouseBoardTestDAO {
 		if ("one".equals(operationType)) {
             sql += " WHERE warehouse_test.warehouse_id = 1 "
             		+ "ORDER BY\n"
-            		+ "    product_test_ksj.p_type ASC,\n"
-            		+ "    product_test_ksj.p_name ASC,\n"
-            		+ "    product_test_ksj.p_quantity ASC";
+            		+ "    product_test.p_type ASC,\n"
+            		+ "    product_test.p_name ASC,\n"
+            		+ "    product_test.p_quantity ASC";
         } else if ("two".equals(operationType)) {
             sql += " WHERE warehouse_test.warehouse_id = 2"
             		+ "ORDER BY\n"
-            		+ "    product_test_ksj.p_type ASC,\n"
-            		+ "    product_test_ksj.p_name ASC,\n"
-            		+ "    product_test_ksj.p_quantity ASC";
+            		+ "    product_test.p_type ASC,\n"
+            		+ "    product_test.p_name ASC,\n"
+            		+ "    product_test.p_quantity ASC";
         } else if ("three".equals(operationType)) {
             sql += " WHERE warehouse_test.warehouse_id = 3"
             		+ "ORDER BY\n"
-            		+ "    product_test_ksj.p_type ASC,\n"
-                                   		+ "    product_test_ksj.p_name ASC,\n"
-            		+ "    product_test_ksj.p_quantity ASC";
+            		+ "    product_test.p_type ASC,\n"
+                    + "    product_test.p_name ASC,\n"
+            		+ "    product_test.p_quantity ASC";
         } else {
 			sql += "ORDER BY\n"
-					+ "    product_test_ksj.p_type ASC,\n"
-					+ "    product_test_ksj.p_name ASC,\n"
-					+ "    product_test_ksj.p_quantity ASC";
+					+ "    product_test.p_type ASC,\n"
+					+ "    product_test.p_name ASC,\n"
+					+ "    product_test.p_quantity ASC";
 		}
 		
 		try {
@@ -141,43 +141,43 @@ public class WarehouseBoardTestDAO {
 	    
 	    if ("one".equals(operationType)) {
 	        sql = "SELECT\n"
-	        		+ "    COALESCE(SUM(stock_test.stock * product_test_ksj.p_unicost), 0) AS total_stock\n"
+	        		+ "    COALESCE(SUM(stock_test.stock * product_test.p_unicost), 0) AS total_stock\n"
 	        		+ "FROM\n"
 	        		+ "    warehouse_test\n"
 	        		+ "LEFT JOIN\n"
 	        		+ "    stock_test ON warehouse_test.warehouse_id = stock_test.warehouse_id\n"
 	        		+ "LEFT JOIN\n"
-	        		+ "    product_test_ksj ON stock_test.p_id = product_test_ksj.p_id\n"
+	        		+ "    product_test ON stock_test.p_id = product_test.p_id\n"
 	        		+ "WHERE warehouse_test.warehouse_id = 1\n";
         } else if ("two".equals(operationType)) {
 	        sql = "SELECT\n"
-	        		+ "    COALESCE(SUM(stock_test.stock * product_test_ksj.p_unicost), 0) AS total_stock\n"
+	        		+ "    COALESCE(SUM(stock_test.stock * product_test.p_unicost), 0) AS total_stock\n"
 	        		+ "FROM\n"
 	        		+ "    warehouse_test\n"
 	        		+ "LEFT JOIN\n"
 	        		+ "    stock_test ON warehouse_test.warehouse_id = stock_test.warehouse_id\n"
 	        		+ "LEFT JOIN\n"
-	        		+ "    product_test_ksj ON stock_test.p_id = product_test_ksj.p_id\n"
+	        		+ "    product_test ON stock_test.p_id = product_test.p_id\n"
 	        		+ "WHERE warehouse_test.warehouse_id = 2\n";
         } else if ("three".equals(operationType)) {
 	        sql = "SELECT\n"
-	        		+ "    COALESCE(SUM(stock_test.stock * product_test_ksj.p_unicost), 0) AS total_stock\n"
+	        		+ "    COALESCE(SUM(stock_test.stock * product_test.p_unicost), 0) AS total_stock\n"
 	        		+ "FROM\n"
 	        		+ "    warehouse_test\n"
 	        		+ "LEFT JOIN\n"
 	        		+ "    stock_test ON warehouse_test.warehouse_id = stock_test.warehouse_id\n"
 	        		+ "LEFT JOIN\n"
-	        		+ "    product_test_ksj ON stock_test.p_id = product_test_ksj.p_id\n"
+	        		+ "    product_test ON stock_test.p_id = product_test.p_id\n"
 	        		+ "WHERE warehouse_test.warehouse_id = 3\n";
         } else {
 	        sql = "SELECT\n"
-	        		+ "    COALESCE(SUM(stock_test.stock * product_test_ksj.p_unicost), 0) AS total_stock\n"
+	        		+ "    COALESCE(SUM(stock_test.stock * product_test.p_unicost), 0) AS total_stock\n"
 	        		+ "FROM\n"
 	        		+ "    warehouse_test\n"
 	        		+ "LEFT JOIN\n"
 	        		+ "    stock_test ON warehouse_test.warehouse_id = stock_test.warehouse_id\n"
 	        		+ "LEFT JOIN\n"
-	        		+ "    product_test_ksj ON stock_test.p_id = product_test_ksj.p_id";
+	        		+ "    product_test ON stock_test.p_id = product_test.p_id";
 		}
 
 	    

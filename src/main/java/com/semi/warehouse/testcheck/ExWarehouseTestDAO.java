@@ -14,7 +14,7 @@ public class ExWarehouseTestDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT \n"
+		String sql = "SELECT\n"
 				+ "    product_test.p_id,\n"
 				+ "    product_test.p_name,\n"
 				+ "    product_test.p_type,\n"
@@ -23,15 +23,15 @@ public class ExWarehouseTestDAO {
 				+ "    contract_items.ci_count,\n"
 				+ "    contract.c_completed_date,\n"
 				+ "    contract.c_status\n"
-				+ "FROM \n"
-				+ "    product_test, \n"
-				+ "    contract_items, \n"
-				+ "    contract \n"
-				+ "WHERE \n"
-				+ "    product_test.p_id = contract_items.p_id\n"
-				+ "    AND contract_items.recordall_sell_num = sales_contract_ksj.recordall_sell_num\n"
-				+ "    AND contract.c_status = 2"
-				+ "		AND contract.c_type = 2";
+				+ "FROM\n"
+				+ "    product_test,\n"
+				+ "    contract_items,\n"
+				+ "    contract\n"
+				+ "WHERE\n"
+				+ "    product_test.p_id = contract_items.ci_p_id\n"
+				+ "    AND contract_items.ci_c_contract_no = contract.c_contract_no\n"
+				+ "    AND contract.c_status = 2\n"
+				+ "    and contract.c_type=2";
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

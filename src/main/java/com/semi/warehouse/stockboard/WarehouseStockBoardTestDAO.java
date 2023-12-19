@@ -16,26 +16,26 @@ public class WarehouseStockBoardTestDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT\n"
-				+ "    product_test_ksj.p_id,\n"
-				+ "    product_test_ksj.p_name,\n"
-				+ "    product_test_ksj.p_quantity,\n"
-				+ "    product_test_ksj.p_si,\n"
-				+ "    product_test_ksj.p_type,\n"
-				+ "    product_test_ksj.p_unicost,\n"
+				+ "    product_test.p_id,\n"
+				+ "    product_test.p_name,\n"
+				+ "    product_test.p_quantity,\n"
+				+ "    product_test.p_si,\n"
+				+ "    product_test.p_type,\n"
+				+ "    product_test.p_unicost,\n"
 				+ "    manufacture_test.manufacture_name,\n"
 				+ "    stock_test.stock\n"
 				+ "FROM\n"
-				+ "    product_test_ksj\n"
+				+ "    product_test\n"
 				+ "JOIN\n"
-				+ "    stock_test ON product_test_ksj.p_id = stock_test.p_id\n"
+				+ "    stock_test ON product_test.p_id = stock_test.p_id\n"
 				+ "JOIN\n"
 				+ "    warehouse_test ON stock_test.warehouse_id = warehouse_test.warehouse_id\n"
 				+ "JOIN\n"
-				+ "    manufacture_test ON product_test_ksj.p_manufacturer = manufacture_test.p_manufacturer\n"
+				+ "    manufacture_test ON product_test.p_manufacturer = manufacture_test.p_manufacturer\n"
 				+ "ORDER BY\n"
-				+ "    product_test_ksj.p_type ASC,\n"
-				+ "    product_test_ksj.p_name ASC,\n"
-				+ "    product_test_ksj.p_quantity ASC";
+				+ "    product_test.p_type ASC,\n"
+				+ "    product_test.p_name ASC,\n"
+				+ "    product_test.p_quantity ASC";
 		
 		
 		try {

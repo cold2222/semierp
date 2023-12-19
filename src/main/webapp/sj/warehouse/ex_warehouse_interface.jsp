@@ -130,13 +130,13 @@
 					<input name="p_si" value="${t.p_si}" readonly="readonly">
 				</div>
 				<div>
-					<input name="record_sales_count" value="${t.record_sales_count}"
-						readonly="readonly" data-record-sales-count="${t.record_sales_count}">
+					<input name="record_sales_count" value="${t.ci_count}"
+						readonly="readonly" data-record-sales-count="${t.ci_count}">
 				</div>
 				<div>
-					<input name="sell_date" value="${t.sell_date}"
+					<input name="sell_date" value="${t.c_completed_date}"
 						readonly="readonly"
-						data-sell-date="${t.sell_date}">
+						data-sell-date="${t.c_completed_date}">
 				</div>
 				<div>
 				<!-- warehouse_id 뒤에 t.p_id 를 툼으로써 창고번호 가져갈 수 있게함  -->
@@ -148,8 +148,8 @@
 				</div>
 				<div>
 					<input type="checkbox" name="selectedItems" value="${t.p_id}"
-						 data-record-sales-count="${t.record_sales_count}"
-						data-sell-date="${t.sell_date}">
+						 data-record-sales-count="${t.ci_count}"
+						data-sell-date="${t.c_completed_date}">
 				</div>
 			</div>
 		</c:forEach>

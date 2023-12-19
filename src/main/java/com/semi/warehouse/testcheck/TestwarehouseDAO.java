@@ -292,7 +292,7 @@ public class TestwarehouseDAO {
 	    		+ "        p_id,\n"
 	    		+ "        warehouse_id\n"
 	    		+ "    FROM\n"
-	    		+ "        in_warehouse_test\n"
+	    		+ "        in_warehouse\n"
 	    		+ "    WHERE\n"
 	    		+ "        p_id = ? AND warehouse_id = ?\n"
 	    		+ ") src ON (st.p_id = src.p_id AND st.warehouse_id = src.warehouse_id)\n"
