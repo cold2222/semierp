@@ -13,11 +13,8 @@ public class ExWarehouseTestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		ExWarehouseTestDAO.getExAllTest(request);
-		
-		
-		
-		
+		ExWarehouseTestDAO.getEwdao().getExAllTest(request);
+
 		request.getRequestDispatcher("sj/warehouse/ex_warehouse_interface.jsp").forward(request, response);
 	
 		
@@ -27,10 +24,10 @@ public class ExWarehouseTestC extends HttpServlet {
 		
 		
 		
-		ExWarehouseTestDAO.regExWareTest(request);
-		ExWarehouseTestDAO.updateExWareTest(request);
-		ExWarehouseTestDAO.upStockMTest(request);
-		ExWarehouseTestDAO.getExWareTest(request);
+		ExWarehouseTestDAO.getEwdao().regExWareTest(request);
+		ExWarehouseTestDAO.getEwdao().updateExWareTest(request);
+		ExWarehouseTestDAO.getEwdao().upStockMTest(request);
+		ExWarehouseTestDAO.getEwdao().getExWareTest(request);
 		request.getRequestDispatcher("sj/warehouse/ex_warehouse.jsp").forward(request, response);
 	}
 

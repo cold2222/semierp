@@ -9,7 +9,41 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ExWarehouseTestDAO {
 
-	public static void getExAllTest(HttpServletRequest request) {
+	private ArrayList<ExWarehouseDTO> exWarehouse;
+	
+	private static final ExWarehouseTestDAO EWDAO = new ExWarehouseTestDAO();
+	
+	private ExWarehouseTestDAO() {}
+	
+	 public static ExWarehouseTestDAO getEwdao() {
+	        return EWDAO;
+	    }
+	 
+	 // DTO에 맞춰서 바꿔야하기 때문에 하나 더 만들어야함 
+	 public void paging(int pageNum, HttpServletRequest request) {
+			int pageSize = 10; // 한 페이지당 보여줄 개수
+			int totalData = exWarehouse.size();
+			int totalPage = (int)Math.ceil((double)totalData / pageSize);
+			
+			int startDataNum = totalData - (pageSize * (pageNum - 1));
+			int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
+			
+			ArrayList<ExWarehouseDTO> items = new ArrayList<ExWarehouseDTO>();
+			if(exWarehouse.size() > 0) {
+				for (int i = startDataNum-1; i > endDataNum; i--) {
+					items.add(exWarehouse.get(i));
+				}
+			}
+			request.setAttribute("exWarehouse", items);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("totalPage", totalPage);
+			
+		}
+	
+	
+	
+	
+	public void getExAllTest(HttpServletRequest request) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -86,7 +120,7 @@ public class ExWarehouseTestDAO {
 
 	}
 
-	public static void updateExWareTest(HttpServletRequest request) {
+	public void updateExWareTest(HttpServletRequest request) {
 	//status를 3에서 4로 업테이트 해주는 구문
 		
 	    String selectedIdsString = request.getParameter("selectedIds");
@@ -140,7 +174,7 @@ public class ExWarehouseTestDAO {
 	
 	
 	
-	public static void regExWareTest(HttpServletRequest request) {
+	public void regExWareTest(HttpServletRequest request) {
 			// 출고 테이블에 insert into 할 수 있게해주는 곳 
 			String selectedIdsString = request.getParameter("selectedIds");
 	        String selectedRecordSalesCountsString = request.getParameter("selectedRecordSalesCounts");
@@ -200,7 +234,7 @@ public class ExWarehouseTestDAO {
 	}
 
 
-	public static void getExWareTest(HttpServletRequest request) {
+	public void getExWareTest(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -228,7 +262,7 @@ public class ExWarehouseTestDAO {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			ArrayList<ExWarehouseDTO> exWarehouse = new ArrayList<ExWarehouseDTO>();
+			exWarehouse = new ArrayList<ExWarehouseDTO>();
 			ExWarehouseDTO ex = null;
 			
 			
@@ -275,7 +309,7 @@ public class ExWarehouseTestDAO {
 		
 	}
 
-	public static void upStockMTest(HttpServletRequest request) {
+	public void upStockMTest(HttpServletRequest request) {
 		
 		String selectedIdsString = request.getParameter("selectedIds");
 		
