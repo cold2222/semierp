@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UpdateContC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getSdao().getCont(request);
+//		SupplyComDAO.getSdao().getCont(request);
 		request.setAttribute("contentPage", "jh/contract/updateCont.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

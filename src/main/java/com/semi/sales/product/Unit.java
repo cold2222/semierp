@@ -1,4 +1,4 @@
-package com.semi.sales.supply;
+package com.semi.sales.product;
 
 public class Unit {
 	private String unit;

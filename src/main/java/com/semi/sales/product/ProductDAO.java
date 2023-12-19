@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.semi.sales.bbs.DBManager;
-import com.semi.sales.supply.Type;
-import com.semi.sales.supply.Unit;
 
 public class ProductDAO {
 	private ArrayList<Product> ps;
