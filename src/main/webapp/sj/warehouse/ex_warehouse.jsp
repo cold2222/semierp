@@ -33,13 +33,42 @@
 	width: 69px; /* Adjust the width as needed */
 }
 </style>
+
+
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		document.getElementById('searchOption').addEventListener(
+				'change',
+				function() {
+					var input = document.querySelector('.searchInput');
+					input.style.display = this.value === 'x' ? 'none'
+							: 'inline-block';
+				});
+
+	});
+</script>
+
 </head>
 <body>
 
 
+
+
 				<h1 style="font-size: 30pt;">출고 테이블 </h1>
-		<div class="input-box input-container">
+	<form action="ExWarehouseTestC" method="post">
+		<div class="input-container">
+	 검색 : <select id="searchOption" name="searchOption">
+				<option value="x">검색조건선택</option>
+				<option value="p_name">제품명</option>
+				<option value="p_type">타입</option>
+			</select> <input type="text" name="word" class="searchInput"
+				style="display: none;">
+			<button type="submit">확인</button>
+		</div>
+	</form>
 		
+		<div class="input-box input-container">
 			<div class="in_name">구분</div>
 			<div class="in_name">제품 이름</div>
 			<div class="in_name">타입</div>

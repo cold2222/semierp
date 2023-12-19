@@ -13,10 +13,10 @@ public class TestWC extends HttpServlet {
 		request.getRequestDispatcher("sj/warehouse/test_db.jsp").forward(request, response);
 				
 	}
-	
-
-	
-	
+		
+		
+		
+		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 

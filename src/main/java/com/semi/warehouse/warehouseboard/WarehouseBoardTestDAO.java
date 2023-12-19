@@ -4,13 +4,59 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.semi.warehouse.testcheck.InExWarehouseDAO;
+import com.semi.warehouse.testcheck.allInExDTO;
 
 
 public class WarehouseBoardTestDAO {
 
-	public static void getWBTest(HttpServletRequest request, String operationType) {
+		private ArrayList<WarehouseBoardTestDTO> warehouseBoard;
+		
+		private static final WarehouseBoardTestDAO WBTDAO = new WarehouseBoardTestDAO();
+		
+		private WarehouseBoardTestDAO() {}
+		
+		 public static WarehouseBoardTestDAO getWbtdao() {
+		        return WBTDAO;
+		    }
+		 public void paging(int pageNum, HttpServletRequest request) {
+				int pageSize = 10; // 한 페이지당 보여줄 개수
+				int totalData = warehouseBoard.size();
+				int totalPage = (int)Math.ceil((double)totalData / pageSize);
+				
+				int startDataNum = totalData - (pageSize * (pageNum - 1));
+				int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
+				
+				ArrayList<WarehouseBoardTestDTO> items = new ArrayList<WarehouseBoardTestDTO>();
+				if(warehouseBoard.size() > 0) {
+					for (int i = startDataNum-1; i > endDataNum; i--) {
+						items.add(warehouseBoard.get(i));
+					}
+				}
+				request.setAttribute("warehouseBoard", items);
+				request.setAttribute("pageNum", pageNum);
+				request.setAttribute("totalPage", totalPage);
+				
+			}
+	
+	public void getWBTest(HttpServletRequest request, String operationType) {
+		String searchOption = request.getParameter("searchOption");
+        String searchWord = request.getParameter("word");
+
+        HashMap<String,String> search = new HashMap<String, String>();
+        if (searchOption != null) {
+        	search.put("searchOption", searchOption);
+		}
+        if(searchWord != null) {
+        	search.put("searchWord", searchWord);	        	
+        }
+//        HashMap<String, String> search = new HashMap<>();
+//        search.put("searchOption", (searchOption != null) ? searchOption : "x");
+//        search.put("searchWord", (searchWord != null) ? searchWord : "");
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -36,23 +82,29 @@ public class WarehouseBoardTestDAO {
 				+ "JOIN\n"
 				+ "    manufacture_test ON product_test.p_manufacturer = manufacture_test.p_manufacturer\n"
 				+ "JOIN\n"
-				+ "    employee ON warehouse_test.e_employee_id = employee.e_employee_id\n";
-		
+				+ "    employee ON warehouse_test.e_employee_id = employee.e_employee_id\n";	
+		 if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
+			    if ("manufacture_name".equals(search.get("searchOption"))) {
+			        sql += "WHERE manufacture_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
+			    } else {
+			        sql += "WHERE product_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
+			    }
+			}
 			
 		if ("one".equals(operationType)) {
-            sql += " WHERE warehouse_test.warehouse_id = 1 "
+            sql += " and warehouse_test.warehouse_id = 1 "
             		+ "ORDER BY\n"
             		+ "    product_test.p_type ASC,\n"
             		+ "    product_test.p_name ASC,\n"
             		+ "    product_test.p_quantity ASC";
         } else if ("two".equals(operationType)) {
-            sql += " WHERE warehouse_test.warehouse_id = 2"
+            sql += " and warehouse_test.warehouse_id = 2"
             		+ "ORDER BY\n"
             		+ "    product_test.p_type ASC,\n"
             		+ "    product_test.p_name ASC,\n"
             		+ "    product_test.p_quantity ASC";
         } else if ("three".equals(operationType)) {
-            sql += " WHERE warehouse_test.warehouse_id = 3"
+            sql += " and warehouse_test.warehouse_id = 3"
             		+ "ORDER BY\n"
             		+ "    product_test.p_type ASC,\n"
                     + "    product_test.p_name ASC,\n"
@@ -71,7 +123,7 @@ public class WarehouseBoardTestDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			ArrayList<WarehouseBoardTestDTO> warehouseBoard = new ArrayList<WarehouseBoardTestDTO>();
+			warehouseBoard = new ArrayList<WarehouseBoardTestDTO>();
 			WarehouseBoardTestDTO wb = null;
 
 			while (rs.next()) {
@@ -132,7 +184,7 @@ public class WarehouseBoardTestDAO {
 		
 	}
 
-	public static void calcStock(HttpServletRequest request, String operationType) {
+	public void calcStock(HttpServletRequest request, String operationType) {
 		Connection con = null;
 	    PreparedStatement pstmt = null;
 	    ResultSet rs = null;

@@ -13,7 +13,7 @@ public class TestwarehouseC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		TestwarehouseDAO.getAllTest(request);
+		TestwarehouseDAO.getTwdao().getAllTest(request);
 		
 		
 		
@@ -28,13 +28,13 @@ public class TestwarehouseC extends HttpServlet {
 		
 		
 		
-		TestwarehouseDAO.regInWareTest(request);
-		TestwarehouseDAO.updateInWareTest(request);
+		TestwarehouseDAO.getTwdao().regInWareTest(request);
+		TestwarehouseDAO.getTwdao().updateInWareTest(request);
 		// 계산테이블에 등록
-		TestwarehouseDAO.regStockTest(request);
+		TestwarehouseDAO.getTwdao().regStockTest(request);
 		// 계산테이블에 + 
-		TestwarehouseDAO.upStockTest(request);
-		TestwarehouseDAO.getInWareTest(request);
+		TestwarehouseDAO.getTwdao().upStockTest(request);
+		TestwarehouseDAO.getTwdao().getInWareTest(request);
 		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
 	}
 

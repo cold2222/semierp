@@ -14,7 +14,7 @@ public class ExWarehouseTestC extends HttpServlet {
 		
 		
 		ExWarehouseTestDAO.getEwdao().getExAllTest(request);
-
+		
 		request.getRequestDispatcher("sj/warehouse/ex_warehouse_interface.jsp").forward(request, response);
 	
 		

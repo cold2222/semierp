@@ -36,6 +36,21 @@
 	margin-left: auto;
 }
 </style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		document.getElementById('searchOption').addEventListener(
+				'change',
+				function() {
+					var input = document.querySelector('.searchInput');
+					input.style.display = this.value === 'x' ? 'none'
+							: 'inline-block';
+				});
+
+	});
+</script>
+
+
 </head>
 <body>
 
@@ -52,7 +67,13 @@
 				<option value="two">2창고</option>
 				<option value="three">3창고</option>
 			</select>
-			<div>검색창 넣을 곳</div>
+			검색 : <select id="searchOption" name="searchOption">
+				<option value="x">검색조건선택</option>
+				<option value="p_name">제품명</option>
+				<option value="p_type">타입</option>
+				<option value="manufacture_name">제조사</option>
+			</select> <input type="text" name="word" class="searchInput"
+				style="display: none;">
 			<button type="submit">확인</button>
 			<div class="right-align">
 					재고 값 : 

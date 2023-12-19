@@ -91,11 +91,35 @@
 	}
 	
 </script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		document.getElementById('searchOption').addEventListener(
+				'change',
+				function() {
+					var input = document.querySelector('.searchInput');
+					input.style.display = this.value === 'x' ? 'none'
+							: 'inline-block';
+				});
 
+	});
+</script>
 
 
 </head>
 <body>
+<h1 style="font-size: 30pt;">출고 등록 컨펌 페이지 </h1>
+	<form action="ExWarehouseTestC" method="get">
+		<div class="input-container">
+	 검색 : <select id="searchOption" name="searchOption">
+				<option value="x">검색조건선택</option>
+				<option value="p_name">제품명</option>
+				<option value="p_type">타입</option>
+			</select> <input type="text" name="word" class="searchInput"
+				style="display: none;">
+			<button type="submit">확인</button>
+		</div>
+	</form>
+
 
 	<form action="ExWarehouseTestC" method="post"
 		onsubmit="return submitForm()" id="warehouseForm">

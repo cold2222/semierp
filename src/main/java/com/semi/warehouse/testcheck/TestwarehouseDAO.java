@@ -4,13 +4,63 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class TestwarehouseDAO {
 
-	public static void getAllTest(HttpServletRequest request) {
-
+	private ArrayList<TestwarehouseDTO> testWarehouse;
+	
+	private static final TestwarehouseDAO TWDAO = new TestwarehouseDAO();
+	
+	private TestwarehouseDAO() {}
+	
+	 public static TestwarehouseDAO getTwdao() {
+	        return TWDAO;
+	    }
+	
+	 public void paging(int pageNum, HttpServletRequest request) {
+			int pageSize = 10; // 한 페이지당 보여줄 개수
+			int totalData = testWarehouse.size();
+			int totalPage = (int)Math.ceil((double)totalData / pageSize);
+			
+			int startDataNum = totalData - (pageSize * (pageNum - 1));
+			int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
+			
+			ArrayList<TestwarehouseDTO> items = new ArrayList<TestwarehouseDTO>();
+			if(testWarehouse.size() > 0) {
+				for (int i = startDataNum-1; i > endDataNum; i--) {
+					items.add(testWarehouse.get(i));
+				}
+			}
+			request.setAttribute("testWarehouse", items);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("totalPage", totalPage);
+			
+		}
+	 
+	 
+	 
+	
+	
+	public void getAllTest(HttpServletRequest request) {
+		String searchOption = request.getParameter("searchOption");
+        String searchWord = request.getParameter("word");
+		
+        
+        HashMap<String,String> search = new HashMap<String, String>();
+        
+        if (searchOption != null) {
+        	search.put("searchOption", searchOption);
+		}
+        if(searchWord != null) {
+        	search.put("searchWord", searchWord);	        	
+        }
+        
+		
+		
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -32,7 +82,9 @@ public class TestwarehouseDAO {
 				+ "    AND contract_items.ci_c_contract_no = contract.c_contract_no\n"
 				+ "    AND contract.c_status = 3\n"
 				+ "    and contract.c_type=1";
-
+		if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
+	        sql += "and product_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
+	    }
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -40,7 +92,7 @@ public class TestwarehouseDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			ArrayList<TestwarehouseDTO> testWarehouse = new ArrayList<TestwarehouseDTO>();
+			testWarehouse = new ArrayList<TestwarehouseDTO>();
 			TestwarehouseDTO t = null;
 
 			while (rs.next()) {
@@ -84,7 +136,7 @@ public class TestwarehouseDAO {
 
 	}
 
-	public static void updateInWareTest(HttpServletRequest request) {
+	public void updateInWareTest(HttpServletRequest request) {
 	//status를 3에서 4로 업테이트 해주는 구문
 		
 	    String selectedIdsString = request.getParameter("selectedIds");
@@ -138,7 +190,7 @@ public class TestwarehouseDAO {
 	
 	
 	
-	public static void regInWareTest(HttpServletRequest request) {
+	public void regInWareTest(HttpServletRequest request) {
 
 			String selectedIdsString = request.getParameter("selectedIds");
 	        String selectedRecordCountsString = request.getParameter("selectedRecordCounts");
@@ -198,7 +250,7 @@ public class TestwarehouseDAO {
 	}
 
 
-	public static void getInWareTest(HttpServletRequest request) {
+	public void getInWareTest(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -273,7 +325,7 @@ public class TestwarehouseDAO {
 		
 	}
 
-	public static void regStockTest(HttpServletRequest request) {
+	public void regStockTest(HttpServletRequest request) {
 		
 		String selectedIdsString = request.getParameter("selectedIds");
 		String selectedInWarehouseDatesString = request.getParameter("selectedInWarehouseDates");
@@ -335,7 +387,7 @@ public class TestwarehouseDAO {
 		
 	}
 
-	public static void upStockTest(HttpServletRequest request) {
+	public void upStockTest(HttpServletRequest request) {
 		String selectedIdsString = request.getParameter("selectedIds");
 		String selectedInWarehouseDatesString = request.getParameter("selectedInWarehouseDates");
 

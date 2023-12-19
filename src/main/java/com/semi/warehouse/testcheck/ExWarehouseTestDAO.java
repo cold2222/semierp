@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +19,7 @@ public class ExWarehouseTestDAO {
 	 public static ExWarehouseTestDAO getEwdao() {
 	        return EWDAO;
 	    }
+	 private Connection con = null;
 	 
 	 // DTO에 맞춰서 바꿔야하기 때문에 하나 더 만들어야함 
 	 public void paging(int pageNum, HttpServletRequest request) {
@@ -44,8 +46,23 @@ public class ExWarehouseTestDAO {
 	
 	
 	public void getExAllTest(HttpServletRequest request) {
-
-		Connection con = null;
+		String searchOption = request.getParameter("searchOption");
+        String searchWord = request.getParameter("word");
+		
+        
+        HashMap<String,String> search = new HashMap<String, String>();
+        
+        if (searchOption != null) {
+        	search.put("searchOption", searchOption);
+		}
+        if(searchWord != null) {
+        	search.put("searchWord", searchWord);	        	
+        }
+        
+		
+		
+		
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT\n"
@@ -65,7 +82,11 @@ public class ExWarehouseTestDAO {
 				+ "    product_test.p_id = contract_items.ci_p_id\n"
 				+ "    AND contract_items.ci_c_contract_no = contract.c_contract_no\n"
 				+ "    AND contract.c_status = 2\n"
-				+ "    and contract.c_type=2";
+				+ "    and contract.c_type=2 \n";
+			if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
+		        sql += "and product_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
+		    }
+		
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -128,7 +149,6 @@ public class ExWarehouseTestDAO {
 	    // 콤마로 스플릿 
 	    String[] selectedIds = selectedIdsString.split(",");
 
-	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    
 // 출고 status가 2에서 3으로 넘어가는 순간 날짜 스템프 추가 해줄것 
@@ -184,7 +204,6 @@ public class ExWarehouseTestDAO {
 	        String[] selectedRecordSalesCounts = selectedRecordSalesCountsString.split(",");
 	        String[] selectedSellDates = selectedSellDatesString.split(",");
 	        
-			Connection con = null;
 		    PreparedStatement pstmt = null;
 
 		    String sql = "INSERT INTO ex_warehouse VALUES (ex_warehouse_seq.NEXTVAL, ?, ?, ?, ?)";
@@ -235,7 +254,18 @@ public class ExWarehouseTestDAO {
 
 
 	public void getExWareTest(HttpServletRequest request) {
-		Connection con = null;
+		String searchOption = request.getParameter("searchOption");
+        String searchWord = request.getParameter("word");
+		
+        
+        HashMap<String,String> search = new HashMap<String, String>();
+        search.put("searchOption", searchOption);
+        if(searchWord != null) {
+        	search.put("searchWord", searchWord);	        	
+        }
+
+		
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT\n"
@@ -253,6 +283,9 @@ public class ExWarehouseTestDAO {
 				+ "    product_test ON ex_warehouse.p_id = product_test.p_id\n"
 				+ "JOIN\n"
 				+ "    warehouse_test ON ex_warehouse.warehouse_id = warehouse_test.warehouse_id";
+				if(!search.get("searchOption").equals("x") && search.get("searchWord") != null) {
+					sql += "where product_test."+search.get("searchOption")+" like '%"+ search.get("searchWord")+"%' ";
+				}
 
 		
 		try {
@@ -316,7 +349,6 @@ public class ExWarehouseTestDAO {
 	    // 받아온 것을 콤마로 스플릿 후 배열  
 	    String[] selectedIds = selectedIdsString.split(",");
 	    
-	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    // quantity를 늘려주는 sql 문 p_id 와 warehouse_id가 가지고 있는 quantity 값을 - 해줌 
 	    String sql = "UPDATE stock_test\n"
@@ -326,7 +358,7 @@ public class ExWarehouseTestDAO {
 	    		+ "    WHERE p_id = ? AND warehouse_id = ?\n"
 	    		+ ")\n"
 	    		+ "WHERE p_id = ? AND warehouse_id = ?";
-
+	    		
 	    try {
 	        Class.forName("oracle.jdbc.driver.OracleDriver");
 

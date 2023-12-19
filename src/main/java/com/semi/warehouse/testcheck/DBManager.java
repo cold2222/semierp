@@ -6,34 +6,40 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DBManager {
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
-	// db관련 작업을 할때 연결코드를 쓴 이후 작업 하는것 . 
-	
-	// 다쓰면 닫음
-	//그걸 AOP 하자 
-	public static Connection connect() throws SQLException {
-		
-		String url = "jdbc:oracle:thin:@db202204301707_medium?TNS_ADMIN=/Users/sungjookim/Desktop/Ksj/Wallet_DB202204301707";
-		String id = "FORMAC";
-		String pw = "Soldesk802!!";
-		
-		return DriverManager.getConnection(url, id, pw);
+public class DBManager {
+	private static BasicDataSource dataSource;
+
+	// 클래스 초기화 블록에서 BasicDataSource 초기화
+	static {
+		dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+		dataSource.setUrl(
+				"jdbc:oracle:thin:@db202204301707_medium?TNS_ADMIN=/Users/sungjookim/Desktop/Ksj/Wallet_DB202204301707");
+		dataSource.setUsername("FORMAC");
+		dataSource.setPassword("Soldesk802!!");
 	}
 
-	public static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
-			
+	// 데이터베이스 연결을 가져오는 메서드
+	public static Connection connect() throws SQLException {
+		return dataSource.getConnection();
+	}
+
+	// 데이터베이스 자원 반환 메서드
+	public static void close(Connection connection, PreparedStatement pstmt, ResultSet rs) {
 		try {
-			
-			if (rs !=null) {
+			if (rs != null) {
 				rs.close();
-				
 			}
-			pstmt.close();
-			con.close();
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (connection != null) {
+				connection.close();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
 }
