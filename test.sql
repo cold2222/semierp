@@ -7,6 +7,8 @@ create table company(
     c_addr varchar2(200 char) not null,
     c_text varchar2(300 char)
 );
+ALTER TABLE company
+DROP COLUMN c_e_id;
 create SEQUENCE company_seq START WITH 1 INCREMENT BY 1;
 insert into company values(1, 2, 'namae', 'namae', 'name', 'name', 'none');
 select * from company;
@@ -23,8 +25,15 @@ create table contract(
     c_status number(1) not null,
     c_type number(1) not null
 );
+
+select * from company;
+ALTER TABLE table_name ADD new_column_name datatype;
+ALTER TABLE table_name DROP COLUMN old_column_name;
+insert into contract values(98, 1, 2, '2023-12-28', '2023-12-28', null, null, 1, 1);
 create SEQUENCE contract_seq START WITH 1 INCREMENT BY 1;
 select * from company order by c_no desc;
+
+
 
 create table contract_items(
     ci_no number(10) PRIMARY KEY,
@@ -47,7 +56,9 @@ create table product(
     p_manufacturer number(3) not null
 );
 create SEQUENCE product_seq START WITH 1 INCREMENT BY 1;
-
+ALTER TABLE product MODIFY (p_manufacturer NUMBER(10));
+insert into product values(1, 'L', 'oil', 3, 'dkdk', 3939, 9393, 3939, 1);
+select * from product;
 create table unit(
     unit varchar2(5 char) PRIMARY KEY
 );

@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.semi.sales.bbs.DBManager;
 import com.semi.sales.supply.Type;
 import com.semi.sales.supply.Unit;
@@ -183,7 +185,7 @@ public void deleteUnit(HttpServletRequest request) {
 	}
 	
 }
-public void searchProduct(HttpServletRequest request) {
+public void searchProduct(HttpServletRequest request, HttpServletResponse response) {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -211,6 +213,10 @@ public void searchProduct(HttpServletRequest request) {
 			p.setP_manufacturer(rs.getInt("p_manufacturer"));
 			ps.add(p);
 		}
+		Gson g = new Gson();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		response.getWriter().write(g.toJson(ps));
 		request.setAttribute("ps", ps);
 		
 	} catch (Exception e) {

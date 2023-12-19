@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DetailComC")
-public class DetailComC extends HttpServlet {
+@WebServlet("/company-search")
+public class CompanySearchC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		System.out.println(request.getParameter("search"));
 		SupplyComDAO.getSdao().searchCom(request, response);
-		request.setAttribute("contentPage", "jh/company/supply_company.jsp");
-		request.setAttribute("sidebar", "jh/sidebar.jsp");
-		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	}
 

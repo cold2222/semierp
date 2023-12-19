@@ -7,11 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.sales.product.ProductDAO;
+
 @WebServlet("/CompanyC")
 public class CompanyC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
 		SupplyComDAO.getSdao().getAllCom(request);
+		SupplyComDAO.getSdao().getAllCont(request);
+		SupplyComDAO.getSdao().getAllContents(request);
+		ProductDAO.getPdao().getAllProduct(request);
 		SupplyComDAO.getSdao().paging(1, request);
 		request.setAttribute("contentPage", "jh/company/supply_company.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");

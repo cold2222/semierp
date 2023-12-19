@@ -25,7 +25,6 @@
 		<c:forEach var="c" items="${cs }">
 			<tr>
 				<td>${c.c_no }</td>
-				<td>${c.c_e_id }</td>
 				<td>${c.c_name }</td>
 				<td>${c.c_keeper }</td>
 				<td>${c.c_phone }</td>
@@ -36,8 +35,8 @@
 				</td>
 				<td>
 					<button
-						onclick="location.href='MakeContractC?num=${c.c_no }'">계약서
-						작성</button>
+						onclick="location.href='ContractC?num=${c.c_no }'">계약서
+						조회</button>
 				</td>
 			</tr>
 		</c:forEach>

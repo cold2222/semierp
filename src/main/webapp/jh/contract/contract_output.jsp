@@ -8,21 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<c:forEach var="ct" items="${cts }">
 <table>
 		<tr>
-			<td>${ct.c_contract_no }</td>
-			<td>${ct.s_c_no }</td>
-			<td>${ct.c_e_id }</td>
-			<td>계약서 작성일${ct.c_created_date } </td>
-			<td>납기일${ct.c_due_date}</td>
-			<td>배송예정일${ct.c_delivery_date}</td>
-			<td>입고/출고 일자${ct.c_completed_date}</td>
-			<td>거래 상태${ct.c_status } </td>
-			<td>구매1/판매2${ct.c_type } </td>
+			<td>사원 id : ${ct.c_e_id }</td>
+			<td>계약서 작성일 : ${ct.c_created_date } </td>
+			<td>납기일 : ${ct.c_due_date}</td>
+			<td>구매/판매 : ${ct.c_type } </td>
 		</tr>
 </table>
-<button onclick="location.href='MakeContentsC?num=${ct.c_contract_no}'">계약서 내용 작성</button>
-		</c:forEach>
+<table>
+		<tr>
+			<td>품목 id : ${cti.ci_p_id }</td>
+			<td>구입한 갯수 : ${cti.ci_count } </td>
+			<td>구입할 때 쓴 개당 금액 : ${cti.ci_unit_price } </td>
+		</tr>
+</table>
 </body>
 </html>

@@ -2,7 +2,6 @@ package com.semi.sales.supply;
 
 public class Company {
 	private int c_no;
-	private int c_e_id;
 	private String c_name;
 	private String c_keeper;
 	private String c_phone;
@@ -11,10 +10,9 @@ public class Company {
 public Company() {
 	// TODO Auto-generated constructor stub
 }
-public Company(int c_no, int c_e_id, String c_name, String c_keeper, String c_phone, String c_addr, String c_text) {
+public Company(int c_no, String c_name, String c_keeper, String c_phone, String c_addr, String c_text) {
 	super();
 	this.c_no = c_no;
-	this.c_e_id = c_e_id;
 	this.c_name = c_name;
 	this.c_keeper = c_keeper;
 	this.c_phone = c_phone;
@@ -26,12 +24,6 @@ public int getC_no() {
 }
 public void setC_no(int c_no) {
 	this.c_no = c_no;
-}
-public int getC_e_id() {
-	return c_e_id;
-}
-public void setC_e_id(int c_e_id) {
-	this.c_e_id = c_e_id;
 }
 public String getC_name() {
 	return c_name;

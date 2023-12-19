@@ -1,5 +1,5 @@
 package com.semi.sales.supply;
-
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.connector.Response;
+
+import com.google.gson.Gson;
 import com.semi.sales.bbs.DBManager;
-import com.semi.sales.product.Product;
 
 public class SupplyComDAO {
 	private ArrayList<Company> cs;
@@ -83,7 +86,6 @@ public class SupplyComDAO {
 			while (rs.next()) {
 				c = new Company();
 				c.setC_no(rs.getInt("c_no"));
-				c.setC_e_id(rs.getInt("c_e_id"));
 				c.setC_name(rs.getString("c_name"));
 				c.setC_keeper(rs.getString("c_keeper"));
 				c.setC_phone(rs.getString("c_phone"));
@@ -107,18 +109,17 @@ public class SupplyComDAO {
 	public void regCom(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into company values(company_seq.nextval, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into company values(company_seq.nextval, ?, ?, ?, ?, ?)";
 		try {
 			
 			request.setCharacterEncoding("utf-8");
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("c_e_id"));
-			pstmt.setString(2, request.getParameter("c_name"));
-			pstmt.setString(3, request.getParameter("c_keeper"));
-			pstmt.setString(4, request.getParameter("c_phone"));
-			pstmt.setString(5, request.getParameter("c_addr"));
-			pstmt.setString(6, request.getParameter("c_text"));
+			pstmt.setString(1, request.getParameter("c_name"));
+			pstmt.setString(2, request.getParameter("c_keeper"));
+			pstmt.setString(3, request.getParameter("c_phone"));
+			pstmt.setString(4, request.getParameter("c_addr"));
+			pstmt.setString(5, request.getParameter("c_text"));
 			
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("등록 성공");
@@ -149,7 +150,6 @@ public class SupplyComDAO {
 			if (rs.next()) {
 				c = new Company();
 				c.setC_no(rs.getInt("c_no"));
-				c.setC_e_id(rs.getInt("c_e_id"));
 				c.setC_name(rs.getString("c_name"));
 				c.setC_keeper(rs.getString("c_keeper"));
 				c.setC_phone(rs.getString("c_phone"));
@@ -214,6 +214,16 @@ public class SupplyComDAO {
 			request.setCharacterEncoding("utf-8");
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
+			
+			System.out.println(request.getParameter("s_c_no"));
+			System.out.println(request.getParameter("c_e_id"));
+			System.out.println(request.getParameter("c_created_date"));
+			System.out.println(request.getParameter("c_due_date"));
+			System.out.println(request.getParameter("c_delivery_date"));
+			System.out.println(request.getParameter("c_completed_date"));
+			System.out.println(request.getParameter("c_status"));
+			System.out.println(request.getParameter("c_type"));
+			
 		pstmt.setString(1, request.getParameter("s_c_no"));
 		pstmt.setString(2, request.getParameter("c_e_id"));
 		pstmt.setString(3, request.getParameter("c_created_date"));
@@ -270,14 +280,16 @@ public class SupplyComDAO {
 	public void regContents(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "insert into contract_items values(contract_items_seq.nextval, ?, ?, ?, ?)";
+		ResultSet generatedKeys = null;
 		try {
+			System.out.println(Statement.RETURN_GENERATED_KEYS);
+			String sql = "insert into contract_items values(contract_items_seq.nextval, ?, ?, ?, ?)";
 			
 			request.setCharacterEncoding("utf-8");
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("ci_c_contract_no"));
+			pstmt.setInt(1, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(2, request.getParameter("ci_p_id"));
 			pstmt.setString(3, request.getParameter("ci_count"));
 			pstmt.setString(4, request.getParameter("ci_unit_price"));
@@ -293,7 +305,7 @@ public class SupplyComDAO {
 		}
 	}
 
-	public void searchCom(HttpServletRequest request) {
+	public void searchCom(HttpServletRequest request, HttpServletResponse response) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -311,7 +323,6 @@ public class SupplyComDAO {
 			while (rs.next()) {
 				c = new Company();
 				c.setC_no(rs.getInt("c_no"));
-				c.setC_e_id(rs.getInt("c_e_id"));
 				c.setC_name(rs.getString("c_name"));
 				c.setC_keeper(rs.getString("c_keeper"));
 				c.setC_phone(rs.getString("c_phone"));
@@ -319,6 +330,11 @@ public class SupplyComDAO {
 				c.setC_text(rs.getString("c_text"));
 				cs.add(c);
 			}
+			Gson g = new Gson();
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("application/json");
+			response.getWriter().write(g.toJson(cs));
+
 			request.setAttribute("cs", cs);
 			
 		} catch (Exception e) {
@@ -379,7 +395,7 @@ public class SupplyComDAO {
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(request.getParameter("num")));
+			pstmt.setInt(1, Statement.RETURN_GENERATED_KEYS);
 			rs = pstmt.executeQuery();
 			Contract ct = null;
 			if (rs.next()) {
@@ -446,7 +462,7 @@ public class SupplyComDAO {
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(request.getParameter("num")));
+			pstmt.setInt(1, Statement.RETURN_GENERATED_KEYS);
 			rs = pstmt.executeQuery();
 			ContractItems cti = null;
 			if (rs.next()) {
