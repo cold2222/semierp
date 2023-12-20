@@ -28,15 +28,12 @@ public class ExWarehouseTestC extends HttpServlet {
 			ExWarehouseTestDAO.getEwdao().updateExWareTest(request);
 			ExWarehouseTestDAO.getEwdao().upStockMTest(request);
 			ExWarehouseTestDAO.getEwdao().getExAllTest(request);
-			// 확인하고 지우기
-//			ExWarehouseTestDAO.getEwdao().getExWareTest(request);
 		} else {
 			ExWarehouseTestDAO.getEwdao().getExAllTest(request);
 		}
 		
 		
 		request.getRequestDispatcher("sj/warehouse/ex_warehouse_interface.jsp").forward(request, response);
-//		request.getRequestDispatcher("sj/warehouse/ex_warehouse.jsp").forward(request, response);
 	}
 
 }

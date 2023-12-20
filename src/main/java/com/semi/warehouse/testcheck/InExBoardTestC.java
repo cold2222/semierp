@@ -42,33 +42,6 @@ public class InExBoardTestC extends HttpServlet {
 	        InExWarehouseDAO.getIedao().paging(pageNum, request);
 	        request.getRequestDispatcher("sj/warehouse/in_ex_board.jsp").forward(request, response);
 	    }
-		
-		
-		
-		
-// 일단 안될때를 대비해서 놔둠 		
-		
-//		// 날짜별로 나열가능하도록 바꾼 것 
-//		 if ("exWarehouse".equals(request.getParameter("operationType"))) {
-//			 // 출고만 선택한 경우 출고 데이터만 가져옴
-//			 InExWarehouseDAO.getExWare(request);
-//		 } else if ("inWarehouse".equals(request.getParameter("operationType"))) {
-//			 // 입고만 선택한 경우 입고 데이터만 가져옴
-//			 InExWarehouseDAO.getInWare(request);
-//			 // 전체 선택한 경우 
-//		 } else if ("all".equals(request.getParameter("operationType"))) {
-//			 InExWarehouseDAO.getallWare(request);
-//		 } else {
-//			 InExWarehouseDAO.getallWare(request);
-//		 }
-//		
-//
-//		 
-//		 
-//
-//		request.getRequestDispatcher("sj/warehouse/in_ex_board.jsp").forward(request, response);
-				
-//	}
 	
 
 	
