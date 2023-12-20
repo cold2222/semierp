@@ -11,7 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/InExBoardTestC")
 public class InExBoardTestC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
+		int pageNum = 1; // 기본 페이지 번호
+		
+	    try {
+	        // pageNum 파라미터가 있을 경우 파라미터 값을 사용
+	        pageNum = Integer.parseInt(request.getParameter("pageNum"));
+	    } catch (NumberFormatException e) {
+	        // 예외 발생 시 기본값 사용
+	    }
 
 		 String operationType = request.getParameter("operationType");
 
@@ -32,7 +39,7 @@ public class InExBoardTestC extends HttpServlet {
 	        
 	        
 	        
-	        
+	        InExWarehouseDAO.getIedao().paging(pageNum, request);
 	        request.getRequestDispatcher("sj/warehouse/in_ex_board.jsp").forward(request, response);
 	    }
 		

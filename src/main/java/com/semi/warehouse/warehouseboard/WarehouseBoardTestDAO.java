@@ -84,13 +84,14 @@ public class WarehouseBoardTestDAO {
 				+ "JOIN\n"
 				+ "    employee ON warehouse_test.e_employee_id = employee.e_employee_id\n";	
 		 if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
-			    if ("manufacture_name".equals(search.get("searchOption"))) {
-			        sql += "WHERE manufacture_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
-			    } else {
-			        sql += "WHERE product_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
-			    }
-			}
-			
+		        if ("manufacture_name".equals(search.get("searchOption"))) {
+		            sql += "WHERE LOWER(manufacture_test." + search.get("searchOption") + ") LIKE LOWER('%" + search.get("searchWord") + "%') ";
+		        } else {
+		            sql += "WHERE LOWER(product_test." + search.get("searchOption") + ") LIKE LOWER('%" + search.get("searchWord") + "%') ";
+		        }
+		    }
+		 
+		 
 		if ("one".equals(operationType)) {
             sql += " and warehouse_test.warehouse_id = 1 "
             		+ "ORDER BY\n"

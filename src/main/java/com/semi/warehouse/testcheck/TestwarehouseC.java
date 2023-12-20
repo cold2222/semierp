@@ -36,14 +36,17 @@ public class TestwarehouseC extends HttpServlet {
 			TestwarehouseDAO.getTwdao().upStockTest(request);
 			
 			//계산 테이블 보여주기
-			TestwarehouseDAO.getTwdao().getInWareTest(request);
+			TestwarehouseDAO.getTwdao().getAllTest(request);
+//			TestwarehouseDAO.getTwdao().getInWareTest(request);
 			
 		} else {
-			TestwarehouseDAO.getTwdao().getInWareTest(request);
+			TestwarehouseDAO.getTwdao().getAllTest(request);
+//			TestwarehouseDAO.getTwdao().getInWareTest(request);
 			
 		}
 		
-		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
+		request.getRequestDispatcher("sj/warehouse/in_warehouse_interface.jsp").forward(request, response);
+//		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
 	}
 
 }

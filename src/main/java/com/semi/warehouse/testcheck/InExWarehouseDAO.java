@@ -24,22 +24,42 @@ public class InExWarehouseDAO {
 	    }
 
 	 public void paging(int pageNum, HttpServletRequest request) {
+//			int pageSize = 10; // 한 페이지당 보여줄 개수
+//			int totalData = allInExWarehouse.size();
+//			int totalPage = (int)Math.ceil((double)totalData / pageSize);
+//			
+//			int startDataNum = totalData - (pageSize * (pageNum - 1));
+//			int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
+//			
+//			ArrayList<allInExDTO> items = new ArrayList<allInExDTO>();
+//			if(allInExWarehouse.size() > 0) {
+//				for (int i = startDataNum-1; i > endDataNum; i--) {
+//					items.add(allInExWarehouse.get(i));
+//				}
+//			}
+//			request.setAttribute("allInExWarehouse", items);
+//			request.setAttribute("pageNum", pageNum);
+//			request.setAttribute("totalPage", totalPage);
+		
+			
 			int pageSize = 10; // 한 페이지당 보여줄 개수
-			int totalData = allInExWarehouse.size();
-			int totalPage = (int)Math.ceil((double)totalData / pageSize);
+		    int totalData = allInExWarehouse.size();
+		    int totalPage = (int) Math.ceil((double) totalData / pageSize);
+
+		    int startDataNum = totalData - (pageSize * (pageNum - 1));
+		    int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
+
+		    ArrayList<allInExDTO> items = new ArrayList<allInExDTO>();
+		    if (allInExWarehouse.size() > 0) {
+		        for (int i = startDataNum - 1; i > endDataNum && i >= 0; i--) {
+		            items.add(allInExWarehouse.get(i));
+		        }
+		    }
+		    request.setAttribute("allInExWarehouse", items);
+		    request.setAttribute("pageNum", pageNum);
+		    request.setAttribute("totalPage", totalPage);
 			
-			int startDataNum = totalData - (pageSize * (pageNum - 1));
-			int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
 			
-			ArrayList<allInExDTO> items = new ArrayList<allInExDTO>();
-			if(allInExWarehouse.size() > 0) {
-				for (int i = startDataNum-1; i > endDataNum; i--) {
-					items.add(allInExWarehouse.get(i));
-				}
-			}
-			request.setAttribute("allInExWarehouse", items);
-			request.setAttribute("pageNum", pageNum);
-			request.setAttribute("totalPage", totalPage);
 			
 		}
 	

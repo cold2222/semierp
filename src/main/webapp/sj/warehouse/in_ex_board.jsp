@@ -121,39 +121,34 @@
 
 
 	<div class="paging">
-		<c:choose>
-			<c:when test="${pageNum != 1}">
-				<a
-					href="InExBoardTestC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">이전</a>
-			</c:when>
-		</c:choose>
+    <c:choose>
+        <c:when test="${pageNum != 1}">
+            <a href="InExBoardTestC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">이전</a>
+        </c:when>
+    </c:choose>
 
-		<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
-			end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}" step="1">
-			<c:choose>
-				<c:when test="${i eq pageNum}">
-					<span>${i}</span>
-				</c:when>
-				<c:otherwise>
-					<a
-						href="InExBoardTestC?pageNum=${i}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">${i}</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
+    <c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}" end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}" step="1">
+        <c:choose>
+            <c:when test="${i eq pageNum}">
+                <span>${i}</span>
+            </c:when>
+            <c:otherwise>
+                <a href="InExBoardTestC?pageNum=${i}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">${i}</a>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
 
-		<c:choose>
-			<c:when test="${pageNum != totalPage}">
-				<a
-					href="InExBoardTestC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">다음</a>
-			</c:when>
-		</c:choose>
-	</div>
+    <c:choose>
+        <c:when test="${pageNum != totalPage}">
+            <a href="InExBoardTestC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">다음</a>
+        </c:when>
+    </c:choose>
+</div>
 
 
 
 
 
-	<div>일단 확인</div>
 
 </body>
 </html>

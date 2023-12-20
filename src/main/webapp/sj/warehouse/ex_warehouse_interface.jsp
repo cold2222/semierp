@@ -179,5 +179,7 @@
 		</c:forEach>
 		<button>수령확인</button>
 	</form>
+	      <a href="InExBoardTestC">입고출고 내역 확인하러 가기</a> 
+	
 </body>
 </html>
