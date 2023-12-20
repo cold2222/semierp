@@ -108,7 +108,7 @@
 </head>
 <body>
 <h1 style="font-size: 30pt;">출고 등록 컨펌 페이지 </h1>
-	<form action="ExWarehouseTestC" method="get">
+	<form action="ExWarehouseC" method="get">
 		<div class="input-container">
 	 검색 : <select id="searchOption" name="searchOption">
 				<option value="x">전체</option>
@@ -121,7 +121,7 @@
 	</form>
 
 
-	<form action="ExWarehouseTestC" method="post"
+	<form action="ExWarehouseC" method="post"
 		onsubmit="return submitForm()" id="warehouseForm">
 
 		<div class="input-box input-container">
@@ -136,7 +136,7 @@
 			<div class="in_name">체크박스</div>
 		</div>
 
-		<c:forEach var="t" items="${testExWarehouse}">
+		<c:forEach var="t" items="${exWarehouse}">
 			<div class="input-box input-container">
 				<div>
 					<input name="p_id" value="${t.p_id}" readonly="readonly">
@@ -179,7 +179,7 @@
 		</c:forEach>
 		<button>수령확인</button>
 	</form>
-	      <a href="InExBoardTestC">입고출고 내역 확인하러 가기</a> 
+	      <a href="InExBoardC">입고출고 내역 확인하러 가기</a> 
 	
 </body>
 </html>

@@ -72,7 +72,7 @@
 
 
 
-	<form action="InExBoardTestC" method="get">
+	<form action="InExBoardC" method="get">
 		<div class="input-container">
 			<label for="operationType">구분 :</label> <select name="operationType"
 				id="operationType">
@@ -123,7 +123,7 @@
 	<div class="paging">
     <c:choose>
         <c:when test="${pageNum != 1}">
-            <a href="InExBoardTestC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">이전</a>
+            <a href="InExBoardC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">이전</a>
         </c:when>
     </c:choose>
 
@@ -133,14 +133,14 @@
                 <span>${i}</span>
             </c:when>
             <c:otherwise>
-                <a href="InExBoardTestC?pageNum=${i}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">${i}</a>
+                <a href="InExBoardC?pageNum=${i}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">${i}</a>
             </c:otherwise>
         </c:choose>
     </c:forEach>
 
     <c:choose>
         <c:when test="${pageNum != totalPage}">
-            <a href="InExBoardTestC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">다음</a>
+            <a href="InExBoardC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">다음</a>
         </c:when>
     </c:choose>
 </div>

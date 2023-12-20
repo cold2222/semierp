@@ -1,4 +1,4 @@
-package com.semi.warehouse.testcheck;
+package com.semi.warehouse.inexwarehouse;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ExWarehouseTestC")
-public class ExWarehouseTestC extends HttpServlet {
+@WebServlet("/ExWarehouseC")
+public class ExWarehouseC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		ExWarehouseTestDAO.getEwdao().getExAllTest(request);
+		ExWarehouseDAO.getEwdao().getExAllTest(request);
 		
 		request.getRequestDispatcher("sj/warehouse/ex_warehouse_interface.jsp").forward(request, response);
 	
@@ -24,12 +24,12 @@ public class ExWarehouseTestC extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		if (request.getParameter("selectedIds") != null) {
-			ExWarehouseTestDAO.getEwdao().regExWareTest(request);
-			ExWarehouseTestDAO.getEwdao().updateExWareTest(request);
-			ExWarehouseTestDAO.getEwdao().upStockMTest(request);
-			ExWarehouseTestDAO.getEwdao().getExAllTest(request);
+			ExWarehouseDAO.getEwdao().regExWareTest(request);
+			ExWarehouseDAO.getEwdao().updateExWareStatus(request);
+			ExWarehouseDAO.getEwdao().upStockMTest(request);
+			ExWarehouseDAO.getEwdao().getExAllTest(request);
 		} else {
-			ExWarehouseTestDAO.getEwdao().getExAllTest(request);
+			ExWarehouseDAO.getEwdao().getExAllTest(request);
 		}
 		
 		

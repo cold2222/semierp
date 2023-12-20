@@ -33,40 +33,9 @@
 }
 </style>
 
-<!--   <script>
-	function submitForm() {
-		var form = document.getElementById("warehouseForm");
-		var checkboxes = document.querySelectorAll('input[name="selectedItems"]:checked');
-
-		var selectedIds = Array.from(checkboxes).map(function(checkbox) {
-			return checkbox.value;
-		});
-				
-		console.log(selectedIds)
-
-		var hiddenField = document.createElement("input");
-		hiddenField.setAttribute("type", "hidden");
-		hiddenField.setAttribute("name", "selectedIds");
-		hiddenField.setAttribute("value", selectedIds.join(','));
-
-		form.appendChild(hiddenField);
-		
-		alert('콘솔창 확인 ')
-	
-		for(let i = 0; i < selectedIds.length;i++){
-			
-		}
-		console.log(hiddenField)
-		console.log(form)
-
-//		form.submit();
-		return true
-	}
-</script>
- -->
 
  <script>
- // 
+ 
 	function submitForm() {
 		var form = document.getElementById("warehouseForm");
 		var checkboxes = document
@@ -139,7 +108,7 @@
 <body>
 
 	<h1 style="font-size: 30pt;">입고 등록 확인 컨펌 </h1>
-	<form action="TestwarehouseC" method="get">
+	<form action="InWarehouseC" method="get">
 			<div class="input-container">
 		 검색 : <select id="searchOption" name="searchOption">
 				<option value="x">전체</option>
@@ -153,7 +122,7 @@
 
 
 
-	<form action="TestwarehouseC" method="post"
+	<form action="InWarehouseC" method="post"
 		onsubmit="return submitForm()" id="warehouseForm">
 
 		<div class="input-box input-container">
@@ -167,7 +136,7 @@
 			<div class="in_name">체크박스</div>
 		</div>
 
-		<c:forEach var="t" items="${testWarehouse}">
+		<c:forEach var="t" items="${inWarehouse}">
 			<div class="input-box input-container">
 				<div>
 					<input name="p_id" value="${t.p_id}" readonly="readonly">
@@ -208,6 +177,6 @@
 		<button>수령확인</button>
 	</form>
 	
-	 <a href="InExBoardTestC">입고출고 내역 확인하러 가기</a> 
+	 <a href="InExBoardC">입고출고 내역 확인하러 가기</a> 
 </body>
 </html>

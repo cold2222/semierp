@@ -1,6 +1,6 @@
-package com.semi.warehouse.testcheck;
+package com.semi.warehouse.inexwarehouse;
 
-public class allInExDTO {
+public class InExWarehouseDTO {
 
 	private int p_id;
 	private String p_name;
@@ -13,11 +13,11 @@ public class allInExDTO {
 	private int warehouse_id; 
 	private String warehouse_name; 
 	
-	public allInExDTO() {
+	public InExWarehouseDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public allInExDTO(int p_id, String p_name, String p_si, String p_type, int p_quantity, int quantity,
+	public InExWarehouseDTO(int p_id, String p_name, String p_si, String p_type, int p_quantity, int quantity,
 			String warehouse_date, String warehouse_type, int warehouse_id, String warehouse_name) {
 		super();
 		this.p_id = p_id;

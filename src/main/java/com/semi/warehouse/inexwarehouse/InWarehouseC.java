@@ -1,4 +1,4 @@
-package com.semi.warehouse.testcheck;
+package com.semi.warehouse.inexwarehouse;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/TestwarehouseC")
-public class TestwarehouseC extends HttpServlet {
+@WebServlet("/InWarehouseC")
+public class InWarehouseC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		TestwarehouseDAO.getTwdao().getAllTest(request);
+		InWarehouseDAO.getTwdao().getAll(request);
 		
 		
 		
@@ -28,25 +28,22 @@ public class TestwarehouseC extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		if (request.getParameter("selectedIds") != null) {
-			TestwarehouseDAO.getTwdao().regInWareTest(request);
-			TestwarehouseDAO.getTwdao().updateInWareTest(request);
+			InWarehouseDAO.getTwdao().regInWare(request);
+			InWarehouseDAO.getTwdao().updateInWareStatus(request);
 			// 계산테이블에 등록
-			TestwarehouseDAO.getTwdao().regStockTest(request);
+			InWarehouseDAO.getTwdao().regStock(request);
 			// 계산테이블에 + 
-			TestwarehouseDAO.getTwdao().upStockTest(request);
+			InWarehouseDAO.getTwdao().upStock(request);
 			
 			//계산 테이블 보여주기
-			TestwarehouseDAO.getTwdao().getAllTest(request);
-//			TestwarehouseDAO.getTwdao().getInWareTest(request);
+			InWarehouseDAO.getTwdao().getAll(request);
 			
 		} else {
-			TestwarehouseDAO.getTwdao().getAllTest(request);
-//			TestwarehouseDAO.getTwdao().getInWareTest(request);
+			InWarehouseDAO.getTwdao().getAll(request);
 			
 		}
 		
 		request.getRequestDispatcher("sj/warehouse/in_warehouse_interface.jsp").forward(request, response);
-//		request.getRequestDispatcher("sj/warehouse/warehouse.jsp").forward(request, response);
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.semi.warehouse.warehouseboard;
 
-public class WarehouseBoardTestDTO {
+public class WarehouseBoardDTO {
 
 	
 	private int p_id;
@@ -18,12 +18,12 @@ public class WarehouseBoardTestDTO {
 	private String e_name;
 	
 	
-	public WarehouseBoardTestDTO() {
+	public WarehouseBoardDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public WarehouseBoardTestDTO(int p_id, String p_name, int p_quantity, String p_si, String p_type, int p_unicost,
+	public WarehouseBoardDTO(int p_id, String p_name, int p_quantity, String p_si, String p_type, int p_unicost,
 			String warehouse_name, String manufacture_name, int stock, String today_date, int warehouse_id,
 			int total_stock, String e_name) {
 		super();

@@ -58,7 +58,7 @@
 
 	<h1 style="font-size: 30pt;">창고 테이블</h1>
 
-	<form action="WarehouseBoardTestC" method="get">
+	<form action="WarehouseBoardC" method="get">
 		<div class="input-container">
 			<label for="operationType">창고별 :</label> <select name="operationType"
 				id="operationType">

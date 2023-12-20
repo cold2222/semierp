@@ -1,4 +1,4 @@
-package com.semi.warehouse.testcheck;
+package com.semi.warehouse.inexwarehouse;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,15 +8,15 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ExWarehouseTestDAO {
+public class ExWarehouseDAO {
 
 	private ArrayList<ExWarehouseDTO> exWarehouse;
 	
-	private static final ExWarehouseTestDAO EWDAO = new ExWarehouseTestDAO();
+	private static final ExWarehouseDAO EWDAO = new ExWarehouseDAO();
 	
-	private ExWarehouseTestDAO() {}
+	private ExWarehouseDAO() {}
 	
-	 public static ExWarehouseTestDAO getEwdao() {
+	 public static ExWarehouseDAO getEwdao() {
 	        return EWDAO;
 	    }
 	 private Connection con = null;
@@ -66,25 +66,25 @@ public class ExWarehouseTestDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT\n"
-				+ "    product_test.p_id,\n"
-				+ "    product_test.p_name,\n"
-				+ "    product_test.p_type,\n"
-				+ "    product_test.p_quantity,\n"
-				+ "    product_test.p_si,\n"
+				+ "    product.p_id,\n"
+				+ "    product.p_name,\n"
+				+ "    product.p_type,\n"
+				+ "    product.p_quantity,\n"
+				+ "    product.p_si,\n"
 				+ "    contract_items.ci_count,\n"
 				+ "    contract.c_completed_date,\n"
 				+ "    contract.c_status\n"
 				+ "FROM\n"
-				+ "    product_test,\n"
+				+ "    product,\n"
 				+ "    contract_items,\n"
 				+ "    contract\n"
 				+ "WHERE\n"
-				+ "    product_test.p_id = contract_items.ci_p_id\n"
+				+ "    product.p_id = contract_items.ci_p_id\n"
 				+ "    AND contract_items.ci_c_contract_no = contract.c_contract_no\n"
 				+ "    AND contract.c_status = 2\n"
 				+ "    and contract.c_type=2 \n";
 			if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
-		        sql += "and product_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
+		        sql += "and product." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
 		    }
 		
 
@@ -95,8 +95,8 @@ public class ExWarehouseTestDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			ArrayList<ExWarehouseTestDTO> testExWarehouse = new ArrayList<ExWarehouseTestDTO>();
-			ExWarehouseTestDTO t = null;
+			ArrayList<ExWarehouseDTO> exWarehouse = new ArrayList<ExWarehouseDTO>();
+			ExWarehouseDTO t = null;
 
 			while (rs.next()) {
 				int p_id = rs.getInt("p_id");
@@ -110,7 +110,7 @@ public class ExWarehouseTestDAO {
 				
 				// p_id로 pk
 				
-				t = new ExWarehouseTestDTO();
+				t = new ExWarehouseDTO();
 				t.setC_completed_date(c_completed_date);
 				t.setC_status(c_status);
 				t.setCi_count(ci_count);
@@ -119,7 +119,7 @@ public class ExWarehouseTestDAO {
 				t.setP_quantity(p_quantity);
 				t.setP_si(p_si);
 				t.setP_type(p_type);
-				testExWarehouse.add(t);
+				exWarehouse.add(t);
 
 				System.out.println(p_id);
 				System.out.println(p_name);
@@ -131,7 +131,7 @@ public class ExWarehouseTestDAO {
 				System.out.println(c_status);
 
 			}
-			request.setAttribute("testExWarehouse", testExWarehouse);
+			request.setAttribute("exWarehouse", exWarehouse);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -141,7 +141,7 @@ public class ExWarehouseTestDAO {
 
 	}
 
-	public void updateExWareTest(HttpServletRequest request) {
+	public void updateExWareStatus(HttpServletRequest request) {
 	//status를 3에서 4로 업테이트 해주는 구문
 		
 	    String selectedIdsString = request.getParameter("selectedIds");
@@ -157,10 +157,10 @@ public class ExWarehouseTestDAO {
 	    		+ "SET c_status = 3\n"
 	    		+ "WHERE c_contract_no IN (\n"
 	    		+ "    SELECT contract.c_contract_no\n"
-	    		+ "    FROM product_test\n"
-	    		+ "    JOIN contract_items ON product_test.p_id = contract_items.ci_p_id\n"
+	    		+ "    FROM product\n"
+	    		+ "    JOIN contract_items ON product.p_id = contract_items.ci_p_id\n"
 	    		+ "    JOIN contract ON contract_items.ci_c_contract_no = contract.c_contract_no\n"
-	    		+ "    WHERE product_test.p_id = ?\n"
+	    		+ "    WHERE product.p_id = ?\n"
 	    		+ "      AND contract.c_status = 2\n"
 	    		+ "      AND contract.c_type = 2\n"
 	    		+ ")";
@@ -253,95 +253,6 @@ public class ExWarehouseTestDAO {
 	}
 
 
-	public void getExWareTest(HttpServletRequest request) {
-		String searchOption = request.getParameter("searchOption");
-        String searchWord = request.getParameter("word");
-		
-        
-        HashMap<String,String> search = new HashMap<String, String>();
-        if (searchOption != null) {
-        	search.put("searchOption", searchOption);
-		}
-        if(searchWord != null) {
-        	search.put("searchWord", searchWord);	        	
-        }
-		
-		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT\n"
-				+ "    ex_warehouse.ex_warehouse_id,\n"
-				+ "    product_test.p_name,\n"
-				+ "    product_test.p_si,\n"
-				+ "    product_test.p_quantity,\n"
-				+ "    product_test.p_type,\n"
-				+ "    ex_warehouse.ex_warehouse_date,\n"
-				+ "    ex_warehouse.ex_warehouse_quantity,\n"
-				+ "    warehouse_test.warehouse_name\n"
-				+ "FROM\n"
-				+ "    ex_warehouse\n"
-				+ "JOIN\n"
-				+ "    product_test ON ex_warehouse.p_id = product_test.p_id\n"
-				+ "JOIN\n"
-				+ "    warehouse_test ON ex_warehouse.warehouse_id = warehouse_test.warehouse_id \n";
-				if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
-			        sql += "where product_test." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
-			    }
-		
-		try {
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-
-			con = DBManager.connect();
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			exWarehouse = new ArrayList<ExWarehouseDTO>();
-			ExWarehouseDTO ex = null;
-			
-			
-			while (rs.next()) {
-				String p_name = rs.getString("p_name");
-				String p_si = rs.getString("p_si");
-				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
-				String ex_warehouse_date = rs.getString("ex_warehouse_date").split(" ")[0];
-				int ex_warehouse_id = rs.getInt("ex_warehouse_id");
-				int ex_warehouse_quantity = rs.getInt("ex_warehouse_quantity");
-				String warehouse_name = rs.getString("warehouse_name");
-				// p_id로 pk
-								
-				
-				ex = new ExWarehouseDTO(p_name, p_si, p_type,p_quantity, ex_warehouse_date, ex_warehouse_id, ex_warehouse_quantity, warehouse_name);
-				exWarehouse.add(ex);
-
-				System.out.println(p_name);
-				System.out.println(p_si);
-				System.out.println(p_type);
-				System.out.println(p_quantity);
-				System.out.println(ex_warehouse_id);
-				System.out.println(ex_warehouse_quantity);
-				System.out.println(ex_warehouse_date);
-				System.out.println(warehouse_name);
-
-			}
-			request.setAttribute("exWarehouse", exWarehouse);
-			
-			
-			
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		} finally {
-			DBManager.close(con, pstmt, rs);
-		}
-		
-		
-		
-	}
-
 	public void upStockMTest(HttpServletRequest request) {
 		
 		String selectedIdsString = request.getParameter("selectedIds");
@@ -351,8 +262,8 @@ public class ExWarehouseTestDAO {
 	    
 	    PreparedStatement pstmt = null;
 	    // quantity를 늘려주는 sql 문 p_id 와 warehouse_id가 가지고 있는 quantity 값을 - 해줌 
-	    String sql = "UPDATE stock_test\n"
-	    		+ "SET stock = stock - (\n"
+	    String sql = "UPDATE stock\n"
+	    		+ "SET rm_stock = rm_stock - (\n"
 	    		+ "    SELECT NVL(SUM(ex_warehouse.ex_warehouse_quantity), 0)\n"
 	    		+ "    FROM ex_warehouse\n"
 	    		+ "    WHERE p_id = ? AND warehouse_id = ?\n"

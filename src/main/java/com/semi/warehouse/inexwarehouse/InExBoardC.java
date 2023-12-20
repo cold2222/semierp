@@ -1,4 +1,4 @@
-package com.semi.warehouse.testcheck;
+package com.semi.warehouse.inexwarehouse;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/InExBoardTestC")
-public class InExBoardTestC extends HttpServlet {
+@WebServlet("/InExBoardC")
+public class InExBoardC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int pageNum = 1; // 기본 페이지 번호
 		
@@ -37,7 +37,7 @@ public class InExBoardTestC extends HttpServlet {
 	            InExWarehouseDAO.getIedao().paging(1,request);
 	        }
 	        
-	        
+        
 	        
 	        InExWarehouseDAO.getIedao().paging(pageNum, request);
 	        request.getRequestDispatcher("sj/warehouse/in_ex_board.jsp").forward(request, response);

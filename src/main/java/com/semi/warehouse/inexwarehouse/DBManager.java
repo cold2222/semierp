@@ -1,4 +1,4 @@
-package com.semi.warehouse.testcheck;
+package com.semi.warehouse.inexwarehouse;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
