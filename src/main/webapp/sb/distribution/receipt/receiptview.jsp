@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="sb/distribution_css/receipt/receiptview.css">
+<link rel="stylesheet"
+	href="sb/distribution_css/receipt/receiptview.css">
 </head>
 <body>
 	<div class="content">
@@ -27,7 +28,7 @@
 				<td>${rec.c_keeper }</td>
 				<td>${rec.c_phone }</td>
 				<td>부산항</td>
-				<td>${rec.c_due_date }</td>
+				<td id="c_due_date">${rec.c_due_date }</td>
 			</tr>
 			<tr>
 				<td>품명</td>
@@ -51,8 +52,23 @@
 		<div class="overlay" id="overlay"></div>
 		<div class="modal" id="modal">
 			<!-- 모달 창 내용 -->
-			<h2>출근사원 리스트</h2>
-			<p>모달 창 내용을 이곳에 추가하세요.</p>
+			<h1>配送担当登録ページ</h1>
+			<h3>出勤する社員リスト</h3>
+			<div>
+				<form action="DistributionReceiptDesignationC" method="post" id="myForm">
+					<input type="hidden" name="c_contract_no" value="${rec.c_contract_no }">
+					<c:forEach var="e" items="${empList }">
+							 <input class="inputRadio" type="radio" style="display: none;" id="e_no_${e.e_no}" name="e_no" value="${e.e_no}">
+     						 <label for="e_no_${e.e_no}">${e.e_name}: ${e.e_rank}</label>
+					</c:forEach>
+					<textarea class="note-input" name="s_memo" placeholder="メモ欄"></textarea>
+					<div>
+					배송날짜선택
+					<input type="date" name="c_delivery_date" id="c_delivery_date">
+					</div>
+    				<button class="modal-btn" type="submit">登録</button>
+				</form>
+			</div>
 			<button onclick="closeModal()" class="modal-btn">모달 닫기</button>
 		</div>
 	</div>

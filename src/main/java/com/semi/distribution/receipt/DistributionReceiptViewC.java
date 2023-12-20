@@ -15,7 +15,7 @@ public class DistributionReceiptViewC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ReceiptDAO.getRdao().getReceiptData(request);
 		ReceiptDAO.getRdao().getReceiptItemList(request);
-		ReceiptDAO.getRdao().Shift(ReceiptDAO.getRdao().getEmpList(),ReceiptDAO.getRdao().getRestMemberList(request),request);
+		ReceiptLogic.getRlg().Shift(ReceiptDAO.getRdao().getEmpList(),ReceiptDAO.getRdao().getRestMemberList(request),request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/receipt/receiptview.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
