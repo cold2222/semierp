@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ShippingAPIC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ShippingAPI.getDelivery(request);
+		ShippingAPI.getDelivery(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

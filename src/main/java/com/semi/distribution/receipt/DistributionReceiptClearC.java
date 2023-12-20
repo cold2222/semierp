@@ -12,6 +12,7 @@ public class DistributionReceiptClearC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ReceiptDAO.getRdao().getClearList(request);
+		ReceiptDAO.getRdao().paging(1, request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/receipt/receiptclear.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);

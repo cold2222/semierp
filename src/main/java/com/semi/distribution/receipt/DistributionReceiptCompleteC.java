@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class DistributionReceiptCompleteC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ReceiptDAO.getRdao().statusLevelUp3(request);
+		response.sendRedirect("DistributionReceiptClearC");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

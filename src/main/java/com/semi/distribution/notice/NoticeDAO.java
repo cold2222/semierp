@@ -30,7 +30,6 @@ public class NoticeDAO {
 		int pageSize = 10; // 한 페이지당 보여줄 개수
 		int totalData = bbsList.size();
 		int totalPage = (int)Math.ceil((double)totalData / pageSize);
-		
 		int startDataNum = totalData - (pageSize * (pageNum - 1));
 		int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
 		
@@ -59,12 +58,12 @@ public class NoticeDAO {
 			search.put("word", word);
 		}
 		
-		String sql = "select * from distribution_bbs1";
+		String sql = "select * from distribution_bbs1 ";
 		if(search.get("word") != null && !search.get("field").equals("all")) {
-			sql += " where " + search.get("field") + " " + "like '%" + search.get("word") +"%'";
-		}
+			sql += "where LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") +"%') ";
+			}
 		
-		sql += " order by bbs1_num";
+		sql += "order by bbs1_num";
 		
 		try {
 			con = DBManger.connect();

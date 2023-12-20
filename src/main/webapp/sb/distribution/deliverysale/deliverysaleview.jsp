@@ -19,13 +19,13 @@
 <div class="content">
 <table border="1">
 	<tr>
-		<td>구매이력번호</td>
+		<td>판매이력번호</td>
 		<td>계약서작성일</td>
 		<td>거래처명</td>
-		<td>구매담당자이름</td>
-		<td>구매담당자폰번호</td>
+		<td>판매담당자이름</td>
+		<td>판매담당자폰번호</td>
 		<td>장소</td>
-		<td>항구도착일</td>
+		<td>납기일</td>
 	</tr>
 	<tr>
 		<td>${dec.c_contract_no }</td>
@@ -33,7 +33,7 @@
 		<td>${dec.c_name }</td>
 		<td>${dec.c_keeper }</td>
 		<td>${dec.c_phone }</td>
-		<td>부산항</td>
+		<td>${dec.c_addr }</td>
 		<td>${dec.c_due_date }</td>
 	</tr>
 	<tr>

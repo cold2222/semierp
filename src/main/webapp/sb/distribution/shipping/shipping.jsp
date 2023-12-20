@@ -20,6 +20,11 @@
 	margin: 30px 30px;
 	padding: 15px;
 }
+.fc-event-title {
+    white-space: normal; /* 줄 바꿈을 허용하여 넘치는 텍스트를 다음 줄로 이동시킴 */
+    overflow: visible; /* 텍스트가 요소 너비를 넘어갈 경우 텍스트를 자르지 않고 나타내도록 설정 */
+    max-width: none; /* 최대 너비 설정 해제 */
+}
 </style>
 </head>
 <body>

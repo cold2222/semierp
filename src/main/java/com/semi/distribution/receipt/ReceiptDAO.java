@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.semi.distribution.db.DBManger;
 import com.semi.distribution.employee.EmployeeDTO;
+import com.semi.distribution.notice.NoticeDTO;
 import com.semi.distribution.shift.ShiftDTO;
 
 public class ReceiptDAO {
@@ -26,6 +28,26 @@ public class ReceiptDAO {
 		return RDAO;
 	}
 
+	public void paging(int pageNum, HttpServletRequest request) {
+		int pageSize = 10; // 한 페이지당 보여줄 개수
+		int totalData = receiptList.size();
+		int totalPage = (int)Math.ceil((double)totalData / pageSize);
+		
+		int startDataNum = totalData - (pageSize * (pageNum - 1));
+		int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
+		
+		ArrayList<ReceiptDTO> items = new ArrayList<ReceiptDTO>();
+		if(receiptList.size() > 0) {
+			for (int i = startDataNum-1; i > endDataNum; i--) {
+				items.add(receiptList.get(i));
+			}
+		}
+		request.setAttribute("receiptList", items);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("totalPage", totalPage);
+		
+	}
+	
 	public void getReceiptList(HttpServletRequest request) {
 		Connection con= null;
 		PreparedStatement pstmt = null;
@@ -35,7 +57,7 @@ public class ReceiptDAO {
 				+ "b.c_name, c.e_name "
 				+ "from contract a inner join company b on a.c_c_no = b.c_no "
 				+ "inner join employee c on  a.c_e_id = c.e_no "
-				+ "where a.c_status = 1 and a.c_type = 1 order by a.c_due_date";
+				+ "where a.c_status = 1 and a.c_type = 1 order by a.c_due_date desc";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
@@ -57,7 +79,6 @@ public class ReceiptDAO {
 				
 			}
 		System.out.println("수령 조회 성공");
-		request.setAttribute("receiptList", receiptList);
 		
 		
 		} catch (Exception e) {
@@ -291,16 +312,27 @@ public class ReceiptDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+		HashMap<String,String> search = new HashMap<String, String>();
+		String field = request.getParameter("field");
+		String word = request.getParameter("word");
+		if(word != null) {
+			search.put("field", field);
+			search.put("word", word);
+		}
+		
 		String sql = "SELECT a.c_contract_no, c.e_name, "
-				+ "a.c_created_date, a.c_due_date, a.c_status, d.c_name "
+				+ "a.c_delivery_date, a.c_due_date, a.c_status, d.c_name "
 				+ "FROM contract a "
 				+ "INNER JOIN shipping b ON a.c_contract_no = b.s_contract_no "
 				+ "INNER JOIN employee c ON b.s_e_no = c.e_no "
 				+ "INNER JOIN company d ON a.c_c_no = d.c_no "
 				+ "WHERE a.c_type = 1 "
 				+ "AND a.c_status = 2 "
-				+ "AND a.c_due_date <= SYSDATE "
-				+ "ORDER BY a.c_due_date ";
+				+ "AND a.c_delivery_date <= SYSDATE ";
+				if(search.get("word") != null && !search.get("field").equals("all")) {
+					sql += " and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") +"%') ";
+					}
+				sql += "ORDER BY a.c_delivery_date ";
 		
 		
 		try {
@@ -308,22 +340,21 @@ public class ReceiptDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			ArrayList<ReceiptDTO> clearList = new ArrayList<ReceiptDTO>();
+			receiptList = new ArrayList<ReceiptDTO>();
 			ReceiptDTO rec = null;
 			while (rs.next()) {
 				rec = new ReceiptDTO();
 				rec.setC_contract_no(rs.getString("c_contract_no"));
 				rec.setC_name(rs.getString("c_name"));
 				rec.setE_name(rs.getString("e_name"));
-				rec.setC_created_date(rs.getDate("c_created_date"));;
+				rec.setC_delivery_date(rs.getDate("c_delivery_date"));
 				rec.setC_due_date(rs.getDate("c_due_date"));
 				rec.setC_status(rs.getString("c_status"));
 				
-				clearList.add(rec);
+				receiptList.add(rec);
 				
 			}
 			System.out.println("clearList 조회 성공");
-			request.setAttribute("clearList", clearList);
 		
 		
 		} catch (Exception e) {
@@ -331,6 +362,55 @@ public class ReceiptDAO {
 			e.printStackTrace();
 		}finally {
 			DBManger.close(con, pstmt, rs);
+		}
+	}
+
+	public void statusLevelUp3(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "update contract set c_status = 3 where c_contract_no = ?";
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("c_contract_no"));
+			
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("status 3 업데이트 성공");
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("status 3 업데이트 실패");
+		}finally {
+			DBManger.close(con, pstmt, null);
+		}
+	}
+
+	public void updateDeliveryDate(HttpServletRequest request) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "update contract set c_delivery_date = ? where c_contract_no = ?";
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("c_delivery_date"));
+			pstmt.setString(2, request.getParameter("c_contract_no"));
+			
+			if(pstmt.executeUpdate() == 1) {
+				System.out.println("delivery_date 업데이트 성공");
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("delivery_date 업데이트 실패");
+		}finally {
+			DBManger.close(con, pstmt, null);
 		}
 	}
 
