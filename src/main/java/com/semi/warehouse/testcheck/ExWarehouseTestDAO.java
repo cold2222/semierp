@@ -369,7 +369,6 @@ public class ExWarehouseTestDAO {
 	        for (int i = 0; i < selectedIds.length; i++) {
 	            pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
 	            pstmt.setInt(3, Integer.parseInt(selectedIds[i]));
-
 	            
 	            // 선택한 창고 값을 받아오기 위해서 만듬 
 	            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
