@@ -59,10 +59,10 @@ public class SpecialNoteDAO {
 			search.put("word", word);
 		}
 		
-		String sql = "select * from distribution_bbs2";
+		String sql = "select * from distribution_bbs2 ";
 		if(search.get("word") != null && !search.get("field").equals("all")) {
-			sql += " where " + search.get("field") + " " + "like '%" + search.get("word") +"%'";
-		}
+			sql += "where LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") +"%') ";
+			}
 		
 		sql += " order by bbs2_num";
 		
