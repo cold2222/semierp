@@ -264,6 +264,7 @@ public class SupplyComDAO {
 			request.setCharacterEncoding("utf-8");
 
 			con = DBManager.connect();
+
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			ContractItems cti = null;
@@ -289,7 +290,7 @@ public class SupplyComDAO {
 	public String regContents(HttpServletRequest request) {
 		String value = request.getAttribute("val").toString();
 		int val = 0;
-		if(value!= null) {
+		if (value != null) {
 			val = Integer.parseInt(value);
 		} else {
 			return null;
@@ -298,20 +299,26 @@ public class SupplyComDAO {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "insert into contract_items values(contract_items_seq.nextval, ?, ?, ?, ?)";
-
 			request.setCharacterEncoding("utf-8");
-
+			System.out.println("==========================");
+			System.out.println(request.getParameter("ci_p_id"));
+			System.out.println("==========================");
+			String[] ci_p_ids = request.getParameterValues("ci_p_id");
+			String[] ci_counts = request.getParameterValues("ci_count");
+			String[] ci_unit_prices = request.getParameterValues("ci_unit_price");
 			con = DBManager.connect();
+
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, val);
-			pstmt.setString(2, request.getParameter("ci_p_id"));
-			pstmt.setString(3, request.getParameter("ci_count"));
-			pstmt.setString(4, request.getParameter("ci_unit_price"));
+			for (int i = 1; i < ci_p_ids.length; i++) {
+				pstmt.setInt(1, val);
+				pstmt.setString(2, ci_p_ids[i]);
+				pstmt.setString(3, ci_counts[i]);
+				pstmt.setString(4, ci_unit_prices[i]);
 
-			if (pstmt.executeUpdate() == 1) {
-				System.out.println("등록 성공");
+				if (pstmt.executeUpdate() == 1) {
+					System.out.println("등록 성공");
+				}
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -394,7 +401,7 @@ public class SupplyComDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM contract JOIN contract_items ON contract.c_contract_no = contract_items.ci_c_contract_no WHERE contract.c_contract_no = ?";
+		String sql = "SELECT * FROM contract WHERE c_contract_no = ?";
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -414,15 +421,6 @@ public class SupplyComDAO {
 				ct.setC_status(rs.getInt("c_status"));
 				ct.setC_type(rs.getInt("c_type"));
 				request.setAttribute("ct", ct);
-			}
-			if (rs.next()) {
-				cti = new ContractItems();
-				cti.setCi_no(rs.getInt("ci_no"));
-				cti.setCi_c_contract_no(rs.getInt("ci_c_contract_no"));
-				cti.setCi_p_id(rs.getInt("ci_p_id"));
-				cti.setCi_count(rs.getInt("ci_count"));
-				cti.setCi_unit_price(rs.getInt("ci_unit_price"));
-				request.setAttribute("cti", cti);
 			}
 
 		} catch (Exception e) {
@@ -464,34 +462,38 @@ public class SupplyComDAO {
 		}
 	}
 
-	public void getContent(HttpServletRequest request) {
+	public ArrayList<ContractItems> getContent(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from contract_items where ci_no=?";
+		String sql = "select * from contract_items where ci_c_contract_no=?";
 		try {
 			request.setCharacterEncoding("utf-8");
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("c_contract_no")));
 			rs = pstmt.executeQuery();
 			ContractItems cti = null;
-			if (rs.next()) {
+			ArrayList<ContractItems> items = new ArrayList<ContractItems>();
+			while (rs.next()) {
 				cti = new ContractItems();
 				cti.setCi_no(rs.getInt("ci_no"));
 				cti.setCi_c_contract_no(rs.getInt("ci_c_contract_no"));
 				cti.setCi_p_id(rs.getInt("ci_p_id"));
 				cti.setCi_count(rs.getInt("ci_count"));
 				cti.setCi_unit_price(rs.getInt("ci_unit_price"));
+				items.add(cti);
 			}
 			request.setAttribute("cti", cti);
+			return items;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
+		return null;
 
 	}
 
@@ -551,6 +553,9 @@ public class SupplyComDAO {
 				ct.setC_type(rs.getInt("c_type"));
 				cts.add(ct);
 			}
+			
+			
+			
 			request.setAttribute("cts", ct);
 
 		} catch (Exception e) {
@@ -594,6 +599,61 @@ public class SupplyComDAO {
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
+	}
+
+	public void getContractDetail(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String no = request.getParameter("no");
+		String sql = "select * from contract where c_contract_no=?";
+		try {
+			
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, no);
+			rs = pstmt.executeQuery();
+			Contract contract = null;
+			if (rs.next()) {
+				contract = new Contract();
+				contract.setC_contract_no(rs.getInt("c_contract_no"));
+				contract.setS_c_no(rs.getInt("s_c_no"));
+				contract.setC_e_id(rs.getInt("c_e_id"));
+				contract.setC_created_date(rs.getDate("c_created_date"));
+				contract.setC_due_date(rs.getDate("c_due_date"));
+				contract.setC_delivery_date(rs.getDate("c_delivery_date"));
+				contract.setC_completed_date(rs.getDate("c_completed_date"));
+				contract.setC_status(rs.getInt("c_status"));
+				contract.setC_type(rs.getInt("c_type"));
+				pstmt.close();
+				rs.close();
+				sql = "select ci.*, p.p_name from contract_items ci, product p where p.p_id = ci.ci_p_id and ci_c_contract_no=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, no);
+				rs = pstmt.executeQuery();
+				ContractItems item = null;
+				ArrayList<ContractItems> items = new ArrayList<ContractItems>();
+				while (rs.next()) {
+					item = new ContractItems();
+					item.setCi_no(rs.getInt("ci_no"));
+					item.setCi_c_contract_no(rs.getInt("ci_c_contract_no"));
+					item.setCi_p_id(rs.getInt("ci_p_id"));
+					item.setCi_count(rs.getInt("ci_count"));
+					item.setCi_unit_price(rs.getInt("ci_unit_price"));
+					item.setP_name(rs.getString("p_name"));
+					items.add(item);
+				}
+				contract.setItems(items);
+			}
+			request.setAttribute("contract", contract);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+		
 	}
 
 }

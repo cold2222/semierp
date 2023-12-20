@@ -63,7 +63,23 @@ create table unit(
     unit varchar2(5 char) PRIMARY KEY
 );
 select * from unit;
-
+select * from contract;
+select * from contract_items;
 create table type(
     type varchar2(10 char) PRIMARY KEY
 );
+SELECT contract_seq.CURRVAL FROM dual;
+delete contract;
+drop sequence contract_seq;
+create sequence contract_seq;
+select * from contract;
+select * from contract_items;
+SELECT contract_seq.CURRVAL FROM dual;
+delete contract_items;
+
+
+
+
+
+
+SELECT * FROM contract JOIN contract_items ON contract.c_contract_no = contract_items.ci_c_contract_no WHERE contract.c_contract_no = 87;

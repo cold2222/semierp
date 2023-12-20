@@ -94,6 +94,7 @@
     </div>
   </div>
 </div>
+<button type="button" onclick="addRow()">행 추가</button>
 	<script>
   // 모달 열기
   function openModal() {
@@ -129,33 +130,48 @@
   function closeProductModal() {
     var productModalBg = document.getElementById('productModalBackground');
     var productModal = document.getElementById('productModal');
+    document.querySelector("#productSearchInput").value = "";
+    let list = document.querySelector('.listProduct').innerHTML = "";
     productModalBg.style.display = 'none';
     productModal.style.display = 'none';
   }
-
+  
   // 버튼 클릭 시 상품 검색 모달 열기
   document.getElementById('openProductModalBtn').addEventListener('click', openProductModal);
 
   // 닫기 버튼 클릭 시 상품 검색 모달 닫기
   document.getElementById('closeProductModalBtn').addEventListener('click', closeProductModal);
   
-  
+  document.addEventListener('DOMContentLoaded', function(event) {
+	    // 오늘 날짜 가져오기 console.log
+	    const today = new Date().toISOString().split('T')[0];
 
+	    // input 필드에 오늘 날짜 설정
+	    document.getElementById('c_created_date').value = today;
+	   addRow();
+	  });
+  
+  // 행 추가 기능
+  function addRow() {
+	    var table = document.getElementById("contractTable");
+	    var row = table.getElementsByTagName('tr')[0].cloneNode(true); // 첫 번째 행을 복제
+		row.style.display = 'block';
+	    table.appendChild(row); // 테이블에 새로운 행 추가
+	  }
+  
   
   
 </script>
 
-	<form action="MakeContractC" method="post">
+	<form action="MakeContractC" method="post" >
 		<table>
 			<tr>
 				<td><input name="s_c_no" readonly="readonly" id="selectedValue" placeholder="회사 번호"></td>
 				<td><input readonly="readonly" id="displayName" placeholder="회사 이름"></td>
 				<td><input name="c_e_id" placeholder="사원 id"></td>
-				<td>계약서 작성일<input type="date" name="c_created_date">
+				<td>계약서 작성일<input type="date" readonly="readonly" name="c_created_date" id="c_created_date">
 				</td>
 				<td>납기일<input type="date" name="c_due_date"></td>
-				<!-- 				<td><input type="hidden" name="c_delivery_date" ></td> -->
-				<!-- 				<td><input type="hidden" name="c_completed_date"></td> -->
 				<td><input type="hidden" name="c_status" placeholder="거래 상태"
 					value="1"></td>
 				<td>구매/판매 <select id="transactionType"
@@ -166,11 +182,11 @@
 				</td>
 			</tr>
 		</table>
-		<table>
-			<tr>
+		<table id="contractTable">
+			<tr style="display: none;">
 				<td><input name="ci_c_contract_no" type="hidden"></td>
-				<td><input name="ci_p_id" readonly="readonly" id="selectedValueP" placeholder="품목 id"></td>
-				<td><input readonly="readonly" id="displayNameP" placeholder="상품명"></td>
+				<td><input name="ci_p_id" class="selectedValueP"></td>
+				<td><input readonly="readonly" class="displayNameP" placeholder="상품명"></td>
 				<td><input name="ci_count" placeholder="몇 개 살건지"></td>
 				<td><input name="ci_unit_price" placeholder="얼마로 살건지"></td>
 			</tr>

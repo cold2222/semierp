@@ -6,16 +6,13 @@ public class ContractItems {
 	private int ci_p_id;
 	private int ci_count;
 	private int ci_unit_price;
-	public ContractItems() {
-		// TODO Auto-generated constructor stub
+	private String p_name;
+	
+	public String getP_name() {
+		return p_name;
 	}
-	public ContractItems(int ci_no, int ci_c_contract_no, int ci_p_id, int ci_count, int ci_unit_price) {
-		super();
-		this.ci_no = ci_no;
-		this.ci_c_contract_no = ci_c_contract_no;
-		this.ci_p_id = ci_p_id;
-		this.ci_count = ci_count;
-		this.ci_unit_price = ci_unit_price;
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
 	public int getCi_no() {
 		return ci_no;
