@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import com.semi.distribution.db.DBManger;
+import com.semi.distribution.receipt.ReceiptDTO;
 
 public class DeliverySaleDAO {
 	
@@ -22,7 +23,27 @@ public class DeliverySaleDAO {
 	public static DeliverySaleDAO getDSdao() {
 		return DSDAO;
 	}
-
+	
+	public void paging(int pageNum, HttpServletRequest request) {
+		int pageSize = 10; // 한 페이지당 보여줄 개수
+		int totalData = deliverySaleList.size();
+		int totalPage = (int)Math.ceil((double)totalData / pageSize);
+		
+		int startDataNum = totalData - (pageSize * (pageNum - 1));
+		int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
+		
+		ArrayList<DeliverySaleDTO> items = new ArrayList<DeliverySaleDTO>();
+		if(deliverySaleList.size() > 0) {
+			for (int i = startDataNum-1; i > endDataNum; i--) {
+				items.add(deliverySaleList.get(i));
+			}
+		}
+		request.setAttribute("deliverySaleList", items);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("totalPage", totalPage);
+		
+	}
+	
 	public void getDeliverySaleList(HttpServletRequest request) {
 		Connection con= null;
 		PreparedStatement pstmt = null;
@@ -54,7 +75,6 @@ public class DeliverySaleDAO {
 				
 			}
 		System.out.println("납품목록 조회 성공");
-		request.setAttribute("deliverySaleList", deliverySaleList);
 		
 		
 		} catch (Exception e) {
@@ -72,7 +92,7 @@ public class DeliverySaleDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select a.c_contract_no,a.c_created_date,a.c_due_date,b.c_name,b.c_keeper,b.c_phone "
+		String sql = "select a.c_contract_no,a.c_created_date,a.c_due_date,b.c_name,b.c_keeper,b.c_phone,b.c_addr "
 				+ "from contract a inner join company b on a.c_c_no = b.c_no "
 				+ "where a.c_contract_no = ? order by c_due_date";
 		
@@ -92,6 +112,7 @@ public class DeliverySaleDAO {
 				dec.setC_name(rs.getString("c_name"));
 				dec.setC_keeper(rs.getString("c_keeper"));
 				dec.setC_phone(rs.getString("c_phone"));
+				dec.setC_addr(rs.getString("c_addr"));
 				request.setAttribute("dec", dec);
 				
 			}

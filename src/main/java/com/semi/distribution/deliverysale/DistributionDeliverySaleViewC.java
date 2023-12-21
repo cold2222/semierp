@@ -16,7 +16,7 @@ public class DistributionDeliverySaleViewC extends HttpServlet {
 		DeliverySaleDAO.getDSdao().getdeliverySaleData(request);
 		DeliverySaleDAO.getDSdao().getDeliverySaleItemList(request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/receipt/receiptview.jsp");
+		request.setAttribute("contentPage","sb/distribution/deliverysale/deliverysaleview.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

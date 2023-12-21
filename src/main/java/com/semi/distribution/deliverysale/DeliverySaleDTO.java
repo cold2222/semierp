@@ -23,7 +23,16 @@ public class DeliverySaleDTO {
 	private String e_name;
 	private String e_rank;
 	private String e_tel;
+	public String getC_addr() {
+		return c_addr;
+	}
+
+	public void setC_addr(String c_addr) {
+		this.c_addr = c_addr;
+	}
+
 	private String c_name;
+	private String c_addr;
 	public String getC_contract_no() {
 		return c_contract_no;
 	}

@@ -1,4 +1,4 @@
-package com.semi.sales.product;
+package com.semi.distribution.notice;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,30 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.sales.supply.SupplyComDAO;
+import com.semi.distribution.receipt.ReceiptDAO;
 
-@WebServlet("/UpdateProductC")
-public class UpdateProductC extends HttpServlet {
+@WebServlet("/DistributionReceiptPageC")
+public class DistributionReceiptPageC extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		ProductDAO.getPdao().getP(request);
-		ProductDAO.getPdao().getAllUnit(request);
-		ProductDAO.getPdao().getAllType(request);
-		request.setAttribute("contentPage", "jh/product/updateProduct.jsp");
-		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		ReceiptDAO.getRdao().getReceiptList(request);
+		ReceiptDAO.getRdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
+		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
+		request.setAttribute("contentPage","sb/distribution/receipt/receipt.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
-	
-	
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		ProductDAO.getPdao().updateProduct(request);
-		response.sendRedirect("UpdateProductC?id="+request.getParameter("id"));	
-	
-	
-	
 	}
 
 }

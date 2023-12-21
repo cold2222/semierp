@@ -13,7 +13,7 @@
 			<tr>
 				<td><input name="unit"></td>
 				<td>
-					<button>unit등록</button>
+					<button>단위 등록</button>
 				</td>
 			</tr>
 		</table>
@@ -23,17 +23,18 @@
 			<tr>
 				<td><input name="type"></td>
 				<td>
-					<button>type등록</button>
+					<button>타입 등록</button>
 				</td>
 			</tr>
 		</table>
 	</form>
 
 	<table border="1" style="width: 83%; height: 800px;">
-
+		<tr>
+			<td colspan="3">unit</td>
+		</tr>
 		<c:forEach var="u" items="${us }">
 			<tr>
-				<td>Unit</td>
 				<td>${u.unit }</td>
 				<td> <button onclick="location.href='UpdateUnitC?u=${u.unit}'">수정</button> </td>
 				<td> <button onclick="location.href='DeleteUnitC?u=${u.unit}'">삭제</button> </td>
@@ -41,9 +42,11 @@
 		</c:forEach>
 	</table>
 	<table border="1" style="width: 83%; height: 800px;">
+		<tr>
+			<td colspan="3">type</td>
+		</tr>
 		<c:forEach var="t" items="${ts }">
 			<tr>
-				<td>Type</td>
 				<td>${t.type }</td>
 				<td> <button onclick="location.href='UpdateTypeC?t=${t.type}'">수정</button> </td>
 				<td> <button onclick="location.href='DeleteTypeC?t=${t.type}'">삭제</button> </td>

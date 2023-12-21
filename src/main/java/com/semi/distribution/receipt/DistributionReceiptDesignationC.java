@@ -1,4 +1,4 @@
-package com.semi.sales.product;
+package com.semi.distribution.receipt;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,16 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.sales.supply.SupplyComDAO;
+@WebServlet("/DistributionReceiptDesignationC")
+public class DistributionReceiptDesignationC extends HttpServlet {
 
-@WebServlet("/product-search")
-public class ProductSearchC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("search"));
-		ProductDAO.getPdao().searchProduct(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ReceiptDAO.getRdao().statusLevelUp2(request);
+		ReceiptDAO.getRdao().insertShipping(request);
+		ReceiptDAO.getRdao().updateDeliveryDate(request);
+		response.sendRedirect("DistributionReceiptC");
 	}
 
 }
