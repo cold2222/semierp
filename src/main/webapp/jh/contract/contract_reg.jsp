@@ -145,6 +145,7 @@
 
   // 닫기 버튼 클릭 시 모달 닫기
   document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+  document.getElementById('closeProductModalBtn').addEventListener('click', closeProductModal);
   
 //상품 검색 모달 열기
   function openProductModal() {
@@ -182,9 +183,6 @@
 		row.style.display = 'block';
 	    table.appendChild(row); // 테이블에 새로운 행 추가
 	  }
-  
-  
-  
 </script>
 <script type="text/javascript" src="jh/js/contract_company.js"></script>
 </html> 

@@ -29,7 +29,7 @@
 			<td>몇개</td>
 			<td>당 가격</td>
 		</tr>
-		<c:forEach var="item" items="${items}">
+		<c:forEach var="item" items="${contract.items}">
 			<tr>
 				<td>${item.ci_p_id }</td>
 				<td>${item.p_name }</td>

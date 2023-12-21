@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.semi.sales.bbs.DBManager;
+import com.semi.sales.product.Product;
 
 public class SupplyComDAO {
 	private ArrayList<Company> cs;
@@ -52,7 +53,25 @@ public class SupplyComDAO {
 		request.setAttribute("pageNum", page);
 		request.setAttribute("pageCount", pageCount);
 	}
+	
+	public void pagingContract(int pageNum, HttpServletRequest request) {
+		int pageSize = 4; // 한 페이지당 보여줄 개수
+		int totalData = cts.size();
+		int totalPage = (int) Math.ceil((double) totalData / pageSize);
+		int startDataNum = totalData - (pageSize * (pageNum - 1));
+		int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
 
+		ArrayList<Contract> items = new ArrayList<Contract>();
+		if (cts.size() > 0) {
+			for (int i = startDataNum - 1; i > endDataNum; i--) {
+				items.add(cts.get(i));
+			}
+		}
+		request.setAttribute("cts", items);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("totalPage", totalPage);
+
+	}
 	public void getAllCom(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -163,9 +182,52 @@ public class SupplyComDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select contract.*, company.c_name from contract, company where contract.c_c_no = company.c_no order by c_status asc, c_created_date asc";
+		
+		String selectKey = "";
+		if(request.getParameter("field") != null) {
+			if (request.getParameter("field").equals("b.c_name")) {
+				selectKey = "회사명";
+			} else if (request.getParameter("field").equals("a.c_status")) {
+				selectKey = "거래상태";
+			} else if (request.getParameter("field").equals("a.c_type")) {
+				selectKey = "계약서종류";
+			}
+		}
+		HashMap<String, String> search = new HashMap<String, String>();
+		String field = request.getParameter("field");
+		if (!selectKey.equals("")) {
+			String inputWord = request.getParameter("inputWord");
+			if (selectKey.equals("회사명") && !inputWord.equals("")) {
+				search.put("field", field);
+				search.put("inputWord", request.getParameter("inputWord"));
+			} else if (selectKey.equals("거래상태")) {
+				String[] statusSelectVal = request.getParameter("statusWord").split(",");
+				search.put("field", field);
+				search.put("type", statusSelectVal[0]);
+				search.put("statusWord", statusSelectVal[1]);
+			} else if (selectKey.equals("계약서종류")) {
+				search.put("field", field);
+				search.put("typeWord", request.getParameter("typeWord"));
+			}
+		}
+
+		String sql = "select a.c_contract_no,a.c_created_date, a.c_due_date, a.c_status, a.c_type, b.c_name, a.c_c_no "
+				+ "from contract a inner join company b on a.c_c_no = b.c_no ";
+		if (selectKey.equals("회사명")) {
+			sql += "where " + search.get("field") + " " + "like '%" + search.get("inputWord") + "%' ";
+		}
+		if (selectKey.equals("거래상태")) {
+			sql += "where a.c_type = "+ search.get("type") + " and " + 
+				search.get("field") +" = "+search.get("statusWord");
+		}
+		if (selectKey.equals("계약서종류")) {
+			sql += "where a.c_type = "+ search.get("typeWord") + " ";
+			System.out.println(sql);
+		}
+		sql += "order by a.c_contract_no";
+
+		System.out.println(sql);
 		try {
-			request.setCharacterEncoding("utf-8");
 
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
@@ -176,25 +238,24 @@ public class SupplyComDAO {
 				ct = new Contract();
 				ct.setC_contract_no(rs.getInt("c_contract_no"));
 				ct.setC_c_no(rs.getInt("c_c_no"));
-				ct.setC_e_id(rs.getInt("c_e_id"));
+				ct.setC_name(rs.getString("c_name"));
 				ct.setC_created_date(rs.getDate("c_created_date"));
 				ct.setC_due_date(rs.getDate("c_due_date"));
-				ct.setC_delivery_date(rs.getDate("c_delivery_date"));
-				ct.setC_completed_date(rs.getDate("c_completed_date"));
 				ct.setC_status(rs.getInt("c_status"));
 				ct.setC_type(rs.getInt("c_type"));
-				ct.setC_name(rs.getString("c_name"));
 				cts.add(ct);
 			}
-			request.setAttribute("cts", cts);
-
+				
+				request.setAttribute("inputWord", search.get("inputWord"));
+				request.setAttribute("statusWord", search.get("statusWord"));
+				request.setAttribute("typeWord", search.get("typeWord"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(con, pstmt, rs);
 		}
 	}
-
+	
 	public void getInsertContractNo(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -548,9 +609,7 @@ public class SupplyComDAO {
 				ct.setC_type(rs.getInt("c_type"));
 				cts.add(ct);
 			}
-			
-			
-			
+
 			request.setAttribute("cts", ct);
 
 		} catch (Exception e) {
@@ -603,7 +662,7 @@ public class SupplyComDAO {
 		String no = request.getParameter("no");
 		String sql = "select * from contract where c_contract_no=?";
 		try {
-			
+
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, no);
@@ -648,26 +707,25 @@ public class SupplyComDAO {
 			DBManager.close(con, pstmt, rs);
 		}
 
-		
 	}
 
 	public void deleteCompany(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		String sql = "delete company where c_no = ?";
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("c_no"));
-			if(pstmt.executeUpdate() == 1) {
+			if (pstmt.executeUpdate() == 1) {
 				System.out.println("회사 삭제 성공");
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println("회사 삭제 실패");
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DBManager.close(con, pstmt, null);
 		}
 	}

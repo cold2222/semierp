@@ -13,28 +13,26 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	-webkit-appearance: none;
 	margin: 0;
 }
-
 </style>
 </head>
 <body>
 	<div class="search-container">
-				<form action="ProductC" method="GET">
-					<select name="field" id="searchField" class="search-select"
-						onchange="showInput()">
-						<option value="all">全体検索</option>
-						<option value="p_type">타입</option>
-						<option value="p_name">이름</option>
-					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
-						id="searchWord" class="search-input" style="display: none;">
-					<button type="submit" class="search-button">検索</button>
-				</form>
-			</div>
+		<form action="ProductC" method="GET">
+			<select name="field" id="searchField" class="search-select"
+				onchange="showInput()">
+				<option value="all">全体検索</option>
+				<option value="p_type">타입</option>
+				<option value="p_name">이름</option>
+			</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
+				id="searchWord" class="search-input" style="display: none;">
+			<button type="submit" class="search-button">検索</button>
+		</form>
+	</div>
 	<div>
 		<form action="UnitC">
 			<button>단위와 타입</button>
 		</form>
 	</div>
-	<button onclick="addRow()">행 추가</button>
 	<form action="RegProductC" method="post">
 		<table id="myTable" border="1" style="width: 83%; height: 100px;">
 			<tr>
@@ -108,44 +106,43 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 		</c:forEach>
 	</table>
 	<div class="paging">
-									<c:choose>
-										<c:when test="${pageNum != 1}">
-											<button
-												onclick="location.href='ProductPageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
-										</c:when>
-									</c:choose>
+		<c:choose>
+			<c:when test="${pageNum != 1}">
+				<button
+					onclick="location.href='ProductPageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
+			</c:when>
+		</c:choose>
 
-									<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
-										end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}"
-										step="1">
-										<c:choose>
-											<c:when test="${i eq pageNum}">
-												<a
-													href="ProductPageC?pageNum=${i}&field=${param.field }&word=${param.word }"
-													style="color: black; font-weight: bold;">${i}</a>
-											</c:when>
-											<c:otherwise>
-												<a
-													href="ProductPageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
+		<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
+			end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}" step="1">
+			<c:choose>
+				<c:when test="${i eq pageNum}">
+					<a
+						href="ProductPageC?pageNum=${i}&field=${param.field }&word=${param.word }"
+						style="color: black; font-weight: bold;">${i}</a>
+				</c:when>
+				<c:otherwise>
+					<a
+						href="ProductPageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
 
-									<c:choose>
-										<c:when test="${pageNum != totalPage && totalPage != 0}">
-											<button
-												onclick="location.href='ProductPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
-										</c:when>
-									</c:choose>
-								</div>
-<script type="text/javascript">
-function deleteProduct(p_id) {
-	if(confirm('정말 삭제하시겠습니까?')){
-		location.href='DeleteProductC?p_id='+p_id;
-	}else{
-		return;
-	}
-}
-</script>		
+		<c:choose>
+			<c:when test="${pageNum != totalPage && totalPage != 0}">
+				<button
+					onclick="location.href='ProductPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
+			</c:when>
+		</c:choose>
+	</div>
+	<script type="text/javascript">
+		function deleteProduct(p_id) {
+			if (confirm('정말 삭제하시겠습니까?')) {
+				location.href = 'DeleteProductC?p_id=' + p_id;
+			} else {
+				return;
+			}
+		}
+	</script>
 </body>
 </html>
