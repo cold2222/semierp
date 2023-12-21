@@ -43,7 +43,7 @@ public class InExBoardC extends HttpServlet {
 	        request.getRequestDispatcher("sj/warehouse/in_ex_warehouse/in_ex_board.jsp").forward(request, response);
 	    }
 	
-
+		
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}

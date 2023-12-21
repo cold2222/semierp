@@ -8,6 +8,8 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.semi.warehouse.exwarehouse.ExWarehouseDTO;
+
 public class InWarehouseDAO {
 
 	private ArrayList<InWarehouseDTO> inWarehouse;
@@ -45,47 +47,19 @@ public class InWarehouseDAO {
 	
 	
 	public void getAll(HttpServletRequest request) {
-		String searchOption = request.getParameter("searchOption");
-        String searchWord = request.getParameter("word");
-		
-        
-        HashMap<String,String> search = new HashMap<String, String>();
-        
-        if (searchOption != null) {
-        	search.put("searchOption", searchOption);
-		}
-        if(searchWord != null) {
-        	search.put("searchWord", searchWord);	        	
-        }
-        
-		
-		
+				
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT\n"
-				+ "    product.p_id,\n"
-				+ "    product.p_name,\n"
-				+ "    product.p_type,\n"
-				+ "    product.p_quantity,\n"
-				+ "    product.p_si,\n"
-				+ "    contract_items.ci_count,\n"
-				+ "    contract.c_completed_date,\n"
-				+ "		contract.c_contract_no, \n"
-				+ "    contract.c_status\n"
-				+ "FROM\n"
-				+ "    product,\n"
-				+ "    contract_items,\n"
-				+ "    contract\n"
-				+ "WHERE\n"
-				+ "    product.p_id = contract_items.ci_p_id\n"
-				+ "    AND contract_items.ci_c_contract_no = contract.c_contract_no\n"
-				+ "    AND contract.c_status = 3\n"
-				+ "    and contract.c_type=1";
-		if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
-	        sql += "and product." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
-	    }
+		String sql = "SELECT a.c_contract_no, a.c_created_date, b.c_name, c.e_name\n"
+				+ "FROM contract a\n"
+				+ "INNER JOIN company b ON a.c_c_no = b.c_no\n"
+				+ "INNER JOIN employee c ON a.c_e_id = c.e_no\n"
+				+ "WHERE a.c_type = 1 AND a.c_status = 3";
+
+		
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -93,41 +67,26 @@ public class InWarehouseDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			inWarehouse = new ArrayList<InWarehouseDTO>();
+			ArrayList<InWarehouseDTO> inWarehouse = new ArrayList<InWarehouseDTO>();
 			InWarehouseDTO t = null;
 
 			while (rs.next()) {
-				int p_id = rs.getInt("p_id");
-				String p_name = rs.getString("p_name");
-				String p_si = rs.getString("p_si");
-				String p_type = rs.getString("p_type");
-				int ci_count = rs.getInt("ci_count");
-				int p_quantity = rs.getInt("p_quantity");
-				String c_completed_date = rs.getString("c_completed_date");
-				int c_status = rs.getInt("c_status");
 				int c_contract_no = rs.getInt("c_contract_no");
-				// p_id로 pk
+				String c_created_date = rs.getString("c_created_date");
+				String c_name = rs.getString("c_name");
+				String e_name = rs.getString("e_name");
 				
 				t = new InWarehouseDTO();
 				t.setC_contract_no(c_contract_no);
-				t.setP_id(p_id);
-				t.setP_name(p_name);
-				t.setP_si(p_si);
-				t.setP_quantity(p_quantity);
-				t.setP_type(p_type);
-				t.setCi_count(ci_count);
-				t.setC_completed_date(c_completed_date);
-				t.setC_status(c_status);
+				t.setC_created_date(c_created_date);
+				t.setC_name(c_name);
+				t.setE_name(e_name);
 				inWarehouse.add(t);
 				
 				System.out.println(c_contract_no);
-				System.out.println(p_id);
-				System.out.println(p_name);
-				System.out.println(p_si);
-				System.out.println(p_type);
-				System.out.println(ci_count);
-				System.out.println(c_completed_date);
-				System.out.println(c_status);
+				System.out.println(c_created_date);
+				System.out.println(c_name);
+				System.out.println(e_name);
 
 			}
 			request.setAttribute("inWarehouse", inWarehouse);
@@ -140,13 +99,71 @@ public class InWarehouseDAO {
 
 	}
 
+	
+public void getInDetail(HttpServletRequest request) {
+				
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT\n"
+				+ "    contract_items.ci_p_id,\n"
+				+ "    product.p_name,\n"
+				+ "    product.p_type,\n"
+				+ "    product.p_quantity,\n"
+				+ "    product.p_si,\n"
+				+ "    contract_items.ci_count\n"
+				+ "FROM\n"
+				+ "    contract_items\n"
+				+ "INNER JOIN\n"
+				+ "    product ON contract_items.ci_p_id = product.p_id\n"
+				+ "WHERE\n"
+				+ "    contract_items.ci_c_contract_no = ? \n";
+
+		
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("c_contract_no"));
+			rs = pstmt.executeQuery();
+
+			ArrayList<InWarehouseDTO> inWarehouse = new ArrayList<InWarehouseDTO>();
+			InWarehouseDTO t = null;
+
+			while (rs.next()) {
+				
+				t = new InWarehouseDTO();
+				t.setCi_p_id(rs.getInt("ci_p_id"));
+				t.setP_name(rs.getString("p_name"));
+				t.setP_type(rs.getString("p_type"));
+				t.setP_quantity(rs.getInt("p_quantity"));
+				t.setP_si(rs.getString("p_si"));
+				t.setCi_count(rs.getInt("ci_count"));
+				inWarehouse.add(t);
+				
+
+			}
+			request.setAttribute("inWarehouse", inWarehouse);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+	}
+	
+	
 	public void updateInWareStatus(HttpServletRequest request) {
 	//status를 3에서 4로 업테이트 해주는 구문
 		
-	    String selectedIdsString = request.getParameter("selectedIds");
+	  //  String selectedIdsString = request.getParameter("selectedIds");
 
 	    // 콤마로 스플릿 
-	    String[] selectedIds = selectedIdsString.split(",");
+	 //   String[] selectedIds = selectedIdsString.split(",");
 
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
@@ -154,31 +171,40 @@ public class InWarehouseDAO {
 // 나중에 status가 3에서 4로 넘어갈떄 날짜 스템프 추가 해줄것 
 	    
 	    String sql = "UPDATE contract\n"
-	    		+ "SET c_status = 4\n"
+	    		+ "SET c_status = 4,\n"
+	    		+ " c_completed_date = SYSDATE \n"
 	    		+ "WHERE c_contract_no IN (\n"
 	    		+ "    SELECT contract.c_contract_no\n"
 	    		+ "    FROM product\n"
 	    		+ "    JOIN contract_items ON product.p_id = contract_items.ci_p_id\n"
 	    		+ "    JOIN contract ON contract_items.ci_c_contract_no = contract.c_contract_no\n"
-	    		+ "    WHERE product.p_id = ?\n"
+	    		+ "    WHERE c.c_contract_no = ?\n"
 	    		+ "      AND contract.c_status = 3\n"
 	    		+ "      AND contract.c_type = 1\n"
+	    		+ "      AND TRUNC(c_delivery_date) = TRUNC(SYSDATE)\n"
 	    		+ ")";
-
+	    
+	    
+	    
+	    
 	    try {
 	        Class.forName("oracle.jdbc.driver.OracleDriver");
 
 	        con = DBManager.connect();
 	        pstmt = con.prepareStatement(sql);
+
+	        pstmt.setInt(1, Integer.parseInt(request.getParameter("c_contract_no")));
+            pstmt.executeUpdate();
+	        
 	        // for 문으로돌리기  
-	        for (String id : selectedIds) {
-	            int productId = Integer.parseInt(id);
-
-	            pstmt.setInt(1, productId);
-	            pstmt.executeUpdate();
-
-	            System.out.println("Selected Product ID : " + productId + " - Status 4로 업데이트");
-	        }
+//	        for (String id : selectedIds) {
+//	            int productId = Integer.parseInt(id);
+//
+//	            pstmt.setInt(1, productId);
+//	            pstmt.executeUpdate();
+//
+//	            System.out.println("Selected Product ID : " + productId + " - Status 4로 업데이트");
+//	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
@@ -196,18 +222,17 @@ public class InWarehouseDAO {
 	
 	public void regInWare(HttpServletRequest request) {
 
-			String selectedIdsString = request.getParameter("selectedIds");
-	        String selectedRecordCountsString = request.getParameter("selectedRecordCounts");
-	        String selectedInWarehouseDatesString = request.getParameter("selectedInWarehouseDates");
+	        String selectedIdsString = request.getParameter("ci_p_id");
+	        String selectedRecordCountsString = request.getParameter("ci_count");
 
 	        String[] selectedIds = selectedIdsString.split(",");
 	        String[] selectedRecordCounts = selectedRecordCountsString.split(",");
-	        String[] selectedInWarehouseDates = selectedInWarehouseDatesString.split(",");
+	        
 	        
 			Connection con = null;
 		    PreparedStatement pstmt = null;
 
-		    String sql = "INSERT INTO in_warehouse VALUES (in_warehouse_seq.NEXTVAL, ?, ?, ?, ?)";
+		    String sql = "INSERT INTO in_warehouse VALUES (in_warehouse_seq.NEXTVAL, ?, sysdate, ?, ?)";
 
 		    try {
 		        Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -217,16 +242,14 @@ public class InWarehouseDAO {
 		        
 		        
 		        for (int i = 0; i < selectedIds.length; i++) {
-		            pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
-		            pstmt.setString(2, selectedInWarehouseDates[i].split(" ")[0]);
-		            System.out.println(selectedInWarehouseDates[i]);
-		            pstmt.setInt(3, Integer.parseInt(selectedRecordCounts[i]));
+		        	pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
+		            pstmt.setInt(2, Integer.parseInt(selectedRecordCounts[i]));
 		            
 		            // 선택한 창고 값을 받아오기 위해서 만듬 
 		            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
 		            String selectedWarehouseIdString = request.getParameter(warehouseIdParameterName);
 		            int selectedWarehouseId = Integer.parseInt(selectedWarehouseIdString);
-		            pstmt.setInt(4, selectedWarehouseId);
+		            pstmt.setInt(3, selectedWarehouseId);
 		            System.out.println(selectedWarehouseId);
 		            
 		            //  이게 pstmt.executeUpdate(); 한번에 처리 할 수 있는 문장

@@ -2,7 +2,7 @@ package com.semi.warehouse.inwarehouse;
 
 public class InWarehouseDTO {
 
-	private int p_id;
+	private int ci_p_id;
 	private String p_name;
 	private String p_si;
 	private String p_type;
@@ -10,18 +10,24 @@ public class InWarehouseDTO {
 	private int ci_count;
 	private String c_completed_date;
 	private int c_status;
+
+	// 이것도 보여줄거 확인
 	private int c_contract_no;
-
-
+	private String c_created_date;
+	private String c_name;
+	private String e_name;
+	
+	
 	public InWarehouseDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public InWarehouseDTO(int p_id, String p_name, String p_si, String p_type, int p_quantity, int ci_count,
-			String c_completed_date, int c_status, int c_contract_no) {
+	public InWarehouseDTO(int ci_p_id, String p_name, String p_si, String p_type, int p_quantity, int ci_count,
+			String c_completed_date, int c_status, int c_contract_no, String c_created_date, String c_name,
+			String e_name) {
 		super();
-		this.p_id = p_id;
+		this.ci_p_id = ci_p_id;
 		this.p_name = p_name;
 		this.p_si = p_si;
 		this.p_type = p_type;
@@ -30,16 +36,19 @@ public class InWarehouseDTO {
 		this.c_completed_date = c_completed_date;
 		this.c_status = c_status;
 		this.c_contract_no = c_contract_no;
+		this.c_created_date = c_created_date;
+		this.c_name = c_name;
+		this.e_name = e_name;
 	}
 
 
-	public int getP_id() {
-		return p_id;
+	public int getCi_p_id() {
+		return ci_p_id;
 	}
 
 
-	public void setP_id(int p_id) {
-		this.p_id = p_id;
+	public void setCi_p_id(int ci_p_id) {
+		this.ci_p_id = ci_p_id;
 	}
 
 
@@ -123,7 +132,37 @@ public class InWarehouseDTO {
 	}
 
 
+	public String getC_created_date() {
+		return c_created_date;
+	}
 
+
+	public void setC_created_date(String c_created_date) {
+		this.c_created_date = c_created_date;
+	}
+
+
+	public String getC_name() {
+		return c_name;
+	}
+
+
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
+	}
+
+
+	public String getE_name() {
+		return e_name;
+	}
+
+
+	public void setE_name(String e_name) {
+		this.e_name = e_name;
+	}
+
+
+	
 	
 
 	

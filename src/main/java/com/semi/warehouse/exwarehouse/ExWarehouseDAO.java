@@ -42,51 +42,34 @@ public class ExWarehouseDAO {
 			
 		}
 	
+	 
+	 
 	
 	
-	
-	public void getExAllTest(HttpServletRequest request) {
-		String searchOption = request.getParameter("searchOption");
-        String searchWord = request.getParameter("word");
-		
-        
-        HashMap<String,String> search = new HashMap<String, String>();
-        
-        if (searchOption != null) {
-        	search.put("searchOption", searchOption);
-		}
-        if(searchWord != null) {
-        	search.put("searchWord", searchWord);	        	
-        }
-        
+	public void getExAll(HttpServletRequest request) {
+//		String searchOption = request.getParameter("searchOption");
+//        String searchWord = request.getParameter("word");
+//		
+//        
+//        HashMap<String,String> search = new HashMap<String, String>();
+//        
+//        if (searchOption != null) {
+//        	search.put("searchOption", searchOption);
+//		}
+//        if(searchWord != null) {
+//        	search.put("searchWord", searchWord);	        	
+//        }
+//        
 		
 		
 		
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT\n"
-				+ "    product.p_id,\n"
-				+ "    product.p_name,\n"
-				+ "    product.p_type,\n"
-				+ "    product.p_quantity,\n"
-				+ "    product.p_si,\n"
-				+ "    contract_items.ci_count,\n"
-				+ "    contract.c_completed_date,\n"
-				+ "    contract.c_status\n"
-				+ "		contract.c_contract_no \n"
-				+ "FROM\n"
-				+ "    product,\n"
-				+ "    contract_items,\n"
-				+ "    contract\n"
-				+ "WHERE\n"
-				+ "    product.p_id = contract_items.ci_p_id\n"
-				+ "    AND contract_items.ci_c_contract_no = contract.c_contract_no\n"
-				+ "    AND contract.c_status = 2\n"
-				+ "    and contract.c_type=2 \n";
-			if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
-		        sql += "and product." + search.get("searchOption") + " LIKE '%" + search.get("searchWord") + "%' ";
-		    }
+		String sql ="select a.c_contract_no, a.c_created_date, b.c_name, c.e_name "
+				+ "from contract a inner join company b on a.c_c_no = b.c_no "
+				+ "inner join employee c on a.c_e_id = c.e_no "
+				+ "where a.c_type = 2 and a.c_status = 2";
 		
 
 		try {
@@ -96,43 +79,18 @@ public class ExWarehouseDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
-			ArrayList<ExWarehouseDTO> exWarehouse = new ArrayList<ExWarehouseDTO>();
-			ExWarehouseDTO t = null;
+			ArrayList<ExWarehouseDTO> exWarehouses = new ArrayList<ExWarehouseDTO>();
+			ExWarehouseDTO exWarehouse = null;
 
 			while (rs.next()) {
-				int p_id = rs.getInt("p_id");
-				String p_name = rs.getString("p_name");
-				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
-				String p_si = rs.getString("p_si");
-				int ci_count = rs.getInt("ci_count");
-				String c_completed_date = rs.getString("c_completed_date");
-				int c_status = rs.getInt("c_status");
-				
-				// p_id로 pk
-				
-				t = new ExWarehouseDTO();
-				t.setC_completed_date(c_completed_date);
-				t.setC_status(c_status);
-				t.setCi_count(ci_count);
-				t.setP_id(p_id);
-				t.setP_name(p_name);
-				t.setP_quantity(p_quantity);
-				t.setP_si(p_si);
-				t.setP_type(p_type);
-				exWarehouse.add(t);
-
-				System.out.println(p_id);
-				System.out.println(p_name);
-				System.out.println(p_type);
-				System.out.println(p_quantity);
-				System.out.println(p_si);
-				System.out.println(ci_count);
-				System.out.println(c_completed_date);
-				System.out.println(c_status);
-
+			exWarehouse = new ExWarehouseDTO();
+			exWarehouse.setC_contract_no(rs.getInt("c_contract_no"));
+			exWarehouse.setC_created_date(rs.getString("c_created_date"));
+			exWarehouse.setC_name(rs.getString("c_name"));
+			exWarehouse.setE_name(rs.getString("e_name"));
+			exWarehouses.add(exWarehouse);
 			}
-			request.setAttribute("exWarehouse", exWarehouse);
+			request.setAttribute("exWarehouse", exWarehouses);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,34 +100,84 @@ public class ExWarehouseDAO {
 
 	}
 
+	
+	public void getExDetail(HttpServletRequest request) {
+		
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql ="SELECT\n"
+				+ "    contract_items.ci_p_id,\n"
+				+ "    product.p_name,\n"
+				+ "    product.p_type,\n"
+				+ "    product.p_quantity,\n"
+				+ "    product.p_si,\n"
+				+ "    contract_items.ci_count \n"
+				+ "FROM\n"
+				+ "    contract_items inner join\n"
+				+ "    product on contract_items.ci_p_id = product.p_id\n"
+				+ "WHERE\n"
+				+ "    contract_items.ci_c_contract_no = ? ";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, request.getParameter("c_contract_no"));
+			rs = pstmt.executeQuery();
+			
+			ArrayList<ExWarehouseDTO> exWarehouses = new ArrayList<ExWarehouseDTO>();
+			ExWarehouseDTO exWarehouse = null;
+
+			while (rs.next()) {
+			exWarehouse = new ExWarehouseDTO();
+			
+			exWarehouse.setCi_p_id(rs.getInt("ci_p_id"));
+			exWarehouse.setP_name(rs.getString("p_name"));
+			exWarehouse.setP_type(rs.getString("p_type"));
+			exWarehouse.setP_quantity(rs.getInt("p_quantity"));
+			exWarehouse.setP_si(rs.getString("p_si"));
+			exWarehouse.setCi_count(rs.getInt("ci_count"));
+			exWarehouses.add(exWarehouse);
+			}
+			request.setAttribute("exWarehouse", exWarehouses);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+	}
+	
+	
+	
+	
+	
+	
+	
 	public void updateExWareStatus(HttpServletRequest request) {
 	//status를 3에서 4로 업테이트 해주는 구문
-		
-	    String selectedIdsString = request.getParameter("selectedIds");
-
-	    // 콤마로 스플릿 
-	    String[] selectedIds = selectedIdsString.split(",");
 
 	    PreparedStatement pstmt = null;
 	    
 // 출고 status가 2에서 3으로 넘어가는 순간 날짜 스템프 추가 해줄것 
 	    
-	    String sql = "	    UPDATE contract\n"
-	    		+ "	    SET c_status = 3,\n"
-	    		+ "	        c_completed_date = SYSDATE\n"
-	    		+ "	    WHERE c_contract_no IN (\n"
-	    		+ "	   \n"
-	    		+ "	        SELECT contract.c_contract_no\n"
-	    		+ "	        FROM product\n"
-	    		+ "	        JOIN contract_items ON product.p_id = contract_items.ci_p_id\n"
-	    		+ "	        JOIN contract ON contract_items.ci_c_contract_no = contract.c_contract_no\n"
-	    		+ "	        WHERE product.p_id = ?\n"
-	    		+ "	          AND contract.c_status = 2\n"
-	    		+ "	          AND contract.c_type = 2\n"
-	    		+ "	    )\n"
-	    		+ "	    AND TRUNC(c_delivery_date) = TRUNC(SYSDATE) ";
+	    String sql = "UPDATE contract\n"
+	    		+ "SET c_status = 3,\n"
+	    		+ "    c_completed_date = SYSDATE\n"
+	    		+ "WHERE c_contract_no IN (\n"
+	    		+ "    SELECT c.c_contract_no\n"
+	    		+ "    FROM product p\n"
+	    		+ "    JOIN contract_items ci ON p.p_id = ci.ci_p_id\n"
+	    		+ "    JOIN contract c ON ci.ci_c_contract_no = c.c_contract_no\n"
+	    		+ "    WHERE c.c_contract_no = ?\n"
+	    		+ "      AND c.c_status = 2\n"
+	    		+ "      AND c.c_type = 2\n"
+	    		+ "		AND TRUNC(c_delivery_date) = TRUNC(SYSDATE)\n"
+	    		+ ")";
 
-	    
 	    
 	    
 	    try {
@@ -177,15 +185,10 @@ public class ExWarehouseDAO {
 
 	        con = DBManager.connect();
 	        pstmt = con.prepareStatement(sql);
-	        // for 문으로돌리기  
-	        for (String id : selectedIds) {
-	            int productId = Integer.parseInt(id);
-
-	            pstmt.setInt(1, productId);
+	            pstmt.setInt(1, Integer.parseInt(request.getParameter("c_contract_no")));
 	            pstmt.executeUpdate();
 
-	            System.out.println("Selected Product ID : " + productId + " - Status 3로 업데이트");
-	        }
+	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
@@ -193,27 +196,25 @@ public class ExWarehouseDAO {
 	    }
 		
 		
-		
-		
 	}
-
-
+		
 	
 	
 	
-	public void regExWareTest(HttpServletRequest request) {
+	
+	public void regExWare(HttpServletRequest request) {
 			// 출고 테이블에 insert into 할 수 있게해주는 곳 
-			String selectedIdsString = request.getParameter("selectedIds");
-	        String selectedRecordSalesCountsString = request.getParameter("selectedRecordSalesCounts");
-	        String selectedSellDatesString = request.getParameter("selectedSellDates");
+		
+		
+			String selectedIdsString = request.getParameter("ci_p_id");
+	        String selectedRecordSalesCountsString = request.getParameter("ci_count");
 
 	        String[] selectedIds = selectedIdsString.split(",");
 	        String[] selectedRecordSalesCounts = selectedRecordSalesCountsString.split(",");
-	        String[] selectedSellDates = selectedSellDatesString.split(",");
 	        
 		    PreparedStatement pstmt = null;
 
-		    String sql = "INSERT INTO ex_warehouse VALUES (ex_warehouse_seq.NEXTVAL, ?, ?, ?, ?)";
+		    String sql = "INSERT INTO ex_warehouse VALUES (ex_warehouse_seq.NEXTVAL, ?, sysdate, ?, ?)";
 
 		    try {
 		        Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -224,15 +225,13 @@ public class ExWarehouseDAO {
 		        
 		        for (int i = 0; i < selectedIds.length; i++) {
 		            pstmt.setInt(1, Integer.parseInt(selectedIds[i]));
-		            pstmt.setString(2, selectedSellDates[i].split(" ")[0]);
-		            System.out.println(selectedSellDates[i]);
-		            pstmt.setInt(3, Integer.parseInt(selectedRecordSalesCounts[i]));
+		            pstmt.setInt(2, Integer.parseInt(selectedRecordSalesCounts[i]));
 		            
 		            // 선택한 창고 값을 받아오기 위해서 만듬 
 		            String warehouseIdParameterName = "warehouse_id_" + selectedIds[i];
 		            String selectedWarehouseIdString = request.getParameter(warehouseIdParameterName);
 		            int selectedWarehouseId = Integer.parseInt(selectedWarehouseIdString);
-		            pstmt.setInt(4, selectedWarehouseId);
+		            pstmt.setInt(3, selectedWarehouseId);
 		            System.out.println(selectedWarehouseId);
 		            
 		            //  이게 pstmt.executeUpdate(); 한번에 처리 할 수 있는 문장
@@ -260,7 +259,7 @@ public class ExWarehouseDAO {
 	}
 
 
-	public void upStockMTest(HttpServletRequest request) {
+	public void upStock(HttpServletRequest request) {
 		
 		String selectedIdsString = request.getParameter("selectedIds");
 		
