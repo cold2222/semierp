@@ -1,4 +1,4 @@
-package com.semi.warehouse.inexwarehouse;
+package com.semi.warehouse.exwarehouse;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -74,6 +74,7 @@ public class ExWarehouseDAO {
 				+ "    contract_items.ci_count,\n"
 				+ "    contract.c_completed_date,\n"
 				+ "    contract.c_status\n"
+				+ "		contract.c_contract_no \n"
 				+ "FROM\n"
 				+ "    product,\n"
 				+ "    contract_items,\n"
@@ -153,18 +154,24 @@ public class ExWarehouseDAO {
 	    
 // 출고 status가 2에서 3으로 넘어가는 순간 날짜 스템프 추가 해줄것 
 	    
-	    String sql = "UPDATE contract\n"
-	    		+ "SET c_status = 3\n"
-	    		+ "WHERE c_contract_no IN (\n"
-	    		+ "    SELECT contract.c_contract_no\n"
-	    		+ "    FROM product\n"
-	    		+ "    JOIN contract_items ON product.p_id = contract_items.ci_p_id\n"
-	    		+ "    JOIN contract ON contract_items.ci_c_contract_no = contract.c_contract_no\n"
-	    		+ "    WHERE product.p_id = ?\n"
-	    		+ "      AND contract.c_status = 2\n"
-	    		+ "      AND contract.c_type = 2\n"
-	    		+ ")";
+	    String sql = "	    UPDATE contract\n"
+	    		+ "	    SET c_status = 3,\n"
+	    		+ "	        c_completed_date = SYSDATE\n"
+	    		+ "	    WHERE c_contract_no IN (\n"
+	    		+ "	   \n"
+	    		+ "	        SELECT contract.c_contract_no\n"
+	    		+ "	        FROM product\n"
+	    		+ "	        JOIN contract_items ON product.p_id = contract_items.ci_p_id\n"
+	    		+ "	        JOIN contract ON contract_items.ci_c_contract_no = contract.c_contract_no\n"
+	    		+ "	        WHERE product.p_id = ?\n"
+	    		+ "	          AND contract.c_status = 2\n"
+	    		+ "	          AND contract.c_type = 2\n"
+	    		+ "	    )\n"
+	    		+ "	    AND TRUNC(c_delivery_date) = TRUNC(SYSDATE) ";
 
+	    
+	    
+	    
 	    try {
 	        Class.forName("oracle.jdbc.driver.OracleDriver");
 

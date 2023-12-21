@@ -201,34 +201,13 @@ public class WarehouseBoardDAO {
 	        sql +=  "WHERE warehouse.warehouse_id = 1\n";
 	        
         } else if ("two".equals(operationType)) {
-	        sql = "SELECT\n"
-	        		+ "    COALESCE(SUM(stock.rm_stock * product.p_unicost), 0) AS total_stock\n"
-	        		+ "FROM\n"
-	        		+ "    warehouse_test\n"
-	        		+ "LEFT JOIN\n"
-	        		+ "    stock ON warehouse.warehouse_id = stock.warehouse_id\n"
-	        		+ "LEFT JOIN\n"
-	        		+ "    product ON stock.p_id = product.p_id\n"
-	        		+ "WHERE warehouse.warehouse_id = 2\n";
+	        sql +=  "WHERE warehouse.warehouse_id = 2\n";
+	        
         } else if ("three".equals(operationType)) {
-	        sql = "SELECT\n"
-	        		+ "    COALESCE(SUM(stock.rm_stock * product.p_unicost), 0) AS total_stock\n"
-	        		+ "FROM\n"
-	        		+ "    warehouse\n"
-	        		+ "LEFT JOIN\n"
-	        		+ "    stock ON warehouse.warehouse_id = stock.warehouse_id\n"
-	        		+ "LEFT JOIN\n"
-	        		+ "    product ON stock.p_id = product.p_id\n"
-	        		+ "WHERE warehouse.warehouse_id = 3\n";
+	        sql +=  "WHERE warehouse.warehouse_id = 3\n";
+	        
         } else {
-	        sql = "SELECT\n"
-	        		+ "    COALESCE(SUM(stock.rm_stock * product.p_unicost), 0) AS total_stock\n"
-	        		+ "FROM\n"
-	        		+ "    warehouse\n"
-	        		+ "LEFT JOIN\n"
-	        		+ "    stock ON warehouse.warehouse_id = stock.warehouse_id\n"
-	        		+ "LEFT JOIN\n"
-	        		+ "    product ON stock.p_id = product.p_id";
+	        sql += "";
 		}
 
 	    

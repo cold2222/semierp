@@ -40,7 +40,7 @@ public class InExBoardC extends HttpServlet {
         
 	        
 	        InExWarehouseDAO.getIedao().paging(pageNum, request);
-	        request.getRequestDispatcher("sj/warehouse/in_ex_board.jsp").forward(request, response);
+	        request.getRequestDispatcher("sj/warehouse/in_ex_warehouse/in_ex_board.jsp").forward(request, response);
 	    }
 	
 

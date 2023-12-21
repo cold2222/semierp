@@ -1,4 +1,4 @@
-package com.semi.warehouse.inexwarehouse;
+package com.semi.warehouse.exwarehouse;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ public class ExWarehouseC extends HttpServlet {
 		
 		ExWarehouseDAO.getEwdao().getExAllTest(request);
 		
-		request.getRequestDispatcher("sj/warehouse/ex_warehouse_interface.jsp").forward(request, response);
+		request.getRequestDispatcher("sj/warehouse/ex_warehouse/ex_warehouse_interface.jsp").forward(request, response);
 	
 		
 	}
@@ -33,7 +33,7 @@ public class ExWarehouseC extends HttpServlet {
 		}
 		
 		
-		request.getRequestDispatcher("sj/warehouse/ex_warehouse_interface.jsp").forward(request, response);
+		request.getRequestDispatcher("sj/warehouse/ex_warehouse/ex_warehouse_interface.jsp").forward(request, response);
 	}
 
 }

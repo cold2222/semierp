@@ -1,33 +1,35 @@
-package com.semi.warehouse.inexwarehouse;
+package com.semi.warehouse.inwarehouse;
 
-public class ExWarehouseDTO {
+public class InWarehouseDTO {
 
 	private int p_id;
 	private String p_name;
+	private String p_si;
 	private String p_type;
 	private int p_quantity;
-	private String p_si;
 	private int ci_count;
 	private String c_completed_date;
 	private int c_status;
+	private int c_contract_no;
 
-	
-	public ExWarehouseDTO() {
+
+	public InWarehouseDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public ExWarehouseDTO(int p_id, String p_name, String p_type, int p_quantity, String p_si, int ci_count,
-			String c_completed_date, int c_status) {
+	public InWarehouseDTO(int p_id, String p_name, String p_si, String p_type, int p_quantity, int ci_count,
+			String c_completed_date, int c_status, int c_contract_no) {
 		super();
 		this.p_id = p_id;
 		this.p_name = p_name;
+		this.p_si = p_si;
 		this.p_type = p_type;
 		this.p_quantity = p_quantity;
-		this.p_si = p_si;
 		this.ci_count = ci_count;
 		this.c_completed_date = c_completed_date;
 		this.c_status = c_status;
+		this.c_contract_no = c_contract_no;
 	}
 
 
@@ -51,6 +53,16 @@ public class ExWarehouseDTO {
 	}
 
 
+	public String getP_si() {
+		return p_si;
+	}
+
+
+	public void setP_si(String p_si) {
+		this.p_si = p_si;
+	}
+
+
 	public String getP_type() {
 		return p_type;
 	}
@@ -68,16 +80,6 @@ public class ExWarehouseDTO {
 
 	public void setP_quantity(int p_quantity) {
 		this.p_quantity = p_quantity;
-	}
-
-
-	public String getP_si() {
-		return p_si;
-	}
-
-
-	public void setP_si(String p_si) {
-		this.p_si = p_si;
 	}
 
 
@@ -111,11 +113,21 @@ public class ExWarehouseDTO {
 	}
 
 
+	public int getC_contract_no() {
+		return c_contract_no;
+	}
+
+
+	public void setC_contract_no(int c_contract_no) {
+		this.c_contract_no = c_contract_no;
+	}
+
+
+
+	
 
 	
 	
-	
-	
-	
-	
 }
+	
+	

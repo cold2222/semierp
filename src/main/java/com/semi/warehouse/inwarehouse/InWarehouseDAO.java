@@ -1,4 +1,4 @@
-package com.semi.warehouse.inexwarehouse;
+package com.semi.warehouse.inwarehouse;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -72,6 +72,7 @@ public class InWarehouseDAO {
 				+ "    product.p_si,\n"
 				+ "    contract_items.ci_count,\n"
 				+ "    contract.c_completed_date,\n"
+				+ "		contract.c_contract_no, \n"
 				+ "    contract.c_status\n"
 				+ "FROM\n"
 				+ "    product,\n"
@@ -104,9 +105,11 @@ public class InWarehouseDAO {
 				int p_quantity = rs.getInt("p_quantity");
 				String c_completed_date = rs.getString("c_completed_date");
 				int c_status = rs.getInt("c_status");
+				int c_contract_no = rs.getInt("c_contract_no");
 				// p_id로 pk
 				
 				t = new InWarehouseDTO();
+				t.setC_contract_no(c_contract_no);
 				t.setP_id(p_id);
 				t.setP_name(p_name);
 				t.setP_si(p_si);
@@ -116,7 +119,8 @@ public class InWarehouseDAO {
 				t.setC_completed_date(c_completed_date);
 				t.setC_status(c_status);
 				inWarehouse.add(t);
-
+				
+				System.out.println(c_contract_no);
 				System.out.println(p_id);
 				System.out.println(p_name);
 				System.out.println(p_si);

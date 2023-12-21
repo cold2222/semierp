@@ -18,7 +18,7 @@ public class WarehouseBoardC extends HttpServlet {
         WarehouseBoardDAO.getWbtdao().getWBTest(request, operationType);
         WarehouseBoardDAO.getWbtdao().calcStock(request, operationType);
         
-		request.getRequestDispatcher("sj/warehouse_board/warehouse_board.jsp").forward(request, response);
+		request.getRequestDispatcher("sj/warehouse/warehouse_stock_board/warehouse_board.jsp").forward(request, response);
 				
 	}
 	

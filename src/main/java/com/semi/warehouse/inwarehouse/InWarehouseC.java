@@ -1,4 +1,4 @@
-package com.semi.warehouse.inexwarehouse;
+package com.semi.warehouse.inwarehouse;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -19,7 +19,7 @@ public class InWarehouseC extends HttpServlet {
 		
 		
 //		request.setAttribute("contentPage", "sj/warehouse/warehouse.jsp");
-		request.getRequestDispatcher("sj/warehouse/in_warehouse_interface.jsp").forward(request, response);
+		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_interface.jsp").forward(request, response);
 	
 		
 	}
@@ -43,7 +43,7 @@ public class InWarehouseC extends HttpServlet {
 			
 		}
 		
-		request.getRequestDispatcher("sj/warehouse/in_warehouse_interface.jsp").forward(request, response);
+		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_interface.jsp").forward(request, response);
 	}
 
 }
