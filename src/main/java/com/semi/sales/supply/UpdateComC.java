@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/UpdateComC")
 public class UpdateComC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	SupplyComDAO.getSdao().getCom(request);
 	request.setAttribute("contentPage", "jh/company/updateCom.jsp");
 	request.setAttribute("sidebar", "jh/sidebar.jsp");
@@ -24,7 +23,7 @@ public class UpdateComC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	SupplyComDAO.getSdao().updateCom(request);
-	response.sendRedirect("UpdateComC?num="+request.getParameter("num")+"&isSuccess="
+	response.sendRedirect("UpdateComC?c_no="+request.getParameter("c_no")+"&isSuccess="
 			+ request.getAttribute("isSuccess"));	
 	
 	}

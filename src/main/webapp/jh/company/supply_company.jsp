@@ -11,15 +11,15 @@
 <body>
 	<div>
 		<form action="CompanyC" method="GET">
-					<select name="field" id="searchField" onchange="showInput()">
-						<option value="all">全体検索</option>
-						<option value="c_name">会社名</option>
-						<option value="c_keeper">取引先の担当者</option>
-						<option value="c_addr">住所</option>
-					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
-						id="searchWord" class="search-input" style="display: none;">
-					<button type="submit" class="search-button">検索</button>
-				</form>
+			<select name="field" id="searchField" onchange="showInput()">
+				<option value="all">全体検索</option>
+				<option value="c_name">会社名</option>
+				<option value="c_keeper">取引先の担当者</option>
+				<option value="c_addr">住所</option>
+			</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
+				id="searchWord" class="search-input" style="display: none;">
+			<button type="submit" class="search-button">検索</button>
+		</form>
 	</div>
 	<table border="1" style="width: 83%; height: 800px;">
 		<c:forEach var="c" items="${cs }">
@@ -31,12 +31,10 @@
 				<td>${c.c_addr }</td>
 				<td>${c.c_text }</td>
 				<td>
-					<button onclick="location.href='UpdateComC?num=${c.c_no }'">수정</button>
+					<button onclick="location.href='UpdateComC?c_no=${c.c_no }'">수정</button>
 				</td>
 				<td>
-					<button
-						onclick="location.href='ContractC?num=${c.c_no }'">계약서
-						조회</button>
+					<button onclick="deleteCompany('${c.c_no }')">삭제</button>
 				</td>
 			</tr>
 		</c:forEach>
@@ -44,36 +42,34 @@
 
 	<div>
 		<c:choose>
-										<c:when test="${pageNum != 1}">
-											<button
-												onclick="location.href='CompanyPageC?p=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
-										</c:when>
-									</c:choose>
+			<c:when test="${pageNum != 1}">
+				<button
+					onclick="location.href='CompanyPageC?p=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
+			</c:when>
+		</c:choose>
 
-									<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
-										end="${pageNum + 3 <= pageCount ? pageNum + 3 : pageCount}"
-										step="1">
-										<c:choose>
-											<c:when test="${i eq pageNum}">
-												<a
-													href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }"
-													style="color: black; font-weight: bold;">${i}</a>
-											</c:when>
-											<c:otherwise>
-												<a
-													href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }">${i}</a>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
+		<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
+			end="${pageNum + 3 <= pageCount ? pageNum + 3 : pageCount}" step="1">
+			<c:choose>
+				<c:when test="${i eq pageNum}">
+					<a
+						href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }"
+						style="color: black; font-weight: bold;">${i}</a>
+				</c:when>
+				<c:otherwise>
+					<a
+						href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }">${i}</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
 
-									<c:choose>
-										<c:when test="${pageNum != pageCount}">
-											<button
-												onclick="location.href='CompanyPageC?p=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
-										</c:when>
-									</c:choose>
+		<c:choose>
+			<c:when test="${pageNum != pageCount}">
+				<button
+					onclick="location.href='CompanyPageC?p=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
+			</c:when>
+		</c:choose>
 	</div>
-
-
+	<script type="text/javascript" src="jh/js/supply_company.js"></script>
 </body>
 </html>

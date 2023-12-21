@@ -3,7 +3,6 @@ package com.semi.sales.product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,10 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.semi.sales.bbs.DBManager;
+import com.semi.sales.supply.Company;
 
 public class ProductDAO {
 	private ArrayList<Product> productItems;
 	private static final ProductDAO PDAO = new ProductDAO();
+
+	public void paging(int pageNum, HttpServletRequest request) {
+		int pageSize = 4; // 한 페이지당 보여줄 개수
+		int totalData = productItems.size();
+		int totalPage = (int) Math.ceil((double) totalData / pageSize);
+		int startDataNum = totalData - (pageSize * (pageNum - 1));
+		int endDataNum = (pageNum == totalPage) ? -1 : startDataNum - (pageSize + 1);
+
+		ArrayList<Product> items = new ArrayList<Product>();
+		if (productItems.size() > 0) {
+			for (int i = startDataNum - 1; i > endDataNum; i--) {
+				items.add(productItems.get(i));
+			}
+		}
+		request.setAttribute("productItems", items);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("totalPage", totalPage);
+
+	}
 
 	private ProductDAO() {
 	}
@@ -181,19 +200,20 @@ public class ProductDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		HashMap<String,String> search = new HashMap<String, String>();
+
+		HashMap<String, String> search = new HashMap<String, String>();
 		String field = request.getParameter("field");
 		String word = request.getParameter("word");
-		if(word != null) {
+		if (word != null) {
 			search.put("field", field);
 			search.put("word", word);
 		}
-		
-		String sql = "select * from product";
-		if(search.get("word") != null && !search.get("field").equals("all")) {
-			sql += " where " + search.get("field") + " " + "like '%" + search.get("word") +"%'";
+
+		String sql = "select * from product ";
+		if (search.get("word") != null && !search.get("field").equals("all")) {
+			sql += "where " + search.get("field") + " " + "like '%" + search.get("word") + "%' ";
 		}
+		sql += "order by p_id";
 		
 		try {
 			request.setCharacterEncoding("utf-8");
@@ -392,6 +412,49 @@ public class ProductDAO {
 		}
 
 	}
+	
+	public void searchProduct(HttpServletRequest request, HttpServletResponse response) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			request.setCharacterEncoding("utf-8");
+			String sql = "select * from product where p_name like ?";
+			request.setCharacterEncoding("utf-8");
+			con = DBManager.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + request.getParameter("search") + "%");
+			rs = pstmt.executeQuery();
+
+			Product p = null;
+			productItems = new ArrayList<Product>();
+			while (rs.next()) {
+				p = new Product();
+				p.setP_id(rs.getInt("p_id"));
+				p.setP_si(rs.getString("p_si"));
+				p.setP_type(rs.getString("p_type"));
+				p.setP_quantity(rs.getInt("p_quantity"));
+				p.setP_name(rs.getString("p_name"));
+				p.setP_unitCost(rs.getString("p_unitCost")); 
+				p.setP_minStock(rs.getString("p_minStock")); 
+				p.setP_maxStock(rs.getString("p_maxStock")); 
+				p.setP_manufacturer(rs.getString("p_manufacturer")); 
+				productItems.add(p);
+			}
+			Gson g = new Gson();
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("application/json");
+			response.getWriter().write(g.toJson(productItems));
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+
+	}
+	
 
 	public void updateUnit(HttpServletRequest request) {
 		Connection con = null;
@@ -419,23 +482,23 @@ public class ProductDAO {
 	}
 
 	public void deleteProduct(HttpServletRequest request) {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		String sql = "delete product where p_id = ?";
 		try {
 			con = DBManager.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("p_id"));
-			if(pstmt.executeUpdate() == 1) {
+			if (pstmt.executeUpdate() == 1) {
 				System.out.println("프로덕트 삭제 성공");
 			}
-			
-		}  catch (Exception e) {
+
+		} catch (Exception e) {
 			System.out.println("프로덕트 삭제 실패");
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DBManager.close(con, pstmt, null);
 		}
 	}

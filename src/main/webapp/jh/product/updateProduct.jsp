@@ -17,7 +17,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 <body>
 	<input type="hidden" id="type" value="${p.p_type }">
 	<input type="hidden" id="si" value="${p.p_si }">
-	<form action="UpdateProductC?id=${p.p_id }" method="post">
+	<form action="" method="post" id="myFrom">
 		<table>
 			<tr>
 				<td>단위<select name="p_si" id="siSelect">
@@ -52,7 +52,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 					value="${p.p_manufacturer}"></td>
 			</tr>
 		</table>
-		<button>수정 확인</button>
+		<button onclick="updateProduct()">수정 확인</button>
 	</form>
 	<script type="text/javascript">
 		// 데이터베이스에서 가져온 값
@@ -77,6 +77,54 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 				siBox.selectedIndex = i;
 				break;
 			}
+		}
+		
+		function postFormData(url, data) {
+		    const form = document.createElement('form');
+		    form.method = 'POST';
+		    form.action = url;
+
+		    for (const key in data) {
+		        if (data.hasOwnProperty(key)) {
+		            const input = document.createElement('input');
+		            input.type = 'hidden';
+		            input.name = key;
+		            input.value = data[key];
+		            form.appendChild(input);
+		        }
+		    }
+
+		    document.body.appendChild(form);
+		    form.submit();
+		}
+
+		function updateProduct() {
+		    const type = document.getElementById('typeSelect').value;
+		    const si = document.getElementById('siSelect').value;
+		    const quantity = document.getElementsByName('p_quantity')[0].value;
+		    const name = document.getElementsByName('p_name')[0].value;
+		    const unitCost = document.getElementsByName('p_unitCost')[0].value;
+		    const minStock = document.getElementsByName('p_minStock')[0].value;
+		    const maxStock = document.getElementsByName('p_maxStock')[0].value;
+		    const manufacturer = document.getElementsByName('p_manufacturer')[0].value;
+
+		    const formData = {
+		        p_type: type,
+		        p_si: si,
+		        p_quantity: quantity,
+		        p_name: name,
+		        p_unitCost: unitCost,
+		        p_minStock: minStock,
+		        p_maxStock: maxStock,
+		        p_manufacturer: manufacturer
+		    };
+
+		    if (confirm('업데이트 하시겠습니까?')) {
+		        postFormData('UpdateProductC', formData);
+		        alert('업데이트 완료');
+		    } else {
+		        return;
+		    }
 		}
 	</script>
 </body>

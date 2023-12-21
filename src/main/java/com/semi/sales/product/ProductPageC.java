@@ -1,4 +1,4 @@
-package com.semi.sales.supply;
+package com.semi.sales.product;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,27 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/UpdateContentC")
-public class UpdateContentC extends HttpServlet {
+@WebServlet("/ProductPageC")
+public class ProductPageC extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		SupplyComDAO.getSdao().getContent(request);
-		request.setAttribute("contentPage", "jh/content/updateContent.jsp");
+		ProductDAO.getPdao().getAllProduct(request);
+		ProductDAO.getPdao().getAllUnit(request);
+		ProductDAO.getPdao().getAllType(request);
+		ProductDAO.getPdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
+		request.setAttribute("contentPage", "jh/product/supply_product.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
-	
-	
-	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		SupplyComDAO.getSdao().updateContent(request);
-		response.sendRedirect("UpdateContentC?num="+request.getParameter("num")+"&isSuccess="
-				+ request.getAttribute("isSuccess"));	
-	
-	
-	
 	}
 
 }

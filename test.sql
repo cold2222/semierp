@@ -16,7 +16,7 @@ select * from company order by c_no desc;
 
 create table contract(
     c_contract_no number(10) PRIMARY KEY,
-    s_c_no number(10) not null,
+    c_c_no number(10) not null,
     c_e_id number(10) not null,
     c_created_date date not null,
     c_due_date date not null,
@@ -25,7 +25,7 @@ create table contract(
     c_status number(1) not null,
     c_type number(1) not null
 );
-
+drop table contract;
 select * from company;
 ALTER TABLE table_name ADD new_column_name datatype;
 ALTER TABLE table_name DROP COLUMN old_column_name;
@@ -42,19 +42,22 @@ create table contract_items(
     ci_count number(10) not null,
     ci_unit_price number(10) not null
 );
+drop table contract_items;
 create SEQUENCE contract_items_seq START WITH 1 INCREMENT BY 1;
 
 create table product(
     p_id number(3) PRIMARY KEY,
     p_si varchar2(5 char) not null,
     p_type varchar2(10 char) not null,
-    p_quantity number(10) not null,
+    p_quantity number(10),
     p_name varchar2(20 char) not null,
     p_unitcost number(10) not null,
     p_minstock number(10) not null,
     p_maxstock number(10) not null,
-    p_manufacturer number(3) not null
+    p_manufacturer varchar2(100 char)
 );
+
+drop table product;
 create SEQUENCE product_seq START WITH 1 INCREMENT BY 1;
 ALTER TABLE product MODIFY (p_manufacturer NUMBER(10));
 insert into product values(1, 'L', 'oil', 3, 'dkdk', 3939, 9393, 3939, 1);
@@ -76,7 +79,16 @@ select * from contract;
 select * from contract_items;
 SELECT contract_seq.CURRVAL FROM dual;
 delete contract_items;
-
+create table employee(
+    e_no number(10) primary key,
+    e_pw varchar2(64char) not null,
+    e_deptno number(3),
+    e_name varchar2(20char) not null,
+    e_rank varchar2(20char) not null,
+    e_tel varchar2(15char) not null,
+    e_email varchar2(30char) not null,
+    e_joined_company_date date not null
+);
 
 
 

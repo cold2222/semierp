@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DetailContentC")
-public class DetailContentC extends HttpServlet {
+@WebServlet("/DeleteCompnayC")
+public class DeleteCompnayC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SupplyComDAO.getSdao().searchContent(request);
-		request.setAttribute("contentPage", "jh/content/content_company.jsp");
-		request.setAttribute("sidebar", "jh/sidebar.jsp");
-		request.getRequestDispatcher("index2.jsp").forward(request, response);
-	
+		SupplyComDAO.getSdao().deleteCompany(request);
+		response.sendRedirect("CompanyC");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -62,8 +62,6 @@
 </style>
 </head>
 <body>
-	<button id="openModalBtn">회사 이름 검색</button>
-	<!-- 모달 배경 -->
 	<div id="modalBackground" class="modal-background">
 		<!-- 모달 내용 -->
 		<div id="myModal" class="modal-content">
@@ -78,7 +76,6 @@
 			</div>
 		</div>
 	</div>
-<button id="openProductModalBtn">상품 검색</button>
 
 <!-- 상품 검색용 모달 -->
 <div id="productModalBackground" class="modal-background">
@@ -95,8 +92,39 @@
   </div>
 </div>
 <button type="button" onclick="addRow()">행 추가</button>
+	<form action="MakeContractC" method="post" >
+		<table>
+			<tr>
+				<td><input type="hidden" name="s_c_no" readonly="readonly" id="selectedValue" placeholder="회사 번호"></td>
+				<td><input readonly="readonly" id="displayName" placeholder="회사 이름"></td>
+				<td><input name="c_e_id" placeholder="사원 id" required="required"></td>
+				<td>계약서 작성일<input type="date" readonly="readonly" name="c_created_date" id="c_created_date">
+				</td>
+				<td>납기일<input type="date" name="c_due_date" required="required"></td>
+				<td><input type="hidden" name="c_status" placeholder="거래 상태"
+					value="1"></td>
+				<td>구매/판매 <select id="transactionType"
+					 name="c_type">
+						<option value="1" selected="selected">구매</option>
+						<option value="2">판매</option>
+				</select>
+				</td>
+			</tr>
+		</table>
+		<table id="contractTable">
+			<tr style="display: none;">
+				<td><input name="ci_c_contract_no" type="hidden"></td>
+				<td><input type="hidden" name="ci_p_id" class="selectedValueP"></td>
+				<td><input readonly="readonly" class="displayNameP" placeholder="상품명"></td>
+				<td><input name="ci_count" placeholder="몇 개 살건지"></td>
+				<td><input name="ci_unit_price" placeholder="얼마로 살건지"></td>
+			</tr>
+		</table>
+		<button>계약서 내용 작성</button>
+	</form>
+</body>
 	<script>
-  // 모달 열기
+  //회사 모달 열기
   function openModal() {
     var modalBg = document.getElementById('modalBackground');
     var modal = document.getElementById('myModal');
@@ -104,7 +132,7 @@
     modal.style.display = 'block';
   }
 
-  // 모달 닫기
+  //회사 모달 닫기
   function closeModal() {
     var modalBg = document.getElementById('modalBackground');
     var modal = document.getElementById('myModal');
@@ -112,8 +140,8 @@
     modal.style.display = 'none';
   }
 
-  // 버튼 클릭 시 모달 열기
-  document.getElementById('openModalBtn').addEventListener('click', openModal);
+  // 인풋창 클릭 시 모달 열기
+  document.getElementById('displayName').addEventListener('click', openModal);
 
   // 닫기 버튼 클릭 시 모달 닫기
   document.getElementById('closeModalBtn').addEventListener('click', closeModal);
@@ -136,11 +164,7 @@
     productModal.style.display = 'none';
   }
   
-  // 버튼 클릭 시 상품 검색 모달 열기
-  document.getElementById('openProductModalBtn').addEventListener('click', openProductModal);
-
-  // 닫기 버튼 클릭 시 상품 검색 모달 닫기
-  document.getElementById('closeProductModalBtn').addEventListener('click', closeProductModal);
+ 
   
   document.addEventListener('DOMContentLoaded', function(event) {
 	    // 오늘 날짜 가져오기 console.log
@@ -162,37 +186,5 @@
   
   
 </script>
-
-	<form action="MakeContractC" method="post" >
-		<table>
-			<tr>
-				<td><input name="s_c_no" readonly="readonly" id="selectedValue" placeholder="회사 번호"></td>
-				<td><input readonly="readonly" id="displayName" placeholder="회사 이름"></td>
-				<td><input name="c_e_id" placeholder="사원 id"></td>
-				<td>계약서 작성일<input type="date" readonly="readonly" name="c_created_date" id="c_created_date">
-				</td>
-				<td>납기일<input type="date" name="c_due_date"></td>
-				<td><input type="hidden" name="c_status" placeholder="거래 상태"
-					value="1"></td>
-				<td>구매/판매 <select id="transactionType"
-					 name="c_type">
-						<option value="1" selected="selected">구매</option>
-						<option value="2">판매</option>
-				</select>
-				</td>
-			</tr>
-		</table>
-		<table id="contractTable">
-			<tr style="display: none;">
-				<td><input name="ci_c_contract_no" type="hidden"></td>
-				<td><input name="ci_p_id" class="selectedValueP"></td>
-				<td><input readonly="readonly" class="displayNameP" placeholder="상품명"></td>
-				<td><input name="ci_count" placeholder="몇 개 살건지"></td>
-				<td><input name="ci_unit_price" placeholder="얼마로 살건지"></td>
-			</tr>
-		</table>
-		<button>계약서 내용 작성</button>
-	</form>
-</body>
-<script type="text/javascript" src="jh/js/search.js"></script>
+<script type="text/javascript" src="jh/js/contract_company.js"></script>
 </html> 

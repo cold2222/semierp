@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Contract {
 	private int c_contract_no;
-	private int s_c_no;
+	private int c_c_no;
 	private int c_e_id;
 	private Date c_created_date;
 	private Date c_due_date;
@@ -25,20 +25,20 @@ public class Contract {
 		this.items = items;
 	}
 
+	public int getC_c_no() {
+		return c_c_no;
+	}
+
+	public void setC_c_no(int c_c_no) {
+		this.c_c_no = c_c_no;
+	}
+
 	public int getC_contract_no() {
 		return c_contract_no;
 	}
 
 	public void setC_contract_no(int c_contract_no) {
 		this.c_contract_no = c_contract_no;
-	}
-
-	public int getS_c_no() {
-		return s_c_no;
-	}
-
-	public void setS_c_no(int s_c_no) {
-		this.s_c_no = s_c_no;
 	}
 
 	public int getC_e_id() {
