@@ -13,8 +13,7 @@
 		<div class="header1">
 			<div class="header1-logo">
 				<img class="header1-logo-img" alt="" 
-				src="https://dtd31o1ybbmk8.cloudfront.net/photos/
-				dd0ddba7a34677ce34152562710207bc/thumb.jpg">
+				src="logoFolder/SollogisticsHeaderLogo.png">
 			</div>
 			<div id="header1-empty"></div>
 			<div class="header1-atag">마이페이지</div>

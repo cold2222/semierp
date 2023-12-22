@@ -1,3 +1,4 @@
+
 function changeColor(element, page) {
     var items = document.querySelectorAll('.header2-item');
 
@@ -28,3 +29,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
