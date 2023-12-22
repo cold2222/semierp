@@ -14,6 +14,8 @@ public class UpdateProductC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		ProductDAO.getPdao().getP(request);
+		ProductDAO.getPdao().getAllUnit(request);
+		ProductDAO.getPdao().getAllType(request);
 		request.setAttribute("contentPage", "jh/product/updateProduct.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
@@ -23,13 +25,8 @@ public class UpdateProductC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		ProductDAO.getPdao().updateProduct(request);
-		response.sendRedirect("UpdateProduct?id="+request.getParameter("id")+"&isSuccess="
-				+ request.getAttribute("isSuccess"));	
-	
-	
-	
+		response.sendRedirect("UpdateProductC?id="+request.getParameter("id"));	
 	}
 
 }
