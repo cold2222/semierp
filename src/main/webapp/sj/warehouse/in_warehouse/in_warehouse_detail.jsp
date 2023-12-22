@@ -32,86 +32,31 @@
 	width: 69px;
 }
 </style>
-<!-- 
-
- <script>
- 
-	function submitForm() {
-		var form = document.getElementById("warehouseForm");
-		var checkboxes = document
-				.querySelectorAll('input[name="selectedItems"]:checked');
-
-		var selectedIds = Array.from(checkboxes).map(function(checkbox) {
-			return checkbox.value;
-		});
-
-		var selectedRecordCounts = Array.from(checkboxes).map(
-				function(checkbox) {
-					return checkbox.getAttribute("data-record-count");
-				});
-
-		var selectedInWarehouseDates = Array.from(checkboxes).map(
-				function(checkbox) {
-					return checkbox.getAttribute("data-in-warehouse-date");
-				});
-
-/* 		var selectedWarehouseIds = Array.from(checkboxes).map(
-				function(checkbox) {
-					return checkbox.getAttribute("data-warehouse-id");
-				});
- */	
- 		console.log(selectedIds)
-		console.log(selectedRecordCounts)
-		console.log(selectedInWarehouseDates)
-//		console.log(selectedWarehouseIds)
-
-		var hiddenField = document.createElement("input");
-		hiddenField.setAttribute("type", "hidden");
-		hiddenField.setAttribute("name", "selectedIds");
-		hiddenField.setAttribute("value", selectedIds.join(','));		
-		form.appendChild(hiddenField);
-
-		var hiddenRecordCountsField = document.createElement("input");
-	    hiddenRecordCountsField.setAttribute("type", "hidden");
-	    hiddenRecordCountsField.setAttribute("name", "selectedRecordCounts");
-	    hiddenRecordCountsField.setAttribute("value", selectedRecordCounts.join(','));
-	    form.appendChild(hiddenRecordCountsField);
-
-	    var hiddenInWarehouseDatesField = document.createElement("input");
-	    hiddenInWarehouseDatesField.setAttribute("type", "hidden");
-	    hiddenInWarehouseDatesField.setAttribute("name", "selectedInWarehouseDates");
-	    hiddenInWarehouseDatesField.setAttribute("value", selectedInWarehouseDates.join(','));
-	    form.appendChild(hiddenInWarehouseDatesField);
-		
-		
-//		form.submit();
-
-		return true;
-	}
-	
-</script>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		document.getElementById('searchOption').addEventListener(
-				'change',
-				function() {
-					var input = document.querySelector('.searchInput');
-					input.style.display = this.value === 'x' ? 'none'
-							: 'inline-block';
-				});
-
-	});
-</script>
- -->
 </head>
 <body>
 
-	<h1 style="font-size: 30pt;">입고 등록 확인 컨펌 </h1>
-
-
-<form action="InWarehouseDetailC" method="post"
-		onsubmit="return submitForm()" id="warehouseForm">
+	<h1 style="font-size: 30pt;">입고 등록 확인 컨펌</h1>
+	<div class="input-box input-container">
+		<div class="in_name">계약 ID</div>
+		<div class="in_name">계약 날짜</div>
+		<div class="in_name">거래처 회사명</div>
+		<div class="in_name">담당자 이름</div>
+	</div>
+	<div class="input-box input-container">
+		<div>
+			<input value="${contract.c_contract_no}" readonly="readonly">
+		</div>
+		<div>
+			<input value="${contract.c_created_date}" readonly="readonly">
+		</div>
+		<div>
+			<input value="${contract.c_name}" readonly="readonly">
+		</div>
+		<div>
+			<input  value="${contract.e_name}" readonly="readonly">
+		</div>
+	</div>
+	<form action="InWarehouseDetailC" method="post" id="warehouseForm">
 		<div class="input-box input-container">
 			<div class="in_name">품목 ID</div>
 			<div class="in_name">타입</div>
@@ -124,6 +69,8 @@
 
 		<c:forEach var="t" items="${inWarehouse}">
 			<div class="input-box input-container">
+				<input type="hidden" name="c_contract_no"
+					value="${param.c_contract_no }">
 				<div>
 					<input name="ci_p_id" value="${t.ci_p_id}" readonly="readonly">
 				</div>
@@ -141,12 +88,10 @@
 					<input name="p_si" value="${t.p_si}" readonly="readonly">
 				</div>
 				<div>
-					<input name="ci_count" value="${t.ci_count}"
-						readonly="readonly">
+					<input name="ci_count" value="${t.ci_count}" readonly="readonly">
 				</div>
 				<div>
-					<!-- warehouse_id 뒤에 t.p_id 를 툼으로써 창고번호 가져갈 수 있게함  -->
-					<select name="warehouse_id" id="warehouse_id_${t.ci_p_id}">
+					<select name="warehouse_id">
 						<option value="1">1창고</option>
 						<option value="2">2창고</option>
 						<option value="3">3창고</option>
@@ -154,9 +99,12 @@
 				</div>
 			</div>
 		</c:forEach>
-		<button>수령확인</button>
+		<button id="fromBtn">수령확인</button>
 	</form>
+	<button onclick="history.back()">돌아가기</button>
 
-	 <a href="InExBoardC">입고출고 내역 확인하러 가기</a> 
+	<a href="InExBoardC">입고출고 내역 확인하러 가기</a>
 </body>
+<script type="text/javascript"
+	src="sj/warehouse/warehouse_js/warehouse_detail.js"></script>
 </html>

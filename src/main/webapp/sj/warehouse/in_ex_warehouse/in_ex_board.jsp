@@ -65,11 +65,7 @@
 
 </head>
 <body>
-
-
 	<h1 style="font-size: 30pt;">입고 출고 테이블</h1>
-
-
 
 
 	<form action="InExBoardC" method="get">
@@ -139,7 +135,7 @@
     </c:forEach>
 
     <c:choose>
-        <c:when test="${pageNum != totalPage}">
+        <c:when test="${pageNum != totalPage && totalPage != 0}">
             <a href="InExBoardC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">다음</a>
         </c:when>
     </c:choose>

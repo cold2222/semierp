@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.semi.distribution.db.DBManger;
 import com.semi.warehouse.inexwarehouse.InExWarehouseDAO;
 import com.semi.warehouse.inexwarehouse.InExWarehouseDTO;
 
@@ -25,7 +26,7 @@ public class WarehouseBoardDAO {
 		    }
 		 
 		 public void paging(int pageNum, HttpServletRequest request) {
-				int pageSize = 10; // 한 페이지당 보여줄 개수
+				int pageSize = 3; // 한 페이지당 보여줄 개수
 				int totalData = warehouseBoard.size();
 				int totalPage = (int)Math.ceil((double)totalData / pageSize);
 				
@@ -65,30 +66,24 @@ public class WarehouseBoardDAO {
 				+ "    product.p_quantity,\n"
 				+ "    product.p_si,\n"
 				+ "    product.p_type,\n"
-				+ "    product.p_unicost,\n"
+				+ "    product.p_unitcost,\n"
 				+ "    warehouse.warehouse_name,\n"
-				+ "    manufacture.manufacture_name,\n"
+				+ "    product.p_manufacturer,\n"
 				+ "    stock.rm_stock,\n"
 				+ "    sysdate AS today_date,\n"
 				+ "    employee.e_name\n"
 				+ "FROM\n"
-				+ "    product\n"
-				+ "JOIN\n"
-				+ "    stock ON product.p_id = stock.p_id\n"
-				+ "JOIN\n"
-				+ "    warehouse ON stock.warehouse_id = warehouse.warehouse_id\n"
-				+ "JOIN\n"
-				+ "    manufacture ON product.p_manufacturer = manufacture.p_manufacturer\n"
-				+ "JOIN\n"
-				+ "    employee ON warehouse.e_employee_id = employee.e_employee_id\n";	
-		 if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null) {
-		        if ("manufacture_name".equals(search.get("searchOption"))) {
-		            sql += "WHERE LOWER(manufacture." + search.get("searchOption") + ") LIKE LOWER('%" + search.get("searchWord") + "%') ";
-		        } else {
-		            sql += "WHERE LOWER(product." + search.get("searchOption") + ") LIKE LOWER('%" + search.get("searchWord") + "%') ";
-		        }
+				+ "    warehouse\n"
+				+ "INNER JOIN\n"
+				+ "    stock ON stock.warehouse_id = warehouse.warehouse_id\n"
+				+ "INNER JOIN\n"
+				+ "    product ON product.p_id = stock.p_id\n"
+				+ "INNER JOIN\n"
+				+ "    employee ON warehouse.employee_id = employee.e_no\n"
+				+ "WHERE stock.rm_stock > 0 ";	
+		 	if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null && !search.get("searchWord").equals("")) {
+		            sql += "and LOWER(product." + search.get("searchOption") + ") LIKE LOWER('%" + search.get("searchWord") + "%') ";
 		    }
-		 
 		 
 		if ("one".equals(operationType)) {
             sql += " and warehouse.warehouse_id = 1 "
@@ -114,11 +109,10 @@ public class WarehouseBoardDAO {
 					+ "    product.p_name ASC,\n"
 					+ "    product.p_quantity ASC";
 		}
-		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			con = DBManager.connect();
+		try {
+
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -131,14 +125,12 @@ public class WarehouseBoardDAO {
 				int p_quantity = rs.getInt("p_quantity");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_unicost = rs.getInt("p_unicost");
+				int p_unicost = rs.getInt("p_unitcost");
 				String warehouse_name = rs.getString("warehouse_name");
-				String manufacture_name = rs.getString("manufacture_name");
-				int stock = rs.getInt("stock");
+				String manufacture_name = rs.getString("p_manufacturer");
+				int stock = rs.getInt("rm_stock");
 				String today_date = rs.getString("today_date");
 				String e_name = rs.getString("e_name");
-				
-				// p_id로 pk
 				
 				wb = new WarehouseBoardDTO();
 				wb.setP_id(p_id);
@@ -153,22 +145,8 @@ public class WarehouseBoardDAO {
 				wb.setToday_date(today_date);
 				wb.setE_name(e_name);
 				
-				
 				warehouseBoard.add(wb);
-
-				System.out.println(p_id);
-				System.out.println(p_name);
-				System.out.println(p_quantity);
-				System.out.println(p_si);
-				System.out.println(p_type);
-				System.out.println(p_unicost);
-				System.out.println(warehouse_name);
-				System.out.println(manufacture_name);
-				System.out.println(stock);
-				System.out.println(today_date);
-
 			}
-			request.setAttribute("warehouseBoard", warehouseBoard);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -188,11 +166,11 @@ public class WarehouseBoardDAO {
 	    PreparedStatement pstmt = null;
 	    ResultSet rs = null;
 	    String sql = "SELECT\n"
-	    		+ "    COALESCE(SUM(stock.rm_stock * product.p_unicost), 0) AS total_stock\n"
+	    		+ "    COALESCE(SUM(stock.rm_stock * product.p_unitcost), 0) AS total_stock\n"
 	    		+ "FROM\n"
-	    		+ "    warehouse_test\n"
+	    		+ "    warehouse\n"
 	    		+ "LEFT JOIN\n"
-	    		+ "    stock ON warehouse_test.warehouse_id = stock.warehouse_id\n"
+	    		+ "    stock ON warehouse.warehouse_id = stock.warehouse_id\n"
 	    		+ "LEFT JOIN\n"
 	    		+ "    product ON stock.p_id = product.p_id \n";
 
@@ -212,8 +190,7 @@ public class WarehouseBoardDAO {
 
 	    
 	    try {
-	        Class.forName("oracle.jdbc.driver.OracleDriver");
-	        con = DBManager.connect();
+	        con = DBManger.connect();
 	        pstmt = con.prepareStatement(sql);
 
 

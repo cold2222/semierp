@@ -66,33 +66,32 @@
 				<option value="one">1창고</option>
 				<option value="two">2창고</option>
 				<option value="three">3창고</option>
-			</select>
-			검색 : <select id="searchOption" name="searchOption">
+			</select> 검색 : <select id="searchOption" name="searchOption">
 				<option value="x">검색조건선택</option>
 				<option value="p_name">제품명</option>
 				<option value="p_type">타입</option>
-				<option value="manufacture_name">제조사</option>
+				<option value="p_manufacturer">제조사</option>
 			</select> <input type="text" name="word" class="searchInput"
 				style="display: none;">
 			<button type="submit">확인</button>
 			<div class="right-align">
-					재고 값 : 
+				재고 값 :
 				<c:choose>
-    <c:when test="${operationType eq 'all' or operationType eq null}">
-        <c:set var="totalValue" value="0" />
-        <c:forEach var="ts" items="${totalStockList}">
-            <c:set var="totalValue" value="${totalValue + ts.total_stock}" />
-        </c:forEach>
-        <fmt:formatNumber value="${totalValue}" pattern="#,###"/>
-    </c:when>
-    <c:otherwise>
-        <c:forEach var="ts" items="${totalStockList}">
-            <c:if test="${ts.warehouse_name eq operationType}">
+					<c:when test="${operationType eq 'all' or operationType eq null}">
+						<c:set var="totalValue" value="0" />
+						<c:forEach var="ts" items="${totalStockList}">
+							<c:set var="totalValue" value="${totalValue + ts.total_stock}" />
+						</c:forEach>
+						<fmt:formatNumber value="${totalValue}" pattern="#,###" />
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="ts" items="${totalStockList}">
+							<c:if test="${ts.warehouse_name eq operationType}">
                 	 ${operationType}: ${ts.total_stock}
             </c:if>
-        </c:forEach>
-    </c:otherwise>
-</c:choose>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</form>
@@ -118,15 +117,46 @@
 			<div class="in_name">${wb.p_quantity}</div>
 			<div class="in_name">${wb.p_si}</div>
 			<div class="in_name">${wb.manufacture_name}</div>
-			<div class="in_name"><fmt:formatNumber value="${wb.p_unicost}" pattern="#,###"/></div>
+			<div class="in_name">
+				<fmt:formatNumber value="${wb.p_unicost}" pattern="#,###" />
+			</div>
 			<div class="in_name">${wb.stock}</div>
-			<div class="in_name"><fmt:formatNumber value="${wb.stock * wb.p_unicost}" pattern="#,###"/></div>
+			<div class="in_name">
+				<fmt:formatNumber value="${wb.stock * wb.p_unicost}" pattern="#,###" />
+			</div>
 			<div class="in_name">${wb.warehouse_name}</div>
 			<div class="in_name">${wb.e_name}</div>
 		</div>
 	</c:forEach>
+	<div class="paging">
+		<c:choose>
+			<c:when test="${pageNum != 1}">
+				<button
+					onclick="location.href='WarehouseBoardPageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
+			</c:when>
+		</c:choose>
+		<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
+			end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}" step="1">
+			<c:choose>
+				<c:when test="${i eq pageNum}">
+					<a
+						href="WarehouseBoardPageC?pageNum=${i}&field=${param.field }&word=${param.word }"
+						style="color: black; font-weight: bold;">${i}</a>
+				</c:when>
+				<c:otherwise>
+					<a
+						href="WarehouseBoardPageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
 
-	
-	<div>창고 확인 완료</div>
+		<c:choose>
+			<c:when test="${pageNum != totalPage && totalPage != 0}">
+				<button
+					onclick="location.href='WarehouseBoardPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
+			</c:when>
+		</c:choose>
+	</div>
+
 </body>
 </html>

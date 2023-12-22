@@ -1,4 +1,4 @@
-package com.semi.warehouse.inwarehouse;
+package com.semi.warehouse.exwarehouse;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,15 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/ExWarehousePageC")
+public class ExWarehousePageC extends HttpServlet {
 
-@WebServlet("/InWarehouseC")
-public class InWarehouseC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		InWarehouseDAO.getTwdao().getAll(request);
-		InWarehouseDAO.getTwdao().paging(1, request);
-		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_interface.jsp").forward(request, response);
-	
-		
+		ExWarehouseDAO.getEwdao().getExAll(request);
+		ExWarehouseDAO.getEwdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
+		request.getRequestDispatcher("sj/warehouse/ex_warehouse/ex_warehouse_interface.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
