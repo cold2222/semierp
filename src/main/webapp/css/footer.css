@@ -1,0 +1,61 @@
+footer {
+    padding: 20px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 로고 디자인 */
+.footer-logo img {
+    width: 350px; /* 로고 이미지의 크기에 맞게 조절 */
+    height: auto;
+}
+
+/* 각 섹션 디자인 */
+.footer-sections {
+	display: flex;
+	}
+.footer-section {
+	display: flex;
+    flex: 1 0 200px;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+}
+
+/* 저작권 및 이미지 디자인 */
+.footer-bottom {
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+.footer-image img {
+    max-width: 300px; /* 이미지 크기에 맞게 조절 */
+    height: auto;
+}
