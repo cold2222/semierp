@@ -32,10 +32,10 @@
 	width: 69px;
 }
 </style>
-
+<!-- 
 
  <script>
- // 
+ 
 	function submitForm() {
 		var form = document.getElementById("warehouseForm");
 		var checkboxes = document
@@ -45,14 +45,14 @@
 			return checkbox.value;
 		});
 
-		var selectedRecordSalesCounts = Array.from(checkboxes).map(
+		var selectedRecordCounts = Array.from(checkboxes).map(
 				function(checkbox) {
-					return checkbox.getAttribute("data-record-sales-count");
+					return checkbox.getAttribute("data-record-count");
 				});
 
-		var selectedSellDates = Array.from(checkboxes).map(
+		var selectedInWarehouseDates = Array.from(checkboxes).map(
 				function(checkbox) {
-					return checkbox.getAttribute("data-sell-date");
+					return checkbox.getAttribute("data-in-warehouse-date");
 				});
 
 /* 		var selectedWarehouseIds = Array.from(checkboxes).map(
@@ -61,10 +61,9 @@
 				});
  */	
  		console.log(selectedIds)
-		console.log(selectedRecordSalesCounts)
-		console.log(selectedSellDates)
+		console.log(selectedRecordCounts)
+		console.log(selectedInWarehouseDates)
 //		console.log(selectedWarehouseIds)
-		alert('콘솔창 확인용  ')
 
 		var hiddenField = document.createElement("input");
 		hiddenField.setAttribute("type", "hidden");
@@ -72,17 +71,17 @@
 		hiddenField.setAttribute("value", selectedIds.join(','));		
 		form.appendChild(hiddenField);
 
-		var hiddenRecordSalesCountsField = document.createElement("input");
-		hiddenRecordSalesCountsField.setAttribute("type", "hidden");
-		hiddenRecordSalesCountsField.setAttribute("name", "selectedRecordSalesCounts");
-		hiddenRecordSalesCountsField.setAttribute("value", selectedRecordSalesCounts.join(','));
-	    form.appendChild(hiddenRecordSalesCountsField);
+		var hiddenRecordCountsField = document.createElement("input");
+	    hiddenRecordCountsField.setAttribute("type", "hidden");
+	    hiddenRecordCountsField.setAttribute("name", "selectedRecordCounts");
+	    hiddenRecordCountsField.setAttribute("value", selectedRecordCounts.join(','));
+	    form.appendChild(hiddenRecordCountsField);
 
-	    var hiddenSellDatesField = document.createElement("input");
-	    hiddenSellDatesField.setAttribute("type", "hidden");
-	    hiddenSellDatesField.setAttribute("name", "selectedSellDates");
-	    hiddenSellDatesField.setAttribute("value", selectedSellDates.join(','));
-	    form.appendChild(hiddenSellDatesField);
+	    var hiddenInWarehouseDatesField = document.createElement("input");
+	    hiddenInWarehouseDatesField.setAttribute("type", "hidden");
+	    hiddenInWarehouseDatesField.setAttribute("name", "selectedInWarehouseDates");
+	    hiddenInWarehouseDatesField.setAttribute("value", selectedInWarehouseDates.join(','));
+	    form.appendChild(hiddenInWarehouseDatesField);
 		
 		
 //		form.submit();
@@ -92,14 +91,27 @@
 	
 </script>
 
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		document.getElementById('searchOption').addEventListener(
+				'change',
+				function() {
+					var input = document.querySelector('.searchInput');
+					input.style.display = this.value === 'x' ? 'none'
+							: 'inline-block';
+				});
 
-
+	});
+</script>
+ -->
 </head>
 <body>
 
-	<form action="ExWarehouseTestC" method="post"
-		onsubmit="return submitForm()" id="warehouseForm">
+	<h1 style="font-size: 30pt;">입고 등록 확인 컨펌 </h1>
 
+
+<form action="InWarehouseDetailC" method="post"
+		onsubmit="return submitForm()" id="warehouseForm">
 		<div class="input-box input-container">
 			<div class="in_name">품목 ID</div>
 			<div class="in_name">타입</div>
@@ -107,15 +119,13 @@
 			<div class="in_name">p_quantity</div>
 			<div class="in_name">단위</div>
 			<div class="in_name">수량</div>
-			<div class="in_name">날짜</div>
 			<div class="in_name">창고</div>
-			<div class="in_name">체크박스</div>
 		</div>
 
-		<c:forEach var="t" items="${testExWarehouse}">
+		<c:forEach var="t" items="${inWarehouse}">
 			<div class="input-box input-container">
 				<div>
-					<input name="p_id" value="${t.p_id}" readonly="readonly">
+					<input name="ci_p_id" value="${t.ci_p_id}" readonly="readonly">
 				</div>
 				<div>
 					<input name="p_type" value="${t.p_type}" readonly="readonly">
@@ -124,36 +134,29 @@
 					<input name="p_name" value="${t.p_name}" readonly="readonly">
 				</div>
 				<div>
-					<input name="p_quantity" value="${t.p_quantity}" readonly="readonly">
+					<input name="p_quantity" value="${t.p_quantity}"
+						readonly="readonly">
 				</div>
 				<div>
 					<input name="p_si" value="${t.p_si}" readonly="readonly">
 				</div>
 				<div>
-					<input name="record_sales_count" value="${t.record_sales_count}"
-						readonly="readonly" data-record-sales-count="${t.record_sales_count}">
+					<input name="ci_count" value="${t.ci_count}"
+						readonly="readonly">
 				</div>
 				<div>
-					<input name="sell_date" value="${t.sell_date}"
-						readonly="readonly"
-						data-sell-date="${t.sell_date}">
-				</div>
-				<div>
-				<!-- warehouse_id 뒤에 t.p_id 를 툼으로써 창고번호 가져갈 수 있게함  -->
-					<select name="warehouse_id_${t.p_id}" id="warehouse_id_${t.p_id}">
+					<!-- warehouse_id 뒤에 t.p_id 를 툼으로써 창고번호 가져갈 수 있게함  -->
+					<select name="warehouse_id" id="warehouse_id_${t.ci_p_id}">
 						<option value="1">1창고</option>
 						<option value="2">2창고</option>
 						<option value="3">3창고</option>
 					</select>
 				</div>
-				<div>
-					<input type="checkbox" name="selectedItems" value="${t.p_id}"
-						 data-record-sales-count="${t.record_sales_count}"
-						data-sell-date="${t.sell_date}">
-				</div>
 			</div>
 		</c:forEach>
 		<button>수령확인</button>
 	</form>
+
+	 <a href="InExBoardC">입고출고 내역 확인하러 가기</a> 
 </body>
 </html>
