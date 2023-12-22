@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="sb/distribution_css/receipt/receiptview.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"
+	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+	crossorigin="anonymous">
+</script>	
+<script type="text/javascript" src="sb/distribution_js/worklistapi.js"></script>
 </head>
 <body>
 	<div class="content">
@@ -57,15 +62,13 @@
 			<div>
 				<form action="DistributionReceiptDesignationC" method="post" id="myForm">
 					<input type="hidden" name="c_contract_no" value="${rec.c_contract_no }">
-					<c:forEach var="e" items="${empList }">
-							 <input class="inputRadio" type="radio" style="display: none;" id="e_no_${e.e_no}" name="e_no" value="${e.e_no}">
-     						 <label for="e_no_${e.e_no}">${e.e_name}: ${e.e_rank}</label>
-					</c:forEach>
-					<textarea class="note-input" name="s_memo" placeholder="メモ欄"></textarea>
-					<div>
+					<div style="margin-bottom: 20px;">
 					배송날짜선택
 					<input type="date" name="c_delivery_date" id="c_delivery_date">
 					</div>
+					<div id="radioDiv">
+					</div>
+					<textarea class="note-input" name="s_memo" placeholder="メモ欄"></textarea>
     				<button class="modal-btn" type="submit">登録</button>
 				</form>
 			</div>
