@@ -74,18 +74,6 @@
 						<div class="post-info">날짜 2-2</div>
 					</div>
 				</div>
-
-				<div class="board">
-					<div class="board-title">차량검사일정</div>
-					<div class="post">
-						<div class="post-title">제목 2-1</div>
-						<div class="post-info">날짜 2-1</div>
-					</div>
-					<div class="post">
-						<div class="post-title">제목 2-2</div>
-						<div class="post-info">날짜 2-2</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

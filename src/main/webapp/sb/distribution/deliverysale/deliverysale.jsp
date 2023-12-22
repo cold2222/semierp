@@ -16,12 +16,12 @@
 		</div>
 		<div class="content-body">
 		<div class="search-container">
-				<form action="DistributionReceiptC" method="GET">
+				<form action="DistributionDeliverySaleC" method="GET">
 					<select name="field" id="searchField" class="search-select"
 						onchange="showInput()">
 						<option value="all">全体検索</option>
-						<option value="bbs1_title">タイトル</option>
-						<option value="bbs1_content">内容</option>
+						<option value="b.c_name">取引先</option>
+						<option value="c.e_name">取引担当者</option>
 					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
 						id="searchWord" class="search-input" style="display: none;">
 					<button type="submit" class="search-button">検索</button>

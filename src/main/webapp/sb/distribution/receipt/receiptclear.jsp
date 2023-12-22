@@ -49,7 +49,7 @@
 									<div class="bbs-main-text3 bbs-main-text">${c.c_due_date }</div>
 									<div class="bbs-main-text3 bbs-main-text">${c.e_name}</div>
 									<div class="bbs-main-text3 bbs-main-text">${c.c_delivery_date }</div>
-									<div class="bbs-main-text3 bbs-main-text"><button onclick="location.href='DistributionReceiptViewC?c_contract_no=${c.c_contract_no }&c_due_date=${r.c_due_date }'">Move</button></div>
+									<div class="bbs-main-text3 bbs-main-text"><button onclick="location.href='DistributionReceiptViewC?c_contract_no=${c.c_contract_no }&c_due_date=${c.c_due_date }'">Move</button></div>
 									<div class="bbs-main-text4 bbs-main-text"><button onclick="DistributionReceiptClear('${c.c_contract_no}')">확인</button></div>
 								</div>
 								</c:forEach>
