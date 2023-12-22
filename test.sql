@@ -89,9 +89,23 @@ create table employee(
     e_email varchar2(30char) not null,
     e_joined_company_date date not null
 );
-
-
-
-
+insert into employee values(1, 'dada', 1, 'jh', 'd', '01065505547', 'jhjhjh@gmial.com', '2023-09-05');
+insert into employee values(2, 'dado', 2, 'jfh', 'd', '01065755547', 'jdgyhjh@gmial.com', '2023-09-05');
+insert into employee values(3, 'dadb', 3, 'jffh', 'd', '01068905547', 'jgdyhjh@gmial.com', '2023-09-05');
+insert into employee values(4, 'dadf', 5, 'jhgd', 'd', '01062505547', 'jhjjfgjh@gmial.com', '2023-09-05');
+insert into employee values(5, 'dad', 4, 'jhfg', 'd', '01065356547', 'jhjhjjhfh@gmial.com', '2023-09-05');
+insert into employee values(6, 'da', 6, 'jhh', 'd', '0106587647', 'jhjhjhjf@gmial.com', '2023-09-05');
+insert into employee values(7, 'a', 7, 'jhyj', 'd', '01066866547', 'jhjhjjsrh@gmial.com', '2023-09-05');
+insert into employee values(8, 'dfsgada', 8, 'jjh', 'd', '01047505547', 'sjjhjhjh@gmial.com', '2023-09-05');
+insert into employee values(9, 'daa', 9, 'jhh', 'dj', '01065786547', 'xjhjhjh@gmial.com', '2023-09-05');
+insert into employee values(10, 'dsa', 10, 'jfh', 'd', '01046405547', 'dxjhjhjh@gmial.com', '2023-09-05');
+insert into employee values(11, 'ddda', 11, 'jfih', 'd', '01075505547', 'ytjhjhjh@gmial.com', '2023-09-05');
+insert into employee values(12, 'dfda', 12, 'jdh', 'd', '0106855547', 'tjhjhjh@gmial.com', '2023-09-05');
+insert into employee values(13, 'dasa', 13, 'juyth', 'd', '01067805547', 'ujhjhjh@gmial.com', '2023-09-05');
+select * from employee; 
+select * from contract;
+select * from contract_items;
+select * from company order by c_no desc;
+select * from employee where e_name like '%d%';
 
 SELECT * FROM contract JOIN contract_items ON contract.c_contract_no = contract_items.ci_c_contract_no WHERE contract.c_contract_no = 87;
