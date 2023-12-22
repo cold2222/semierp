@@ -1,4 +1,4 @@
-package com.semi.sales.product;
+package com.semi.sales.supply;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.sales.supply.SupplyComDAO;
-
-
-@WebServlet("/DetailProductC")
-public class DetailProductC extends HttpServlet {
+@WebServlet("/CompanySearchC")
+public class CompanySearchC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		ProductDAO.getPdao().searchProduct(request);
-		request.setAttribute("contentPage", "jh/product/supply_product.jsp");
-		request.setAttribute("sidebar", "jh/sidebar.jsp");
-		request.getRequestDispatcher("index2.jsp").forward(request, response);
-	
-	
-	
+		System.out.println(request.getParameter("search"));
+		SupplyComDAO.getSdao().searchCom(request, response);
 	
 	}
 

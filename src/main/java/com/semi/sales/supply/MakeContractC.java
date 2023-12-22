@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 public class MakeContractC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-	SupplyComDAO.getSdao().getCom(request);
 	request.setAttribute("contentPage", "jh/contract/contract_reg.jsp");
 	request.setAttribute("sidebar", "jh/sidebar.jsp");
 	request.getRequestDispatcher("index2.jsp").forward(request, response);
@@ -20,14 +19,9 @@ public class MakeContractC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	SupplyComDAO.getSdao().regCont(request);
-	SupplyComDAO.getSdao().getAllCont(request);
-	request.setAttribute("contentPage", "jh/contract/contract_output.jsp");
-	request.setAttribute("sidebar", "jh/sidebar.jsp");
-	request.getRequestDispatcher("index2.jsp").forward(request, response);
-	
-	
-	
-	
+	SupplyComDAO.getSdao().regContents(request);
+	SupplyComDAO.getSdao().getInsertContractNo(request);
+	response.sendRedirect("ViewContractC?c_contract_no="+request.getAttribute("c_contract_no"));
 	}
 
 }

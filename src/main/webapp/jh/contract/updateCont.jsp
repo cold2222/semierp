@@ -27,14 +27,17 @@ document.addEventListener("DOMContentLoaded", isSuccess);
 </script>
 </head>
 <body>
-<form action="UpdateContC?num=${st.recordall_buy_num }" method="post">
+<form action="UpdateContC?num=${ct.c_contract_no }" method="post">
 <table>
 		<tr>
-			<td> 회사 번호<input readonly="readonly" name="supply_num" value="${st.supply_num }"></td>
-			<td> 구매 날짜<input name="purchase_date" value="${st.purchase_date }"> </td>
-			<td> 입고 예정일<input name="transaction_date" value="${st.transaction_date }"></td>
-			<td> 입고 날짜<input name="in_warehouse_date" value="${st.in_warehouse_date }"></td>
-			<td> 거래 상태<input name="status" value="${st.status }"></td>
+			<td> 회사 번호<input readonly="readonly" name="s_c_no" value="${ct.s_c_no }"></td>
+			<td> 사원 id<input readonly="readonly" name="c_e_id" value="${ct.c_e_id }"></td>
+			<td> 계약서 작성일<input name="c_created_date" value="${ct.c_created_date }"> </td>
+			<td> 납기일<input name="c_due_date" value="${ct.c_due_date }"></td>
+			<td> 배송예정일<input name="c_delivery_date" value="${ct.c_delivery_date }"></td>
+			<td> 입고/출고 일자<input name="c_completed_date" value="${ct.c_completed_date }"></td>
+			<td> 거래 상태<input name="c_status" value="${ct.c_status }"></td>
+			<td> 구매1/판매2<input name="c_type" value="${ct.c_type }"></td>
 		</tr>
 </table>
 <button>수정 확인</button>

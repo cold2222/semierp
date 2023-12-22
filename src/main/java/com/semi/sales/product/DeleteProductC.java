@@ -1,4 +1,4 @@
-package com.semi.sales.supply;
+package com.semi.sales.product;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,18 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.sales.product.ProductDAO;
-
-@WebServlet("/CompanyC")
-public class CompanyC extends HttpServlet {
+@WebServlet("/DeleteProductC")
+public class DeleteProductC extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		SupplyComDAO.getSdao().getAllCom(request);
-		SupplyComDAO.getSdao().paging(1, request);
-		request.setAttribute("contentPage", "jh/company/supply_company.jsp");
-		request.setAttribute("sidebar", "jh/sidebar.jsp");
-		request.getRequestDispatcher("index2.jsp").forward(request, response);
-		
+		ProductDAO.getPdao().deleteProduct(request);
+		response.sendRedirect("ProductC");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

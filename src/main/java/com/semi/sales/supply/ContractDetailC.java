@@ -7,14 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ContentC")
-public class ContentC extends HttpServlet {
+@WebServlet("/ContractDetailC")
+public class ContractDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		SupplyComDAO.getSdao().getAllContents(request);
-		request.setAttribute("contentPage", "jh/content/content_company.jsp");
-		request.setAttribute("sidebar", "jh/sidebar.jsp");
-		request.getRequestDispatcher("index2.jsp").forward(request, response);
+	SupplyComDAO.getSdao().getContractDetail(request);
+	
+	request.setAttribute("contentPage", "jh/contract/contract_output.jsp");
+	request.setAttribute("sidebar", "jh/sidebar.jsp");
+	request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	}
 

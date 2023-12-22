@@ -18,7 +18,7 @@
 			<div class="sidebar-index">契約書</div>
 			<ul>
 				<li onclick="location.href='ContractC'">&nbsp;- 契約書一覧</li>
-				<li onclick="location.href='ContentC'">&nbsp;- 契約内容一覧</li>
+				<li onclick="location.href='MakeContractC'">&nbsp;- 契約書作成</li>
 			</ul>
 			<div class="sidebar-index">商品</div>
 			<ul>
