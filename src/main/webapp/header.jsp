@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/header.css">
+<script type="text/javascript" src="js/header.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -29,12 +30,12 @@
 			</div>
 		</div>
 		<div class="header2">
-			<div onclick="location.href='HC'">メイン</div>
-			<div onclick="">在庫管理</div>
-			<div onclick="">輸入</div>
-			<div onclick="">販売</div>
-			<div onclick="location.href='DistributionMainBBSC'">運送</div>
-			<div onclick="">決算</div>
+			<div class="header2-item" onclick="changeColor(this, 'HC')">メイン</div>
+			<div class="header2-item" onclick="changeColor(this, '')">在庫管理</div>
+			<div class="header2-item" onclick="changeColor(this, '')">輸入</div>
+			<div class="header2-item" onclick="changeColor(this, '')">販売</div>
+			<div class="header2-item" onclick="changeColor(this, 'DistributionMainBBSC')">運送</div>
+			<div class="header2-item" onclick="changeColor(this, '')">決算</div>
 		</div>
 	</div>
 </body>
