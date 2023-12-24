@@ -62,6 +62,20 @@
 </style>
 </head>
 <body>
+		<!-- 사원 검색용모달 -->
+	<div id="empSearchModal" class="modal-background">
+		<div id="empModal" class="modal-content">
+			<div>
+				<div>
+				<input placeholder="사원 검색" id="empSearchBtn">
+				</div>
+				<div class="empList"></div>
+			</div>
+			<div class="modal-foot">
+				<button id="empCloseModalBtn">닫기</button>
+			</div>
+		</div>
+	</div>
 	<div id="modalBackground" class="modal-background">
 		<!-- 모달 내용 -->
 		<div id="myModal" class="modal-content">
@@ -96,10 +110,10 @@
 		<table>
 			<tr>
 				<td><input type="hidden" name="s_c_no" readonly="readonly" id="selectedValue" placeholder="회사 번호"></td>
-				<td><input readonly="readonly" id="displayName" placeholder="회사 이름"></td>
-				<td><input name="c_e_id" placeholder="사원 id" required="required"></td>
-				<td>계약서 작성일<input type="date" readonly="readonly" name="c_created_date" id="c_created_date">
-				</td>
+				<td><input readonly="readonly" id="displayName" placeholder="거래처검색"></td>
+				<td><input type="hidden" name="c_e_id" placeholder="사원 id" id="e_id" required="required"></td>
+				<td><input name="e_name" placeholder="사원검색" id="employeeSearch" readonly="readonly" required="required"></td>
+				<td>계약서 작성일<input type="date" readonly="readonly" name="c_created_date" id="c_created_date"></td>
 				<td>납기일<input type="date" name="c_due_date" required="required"></td>
 				<td><input type="hidden" name="c_status" placeholder="거래 상태"
 					value="1"></td>
@@ -185,4 +199,5 @@
 	  }
 </script>
 <script type="text/javascript" src="jh/js/contract_company.js"></script>
+<script type="text/javascript" src="jh/js/employee_search.js"></script>
 </html> 
