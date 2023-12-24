@@ -21,7 +21,7 @@
 			<div class="header1-select1">환영합니다</div>
 			<div class="header1-select1">
 				<select id="mySelect">
-					<option>temp님</option>
+					<option>${sessionScope.empInfo.e_name }님</option>
 					<option>dropdown1</option>
 					<option>dropdown2</option>
 					<option value="AdminPage">AdminPage</option>

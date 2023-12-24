@@ -38,3 +38,32 @@
 .row-content > input{
 	text-align: center;
 }
+
+.row-btn{
+	display: flex;
+	justify-content: space-between;
+	width: 354px;
+	margin-top: 5px;
+	height: 40px;
+}
+.pw-btn{
+	display: block;
+	background-color: red;
+	color: white;
+}
+
+.modify-btn{
+	display: block;
+	background-color: skyblue;
+	color: white;
+}
+
+.row-btn-left{
+	display: flex;
+}
+
+.btn{
+	width: 80px;
+	border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

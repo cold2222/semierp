@@ -31,10 +31,10 @@ public class DeptDAO {
 					continue;
 			
 				deptsInfo.add(new DeptDTO(rs.getString("d_dept"),rs.getInt("d_deptno"),rs.getInt("d_count")));
-				System.out.println(rs.getString("d_dept"));
 			}
 			
 			request.setAttribute("deptsInfo", deptsInfo);
+			System.out.println("getDeptsInfo");
 		
 		} catch (Exception e) {
 			e.printStackTrace();

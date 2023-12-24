@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import com.semi.distribution.db.DBManger;
+import com.semi.login.Encrypt;
 
 public class StaffDAO {
 
@@ -40,6 +41,7 @@ public class StaffDAO {
 			}
 
 			request.setAttribute("staffsInfo", staffsInfo);
+			System.out.println("getStaffsInfo");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,6 +82,7 @@ public class StaffDAO {
 				
 			}
 			request.setAttribute("staffInfo", tempStaff);
+			System.out.println("getStaffInfo : " + request.getParameter("e_no"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("error", "DBFail");
@@ -88,6 +91,61 @@ public class StaffDAO {
 		}
 		
 
+	}
+
+	public static void modifyStaff(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "update employee set e_deptno=?, e_rank=?, e_tel=?, e_email=? where e_no=?";
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("d_deptno")));
+			pstmt.setString(2, request.getParameter("e_rank"));
+			pstmt.setString(3, request.getParameter("e_tel"));
+			pstmt.setString(4, request.getParameter("e_email"));
+			pstmt.setInt(5, Integer.parseInt(request.getParameter("e_no")));
+			
+			if(pstmt.executeUpdate()>0)
+				System.out.println("modifyStaff : "+ request.getParameter("e_no"));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("error", "DBFail");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+		
+		
+		
+		
+	}
+
+	public static void resetPW(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "update employee set e_pw=? where e_no=?";
+		
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			String strE_no = request.getParameter("e_no");
+			
+			pstmt.setString(1, Encrypt.getPW(strE_no, strE_no));
+			pstmt.setInt(2, Integer.parseInt(strE_no));
+			
+			if(pstmt.executeUpdate()>0)
+				System.out.println("resetPW : " + strE_no);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("error", "DBFail");
+		}
 	}
 
 }

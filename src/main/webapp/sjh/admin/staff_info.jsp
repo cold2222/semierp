@@ -20,7 +20,7 @@
 		<c:forEach var="dept" items="${deptsInfo}">
 			<div class="row-content">
 				<div class="row-content-item">${dept.d_dept}</div>
-				<div class="row-content-item">${dept.d_deptNo}</div>
+				<div class="row-content-item">${dept.d_deptno}</div>
 				<div class="row-content-item">${dept.d_count}</div>
 			</div>
 		</c:forEach>

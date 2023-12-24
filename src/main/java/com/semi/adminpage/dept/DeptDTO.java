@@ -2,17 +2,17 @@ package com.semi.adminpage.dept;
 
 public class DeptDTO {
 	private String d_dept;
-	private int d_deptNo;
+	private int d_deptno;
 	private int d_count;
 	
 	public DeptDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DeptDTO(String d_dept, int d_deptNo, int d_count) {
+	public DeptDTO(String d_dept, int d_deptno, int d_count) {
 		super();
 		this.d_dept = d_dept;
-		this.d_deptNo = d_deptNo;
+		this.d_deptno = d_deptno;
 		this.d_count = d_count;
 	}
 
@@ -24,12 +24,12 @@ public class DeptDTO {
 		this.d_dept = d_dept;
 	}
 
-	public int getD_deptNo() {
-		return d_deptNo;
+	public int getD_deptno() {
+		return d_deptno;
 	}
 
-	public void setD_deptNo(int d_deptNo) {
-		this.d_deptNo = d_deptNo;
+	public void setD_deptNo(int d_deptno) {
+		this.d_deptno = d_deptno;
 	}
 
 	public int getD_count() {
@@ -42,7 +42,7 @@ public class DeptDTO {
 
 	@Override
 	public String toString() {
-		return "DeptDTO [d_dept=" + d_dept + ", d_deptNo=" + d_deptNo + ", d_count=" + d_count + "]";
+		return "DeptDTO [d_dept=" + d_dept + ", d_deptNo=" + d_deptno + ", d_count=" + d_count + "]";
 	}
 	
 	
