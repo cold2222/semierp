@@ -27,9 +27,9 @@ public class DeptDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				if(rs.getInt("d_deptno")==999) {
+				if(rs.getInt("d_deptno")==999) 
 					continue;
-				}
+			
 				deptInfo.add(new DeptDTO(rs.getString("d_dept"),rs.getInt("d_deptno"),rs.getInt("d_count")));
 				System.out.println(rs.getString("d_dept"));
 			}
@@ -37,7 +37,6 @@ public class DeptDAO {
 			request.setAttribute("deptInfo", deptInfo);
 		
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			request.setAttribute("error", "DBFail");
 		} finally {
