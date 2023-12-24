@@ -97,5 +97,15 @@ public class EmployeeDAO {
 		
 		return false;
 	}
+	
+	public boolean authorization(HttpServletRequest request, int deptno) {
+		EmployeeDTO empInfo = (EmployeeDTO) request.getSession().getAttribute("empInfo");
+		if(empInfo.getE_deptno()==deptno) 
+			return true;
+		if(empInfo.getE_deptno()<99)
+			return true;
+		request.setAttribute("error", "Check your authorization");
+		return false;
+	}
 
 }
