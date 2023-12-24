@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,38 +15,43 @@
 	<div class="content">
 		<div class="row">
 			<div class="row-title">コード</div>
-			<div class="row-content">${staffInfo.e_deptno }</div>
+			<div class="row-content">${staffInfo.e_deptno }
+				<select id="deptSelect">
+					<c:forEach var="dept" items="${deptsInfo}">
+						<option value="${dept.d_dept}">(${dept.d_deptNo})${dept.d_dept}</option>
+					</c:forEach>
+				</select>
+			</div>
 		</div>
 		<div class="row">
 			<div class="row-title">部 署</div>
 			<div class="row-content">${staffInfo.e_dept }</div>
 		</div>
 		<div class="row">
-			<div class="row-title">コード</div>
-			<div class="row-content">${staffInfo.e_deptno }</div>
+			<div class="row-title">社員番号</div>
+			<div class="row-content">${staffInfo.e_no }</div>
 		</div>
-			<div class="col-title-item col-deptno">コード</div>
-			<div class="col-title-item">部 署</div>
-			<div class="col-title-item">社員番号</div>
-			<div class="col-title-item">お名前</div>
-			<div class="col-title-item">職 級</div>
-			<div class="col-title-item col-long">E-Mail</div>
-			<div class="col-title-item">Tel</div>
-			<div class="col-title-item">入社日</div>
-			<div class="col-title-item button">修 正</div>
-		<div class="col-content-item col-deptno">${staffInfo.e_deptno }</div>
-		<div class="col-content-item">${staffInfo.e_dept }</div>
-		<div class="col-content-item">${staffInfo.e_no }</div>
-		<div class="col-content-item">${staffInfo.e_name}</div>
-		<div class="col-content-item">${staffInfo.e_rank }</div>
-		<div class="col-content-item col-long">${staffInfo.e_email }</div>
-		<div class="col-content-item">${staffInfo.e_tel}</div>
-		<div class="col-content-item">${staffInfo.e_joined_company}</div>
-		<div class="col-content-item button">
-			<button onclick="location.href='StaffAdminModifyC?e_no=${staffInfo.e_no }'">
-			修正
-			</button>
+		<div class="row">
+			<div class="row-title">お名前</div>
+			<div class="row-content">${staffInfo.e_name }</div>
 		</div>
+		<div class="row">
+			<div class="row-title">職 級</div>
+			<div class="row-content"> <input value="${staffInfo.e_rank }"> </div>
+		</div>
+		<div class="row">
+			<div class="row-title">E-Mail</div>
+			<div class="row-content">${staffInfo.e_email }</div>
+		</div>
+		<div class="row">
+			<div class="row-title">Tel</div>
+			<div class="row-content">${staffInfo.e_tel }</div>
+		</div>
+		<div class="row">
+			<div class="row-title">入社日</div>
+			<div class="row-content">${staffInfo.e_joined_company }</div>
+		</div>
+
 	</div>
 </body>
 </html>

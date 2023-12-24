@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/sjh/adminMain.css">
+<link rel="stylesheet" href="css/sjh/admin/adminMain.css">
 <title>AdminPage</title>
 </head>
 <body>

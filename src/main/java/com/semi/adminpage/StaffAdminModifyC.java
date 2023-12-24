@@ -16,6 +16,7 @@ public class StaffAdminModifyC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
+				DeptDAO.getDeptsInfo(request);
 				StaffDAO.getStaffInfo(request);
 				request.setAttribute("contentPage", "staff_modify.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
