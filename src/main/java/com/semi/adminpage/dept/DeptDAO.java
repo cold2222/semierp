@@ -11,11 +11,11 @@ import com.semi.distribution.db.DBManger;
 
 public class DeptDAO {
 	
-	public static void getDeptInfo(HttpServletRequest request) {
+	public static void getDeptsInfo(HttpServletRequest request) {
 		Connection con= null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<DeptDTO> deptInfo = new ArrayList<DeptDTO>();
+		ArrayList<DeptDTO> deptsInfo = new ArrayList<DeptDTO>();
 		String sql = "select d_deptno, d_dept, count(d_dept) as d_count\r\n"
 				+ "from employee\r\n"
 				+ "join dept\r\n"
@@ -30,11 +30,11 @@ public class DeptDAO {
 				if(rs.getInt("d_deptno")==999) 
 					continue;
 			
-				deptInfo.add(new DeptDTO(rs.getString("d_dept"),rs.getInt("d_deptno"),rs.getInt("d_count")));
+				deptsInfo.add(new DeptDTO(rs.getString("d_dept"),rs.getInt("d_deptno"),rs.getInt("d_count")));
 				System.out.println(rs.getString("d_dept"));
 			}
 			
-			request.setAttribute("deptInfo", deptInfo);
+			request.setAttribute("deptsInfo", deptsInfo);
 		
 		} catch (Exception e) {
 			e.printStackTrace();

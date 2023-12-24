@@ -11,14 +11,13 @@ import com.semi.adminpage.dept.DeptDAO;
 import com.semi.adminpage.staff.StaffDAO;
 import com.semi.login.EmployeeDAO;
 
-@WebServlet("/StaffC")
-public class StaffC extends HttpServlet {
+@WebServlet("/StaffAdminModifyC")
+public class StaffAdminModifyC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getDeptsInfo(request);
-				StaffDAO.getStaffsInfo(request);
-				request.setAttribute("contentPage", "staff_info.jsp");
+				StaffDAO.getStaffInfo(request);
+				request.setAttribute("contentPage", "staff_modify.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("HC2").forward(request, response);
@@ -27,9 +26,6 @@ public class StaffC extends HttpServlet {
 			response.sendRedirect("Login");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

@@ -35,7 +35,7 @@
 			</div>
 			
 			<div class="content shadow-def">
-				<jsp:include page="/sjh/admin/staff_info.jsp"></jsp:include>
+				<jsp:include page="/sjh/admin/${contentPage }"></jsp:include>
 			</div>
 		</div>
 	</div>
