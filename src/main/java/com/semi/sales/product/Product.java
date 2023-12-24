@@ -4,7 +4,7 @@ public class Product {
 	private int p_id;
 	private String p_si;
 	private String p_type;
-	private int p_quantity;
+	private String p_quantity;
 	private String p_name;
 	private String p_unitCost;
 	private String p_minStock;
@@ -16,7 +16,7 @@ public Product() {
 
 
 
-public Product(int p_id, String p_si, String p_type, int p_quantity, String p_name, String p_unitCost,
+public Product(int p_id, String p_si, String p_type, String p_quantity, String p_name, String p_unitCost,
 		String p_minStock, String p_maxStock, String p_manufacturer) {
 	super();
 	this.p_id = p_id;
@@ -68,13 +68,19 @@ public void setP_type(String p_type) {
 	this.p_type = p_type;
 }
 
-public int getP_quantity() {
+
+
+public String getP_quantity() {
 	return p_quantity;
 }
 
-public void setP_quantity(int p_quantity) {
+
+
+public void setP_quantity(String p_quantity) {
 	this.p_quantity = p_quantity;
 }
+
+
 
 public String getP_name() {
 	return p_name;
