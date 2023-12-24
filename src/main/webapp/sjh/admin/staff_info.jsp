@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/sjh/staff_info.css">
+<link rel="stylesheet" href="css/sjh/admin/staff_info.css">
 <title>Insert title here</title>
 </head>
 <body>

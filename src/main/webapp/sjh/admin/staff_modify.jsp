@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/sjh/staff_modify.css">
+<link rel="stylesheet" href="css/sjh/admin/staff_modify.css">
 </head>
 <body>
 	<div class="content_title">社員修正</div>
@@ -41,7 +41,7 @@
 		</div>
 		<div class="row">
 			<div class="row-title">E-Mail</div>
-			<div class="row-content">${staffInfo.e_email }</div>
+			<div class="row-content"> <input value="${staffInfo.e_email }"> </div>
 		</div>
 		<div class="row">
 			<div class="row-title">Tel</div>
