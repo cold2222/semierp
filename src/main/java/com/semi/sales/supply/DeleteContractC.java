@@ -7,17 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ViewContractC")
-public class ViewContractC extends HttpServlet {
-	
-	
+@WebServlet("/DeleteContractC")
+public class DeleteContractC extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	SupplyComDAO.getSdao().getContract(request);
-	SupplyComDAO.getSdao().getContent(request);
-	request.setAttribute("contentPage", "jh/contract/contract_output.jsp");
-	request.setAttribute("sidebar", "jh/sidebar.jsp");
-	request.getRequestDispatcher("index2.jsp").forward(request, response);
-	
+		SupplyComDAO.getSdao().deleteContract(request);
+		response.sendRedirect("ContractC");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

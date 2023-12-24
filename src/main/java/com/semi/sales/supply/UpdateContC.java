@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/UpdateContC")
 public class UpdateContC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-//		SupplyComDAO.getSdao().getCont(request);
-		request.setAttribute("contentPage", "jh/contract/updateCont.jsp");
+		SupplyComDAO.getSdao().getContractDetail(request);
+		request.setAttribute("contentPage", "jh/contract/updateContract.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
@@ -21,11 +20,10 @@ public class UpdateContC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		SupplyComDAO.getSdao().updateCont(request);
-		response.sendRedirect("UpdateContC?num="+request.getParameter("num")+"&isSuccess="
+		SupplyComDAO.getSdao().updateContractItems(request);
+		response.sendRedirect("UpdateContC?no="+request.getParameter("c_contract_no")+"&isSuccess="
 				+ request.getAttribute("isSuccess"));	
-	
 	}
 
 }

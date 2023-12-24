@@ -17,8 +17,6 @@
 			<jsp:include page="${contentPage }"></jsp:include>
 		</div>
 	</div>
-	<div class="footer">
-	<jsp:include page="${footer }"></jsp:include>
-	</div>
+	<div class="footer"></div>
 </body>
 </html>

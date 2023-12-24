@@ -63,20 +63,18 @@ function showProduct(data) {
 	let coms = '';
 	data.forEach(product => {
 		let div = `
-      <div class='div-row' onclick="setValue1('${product.p_id}','${product.p_name}')">
-        <div>${product.p_id}</div>
-        <div>${product.p_name}</div>
-        <div>${product.p_si}</div>
-        <div>${product.p_type}</div>
+      <div class='div-row' onclick="setValue1('${product.p_id}','${product.p_name}','${product.p_type}','${product.p_si}','${product.p_quantity}')">
+        <div>${product.p_type} : ${product.p_name} (${product.p_quantity}${product.p_si})</div>
       </div>`;
 		coms += div;
 	});
 	list.innerHTML = coms;
 }
 
-function setValue1(value, displayName) {
-	clickedInput.value = displayName;
-	console.log(value, displayName);
+function setValue1(value, displayName, type, si, quantity) {
+	let productData = type +": "+displayName+" "+quantity+si;
+	clickedInput.value = productData;
+	console.log(value, productData);
 	console.log(clickedInput.parentNode.previousElementSibling.children);
 	clickedInput.parentNode.previousElementSibling.children[0].value = value;
 	closeProductModal();
