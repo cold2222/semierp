@@ -77,7 +77,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 				<td>${p.p_si }</td>
 				<td>${p.p_type }</td>
 				<c:choose>
-					<c:when test="${p.p_quantity == 0}">
+					<c:when test="${p.p_quantity eq null}">
 						<td>단위 없음</td>
 					</c:when>
 					<c:otherwise>
