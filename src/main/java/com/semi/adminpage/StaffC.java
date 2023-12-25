@@ -18,10 +18,11 @@ public class StaffC extends HttpServlet {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				DeptDAO.getDeptsInfo(request);
 				StaffDAO.getStaffsInfo(request);
+				request.setAttribute("selectedPage", "staff");
 				request.setAttribute("contentPage", "staff_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
-				request.getRequestDispatcher("HC2").forward(request, response);
+				request.getRequestDispatcher("HC").forward(request, response);
 		}
 		else 
 			response.sendRedirect("Login");

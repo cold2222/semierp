@@ -17,7 +17,7 @@ public class Login extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().login(request)) {
-			response.sendRedirect("HC2");
+			response.sendRedirect("HC");
 		} else {
 			request.getRequestDispatcher("sjh/login.jsp").forward(request, response);
 		}

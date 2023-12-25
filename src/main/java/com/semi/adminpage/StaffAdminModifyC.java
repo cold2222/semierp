@@ -18,10 +18,11 @@ public class StaffAdminModifyC extends HttpServlet {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				DeptDAO.getDeptsInfo(request);
 				StaffDAO.getStaffInfo(request);
+				request.setAttribute("selectedPage", "staff");
 				request.setAttribute("contentPage", "staff_modify.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
-				request.getRequestDispatcher("HC2").forward(request, response);
+				request.getRequestDispatcher("HC").forward(request, response);
 		}
 		else 
 			response.sendRedirect("Login");
@@ -33,7 +34,7 @@ public class StaffAdminModifyC extends HttpServlet {
 				StaffDAO.modifyStaff(request);
 				response.sendRedirect("StaffAdminModifyC?e_no="+request.getParameter("e_no"));
 			} else
-				request.getRequestDispatcher("HC2").forward(request, response);
+				request.getRequestDispatcher("HC").forward(request, response);
 		}
 		else 
 			response.sendRedirect("Login");

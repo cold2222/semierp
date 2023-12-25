@@ -30,7 +30,7 @@
 				<span class="top-title">- 管理 -</span>
 				<div class="top-title-left">
 				<span class="top-admin-info shadow-def">${sessionScope.empInfo.e_name } ${sessionScope.empInfo.e_rank }</span>
-				<button class="back-HC-btn shadow-def" onclick="location.href='HC2'" >サイトに戻る</button>
+				<button class="back-HC-btn shadow-def" onclick="location.href='HC'" >サイトに戻る</button>
 				</div>
 			</div>
 			

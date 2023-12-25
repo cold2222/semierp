@@ -17,7 +17,7 @@ public class AdminPageC extends HttpServlet {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
-				request.getRequestDispatcher("HC2").forward(request, response);
+				request.getRequestDispatcher("HC").forward(request, response);
 		}
 		else 
 			response.sendRedirect("Login");
