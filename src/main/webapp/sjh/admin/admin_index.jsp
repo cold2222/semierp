@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 				<div class="side-menu-item" onclick="location.href=''">
 					<img class="side-menu-icon" src="files/sjh/adminpage/notice_white.png">&nbsp;&nbsp;お知らせ
 				</div>
-				<div class="side-menu-item" onclick="location.href='StaffC'">
+				<div class="side-menu-item" ${selectedPage == 'staff' ? 'id="selected"' : ''} onclick="location.href='StaffC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/staff_white.png">&nbsp;&nbsp;社員一覽
 				</div>
 				<div class="side-menu-item" onclick="location.href=''">
