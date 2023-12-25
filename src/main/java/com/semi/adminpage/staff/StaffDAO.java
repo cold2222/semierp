@@ -148,4 +148,34 @@ public class StaffDAO {
 		}
 	}
 
+	public static void staffReg(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into employee values(?, ?, ?, ?, ?, ?, ?,  to_date(?, 'yyyy-mm-dd'))";
+		
+		try {
+			request.setCharacterEncoding("utf-8");
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("e_no")));
+			pstmt.setString(2, Encrypt.getPW(request.getParameter("e_no"), request.getParameter("e_no")));
+			pstmt.setInt(3, Integer.parseInt(request.getParameter("d_deptno")));
+			pstmt.setString(4, request.getParameter("e_name"));
+			pstmt.setString(5, request.getParameter("e_rank"));
+			pstmt.setString(6, request.getParameter("e_tel"));
+			pstmt.setString(7, request.getParameter("e_email"));
+			pstmt.setString(8, request.getParameter("e_joined_company"));
+			
+			if(pstmt.executeUpdate()>0) {
+				System.out.println("StaffReg : " + request.getParameter("e_no"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("error", "DBFail");
+		}
+		
+	}
+
 }

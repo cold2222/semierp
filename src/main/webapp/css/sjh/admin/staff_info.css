@@ -83,4 +83,14 @@
 .button{
 	width: 100px;
 }
+.btn-area{
+	display: flex;
+	justify-content: right;	
+}
 
+.reg-btn{
+	display: block;
+	margin-top: 10px;
+	height: 40px;
+	
+}

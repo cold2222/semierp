@@ -25,7 +25,7 @@
 			</div>
 		</c:forEach>
 	</div>
-	<div class="Staff_container"></div>
+	<div class="Staff_container">
 		<div class="col-title">
 			<div class="col-title-item col-deptno">コード</div>
 			<div class="col-title-item">部 署</div>
@@ -50,5 +50,10 @@
 				<div class="col-content-item button"> <button onclick="location.href='StaffAdminModifyC?e_no=${staff.e_no }'">修正</button> </div>
 			</div>
 		</c:forEach>
+		<div class="btn-area">
+			<button class="reg-btn" onclick="location.href='StaffRegC'">社員登録</button>
+		</div>
+	</div>
+		
 </body>
 </html>
