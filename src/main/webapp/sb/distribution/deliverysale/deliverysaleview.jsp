@@ -5,53 +5,73 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>運送部　配送完了(販売)ページ</title>
 <link rel="stylesheet"
 	href="sb/distribution_css/receipt/receiptview.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-	crossorigin="anonymous">
-</script>	
-<script type="text/javascript" src="sb/distribution_js/worklistapi.js"></script>
+	crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="content">
-		<table border="1">
-			<tr>
-				<td>판매이력번호</td>
-				<td>계약서작성일</td>
-				<td>거래처명</td>
-				<td>판매담당자이름</td>
-				<td>판매담당자폰번호</td>
-				<td>장소</td>
-				<td>납기일</td>
-			</tr>
-			<tr>
-				<td>${dec.c_contract_no }</td>
-				<td>${dec.c_created_date }</td>
-				<td>${dec.c_name }</td>
-				<td>${dec.c_keeper }</td>
-				<td>${dec.c_phone }</td>
-				<td>${dec.c_addr }</td>
-				<td id="c_due_date">${dec.c_due_date }</td>
-			</tr>
-			<tr>
-				<td>품명</td>
-				<td>종류</td>
-				<td>개수</td>
-				<td>단가</td>
-			</tr>
-			<c:forEach var="i" items="${itemList }">
-				<tr>
-					<td>${i.p_name }</td>
-					<td>${i.p_type }${i.p_quantity }${i.p_si }</td>
-					<td>${i.ci_count }</td>
-					<td>${i.ci_unit_price }</td>
-				</tr>
-			</c:forEach>
-		</table>
+    <div class="content">
+        <div class="detail-info">
+            <div class="info-row">
+                <span class="info-label">契約書番号:</span>
+                <span class="info-value">${dec.c_contract_no }</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">契約書作成日:</span>
+                <span class="info-value">${dec.c_created_date }</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">取引先名:</span>
+                <span class="info-value">${dec.c_name }</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">取引先担当者:</span>
+                <span class="info-value">${dec.c_keeper }</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">取引先番号:</span>
+                <span class="info-value">${dec.c_phone }</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">配送場所:</span>
+                <span class="info-value">${dec.c_addr }</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">納期日:</span>
+                <span class="info-value" id="c_due_date">${dec.c_due_date }</span>
+            </div>
+        </div>
+        <div class="item-list">
+            <h2 class="contract_items">契約書詳細</h2>
+            <c:forEach var="i" items="${itemList }">
+                <div class="item">
+                    <span class="item-name">${i.p_name }</span>
+                    <span class="item-details">${i.p_type } ${i.p_quantity }${i.p_si }  数: ${i.ci_count} 値段: ${i.ci_unit_price}</span>
+                </div>
+            </c:forEach>
+        </div>
+        <c:if test="${param.page eq 'clearList' }">
+		<div class="item-list">
+			<h2 class="contract_items">配送情報</h2>
+				<div class="item">
+					<span class="item-name">配送担当者</span> 
+					<span class="item-details">${deliveryData.e_name }</span>
+				</div>
+				<div class="item">
+					<span class="item-name">配送日</span> 
+					<span class="item-details">${deliveryData.c_delivery_date }</span>
+				</div>
+		</div>
+		</c:if>
 		<!-- 버튼을 클릭하여 모달 열기 -->
-		<button id="openModal" class="modal-btn">배송인 지정</button>
+		<c:if test="${param.page eq 'List' }">
+			<c:if test="${dec.c_status < 2 }">
+				<button id="openModal" class="modal-btn">配送担当者指定</button>
+			</c:if>
+		</c:if>
 
 		<!-- 오버레이 및 모달 창 -->
 		<div class="overlay" id="overlay"></div>
@@ -63,7 +83,7 @@
 				<form action="DistributionDeliverySaleDesignationC" method="post" id="myForm">
 					<input type="hidden" name="c_contract_no" value="${dec.c_contract_no }">
 					<div style="margin-bottom: 20px;">
-					배송날짜선택
+					配送日選択
 					<input type="date" name="c_delivery_date" id="c_delivery_date">
 					</div>
 					<div id="radioDiv">
@@ -72,9 +92,10 @@
     				<button class="modal-btn" type="submit">登録</button>
 				</form>
 			</div>
-			<button onclick="closeModal()" class="modal-btn">모달 닫기</button>
+			<button onclick="closeModal()" class="modal-btn">閉じる</button>
 		</div>
 	</div>
 	<script type="text/javascript" src="sb/distribution_js/deliverysaleview.js"></script>
+	<script type="text/javascript" src="sb/distribution_js/worklistapi.js"></script>
 </body>
 </html>

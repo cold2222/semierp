@@ -50,7 +50,7 @@ public class DeliverySaleDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		HashMap<String, String> search = new HashMap<String, String>();
 		String field = request.getParameter("field");
 		String word = request.getParameter("word");
@@ -58,16 +58,15 @@ public class DeliverySaleDAO {
 			search.put("field", field);
 			search.put("word", word);
 		}
-		
+
 		String sql = "select a.c_contract_no, a.c_c_no, a.c_e_id, a.c_created_date, a.c_due_date, a.c_status, "
 				+ "b.c_name, c.e_name " + "from contract a inner join company b on a.c_c_no = b.c_no "
-				+ "inner join employee c on  a.c_e_id = c.e_no "
-				+ "where a.c_status = 1 and a.c_type = 2 ";
-				if (search.get("word") != null && !search.get("field").equals("all")) {
-					sql += "and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
-				}
-		
-				sql += "order by a.c_due_date";
+				+ "inner join employee c on  a.c_e_id = c.e_no " + "where a.c_status = 1 and a.c_type = 2 ";
+		if (search.get("word") != null && !search.get("field").equals("all")) {
+			sql += "and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
+		}
+
+		sql += "order by a.c_due_date";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
@@ -105,7 +104,7 @@ public class DeliverySaleDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select a.c_contract_no,a.c_created_date,a.c_due_date,b.c_name,b.c_keeper,b.c_phone,b.c_addr "
+		String sql = "select a.c_status, a.c_contract_no,a.c_created_date,a.c_due_date,b.c_name,b.c_keeper,b.c_phone,b.c_addr "
 				+ "from contract a inner join company b on a.c_c_no = b.c_no "
 				+ "where a.c_contract_no = ? order by c_due_date";
 
@@ -119,6 +118,7 @@ public class DeliverySaleDAO {
 			if (rs.next()) {
 				dec = new DeliverySaleDTO();
 				dec.setC_contract_no(rs.getString("c_contract_no"));
+				dec.setC_status(rs.getString("c_status"));
 				dec.setC_created_date(rs.getDate("c_created_date"));
 				dec.setC_due_date(rs.getDate("c_due_date"));
 				dec.setC_name(rs.getString("c_name"));
@@ -147,7 +147,8 @@ public class DeliverySaleDAO {
 
 		String sql = "select p_name,p_quantity,p_si,p_type,ci_count,ci_unit_price "
 				+ "from contract a inner join contract_items b on a.c_contract_no = b.ci_c_contract_no "
-				+ "inner join product c on b.ci_p_id = c.p_id " + "where a.c_contract_no = ? order by p_name";
+				+ "inner join product c on b.ci_p_id = c.p_id " 
+				+ "where a.c_contract_no = ? order by p_name";
 
 		try {
 			con = DBManger.connect();
@@ -268,10 +269,15 @@ public class DeliverySaleDAO {
 			search.put("word", word);
 		}
 
-		String sql = "SELECT a.c_contract_no, c.e_name, " + "a.c_delivery_date, a.c_due_date, a.c_status, d.c_name "
-				+ "FROM contract a " + "INNER JOIN shipping b ON a.c_contract_no = b.s_contract_no "
-				+ "INNER JOIN employee c ON b.s_e_no = c.e_no " + "INNER JOIN company d ON a.c_c_no = d.c_no "
-				+ "WHERE a.c_type = 2 " + "AND a.c_status = 2 " + "AND a.c_delivery_date <= SYSDATE ";
+		String sql = "SELECT a.c_contract_no, c.e_name, " 
+				+ "a.c_delivery_date, a.c_due_date, a.c_status, d.c_name "
+				+ "FROM contract a " 
+				+ "INNER JOIN shipping b ON a.c_contract_no = b.s_contract_no "
+				+ "INNER JOIN employee c ON b.s_e_no = c.e_no " 
+				+ "INNER JOIN company d ON a.c_c_no = d.c_no "
+				+ "WHERE a.c_type = 2 " 
+				+ "AND a.c_status = 2 " 
+				+ "AND a.c_delivery_date <= SYSDATE ";
 		if (search.get("word") != null && !search.get("field").equals("all")) {
 			sql += " and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
 		}

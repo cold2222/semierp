@@ -61,7 +61,8 @@ public class ReceiptDAO {
 		}
 
 		String sql = "select a.c_contract_no, a.c_c_no, a.c_e_id, a.c_created_date, a.c_due_date, a.c_status, "
-				+ "b.c_name, c.e_name " + "from contract a inner join company b on a.c_c_no = b.c_no "
+				+ "b.c_name, c.e_name " 
+				+ "from contract a inner join company b on a.c_c_no = b.c_no "
 				+ "inner join employee c on  a.c_e_id = c.e_no "
 				+ "where a.c_status = 1 and a.c_type = 1 ";
 				
@@ -82,7 +83,6 @@ public class ReceiptDAO {
 				rec.setC_c_no(rs.getString("c_c_no"));
 				rec.setC_e_id(rs.getString("c_e_id"));
 				rec.setC_created_date(rs.getDate("c_created_date"));
-				;
 				rec.setC_due_date(rs.getDate("c_due_date"));
 				rec.setC_status(rs.getString("c_status"));
 				rec.setC_name(rs.getString("c_name"));
@@ -106,7 +106,7 @@ public class ReceiptDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select a.c_contract_no,a.c_created_date,a.c_due_date,b.c_name,b.c_keeper,b.c_phone "
+		String sql = "select a.c_status, a.c_contract_no,a.c_created_date,a.c_due_date,b.c_name,b.c_keeper,b.c_phone "
 				+ "from contract a inner join company b on a.c_c_no = b.c_no "
 				+ "where a.c_contract_no = ? order by c_due_date";
 
@@ -120,6 +120,7 @@ public class ReceiptDAO {
 			if (rs.next()) {
 				rec = new ReceiptDTO();
 				rec.setC_contract_no(rs.getString("c_contract_no"));
+				rec.setC_status(rs.getString("c_status"));
 				rec.setC_created_date(rs.getDate("c_created_date"));
 				rec.setC_due_date(rs.getDate("c_due_date"));
 				rec.setC_name(rs.getString("c_name"));
