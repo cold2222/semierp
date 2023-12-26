@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>semi ERP</title>
-<link rel="stylesheet" href="css/index2.css">
+<link rel="stylesheet" href="css/indexTest.css">
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -17,6 +17,8 @@
 			<jsp:include page="${contentPage }"></jsp:include>
 		</div>
 	</div>
-	<div class="footer"></div>
+	<div class="footer">
+	<jsp:include page="${footer }"></jsp:include>
+	</div>
 </body>
 </html>

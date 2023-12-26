@@ -1,61 +1,93 @@
-footer {
-    padding: 20px 0;
-    color: #fff;
-    text-align: center;
+a {
+	color: white; /* 링크 텍스트를 흰색으로 설정 */
+	text-decoration: none; /* 밑줄 제거 (선택 사항) */
 }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.footer {
+	background-color: #003366;
+	color: #fff;
+	font-family: Arial, sans-serif;
+	text-align: center;
+	width: 100%;
+}
+.footer-content{
+	margin: 0 200px;
+	
 }
 
-/* 로고 디자인 */
-.footer-logo img {
-    width: 350px; /* 로고 이미지의 크기에 맞게 조절 */
-    height: auto;
+
+.footer-img {
+	width: 200px;
+	margin-left: 50px;
+	width: 200px;
 }
 
-/* 각 섹션 디자인 */
-.footer-sections {
+.footer-img img {
+	width: 250px;
+}
+
+.footer-column {
 	display: flex;
-	}
-.footer-section {
+	justify-content: space-around;
+	width: 100%;
+}
+
+.column1 {
+	margin-right: 500px;
+}
+
+.col {
 	display: flex;
-    flex: 1 0 200px;
-    margin-bottom: 20px;
+	padding: 10px;
+	text-align: left;
+	font-size: 14pt;
+	font-weight: 800;
 }
 
-.footer-section h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
+.col2 {
+	width: 180px;
+	padding: 10px;
+	border-bottom: 1px solid white;
+	border-top: 1px solid white;
+	text-align: left;
+	margin-left: 150px;
+	font-size: 14pt;
+	font-weight: 800;
+}
+.col3 {
+	display: flex;
+	width: 300px;
+	padding: 10px;
+	text-align: left;
+	margin-left: 100px;
+	font-size: 14pt;
+	font-weight: 800;
+}
+.col3_jp{
+	margin-left: 13px;
+	
 }
 
-.footer-section ul {
-    list-style: none;
-    padding: 0;
+.column2 {
+	width: 300px;
 }
 
-.footer-section ul li {
-    margin-bottom: 5px;
+.columns {
+	width: 300px;
 }
 
-.footer-section ul li a {
-    text-decoration: none;
+.colum-select {
+	width: 400px;
 }
 
-/* 저작권 및 이미지 디자인 */
 .footer-bottom {
-    margin-top: 20px;
-}
-
-.footer-bottom p {
-    margin: 5px 0;
-}
-
-.footer-image img {
-    max-width: 300px; /* 이미지 크기에 맞게 조절 */
-    height: auto;
+	border-top: 1px solid white; /* 흰색 선 */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 30px;
+	padding: 10pt;
+	margin-left: 50pt;
+	margin-right: 50pt;
+	font-size: 10pt;
 }

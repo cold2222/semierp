@@ -1,4 +1,4 @@
-package com.semi.main;
+package com.semi.test;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -14,7 +14,7 @@ public class HC2 extends HttpServlet {
 		request.setAttribute("footer", "footer.jsp");
 		request.setAttribute("sidebar", "sidebar.jsp");
 		request.setAttribute("contentPage", "jh/company/supply_company.jsp");
-		request.getRequestDispatcher("index2.jsp").forward(request, response);
+		request.getRequestDispatcher("indexTest.jsp").forward(request, response);
 		
 		
 		
