@@ -1,4 +1,4 @@
-package com.semi.distribution.receipt;
+package com.semi.distribution.deliverydata;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,22 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.distribution.deliverydata.DeliveryDataDAO;
+import com.semi.distribution.deliverysale.DeliverySaleDAO;
 
-@WebServlet("/DistributionReceiptViewC")
-public class DistributionReceiptViewC extends HttpServlet {
+@WebServlet("/DistributionDeliveryDataViewC")
+public class DistributionDeliveryDataViewC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DeliveryDataDAO.getDdao().getDelivery(request);
-		ReceiptDAO.getRdao().getReceiptData(request);
-		ReceiptDAO.getRdao().getReceiptItemList(request);
+		DeliverySaleDAO.getDSdao().getdeliverySaleData(request);
+		DeliverySaleDAO.getDSdao().getDeliverySaleItemList(request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
-		request.setAttribute("contentPage","sb/distribution/receipt/receiptview.jsp");
+		request.setAttribute("contentPage","sb/distribution/deliverydata/deliverydataview.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}
 
 }

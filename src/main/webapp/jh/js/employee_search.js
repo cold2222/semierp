@@ -1,37 +1,37 @@
 //사원 모달 열기
-function openModal() {
-  var modalBg = document.getElementById('modalBackground');
-  var modal = document.getElementById('myModal');
+function empOpenModal() {
+  let modalBg = document.getElementById('empSearchModal');
+  let modal = document.getElementById('empModal');
   modalBg.style.display = 'flex';
   modal.style.display = 'block';
 }
 
 //사원 모달 닫기
-function closeModal() {
-  var modalBg = document.getElementById('modalBackground');
-  var modal = document.getElementById('myModal');
+function empCloseModal() {
+  let modalBg = document.getElementById('empSearchModal');
+  let modal = document.getElementById('empModal');
   modalBg.style.display = 'none';
   modal.style.display = 'none';
 }
 
 // 회사 검색 기능
-let url = 'EmployeeSearchC?search=';
-let searchBtn = document.querySelector("#search-btn");
-searchBtn.addEventListener("input", function(e) {
+let empUrl = 'EmployeeSearchC?search=';
+let empSearchBtn = document.querySelector("#empSearchBtn");
+empSearchBtn.addEventListener("input", function(e) {
 	let search = e.target.value;
 	
 	if (search) {
-		fetch(url + search).then((response) => response.json())
+		fetch(empUrl + search).then((response) => response.json())
 			.then((data) => showEmployee(data));
 
 	}
 });
 
 function showEmployee(data) {
-	let list = document.querySelector('.list');
+	let list = document.querySelector('.empList');
 	let coms = '';
 	data.forEach(employee => {
-		let div = `<div class='div-row' onclick="setValue('${employee.e_no}','${employee.e_name}')">
+		let div = `<div class='div-row' onclick="empSetValue('${employee.e_no}','${employee.e_name}','${employee.e_rank}',${employee.e_deptno})">
         <div>${employee.e_name}</div>
       </div>`;
 		coms += div;
@@ -39,16 +39,21 @@ function showEmployee(data) {
 	list.innerHTML = coms;
 }
 
-function setValue(e_no, e_name) {
-	var e_noInput = document.getElementById('e_no');
-	var employeeSearchInput = document.getElementById('employeeSearch');
+function empSetValue(e_no, e_name,e_rank,e_deptno) {
+	let deptName = "輸入事業部";
+		if(e_deptno == 102){
+			deptName = "販売営業部"
+		}
+	
+	let e_noInput = document.getElementById('e_id');
+	let employeeSearchInput = document.getElementById('employeeSearch');
 	e_noInput.value = e_no;
-	employeeSearchInput.placeholder = e_name;
-	closeModal();
+	employeeSearchInput.value =deptName+" :"+e_rank+" "+e_name;
+	empCloseModal();
 }
 
   // 인풋창 클릭 시 모달 열기
-  document.getElementById('employeeSearch').addEventListener('click', openModal);
+  document.getElementById('employeeSearch').addEventListener('click', empOpenModal);
 
   // 닫기 버튼 클릭 시 모달 닫기
-  document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+  document.getElementById('empCloseModalBtn').addEventListener('click', empCloseModal);

@@ -11,31 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/InWarehouseC")
 public class InWarehouseC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		InWarehouseDAO.getTwdao().getAll(request);
-		
-		
-		
-		
+		InWarehouseDAO.getTwdao().paging(1, request);
 		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_interface.jsp").forward(request, response);
 	
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-//			InWarehouseDAO.getTwdao().regInWare(request);
-//			InWarehouseDAO.getTwdao().updateInWareStatus(request);
-//			InWarehouseDAO.getTwdao().regStock(request);
-//			InWarehouseDAO.getTwdao().upStock(request);
-//			
-//			
-//			InWarehouseDAO.getTwdao().getAll(request);
-			
-		
-		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_interface.jsp").forward(request, response);
 	}
 
 }

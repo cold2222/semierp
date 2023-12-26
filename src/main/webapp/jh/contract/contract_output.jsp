@@ -37,17 +37,6 @@
 				<td>${item.ci_unit_price }</td>
 			</tr>
 		</c:forEach>
-
-
-
 	</table>
-
-
-
-
-
-
-
-
 </body>
 </html>

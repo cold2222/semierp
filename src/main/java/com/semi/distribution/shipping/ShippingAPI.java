@@ -21,19 +21,10 @@ public class ShippingAPI {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String temp = request.getParameter("temp");
-		System.out.println(temp);
+
 		int yearInt = Integer.parseInt(request.getParameter("selectedYear"));
 		int monthInt = Integer.parseInt(request.getParameter("selectedMonth"));
-		System.out.println(yearInt+"asd"+(monthInt));
 
-//		System.out.println(yearInt+"년"+monthInt+"월");
-//		String year = yearInt+"";
-//		String month = monthInt+"";
-//		if(monthInt < 10) {
-//			month = "0"+month;
-//		}
-		System.out.println(yearInt+"년"+monthInt+"월");
 		
 		
 		

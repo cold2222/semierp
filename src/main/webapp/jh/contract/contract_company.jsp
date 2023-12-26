@@ -46,6 +46,7 @@
 		<td>거래상태</td>
 		<td>계약서종류</td>
 		<td>계약상품</td>
+		<td>계약서 수정</td>
 	</tr>
 	<c:forEach var="ct" items="${cts }">
 			<tr>
@@ -68,6 +69,7 @@
 				 <c:if test="${ct.c_type eq 2 }">판매</c:if>
 				  </td>
 				<td> <button onclick="location.href='ContractDetailC?no=${ct.c_contract_no }'">상세조회</button> </td>
+				<td> <button onclick="location.href='UpdateContC?no=${ct.c_contract_no }'">수정</button> </td>
 			</tr>
 </c:forEach>
 	</table>

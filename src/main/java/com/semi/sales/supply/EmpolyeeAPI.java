@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.semi.distribution.db.DBManger;
 import com.semi.sales.bbs.DBManager;
 
 public class EmpolyeeAPI {
@@ -30,8 +31,8 @@ public class EmpolyeeAPI {
 		ResultSet rs = null;
 		try {
 
-			String sql = "select * from employee where e_name like ?";
-			con = DBManager.connect();
+			String sql = "select * from employee where e_name like ? AND (e_deptno = 101 OR e_deptno = 102)";
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + request.getParameter("search") + "%");
 			rs = pstmt.executeQuery();
@@ -47,7 +48,7 @@ public class EmpolyeeAPI {
 				emp.setE_tel(rs.getString("e_tel"));
 				emp.setE_email(rs.getString("e_email"));
 				// 이거 db 수정한뒤 _date 를 때야함
-				emp.setE_joined_company(rs.getDate("e_joined_company_date"));
+				emp.setE_joined_company(rs.getDate("e_joined_company"));
 				emp.setE_pw(sql);
 				
 				emps.add(emp);
@@ -55,7 +56,6 @@ public class EmpolyeeAPI {
 			Gson g = new Gson();
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/json");
-			System.out.println(emps.size());
 			response.getWriter().write(g.toJson(emps));
 
 		} catch (Exception e) {
