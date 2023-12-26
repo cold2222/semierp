@@ -102,7 +102,7 @@
 
 		<div class="in_name">商品名</div>
 		<div class="in_name">タイプ</div>
-		<div class="in_name">p_quantity</div>
+		<div class="in_name">quantity</div>
 		<div class="in_name">단위</div>
 		<div class="in_name">제조사</div>
 		<div class="in_name">단가</div>
