@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.semi.distribution.db.DBManger;
 import com.semi.sales.bbs.DBManager;
-import com.semi.sales.supply.Company;
 
 public class ProductDAO {
 	private ArrayList<Product> productItems;
 	private static final ProductDAO PDAO = new ProductDAO();
 
 	public void paging(int pageNum, HttpServletRequest request) {
-		int pageSize = 4; // 한 페이지당 보여줄 개수
+		int pageSize = 10; // 한 페이지당 보여줄 개수
 		int totalData = productItems.size();
 		int totalPage = (int) Math.ceil((double) totalData / pageSize);
 		int startDataNum = totalData - (pageSize * (pageNum - 1));
@@ -51,7 +51,7 @@ public class ProductDAO {
 		try {
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("t"));
 			rs = pstmt.executeQuery();
@@ -76,7 +76,7 @@ public class ProductDAO {
 
 		String sql = "delete type where type=?";
 		try {
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("t"));
 			if (pstmt.executeUpdate() == 1) {
@@ -100,7 +100,7 @@ public class ProductDAO {
 		try {
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			Unit u = null;
@@ -128,7 +128,7 @@ public class ProductDAO {
 		try {
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			Type t = null;
@@ -156,7 +156,7 @@ public class ProductDAO {
 		try {
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("u"));
 			rs = pstmt.executeQuery();
@@ -180,7 +180,7 @@ public class ProductDAO {
 
 		String sql = "delete unit where unit=?";
 		try {
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("u"));
 			if (pstmt.executeUpdate() == 1) {
@@ -210,7 +210,7 @@ public class ProductDAO {
 		}
 
 		String sql = "select * from product ";
-		if (search.get("word") != null && !search.get("field").equals("all")) {
+		if (search.get("word") != null && !search.get("field").equals("all") && !search.get("word").equals("")) {
 			sql += "where " + search.get("field") + " " + "like '%" + search.get("word") + "%' ";
 		}
 		sql += "order by p_id";
@@ -218,7 +218,7 @@ public class ProductDAO {
 		try {
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			Product p = null;
@@ -228,7 +228,7 @@ public class ProductDAO {
 				p.setP_id(rs.getInt("p_id"));
 				p.setP_si(rs.getString("p_si"));
 				p.setP_type(rs.getString("p_type"));
-				p.setP_quantity(rs.getInt("p_quantity"));
+				p.setP_quantity(rs.getString("p_quantity"));
 				p.setP_name(rs.getString("p_name"));
 				p.setP_unitCost(rs.getString("p_unitCost"));
 				p.setP_minStock(rs.getString("p_minStock"));
@@ -253,7 +253,7 @@ public class ProductDAO {
 
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("p_si"));
 			pstmt.setString(2, request.getParameter("p_type"));
@@ -283,7 +283,7 @@ public class ProductDAO {
 
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("type"));
 			if (pstmt.executeUpdate() == 1) {
@@ -306,7 +306,7 @@ public class ProductDAO {
 
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("unit"));
 			if (pstmt.executeUpdate() == 1) {
@@ -329,7 +329,7 @@ public class ProductDAO {
 		try {
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(request.getParameter("id")));
 			rs = pstmt.executeQuery();
@@ -339,7 +339,7 @@ public class ProductDAO {
 				p.setP_id(rs.getInt("p_id"));
 				p.setP_si(rs.getString("p_si"));
 				p.setP_type(rs.getString("p_type"));
-				p.setP_quantity(rs.getInt("p_quantity"));
+				p.setP_quantity(rs.getString("p_quantity"));
 				p.setP_name(rs.getString("p_name"));
 				p.setP_unitCost(rs.getString("p_unitCost"));
 				p.setP_minStock(rs.getString("p_minStock"));
@@ -364,7 +364,7 @@ public class ProductDAO {
 
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("p_si"));
 			pstmt.setString(2, request.getParameter("p_type"));
@@ -396,7 +396,7 @@ public class ProductDAO {
 
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("type"));
 			pstmt.setString(2, request.getParameter("t"));
@@ -421,7 +421,7 @@ public class ProductDAO {
 			request.setCharacterEncoding("utf-8");
 			String sql = "select * from product where p_name like ?";
 			request.setCharacterEncoding("utf-8");
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + request.getParameter("search") + "%");
 			rs = pstmt.executeQuery();
@@ -433,7 +433,7 @@ public class ProductDAO {
 				p.setP_id(rs.getInt("p_id"));
 				p.setP_si(rs.getString("p_si"));
 				p.setP_type(rs.getString("p_type"));
-				p.setP_quantity(rs.getInt("p_quantity"));
+				p.setP_quantity(rs.getString("p_quantity"));
 				p.setP_name(rs.getString("p_name"));
 				p.setP_unitCost(rs.getString("p_unitCost")); 
 				p.setP_minStock(rs.getString("p_minStock")); 
@@ -464,7 +464,7 @@ public class ProductDAO {
 
 			request.setCharacterEncoding("utf-8");
 
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("unit"));
 			pstmt.setString(2, request.getParameter("u"));
@@ -488,7 +488,7 @@ public class ProductDAO {
 
 		String sql = "delete product where p_id = ?";
 		try {
-			con = DBManager.connect();
+			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("p_id"));
 			if (pstmt.executeUpdate() == 1) {

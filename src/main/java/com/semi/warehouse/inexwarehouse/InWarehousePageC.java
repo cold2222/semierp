@@ -1,4 +1,4 @@
-package com.semi.sales.supply;
+package com.semi.warehouse.inexwarehouse;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,17 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ViewContractC")
-public class ViewContractC extends HttpServlet {
-	
-	
+import com.semi.warehouse.inwarehouse.InWarehouseDAO;
+
+@WebServlet("/InWarehousePageC")
+public class InWarehousePageC extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	SupplyComDAO.getSdao().getContract(request);
-	SupplyComDAO.getSdao().getContent(request);
-	request.setAttribute("contentPage", "jh/contract/contract_output.jsp");
-	request.setAttribute("sidebar", "jh/sidebar.jsp");
-	request.getRequestDispatcher("index2.jsp").forward(request, response);
-	
+		InWarehouseDAO.getTwdao().getAll(request);
+		InWarehouseDAO.getTwdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
+		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_interface.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

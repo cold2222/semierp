@@ -14,11 +14,41 @@ public class Contract {
 	private int c_status;
 	private int c_type;
 	private String c_name;
+	private String e_name;
+	private String e_deptno;
+	private String e_rank;
 
 	private List<ContractItems> items;
 
 	public List<ContractItems> getItems() {
 		return items;
+	}
+	
+	
+	public String getE_rank() {
+		return e_rank;
+	}
+
+
+	public void setE_rank(String e_rank) {
+		this.e_rank = e_rank;
+	}
+
+
+	public String getE_deptno() {
+		return e_deptno;
+	}
+
+	public void setE_deptno(String e_deptno) {
+		this.e_deptno = e_deptno;
+	}
+
+	public String getE_name() {
+		return e_name;
+	}
+
+	public void setE_name(String e_name) {
+		this.e_name = e_name;
 	}
 
 	public void setItems(List<ContractItems> items) {

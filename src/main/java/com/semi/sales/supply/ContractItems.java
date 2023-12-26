@@ -7,7 +7,29 @@ public class ContractItems {
 	private int ci_count;
 	private int ci_unit_price;
 	private String p_name;
+	private String p_type;
+	private String p_quantity;
+	private String p_si;
 	
+	
+	public String getP_quantity() {
+		return p_quantity;
+	}
+	public void setP_quantity(String p_quantity) {
+		this.p_quantity = p_quantity;
+	}
+	public String getP_si() {
+		return p_si;
+	}
+	public void setP_si(String p_si) {
+		this.p_si = p_si;
+	}
+	public String getP_type() {
+		return p_type;
+	}
+	public void setP_type(String p_type) {
+		this.p_type = p_type;
+	}
 	public String getP_name() {
 		return p_name;
 	}

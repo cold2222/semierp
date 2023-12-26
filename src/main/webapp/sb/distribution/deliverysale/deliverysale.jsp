@@ -12,7 +12,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">납품예정확인</div>
+			<div class="content-head-text">納品配車登録</div>
 		</div>
 		<div class="content-body">
 		<div class="search-container">
@@ -33,12 +33,12 @@
 						<div class="bbs-content-body">
 							<div class="bbs-content-bbs">
 								<div class="bbs-main">
-									<div class="bbs-main-text1 bbs-main-title">구매이력번호</div>
-									<div class="bbs-main-text1 bbs-main-title">거래처명</div>
-									<div class="bbs-main-text3 bbs-main-title">납기일</div>
-									<div class="bbs-main-text3 bbs-main-title">담당자</div>
-									<div class="bbs-main-text3 bbs-main-title">이력작성날짜</div>
-									<div class="bbs-main-text4 bbs-main-title">상세페이지 이동</div>
+									<div class="bbs-main-text1 bbs-main-title">契約書番号</div>
+									<div class="bbs-main-text1 bbs-main-title">取引先名</div>
+									<div class="bbs-main-text3 bbs-main-title">納期日</div>
+									<div class="bbs-main-text3 bbs-main-title">取引担当者</div>
+									<div class="bbs-main-text3 bbs-main-title">契約書作成日</div>
+									<div class="bbs-main-text4 bbs-main-title">詳細確認</div>
 								</div>
 								<c:forEach var="d" items="${deliverySaleList }">
 								<div class="bbs-main">
@@ -47,7 +47,7 @@
 									<div class="bbs-main-text3 bbs-main-text">${d.c_due_date }</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.e_name}</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.c_created_date }</div>
-									<div class="bbs-main-text4 bbs-main-text"><button onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&c_due_date=${d.c_due_date }'">Move</button></div>
+									<div class="bbs-main-text4 bbs-main-text"><button onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&&page=List'">Move</button></div>
 								</div>
 								</c:forEach>
 							</div>

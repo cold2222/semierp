@@ -20,5 +20,6 @@
 	<div class="footer">
 	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+	<div class="footer"></div>
 </body>
 </html>

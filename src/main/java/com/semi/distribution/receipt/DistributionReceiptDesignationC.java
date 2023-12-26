@@ -14,6 +14,7 @@ public class DistributionReceiptDesignationC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		ReceiptDAO.getRdao().statusLevelUp2(request);
 		ReceiptDAO.getRdao().insertShipping(request);
 		ReceiptDAO.getRdao().updateDeliveryDate(request);

@@ -46,7 +46,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 							<option value="${t.type}">${t.type}</option>
 						</c:forEach>
 				</select></td>
-				<td><input name="p_quantity" placeholder="단위량" type="number"></td>
+				<td><input name="p_quantity" placeholder="단위량" type="text" pattern="[0-9]*[.,]?[0-9]+"></td>
 				<td><input name="p_name" placeholder="상품명" required="required"></td>
 				<td><input name="p_unitCost" placeholder="가격" type="number"
 					required="required"></td>
@@ -77,7 +77,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 				<td>${p.p_si }</td>
 				<td>${p.p_type }</td>
 				<c:choose>
-					<c:when test="${p.p_quantity == 0}">
+					<c:when test="${p.p_quantity eq null}">
 						<td>단위 없음</td>
 					</c:when>
 					<c:otherwise>

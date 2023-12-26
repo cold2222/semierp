@@ -12,16 +12,16 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">受領配車登録</div>
+			<div class="content-head-text">配送情報/修正</div>
 		</div>
 		<div class="content-body">
 		<div class="search-container">
-				<form action="DistributionReceiptC" method="GET">
+				<form action="DistributionDeliveryDataC" method="GET">
 					<select name="field" id="searchField" class="search-select"
 						onchange="showInput()">
 						<option value="all">全体検索</option>
-						<option value="b.c_name">取引先</option>
-						<option value="c.e_name">取引担当者</option>
+						<option value="b.c_name">取引先名</option>
+						<option value="c.e_name">配送担当者</option>
 					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
 						id="searchWord" class="search-input" style="display: none;">
 					<button type="submit" class="search-button">検索</button>
@@ -35,19 +35,21 @@
 								<div class="bbs-main">
 									<div class="bbs-main-text1 bbs-main-title">契約書番号</div>
 									<div class="bbs-main-text1 bbs-main-title">取引先名</div>
-									<div class="bbs-main-text3 bbs-main-title">入港日</div>
-									<div class="bbs-main-text3 bbs-main-title">取引担当者</div>
-									<div class="bbs-main-text3 bbs-main-title">契約書作成日</div>
-									<div class="bbs-main-text4 bbs-main-title">詳細確認</div>
+									<div class="bbs-main-text3 bbs-main-title">配送日</div>
+									<div class="bbs-main-text3 bbs-main-title">配送担当者</div>
+									<div class="bbs-main-text3 bbs-main-title">契約書タイプ</div>
+									<div class="bbs-main-text4 bbs-main-title">詳細/配車修正</div>
 								</div>
-								<c:forEach var="r" items="${receiptList }">
+								<c:forEach var="d" items="${deliveryDataList }">
 								<div class="bbs-main">
-									<div class="bbs-main-text1 bbs-main-text">${r.c_contract_no }</div>
-									<div class="bbs-main-text1 bbs-main-text">${r.c_name }</div>
-									<div class="bbs-main-text3 bbs-main-text">${r.c_due_date }</div>
-									<div class="bbs-main-text3 bbs-main-text">${r.e_name}</div>
-									<div class="bbs-main-text3 bbs-main-text">${r.c_created_date }</div>
-									<div class="bbs-main-text4 bbs-main-text"><button onclick="location.href='DistributionReceiptViewC?c_contract_no=${r.c_contract_no }&page=List'">Move</button></div>
+									<div class="bbs-main-text1 bbs-main-text">${d.c_contract_no }</div>
+									<div class="bbs-main-text1 bbs-main-text">${d.c_name }</div>
+									<div class="bbs-main-text3 bbs-main-text">${d.c_delivery_date }</div>
+									<div class="bbs-main-text3 bbs-main-text">${d.e_name}</div>
+									<div class="bbs-main-text3 bbs-main-text">${d.c_type}</div>
+									<div class="bbs-main-text4 bbs-main-text">
+										<button onclick="location.href='DistributionDeliveryDataViewC?c_contract_no=${d.c_contract_no}'">Move</button>
+									</div>
 								</div>
 								</c:forEach>
 							</div>
@@ -55,7 +57,7 @@
 									<c:choose>
 										<c:when test="${pageNum != 1}">
 											<button
-												onclick="location.href='DistributionReceiptPageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
+												onclick="location.href='DistributionDeliveryDataPageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
 										</c:when>
 									</c:choose>
 
@@ -65,12 +67,12 @@
 										<c:choose>
 											<c:when test="${i eq pageNum}">
 												<a
-													href="DistributionReceiptPageC?pageNum=${i}&field=${param.field }&word=${param.word }"
+													href="DistributionDeliveryDataPageC?pageNum=${i}&field=${param.field }&word=${param.word }"
 													style="color: black; font-weight: bold;">${i}</a>
 											</c:when>
 											<c:otherwise>
 												<a
-													href="DistributionReceiptPageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
+													href="DistributionDeliveryDataPageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -78,7 +80,7 @@
 									<c:choose>
 										<c:when test="${pageNum != totalPage && totalPage != 0}">
 											<button
-												onclick="location.href='DistributionReceiptPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
+												onclick="location.href='DistributionDeliveryDataPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
 										</c:when>
 									</c:choose>
 								</div>
@@ -88,6 +90,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
