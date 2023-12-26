@@ -23,6 +23,12 @@ public class DeliverySaleDTO {
 	private String e_name;
 	private String e_rank;
 	private String e_tel;
+	private String c_name;
+	private String c_addr;
+	private String c_keeper;
+	private String c_phone;
+	private String s_no;
+	private String s_memo;
 	public String getC_addr() {
 		return c_addr;
 	}
@@ -31,8 +37,6 @@ public class DeliverySaleDTO {
 		this.c_addr = c_addr;
 	}
 
-	private String c_name;
-	private String c_addr;
 	public String getC_contract_no() {
 		return c_contract_no;
 	}
@@ -232,11 +236,6 @@ public class DeliverySaleDTO {
 	public void setS_memo(String s_memo) {
 		this.s_memo = s_memo;
 	}
-
-	private String c_keeper;
-	private String c_phone;
-	private String s_no;
-	private String s_memo;
 	
 	public DeliverySaleDTO() {
 	}

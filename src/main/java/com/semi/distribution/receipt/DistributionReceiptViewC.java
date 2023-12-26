@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.distribution.deliverydata.DeliveryDataDAO;
+
 @WebServlet("/DistributionReceiptViewC")
 public class DistributionReceiptViewC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DeliveryDataDAO.getDdao().getDelivery(request);
 		ReceiptDAO.getRdao().getReceiptData(request);
 		ReceiptDAO.getRdao().getReceiptItemList(request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");

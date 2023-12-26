@@ -1,4 +1,4 @@
-package com.semi.main;
+package com.semi.distribution.deliverydata;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,18 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/HC2")
-public class HC2 extends HttpServlet {
+@WebServlet("/DistributionDeliveryDataC")
+public class DistributionDeliveryDataC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("footer", "footer.jsp");
-		request.setAttribute("sidebar", "sidebar.jsp");
-		request.setAttribute("contentPage", "jh/company/supply_company.jsp");
+		DeliveryDataDAO.getDdao().getDeliveryList(request);
+		DeliveryDataDAO.getDdao().paging(1, request);
+		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
+		request.setAttribute("contentPage","sb/distribution/deliverydata/deliverydata.jsp");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
-		
-		
-		
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 

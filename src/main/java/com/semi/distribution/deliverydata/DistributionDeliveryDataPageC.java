@@ -1,0 +1,24 @@
+package com.semi.distribution.deliverydata;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/DistributionDeliveryDataPageC")
+public class DistributionDeliveryDataPageC extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DeliveryDataDAO.getDdao().getDeliveryList(request);
+		DeliveryDataDAO.getDdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
+		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
+		request.setAttribute("contentPage","sb/distribution/deliverydata/deliverydata.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
+
+}

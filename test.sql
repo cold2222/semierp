@@ -65,7 +65,8 @@ select * from product;
 create table unit(
     unit varchar2(5 char) PRIMARY KEY
 );
-select * from unit;
+insert into unit values('g');
+select * from type;
 select * from contract;
 select * from contract_items;
 create table type(

@@ -13,7 +13,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">납품확인등록</div>
+			<div class="content-head-text">配送完了登録 (納品)</div>
 		</div>
 		<div class="content-body">
 		<div class="search-container">
@@ -34,13 +34,13 @@
 						<div class="bbs-content-body">
 							<div class="bbs-content-bbs">
 								<div class="bbs-main">
-									<div class="bbs-main-text1 bbs-main-title">판매이력번호</div>
-									<div class="bbs-main-text1 bbs-main-title">거래처명</div>
-									<div class="bbs-main-text3 bbs-main-title">납기일</div>
-									<div class="bbs-main-text3 bbs-main-title">배송담당자</div>
-									<div class="bbs-main-text3 bbs-main-title">배송날짜</div>
-									<div class="bbs-main-text4 bbs-main-title">상세페이지 이동</div>
-									<div class="bbs-main-text4 bbs-main-title">배달완료</div>
+									<div class="bbs-main-text1 bbs-main-title">契約書番号</div>
+									<div class="bbs-main-text1 bbs-main-title">取引先名</div>
+									<div class="bbs-main-text3 bbs-main-title">入港日</div>
+									<div class="bbs-main-text3 bbs-main-title">配送担当者</div>
+									<div class="bbs-main-text3 bbs-main-title">配送日</div>
+									<div class="bbs-main-text4 bbs-main-title">詳細確認</div>
+									<div class="bbs-main-text4 bbs-main-title">配送完了</div>
 								</div>
 								<c:forEach var="d" items="${deliverySaleList }">
 								<div class="bbs-main">
@@ -49,8 +49,8 @@
 									<div class="bbs-main-text3 bbs-main-text">${d.c_due_date }</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.e_name}</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.c_delivery_date }</div>
-									<div class="bbs-main-text3 bbs-main-text"><button onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&c_due_date=${d.c_due_date }'">Move</button></div>
-									<div class="bbs-main-text4 bbs-main-text"><button onclick="DistributionReceiptClear('${d.c_contract_no}')">확인</button></div>
+									<div class="bbs-main-text3 bbs-main-text"><button onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&page=clearList'">Move</button></div>
+									<div class="bbs-main-text4 bbs-main-text"><button onclick="DistributionReceiptClear('${d.c_contract_no}')">完了</button></div>
 								</div>
 								</c:forEach>
 							</div>
