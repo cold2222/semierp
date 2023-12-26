@@ -91,6 +91,17 @@ public class InExWarehouseDAO {
 						warehouse_type, warehouse_id, warehouse_name);
 				allInExWarehouse.add(all);
 
+				System.out.println(p_id);
+				System.out.println(p_name);
+				System.out.println(p_si);
+				System.out.println(p_type);
+				System.out.println(p_quantity);
+				System.out.println(quantity);
+				System.out.println(warehouse_date);
+				System.out.println(warehouse_type);
+				System.out.println(warehouse_id);
+				System.out.println(warehouse_name);
+
 			}
 			request.setAttribute("allInExWarehouse", allInExWarehouse);
 

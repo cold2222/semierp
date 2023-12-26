@@ -9,7 +9,6 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 import com.semi.distribution.db.DBManger;
-import com.semi.warehouse.inwarehouse.DBManager;
 import com.semi.warehouse.inwarehouse.InWarehouseDTO;
 
 public class ExWarehouseDAO {

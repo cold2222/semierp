@@ -50,32 +50,35 @@
 	});
 </script>
 
-
+<link rel="stylesheet" href="sj/warehouse_css/warehouse_board.css">
 </head>
 <body>
 
 
 
-	<h1 style="font-size: 30pt;">창고 테이블</h1>
 
+	<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">在庫確認</div>
+		</div>
 	<form action="WarehouseBoardC" method="get">
 		<div class="input-container">
-			<label for="operationType">창고별 :</label> <select name="operationType"
+			<label for="operationType">倉庫 :</label> <select name="operationType"
 				id="operationType">
-				<option value="all">전체</option>
-				<option value="one">1창고</option>
-				<option value="two">2창고</option>
-				<option value="three">3창고</option>
-			</select> 검색 : <select id="searchOption" name="searchOption">
-				<option value="x">검색조건선택</option>
-				<option value="p_name">제품명</option>
-				<option value="p_type">타입</option>
-				<option value="p_manufacturer">제조사</option>
+				<option value="all">全体</option>
+				<option value="one">1倉庫</option>
+				<option value="two">2倉庫</option>
+				<option value="three">3倉庫</option>
+			</select> 検索 : <select id="searchOption" name="searchOption">
+				<option value="x">検索条件</option>
+				<option value="p_name">商品名</option>
+				<option value="p_type">タイプ</option>
+				<option value="p_manufacturer">メーカー</option>
 			</select> <input type="text" name="word" class="searchInput"
 				style="display: none;">
-			<button type="submit">확인</button>
+			<button type="submit">確認</button>
 			<div class="right-align">
-				재고 값 :
+				在庫価格 :
 				<c:choose>
 					<c:when test="${operationType eq 'all' or operationType eq null}">
 						<c:set var="totalValue" value="0" />
@@ -97,9 +100,9 @@
 	</form>
 	<div class="input-box input-container">
 
-		<div class="in_name">제품 이름</div>
-		<div class="in_name">타입</div>
-		<div class="in_name">p_quantity</div>
+		<div class="in_name">商品名</div>
+		<div class="in_name">タイプ</div>
+		<div class="in_name">quantity</div>
 		<div class="in_name">단위</div>
 		<div class="in_name">제조사</div>
 		<div class="in_name">단가</div>
@@ -156,6 +159,7 @@
 					onclick="location.href='WarehouseBoardPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
 			</c:when>
 		</c:choose>
+	</div>
 	</div>
 
 </body>

@@ -1,17 +1,16 @@
 @charset "UTF-8";
 
-*{
-	margin: 0;
-	padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.index-contents{
-	width: 100vw;
-	display: flex;
+.index-contents {
+  width: 100vw;
+  display: flex;
 }
 
-.index-content{
-	width: 100%;
-	background-color: #F0ECE5;
+.index-content {
+  width: 100%;
+  background-color: #f0ece5;
 }
-

@@ -13,8 +13,13 @@ public class InWarehouseC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		InWarehouseDAO.getTwdao().getAll(request);
 		InWarehouseDAO.getTwdao().paging(1, request);
-		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_interface.jsp").forward(request, response);
+		//request.setAttribute("contentPage", "");
 	
+		request.setAttribute("sidebar","sj/sidebar.jsp");
+		request.setAttribute("contentPage","sj/warehouse/in_warehouse/in_warehouse_interface.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
+		
+		
 		
 	}
 
