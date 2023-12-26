@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.adminpage.dept.DeptDAO;
 import com.semi.login.EmployeeDAO;
 
 @WebServlet("/DeptC")
@@ -14,6 +15,7 @@ public class DeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
+				DeptDAO.getImportDeptInfo(request);
 				request.setAttribute("selectedPage", "dept");
 				request.setAttribute("contentPage", "dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);

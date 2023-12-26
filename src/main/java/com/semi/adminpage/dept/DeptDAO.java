@@ -3,7 +3,6 @@ package com.semi.adminpage.dept;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -62,7 +61,7 @@ public class DeptDAO {
 				+ "     JOIN contract_items ON c_c_no = ci_c_contract_no\r\n"
 				+ "     WHERE c_type = 1 AND TO_CHAR(c_created_date, 'YYYY-MM') LIKE ?) AS i_total_price,\r\n"
 				+ "     (SELECT COUNT(*)\r\n" + "     FROM contract\r\n"
-				+ "     WHERE c_type = 1 AND c_status = 4 AND TO_CHAR(c_created_date, 'YYYY-MM') LIKE '?') AS I_contract_completed,\r\n"
+				+ "     WHERE c_type = 1 AND c_status = 4 AND TO_CHAR(c_created_date, 'YYYY-MM') LIKE ?) AS I_contract_completed,\r\n"
 				+ "     (SELECT COUNT(*)\r\n" + "     FROM contract\r\n"
 				+ "     WHERE c_type = 1 AND c_status < 4) AS i_awaiting_stock\r\n" + "FROM employee\r\n"
 				+ "JOIN dept ON e_deptno = d_deptno\r\n" + "WHERE d_deptno = 101\r\n" + "GROUP BY d_deptno, d_dept";
@@ -73,7 +72,7 @@ public class DeptDAO {
 		// 형식화된 년월 가져오기 (YY-MM 형식)
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
 		String currentYearMonth = currentDate.format(formatter);
-		request.setAttribute("year-month", currentYearMonth);
+		request.setAttribute("currentYearMonth", currentYearMonth);
 		
 		try {
 			con=DBManger.connect();
@@ -89,10 +88,12 @@ public class DeptDAO {
 				importDept.setI_dept(rs.getString("i_dept"));
 				importDept.setI_count(rs.getInt("i_count"));
 				importDept.setI_contract_count(rs.getInt("i_contract_count"));
-				importDept.setI_contract_count(rs.getInt("i_contract_items"));
+				importDept.setI_contract_items(rs.getInt("i_contract_items"));
 				importDept.setI_total_price(rs.getInt("i_total_price"));
 				importDept.setI_contract_completed(rs.getInt("i_contract_completed"));
 				importDept.setI_awaiting_stock(rs.getInt("i_awaiting_stock"));
+				
+				request.setAttribute("importDept", importDept);
 			}
 			
 		} catch (Exception e) {
