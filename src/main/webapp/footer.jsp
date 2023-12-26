@@ -8,56 +8,58 @@
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 </head>
 <body>
-	<!-- footer.jsp -->
-	<footer style="background-color: #003369;">
-		<div class="footer-container">
-			<div class="footer-logo">
+	<footer>
+		<div class="footer-content">
+			<div class="footer-img">
 				<img src="logoFolder/SolLogistics.png">
 			</div>
-			<div class="footer-sections">
-				<div class="footer-section">
-					<div style="color: #fff;">회사
-					<ul>
-						<li><a href="#" style="color: #fff;">회사 개요</a></li>
-						<li><a href="#" style="color: #fff;">찾아오시는 길</a></li>
-					</ul>
+			<div class="footer-column">
+				<div class="colum1">
+					<div class="col">
+						<img alt="" src="logoFolder/info.PNG"> 
+						<div class="col3_jp"><a href='#none'>ログイン</a></div>
+					</div>
+					<div class="col">
+						<img alt="" src="logoFolder/location.PNG"> 
+						<div class="col3_jp"><a href='#none'>拠点情報</a></div>
 					</div>
 				</div>
-				<div class="footer-section">
-					<div style="color: #fff;">기술과 서비스
-					<ul>
-						<li><a href="#" style="color: #fff;">기술</a></li>
-						<li><a href="#" style="color: #fff;">서비스</a></li>
-					</ul>
+				<div class="colum2">
+					<div class="col">
+						<a href='#none'>企業情報</a>
+					</div>
+					<div class="col">
+						<a href='#none'>採用情報</a>
+					</div>
+					<div class="col">
+						<a href='#none'>ニュースルーム</a>
+					</div>
+					<div class="col">
+						<a href='#none'>サービスアラート</a>
 					</div>
 				</div>
-				<div class="footer-section">
-					<div style="color: #fff;">약속과 책임
-					<ul>
-						<li><a href="#" style="color: #fff;">다짐</a></li>
-					</ul>
+				<div class="colum-select">
+					<div class="col3">
+						<img alt="" src="logoFolder/language.PNG">
+						<div class="col3_jp">Japan</div>
 					</div>
-				</div>
-				<div class="footer-section">
-					<div style="color: #fff;">고객센터
-					<ul>
-						<li><a href="#" style="color: #fff;">연락처</a></li>
-					</ul>
-					</div>
+					<div class="col2">日本語</div>
 				</div>
 			</div>
-		</div>
-		<div class="footer-bottom" style="color: #fff;">
-			<div class="footer-copyright">
-				<p>&copy; 2023 SolLogitics. All rights reserved.</p>
-			</div>
-			<div class="footer-policy">
-				<p>
-					<a href="#" style="color: #fff;">Privacy Policy</a>
-				</p>
-			</div>
-			<div class="footer-image">
-				<img src="logoFolder/キャプチャ.PNG">
+			<div class="footer-bottom">
+				<div>© 2023 SolLogistics</div>
+				<div>
+					<a>Privacy Policy</a>
+				</div>
+				<div>
+					<a>コンフィデンシャル・レポーティング・ライン</a>
+				</div>
+				<div>
+					<a>Standard Trading Conditions</a>
+				</div>
+				<div>
+					<img src="logoFolder/キャプチャ.PNG">
+				</div>
 			</div>
 		</div>
 	</footer>
