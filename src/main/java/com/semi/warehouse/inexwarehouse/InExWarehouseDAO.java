@@ -111,9 +111,21 @@ public class InExWarehouseDAO {
 				int warehouse_id = rs.getInt("warehouse_id");
 				String warehouse_name = rs.getString("warehouse_name");
 				
+				// p_id로 pk
 				
 				all = new InExWarehouseDTO(p_id, p_name, p_si, p_type, p_quantity, quantity, warehouse_date,warehouse_type, warehouse_id, warehouse_name);
 				allInExWarehouse.add(all);
+
+				System.out.println(p_id);
+				System.out.println(p_name);
+				System.out.println(p_si);
+				System.out.println(p_type);
+				System.out.println(p_quantity);
+				System.out.println(quantity);
+				System.out.println(warehouse_date);
+				System.out.println(warehouse_type);
+				System.out.println(warehouse_id);
+				System.out.println(warehouse_name);
 
 			}
 			request.setAttribute("allInExWarehouse", allInExWarehouse);
@@ -121,7 +133,7 @@ public class InExWarehouseDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 			
 			
@@ -211,7 +223,7 @@ public class InExWarehouseDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 			
 		
@@ -277,6 +289,7 @@ public class InExWarehouseDAO {
 				int warehouse_id = rs.getInt("warehouse_id");
 				String warehouse_name = rs.getString("warehouse_name");
 				
+				// p_id로 pk
 				
 				all = new InExWarehouseDTO(p_id, p_name, p_si, p_type, p_quantity, quantity, warehouse_date,warehouse_type, warehouse_id, warehouse_name);
 				allInExWarehouse.add(all);
@@ -298,7 +311,7 @@ public class InExWarehouseDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 			
 			
@@ -378,7 +391,7 @@ public class InExWarehouseDAO {
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        } finally {
-	            DBManager.close(con, pstmt, rs);
+	            DBManger.close(con, pstmt, rs);
 	        }
 	    }
 		

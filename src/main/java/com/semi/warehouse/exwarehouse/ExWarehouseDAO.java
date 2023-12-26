@@ -9,7 +9,6 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 import com.semi.distribution.db.DBManger;
-import com.semi.warehouse.inwarehouse.DBManager;
 import com.semi.warehouse.inwarehouse.InWarehouseDTO;
 
 public class ExWarehouseDAO {
@@ -88,7 +87,7 @@ public class ExWarehouseDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -128,7 +127,7 @@ public class ExWarehouseDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -154,7 +153,7 @@ public class ExWarehouseDAO {
 			System.out.println("입고 스테이터스4, 컴플리트데이트 등록 실패");
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -188,7 +187,7 @@ public class ExWarehouseDAO {
 			e.printStackTrace();
 			System.out.println("출고 등록 실패");
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -222,7 +221,7 @@ public class ExWarehouseDAO {
 			e.printStackTrace();
 			System.out.println("stock 빼기 실패");
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 
@@ -264,7 +263,7 @@ public class ExWarehouseDAO {
 			e.printStackTrace();
 			System.out.println("입고 뷰 페이지 계약서조회 실패");
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 	}
 
