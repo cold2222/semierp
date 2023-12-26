@@ -10,8 +10,12 @@
 <script type="text/javascript" src="sb/distribution_js/employee.js"></script>
 </head>
 <body>
+	<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">流通部社員管理</div>
+		</div>
+	</div>
 	<div class="container">
-		<h1>流通部社員管理</h1>
 		<table class="employee-table">
 			<thead>
 				<tr>

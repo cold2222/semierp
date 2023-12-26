@@ -59,7 +59,7 @@ public class NoticeDAO {
 		}
 		
 		String sql = "select * from distribution_bbs1 ";
-		if(search.get("word") != null && !search.get("field").equals("all")) {
+		if(search.get("word") != null && !search.get("field").equals("all") && !search.get("word").equals("")) {
 			sql += "where LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") +"%') ";
 			}
 		
