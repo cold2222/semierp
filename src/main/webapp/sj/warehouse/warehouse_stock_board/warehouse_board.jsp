@@ -50,14 +50,17 @@
 	});
 </script>
 
-
+<link rel="stylesheet" href="sj/warehouse_css/warehouse_board.css">
 </head>
 <body>
 
 
 
-	<h1 style="font-size: 30pt;">창고 테이블</h1>
 
+	<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">在庫確認</div>
+		</div>
 	<form action="WarehouseBoardC" method="get">
 		<div class="input-container">
 			<label for="operationType">창고별 :</label> <select name="operationType"
@@ -156,6 +159,7 @@
 					onclick="location.href='WarehouseBoardPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
 			</c:when>
 		</c:choose>
+	</div>
 	</div>
 
 </body>

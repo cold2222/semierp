@@ -11,7 +11,7 @@
 <body>
 	<div class="header">
 		<div class="header1">
-			<div class="header1-logo">
+			<div class="header1-logo" onclick="goToMainPage()">
 				<img class="header1-logo-img" alt="" 
 				src="logoFolder/SollogisticsHeaderLogo.png">
 			</div>
