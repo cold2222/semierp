@@ -151,7 +151,7 @@ public class WarehouseBoardDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 		
 	
@@ -213,7 +213,7 @@ public class WarehouseBoardDAO {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    } finally {
-	        DBManager.close(con, pstmt, rs);
+	        DBManger.close(con, pstmt, rs);
 	    }
 
         
