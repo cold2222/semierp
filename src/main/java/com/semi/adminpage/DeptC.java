@@ -7,16 +7,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.EmployeeDAO;
+
 @WebServlet("/DeptC")
 public class DeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
+			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
+				request.setAttribute("selectedPage", "dept");
+				request.setAttribute("contentPage", "dept_info.jsp");
+				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
+			} else
+				request.getRequestDispatcher("HC").forward(request, response);
+		}
+		else 
+			response.sendRedirect("Login");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

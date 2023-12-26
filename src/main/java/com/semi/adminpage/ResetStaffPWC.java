@@ -19,6 +19,7 @@ public class ResetStaffPWC extends HttpServlet {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				StaffDAO.resetPW(request);
+				request.setAttribute("selectedPage", "dept");
 				response.sendRedirect("StaffAdminModifyC?e_no="+request.getParameter("e_no"));
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);
