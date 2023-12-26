@@ -22,6 +22,7 @@ public class DeptDAO {
 				+ "on e_deptno = d_deptno\r\n"
 				+ "group by d_deptno, d_dept\r\n"
 				+ "order by d_deptno";
+		int staffSum = 0;
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
@@ -29,11 +30,12 @@ public class DeptDAO {
 			while(rs.next()) {
 				if(rs.getInt("d_deptno")==999) 
 					continue;
-			
+				staffSum += rs.getInt("d_count");
 				deptsInfo.add(new DeptDTO(rs.getString("d_dept"),rs.getInt("d_deptno"),rs.getInt("d_count")));
 			}
 			
 			request.setAttribute("deptsInfo", deptsInfo);
+			request.setAttribute("staffSum", staffSum);
 			System.out.println("getDeptsInfo");
 		
 		} catch (Exception e) {

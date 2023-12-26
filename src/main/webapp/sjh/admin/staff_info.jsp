@@ -24,6 +24,11 @@
 				<div class="row-content-item">${dept.d_count}</div>
 			</div>
 		</c:forEach>
+		<div class="row-content">
+			<div class="row-content-item">社員</div>
+			<div class="row-content-item">-</div>
+			<div class="row-content-item">${staffSum}</div>
+		</div>
 	</div>
 	<div class="Staff_container">
 		<div class="col-title">
@@ -47,13 +52,37 @@
 				<div class="col-content-item col-long">${staff.e_email }</div>
 				<div class="col-content-item">${staff.e_tel}</div>
 				<div class="col-content-item">${staff.e_joined_company}</div>
-				<div class="col-content-item button"> <button onclick="location.href='StaffAdminModifyC?e_no=${staff.e_no }'">修正</button> </div>
+				<div class="col-content-item button">
+					<button
+						onclick="location.href='StaffAdminModifyC?e_no=${staff.e_no }'">修正</button>
+				</div>
 			</div>
 		</c:forEach>
 		<div class="btn-area">
+			<div></div>
+			<div class="btn-area-mid">
+				<c:if test="${currentPage != 1 }">
+					<button class="idx-btn"
+						onclick="location.href='StaffC?pageNo=${currentPage - 1}'">
+						prev
+					</button>
+				</c:if>
+				<c:forEach var="index" items="${indexList}">
+					<c:if test="${index ne 0}">
+						<button class="idx-btn"
+							onclick="location.href='StaffC?pageNo=${index}'">${index}</button>
+					</c:if>
+				</c:forEach>
+				<c:if test="${currentPage != lastPage }">
+					<button class="idx-btn"
+						onclick="location.href='StaffC?pageNo=${currentPage + 1}'">
+						next
+					</button>
+				</c:if>
+			</div>
 			<button class="reg-btn" onclick="location.href='StaffRegC'">社員登録</button>
 		</div>
 	</div>
-		
+
 </body>
 </html>

@@ -85,12 +85,16 @@
 }
 .btn-area{
 	display: flex;
-	justify-content: right;	
+	margin-top: 10px;
+	justify-content: space-between;
 }
 
 .reg-btn{
 	display: block;
-	margin-top: 10px;
+	
 	height: 40px;
 	
+}
+.idx-btn{
+	height: 30px;
 }

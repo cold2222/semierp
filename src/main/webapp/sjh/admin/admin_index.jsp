@@ -20,7 +20,7 @@
 				<div class="side-menu-item" ${selectedPage == 'staff' ? 'id="selected"' : ''} onclick="location.href='StaffC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/staff_white.png">&nbsp;&nbsp;社員一覽
 				</div>
-				<div class="side-menu-item" ${selectedPage == 'staff' ? 'id="selected"' : ''} onclick="location.href='DeptC'">
+				<div class="side-menu-item" ${selectedPage == 'dept' ? 'id="selected"' : ''} onclick="location.href='DeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/depart_white.png">&nbsp;&nbsp;部署一覽
 				</div>
 			</div>
