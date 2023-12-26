@@ -12,6 +12,8 @@
 	<div class="index-contents">
 		<div class="index-content">asd</div>
 	</div>
-	<div class="footer"></div>
+	<div class="footer">
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

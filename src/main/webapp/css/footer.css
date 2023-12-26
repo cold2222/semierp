@@ -1,4 +1,4 @@
-a {
+.footer a {
 	color: white; /* 링크 텍스트를 흰색으로 설정 */
 	text-decoration: none; /* 밑줄 제거 (선택 사항) */
 }
@@ -41,7 +41,7 @@ a {
 	padding: 10px;
 	text-align: left;
 	font-size: 14pt;
-	font-weight: 800;
+	font-weight: 500;
 }
 
 .col2 {

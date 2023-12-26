@@ -31,8 +31,7 @@
 		<div class="header2">
 			<div onclick="location.href='HC'">メイン</div>
 			<div onclick="">在庫管理</div>
-			<div onclick="">輸入</div>
-			<div onclick="">販売</div>
+			<div onclick="location.href='CompanyC'">輸入/販売</div>
 			<div onclick="location.href='DistributionMainBBSC'">運送</div>
 			<div onclick="">決算</div>
 		</div>

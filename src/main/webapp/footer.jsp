@@ -17,25 +17,25 @@
 				<div class="colum1">
 					<div class="col">
 						<img alt="" src="logoFolder/info.PNG"> 
-						<div class="col3_jp"><a href=''>ログイン</a></div>
+						<div class="col3_jp"><a href='#none'>ログイン</a></div>
 					</div>
 					<div class="col">
 						<img alt="" src="logoFolder/location.PNG"> 
-						<div class="col3_jp"><a href=''>拠点情報</a></div>
+						<div class="col3_jp"><a href='#none'>拠点情報</a></div>
 					</div>
 				</div>
 				<div class="colum2">
 					<div class="col">
-						<a href=''>企業情報</a>
+						<a href='#none'>企業情報</a>
 					</div>
 					<div class="col">
-						<a href=''>採用情報</a>
+						<a href='#none'>採用情報</a>
 					</div>
 					<div class="col">
-						<a href=''>ニュースルーム</a>
+						<a href='#none'>ニュースルーム</a>
 					</div>
 					<div class="col">
-						<a href=''>サービスアラート</a>
+						<a href='#none'>サービスアラート</a>
 					</div>
 				</div>
 				<div class="colum-select">
