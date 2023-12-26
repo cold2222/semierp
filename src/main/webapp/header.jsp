@@ -29,21 +29,12 @@
 			</div>
 		</div>
 		<div class="header2">
-<<<<<<< HEAD
-			<div onclick="location.href='HC'">メイン</div>
-
-			<div onclick="location.href='WarehousebbsC'">在庫管理</div>
-
-			<div onclick="location.href='CompanyC'">輸入/販売</div>
-			<div onclick="location.href='DistributionMainBBSC'">運送</div>
-			<div onclick="">決算</div>
-=======
 			<div class="header2-item" onclick="changeColor(this, 'HC')">メイン</div>
 			<div class="header2-item" onclick="changeColor(this, 'WarehousebbsC')">在庫管理</div>
 			<div class="header2-item" onclick="changeColor(this, 'CompanyC')">輸入/販売</div>
 			<div class="header2-item" onclick="changeColor(this, 'DistributionMainBBSC')">運送</div>
 			<div class="header2-item" onclick="changeColor(this, '')">決算</div>
->>>>>>> sj
+
 		</div>
 	</div>
 </body>
