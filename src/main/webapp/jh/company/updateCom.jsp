@@ -6,11 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="jh/css/updateCom.css">
 </head>
 <body>
+		<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">取引先の詳細内容</div>
+		</div>
 	<c:if test="${param.isSuccess != null }">
 		<div>${param.isSuccess }</div>
 	</c:if>
+	
 
 	<form action="UpdateComC" method="post">
 		<input name="c_no" type="hidden" value="${c.c_no }">
@@ -32,6 +38,7 @@
 	</form>
 	<div class="company-main-text4 company-main-text">
 		<button onclick="deleteCompany('${c.c_no }')">削除</button>
+	</div>
 	</div>
 </body>
 </html>

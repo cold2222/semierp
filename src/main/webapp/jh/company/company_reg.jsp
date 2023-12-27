@@ -37,7 +37,7 @@
 							<label for="c_text" class="input-label">備考:</label> <textarea
 								name="c_text" id="c_text" rows="4"></textarea>
 						</div>
-						<div>
+						<div class="button">
 							<button class="insert-btn">登録</button>
 						</div>
 					</form>
