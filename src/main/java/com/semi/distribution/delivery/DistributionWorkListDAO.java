@@ -3,6 +3,7 @@ package com.semi.distribution.delivery;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,11 +70,20 @@ public class DistributionWorkListDAO {
 		
 		String sql = "select * from distribution_shift where work_date = ? order by e_no";
 		
-		System.out.println(request.getParameter("delivery_date"));
+		String delivery_date = "";
+			if(request.getParameter("delivery_date") != null) {
+				delivery_date = request.getParameter("delivery_date");
+			}else {
+				LocalDate today = LocalDate.now();
+				delivery_date = today.toString();
+			}
+		
+		
+		System.out.println("출근멤버조회api 지정날짜"+delivery_date);
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("delivery_date"));
+			pstmt.setString(1, delivery_date);
 			rs = pstmt.executeQuery();
 			
 			ArrayList<ShiftDTO> restMember = new ArrayList<ShiftDTO>();

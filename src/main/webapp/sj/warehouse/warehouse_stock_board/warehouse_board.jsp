@@ -53,7 +53,7 @@
 <link rel="stylesheet" href="sj/warehouse_css/warehouse_board.css">
 </head>
 <body>
-<c:if test="${param.operationType != 'all' }">
+<c:if test="${param.operationType != 'all' && param.operationType != null}">
 <div>
 창고이름 : ${warehouseBoard[0].warehouse_name } 창고 담당자 :${warehouseBoard[0].e_name }
 </div>
