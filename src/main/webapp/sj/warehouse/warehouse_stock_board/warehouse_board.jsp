@@ -92,8 +92,6 @@
 									<div class="bbs-main-text1 bbs-main-title">単価</div>
 									<div class="bbs-main-text1 bbs-main-title">在庫数量</div>
 									<div class="bbs-main-text1 bbs-main-title">現在庫価格</div>
-									<div class="bbs-main-text1 bbs-main-title">倉庫</div>
-									<div class="bbs-main-text1 bbs-main-title">担当者</div>
 								</div>
 								<!-- 1줄씩 나타내줄 것들 -->
 								<!-- 입고 데이터 표시 -->
@@ -111,8 +109,6 @@
 											<fmt:formatNumber value="${wb.stock * wb.p_unicost}"
 												pattern="#,###" />
 										</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.warehouse_name}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.e_name}</div>
 									</div>
 								</c:forEach>
 							</div>
