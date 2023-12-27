@@ -60,54 +60,58 @@ public class WarehouseBoardDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT\n"
-				+ "    product.p_id,\n"
-				+ "    product.p_name,\n"
-				+ "    product.p_quantity,\n"
-				+ "    product.p_si,\n"
-				+ "    product.p_type,\n"
-				+ "    product.p_unitcost,\n"
-				+ "    warehouse.warehouse_name,\n"
-				+ "    product.p_manufacturer,\n"
-				+ "    stock.rm_stock,\n"
-				+ "    sysdate AS today_date,\n"
-				+ "    employee.e_name\n"
-				+ "FROM\n"
-				+ "    warehouse\n"
-				+ "INNER JOIN\n"
-				+ "    stock ON stock.warehouse_id = warehouse.warehouse_id\n"
-				+ "INNER JOIN\n"
-				+ "    product ON product.p_id = stock.p_id\n"
-				+ "INNER JOIN\n"
-				+ "    employee ON warehouse.employee_id = employee.e_no\n"
-				+ "WHERE stock.rm_stock > 0 ";	
-		 	if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null && !search.get("searchWord").equals("")) {
-		            sql += "and LOWER(product." + search.get("searchOption") + ") LIKE LOWER('%" + search.get("searchWord") + "%') ";
-		    }
-		 
-		if ("one".equals(operationType)) {
-            sql += " and warehouse.warehouse_id = 1 "
-            		+ "ORDER BY\n"
-            		+ "    product.p_type ASC,\n"
-            		+ "    product.p_name ASC,\n"
-            		+ "    product.p_quantity ASC";
-        } else if ("two".equals(operationType)) {
-            sql += " and warehouse.warehouse_id = 2"
-            		+ "ORDER BY\n"
-            		+ "    product.p_type ASC,\n"
-            		+ "    product.p_name ASC,\n"
-            		+ "    product.p_quantity ASC";
-        } else if ("three".equals(operationType)) {
-            sql += " and warehouse.warehouse_id = 3"
-            		+ "ORDER BY\n"
-            		+ "    product.p_type ASC,\n"
-                    + "    product.p_name ASC,\n"
-            		+ "    product.p_quantity ASC";
-        } else {
-			sql += "ORDER BY\n"
-					+ "    product.p_type ASC,\n"
-					+ "    product.p_name ASC,\n"
-					+ "    product.p_quantity ASC";
+		String sql = "";
+		if(!operationType.equals("all")) {
+			sql = "SELECT\n"
+					+ "    product.p_id,\n"
+					+ "    product.p_name,\n"
+					+ "    product.p_quantity,\n"
+					+ "    product.p_si,\n"
+					+ "    product.p_type,\n"
+					+ "    product.p_unitcost,\n"
+					+ "    warehouse.warehouse_name,\n"
+					+ "    product.p_manufacturer,\n"
+					+ "    stock.rm_stock,\n"
+					+ "    employee.e_name\n"
+					+ "FROM\n"
+					+ "    product\n"
+					+ "INNER JOIN\n"
+					+ "    stock ON product.p_id = stock.p_id\n"
+					+ "INNER JOIN\n"
+					+ "    warehouse ON stock.warehouse_id = warehouse.warehouse_id\n"
+					+ "INNER JOIN\n"
+					+ "    employee ON warehouse.employee_id = employee.e_no\n"
+					+ "WHERE stock.rm_stock > 0 ";	
+			if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null && !search.get("searchWord").equals("")) {
+				sql += "and LOWER(product." + search.get("searchOption") + ") LIKE LOWER('%" + search.get("searchWord") + "%') ";
+			}
+			if ("one".equals(operationType)) {
+				sql += " and warehouse.warehouse_id = 1 "
+						+ "ORDER BY\n"
+						+ "    product.p_type ASC,\n"
+						+ "    product.p_name ASC,\n"
+						+ "    product.p_quantity ASC";
+			} else if ("two".equals(operationType)) {
+				sql += " and warehouse.warehouse_id = 2"
+						+ "ORDER BY\n"
+						+ "    product.p_type ASC,\n"
+						+ "    product.p_name ASC,\n"
+						+ "    product.p_quantity ASC";
+			} else if ("three".equals(operationType)) {
+				sql += " and warehouse.warehouse_id = 3"
+						+ "ORDER BY\n"
+						+ "    product.p_type ASC,\n"
+						+ "    product.p_name ASC,\n"
+						+ "    product.p_quantity ASC";
+			}
+		}else {
+			sql = "SELECT p.p_id, p.p_name, p.p_type, p.p_quantity, p.p_si, p.p_unitcost, p.p_manufacturer, SUM(s.rm_stock) AS rm_stock "
+					+ "FROM stock s "
+					+ "INNER JOIN product p ON s.p_id = p.p_id ";
+					if (!"x".equals(search.get("searchOption")) && search.get("searchWord") != null && !search.get("searchWord").equals("")) {
+						sql += "having LOWER(p." + search.get("searchOption") + ") LIKE LOWER('%" + search.get("searchWord") + "%') ";
+					}
+					sql+= "GROUP BY p.p_id, p.p_name, p.p_type, p.p_quantity, p.p_si, p.p_unitcost, p.p_manufacturer order by p_type, p_name";
 		}
 
 		try {
@@ -122,15 +126,12 @@ public class WarehouseBoardDAO {
 			while (rs.next()) {
 				int p_id = rs.getInt("p_id");
 				String p_name = rs.getString("p_name");
+				String p_type = rs.getString("p_type");
 				int p_quantity = rs.getInt("p_quantity");
 				String p_si = rs.getString("p_si");
-				String p_type = rs.getString("p_type");
 				int p_unicost = rs.getInt("p_unitcost");
-				String warehouse_name = rs.getString("warehouse_name");
 				String manufacture_name = rs.getString("p_manufacturer");
 				int stock = rs.getInt("rm_stock");
-				String today_date = rs.getString("today_date");
-				String e_name = rs.getString("e_name");
 				
 				wb = new WarehouseBoardDTO();
 				wb.setP_id(p_id);
@@ -139,12 +140,13 @@ public class WarehouseBoardDAO {
 				wb.setP_si(p_si);
 				wb.setP_type(p_type);
 				wb.setP_unicost(p_unicost);
-				wb.setWarehouse_name(warehouse_name);
 				wb.setManufacture_name(manufacture_name);
 				wb.setStock(stock);
-				wb.setToday_date(today_date);
-				wb.setE_name(e_name);
 				
+				if(!operationType.equals("all")) {
+					wb.setE_name(rs.getString("e_name"));
+					wb.setWarehouse_name(rs.getString("warehouse_name"));
+				}
 				warehouseBoard.add(wb);
 			}
 

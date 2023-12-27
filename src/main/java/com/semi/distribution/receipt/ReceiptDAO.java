@@ -245,10 +245,15 @@ public class ReceiptDAO {
 			search.put("word", word);
 		}
 
-		String sql = "SELECT a.c_contract_no, c.e_name, " + "a.c_delivery_date, a.c_due_date, a.c_status, d.c_name "
-				+ "FROM contract a " + "INNER JOIN shipping b ON a.c_contract_no = b.s_contract_no "
-				+ "INNER JOIN employee c ON b.s_e_no = c.e_no " + "INNER JOIN company d ON a.c_c_no = d.c_no "
-				+ "WHERE a.c_type = 1 " + "AND a.c_status = 2 " + "AND a.c_delivery_date <= SYSDATE ";
+		String sql = "SELECT a.c_contract_no, c.e_name, " 
+				+ "a.c_delivery_date, a.c_due_date, a.c_status, d.c_name "
+				+ "FROM contract a " 
+				+ "INNER JOIN shipping b ON a.c_contract_no = b.s_contract_no "
+				+ "INNER JOIN employee c ON b.s_e_no = c.e_no " 
+				+ "INNER JOIN company d ON a.c_c_no = d.c_no "
+				+ "WHERE a.c_type = 1 " 
+				+ "AND a.c_status = 2 " 
+				+ "AND a.c_delivery_date <= SYSDATE ";
 		if (search.get("word") != null && !search.get("field").equals("all")) {
 			sql += " and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
 		}

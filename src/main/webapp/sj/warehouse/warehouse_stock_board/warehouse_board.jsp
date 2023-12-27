@@ -22,8 +22,11 @@
 <link rel="stylesheet" href="sj/warehouse_css/warehouse_board.css">
 </head>
 <body>
-
-
+<c:if test="${param.operationType != 'all' }">
+<div>
+창고이름 : ${warehouseBoard[0].warehouse_name } 창고 담당자 :${warehouseBoard[0].e_name }
+</div>
+</c:if>
 
 
 	<div class="contents">
@@ -147,6 +150,68 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
+=======
+	</form>
+	<div class="input-box input-container">
+
+		<div class="in_name">商品名</div>
+		<div class="in_name">タイプ</div>
+		<div class="in_name">quantity</div>
+		<div class="in_name">단위</div>
+		<div class="in_name">제조사</div>
+		<div class="in_name">단가</div>
+		<div class="in_name">재고수량</div>
+		<div class="in_name">현 재고 값</div>
+	</div>
+	<!-- 1줄씩 나타내줄 것들 -->
+	<!-- 입고 데이터 표시 -->
+	<c:forEach var="wb" items="${warehouseBoard}">
+		<div class="input-box input-container">
+			<div class="in_name">${wb.p_name}</div>
+			<div class="in_name">${wb.p_type}</div>
+			<div class="in_name">${wb.p_quantity}</div>
+			<div class="in_name">${wb.p_si}</div>
+			<div class="in_name">${wb.manufacture_name}</div>
+			<div class="in_name">
+				<fmt:formatNumber value="${wb.p_unicost}" pattern="#,###" />
+			</div>
+			<div class="in_name">${wb.stock}</div>
+			<div class="in_name">
+				<fmt:formatNumber value="${wb.stock * wb.p_unicost}" pattern="#,###" />
+			</div>
+		</div>
+	</c:forEach>
+	<div class="paging">
+		<c:choose>
+			<c:when test="${pageNum != 1}">
+				<button
+					onclick="location.href='WarehouseBoardPageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
+			</c:when>
+		</c:choose>
+		<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
+			end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}" step="1">
+			<c:choose>
+				<c:when test="${i eq pageNum}">
+					<a
+						href="WarehouseBoardPageC?pageNum=${i}&field=${param.field }&word=${param.word }"
+						style="color: black; font-weight: bold;">${i}</a>
+				</c:when>
+				<c:otherwise>
+					<a
+						href="WarehouseBoardPageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<c:choose>
+			<c:when test="${pageNum != totalPage && totalPage != 0}">
+				<button
+					onclick="location.href='WarehouseBoardPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
+			</c:when>
+		</c:choose>
+	</div>
+>>>>>>> ea5a73ee67dc67cf4440f7680258a5c229899fd9
 	</div>
 
 </body>
