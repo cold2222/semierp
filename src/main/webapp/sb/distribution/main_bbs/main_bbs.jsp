@@ -61,7 +61,6 @@
 						</div>
 					</c:forEach>
 				</div>
-
 				<div class="board">
 					<div class="board-title">配送完了リスト</div>
 					<c:forEach var="c" items="${clearList }">
@@ -80,15 +79,16 @@
 					</c:forEach>
 				</div>
 				<div class="board">
-					<div class="board-title">本日出勤リスト</div>
-					<div class="post">
-						<div class="post-title">등록예정</div>
-						<div class="post-info">등록예정</div>
-					</div>
-					<div class="post">
-						<div class="post-title">등록예정</div>
-						<div class="post-info">등록예정</div>
-					</div>
+				<div class="emp-board">
+					<div class="emp-board-title">本日出勤リスト</div>
+					<c:forEach var="e" items="${empList }">
+						<div class="emp-post">
+							<div class="emp-post-title">
+							${e.e_name }
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 				</div>
 			</div>
 		</div>
