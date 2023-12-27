@@ -1,6 +1,5 @@
 create table company(
     c_no number(10) PRIMARY KEY,
-    c_e_id number(10) not null,
     c_name varchar2(50 char) not null,
     c_keeper varchar2(50 char) not null,
     c_phone varchar2(20 char) not null,
@@ -10,7 +9,7 @@ create table company(
 ALTER TABLE company
 DROP COLUMN c_e_id;
 create SEQUENCE company_seq START WITH 1 INCREMENT BY 1;
-insert into company values(1, 2, 'namae', 'namae', 'name', 'name', 'none');
+insert into company values(1, 'namae', 'namae', 'name', 'name', 'none');
 select * from company;
 select * from company order by c_no desc;
 
