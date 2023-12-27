@@ -53,8 +53,11 @@
 <link rel="stylesheet" href="sj/warehouse_css/warehouse_board.css">
 </head>
 <body>
-
-
+<c:if test="${param.operationType != 'all' }">
+<div>
+창고이름 : ${warehouseBoard[0].warehouse_name } 창고 담당자 :${warehouseBoard[0].e_name }
+</div>
+</c:if>
 
 
 	<div class="contents">
@@ -108,8 +111,6 @@
 		<div class="in_name">단가</div>
 		<div class="in_name">재고수량</div>
 		<div class="in_name">현 재고 값</div>
-		<div class="in_name">창고</div>
-		<div class="in_name">담당자</div>
 	</div>
 	<!-- 1줄씩 나타내줄 것들 -->
 	<!-- 입고 데이터 표시 -->
@@ -127,8 +128,6 @@
 			<div class="in_name">
 				<fmt:formatNumber value="${wb.stock * wb.p_unicost}" pattern="#,###" />
 			</div>
-			<div class="in_name">${wb.warehouse_name}</div>
-			<div class="in_name">${wb.e_name}</div>
 		</div>
 	</c:forEach>
 	<div class="paging">
