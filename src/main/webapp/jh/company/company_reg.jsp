@@ -22,7 +22,7 @@
 								name="c_name" id="c_name" required="required" type="text">
 						</div>
 						<div class="input-container">
-							<label for="c_keeper" class="input-label">取引担当者:</label> <input
+							<label for="c_keeper" class="input-label">取引先の担当者:</label> <input
 								name="c_keeper" id="c_keeper" required="required" type="text">
 						</div>
 						<div class="input-container">
