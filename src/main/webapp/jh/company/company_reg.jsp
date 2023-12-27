@@ -13,7 +13,6 @@
 		<div class="content-head">
 			<div class="content-head-text">取引先登録</div>
 		</div>
-		<div class="contents">
 			<div class="content-body">
 				<div class="bbs-content1">
 					<form action="CompanyRegC" method="post">
@@ -44,6 +43,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

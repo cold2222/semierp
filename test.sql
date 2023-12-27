@@ -1,11 +1,11 @@
-create table company(
-    c_no number(10) PRIMARY KEY,
-    c_name varchar2(50 char) not null,
-    c_keeper varchar2(50 char) not null,
-    c_phone varchar2(20 char) not null,
-    c_addr varchar2(200 char) not null,
-    c_text varchar2(300 char)
-);
+    create table company(
+        c_no number(10) PRIMARY KEY,
+        c_name varchar2(50 char) not null,
+        c_keeper varchar2(50 char) not null,
+        c_phone varchar2(20 char) not null,
+        c_addr varchar2(200 char) not null,
+        c_text varchar2(300 char)
+    );
 ALTER TABLE company
 DROP COLUMN c_e_id;
 create SEQUENCE company_seq START WITH 1 INCREMENT BY 1;

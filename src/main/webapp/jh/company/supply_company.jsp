@@ -91,6 +91,6 @@
 	</div>
 
 
-	<script type="text/javascript" src="jh/js/supply_company.js"></script>
+	
 </body>
 </html>
