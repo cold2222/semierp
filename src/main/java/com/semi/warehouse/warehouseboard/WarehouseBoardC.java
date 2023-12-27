@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/WarehouseBoardC")
 public class WarehouseBoardC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String operationType = request.getParameter("operationType");
+		String operationType = "all";
+		if(request.getParameter("operationType") != null) {
+			operationType = request.getParameter("operationType");
+		}
+		System.out.println(operationType);
         WarehouseBoardDAO.getWbtdao().getWBTest(request, operationType);
         WarehouseBoardDAO.getWbtdao().calcStock(request, operationType);
         WarehouseBoardDAO.getWbtdao().paging(1, request);

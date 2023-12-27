@@ -15,6 +15,7 @@ public class DistributionMainBBSC extends HttpServlet {
 		MainBBSDAO.getBbsdao().getSpecialNote(request);
 		MainBBSDAO.getBbsdao().getDeliverySaleListOfFive(request);
 		MainBBSDAO.getBbsdao().getReceiptListOfFive(request);
+		MainBBSDAO.getBbsdao().getClearListOfFive(request);
 		
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/main_bbs/main_bbs.jsp");

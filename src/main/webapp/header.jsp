@@ -34,7 +34,7 @@
 		<div class="header2">
 
 			<div class="header2-item" onclick="changeColor(this, 'HC')">メイン</div>
-			<div class="header2-item" onclick="changeColor(this, 'WarehousebbsC')">在庫管理</div>
+			<div class="header2-item" onclick="changeColor(this, 'WarehouseBoardC')">在庫管理</div>
 			<div class="header2-item" onclick="changeColor(this, 'CompanyC')">輸入/販売</div>
 			<div class="header2-item" onclick="changeColor(this, 'DistributionMainBBSC')">運送</div>
 			<div class="header2-item" onclick="changeColor(this, '')">決算</div>

@@ -52,36 +52,42 @@
 				</div>
 				<div class="board">
 					<div class="board-title">配車登録(受領)</div>
-					<div class="post">
-						<div class="post-title">제목 2-1</div>
-						<div class="post-info">날짜 2-1</div>
-					</div>
-					<div class="post">
-						<div class="post-title">제목 2-2</div>
-						<div class="post-info">날짜 2-2</div>
-					</div>
+					<c:forEach var="r" items="${receiptList }">
+						<div class="post">
+							<div class="post-title">
+							<a href="DistributionReceiptViewC?c_contract_no=${r.c_contract_no }&page=List">取引先名 :${r.c_name }</a>
+							</div>
+							<div class="post-info">入港日 :${r.c_due_date }</div>
+						</div>
+					</c:forEach>
 				</div>
 
 				<div class="board">
 					<div class="board-title">配送完了リスト</div>
-					<div class="post">
-						<div class="post-title">제목 2-1</div>
-						<div class="post-info">날짜 2-1</div>
-					</div>
-					<div class="post">
-						<div class="post-title">제목 2-2</div>
-						<div class="post-info">날짜 2-2</div>
-					</div>
+					<c:forEach var="c" items="${clearList }">
+						<div class="post">
+							<div class="post-title">
+							<c:if test="${c.c_type eq 1 }">
+							<a href="DistributionReceiptClearC?field=e_name&word=${c.e_name }">取引先名 :${c.c_name }</a>
+							</c:if>
+							<c:if test="${c.c_type eq 2 }">
+							<a href="DistributionDeliverySaleClearC?field=e_name&word=${c.e_name }">取引先名 :${c.c_name }</a>
+							</c:if>
+							</div>
+							<div class="post-info">担当者 :${c.e_name }</div>
+							<div class="post-info">配送日 :${c.c_delivery_date }</div>
+						</div>
+					</c:forEach>
 				</div>
 				<div class="board">
 					<div class="board-title">本日出勤リスト</div>
 					<div class="post">
-						<div class="post-title">제목 2-1</div>
-						<div class="post-info">날짜 2-1</div>
+						<div class="post-title">등록예정</div>
+						<div class="post-info">등록예정</div>
 					</div>
 					<div class="post">
-						<div class="post-title">제목 2-2</div>
-						<div class="post-info">날짜 2-2</div>
+						<div class="post-title">등록예정</div>
+						<div class="post-info">등록예정</div>
 					</div>
 				</div>
 			</div>
