@@ -32,6 +32,8 @@
 	width: 69px;
 }
 </style>
+
+<!-- <link rel="stylesheet" href="sj/warehouse_css/in_warehouse.css"> -->
 </head>
 <body>
 
@@ -102,7 +104,7 @@
 		<button id="fromBtn">수령확인</button>
 	</form>
 	<button onclick="history.back()">돌아가기</button>
-
+	
 	<a href="InExBoardC">입고출고 내역 확인하러 가기</a>
 </body>
 <script type="text/javascript"

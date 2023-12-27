@@ -1,96 +1,150 @@
 @charset "UTF-8";
-a:link{
-	text-decoration: none;
-}
-a:visited,a:active{
-	color : #007bff;
-}
-
-.contents {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+@charset "UTF-8";
+/* 검색 */
+.search-container {
+    text-align: right;
+    margin: 20px;
 }
 
+.search-input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.search-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+}
+/* 검색 */
+.contents{
+	display: flex;
+	flex-direction: column;
+	justify-content : center;
+	align-items : center;
+	width:100%;
+}
 .content-head{
 	width: 100%;
 	height: 120px;
 }
 .content-head-text {
-    display: flex;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 20px;
-    width: 300px;
-    height: 60px;
-    font-size: 28px;
+	display: flex;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-top: 20px;
+	width: 300px;
+	height: 60px;
+	font-size: 28px;
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
     color: #000;
-    justify-content: center;
-    align-items: center;
+    justify-content : center;
+    align-items : center;
     text-transform: uppercase;
-    background-color: #f5f5f5;
-    padding: 10px 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f5f5f5; /* 연한 회색 배경 */
+    padding: 10px 20px; /* 내부 여백 설정 */
+    border: 1px solid #ddd; /* 테두리 설정 */
+    border-radius: 5px; /* 테두리의 모서리를 둥글게 설정 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 입체적인 박스 효과 */
 }
-
 .content-body {
 	width: 91%;
 	background-color: white;
 	display: flex;
 	padding: 20px 30px;
 	margin-bottom: 30px;
-}
-.bbs-content {
-  display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-    width: 100%; /* 부모 요소에 대한 너비 설정 */
-    padding: 20px; /* 간격을 위한 패딩 추가 */
-    box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
+	flex-direction: column;
 }
 
-.board {
-    width: calc(50% - 10px); /* 2x3 그리드를 위한 넓이 조정 */
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    flex: 0 0 calc(50% - 20px); /* 게시판의 flex 설정 */
-    box-sizing: border-box; /* 패딩을 요소 크기에 포함 */
+.bbs-content{
+	width: 100%;
 }
 
-@media (max-width: 767px) {
-    .board {
-        width: 100%;
-    }
+.bbs-content-bbs{
+	width: 95%;
+	 
 }
-.board-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.bbs-main{
+	display: flex;
+	margin-left: 10px;
+}
+.bbs-main-title{
+	font-weight: bold;
+	border-bottom: 2px solid black;
+	padding : 5px;
+	font-size: 20px;
+	height: 40px;
+	border-bottom: 1px solid black;
+	width: 33%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.bbs-main-text{
+	padding : 5px;
+	font-size: 18px;
+	height: 40px;
+	border-bottom: 1px solid black;
+	width: 33%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.bbs-main-text button{
+	padding: 5px 5px;
+	font-size: 18px;
+}
+.paging {
+	margin-top: 20px;
+	text-align: center;
 }
 
-.post {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+.paging button, .paging a {
+	display: inline-block;
+	padding: 8px 12px;
+	margin: 0 4px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #fff;
+	color: #333;
+	text-decoration: none;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.post-title {
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 5px;
+.paging button:hover, .paging a:hover {
+	background-color: #007bff;
+	color: #fff;
+	border-color: #007bff;
 }
 
-.post-info {
-    font-style: italic;
-    color: #888;
+.paging button[disabled], .paging a.disabled {
+	pointer-events: none;
+	opacity: 0.6;
+}
+
+.paging button.active, .paging a.active {
+	background-color: #007bff;
+	color: #fff;
+	border-color: #007bff;
+	font-weight: bold;
 }

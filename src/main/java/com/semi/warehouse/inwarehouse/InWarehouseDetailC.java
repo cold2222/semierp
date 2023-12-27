@@ -13,7 +13,9 @@ public class InWarehouseDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		InWarehouseDAO.getTwdao().getSelectedContract(request);
 		InWarehouseDAO.getTwdao().getInDetail(request);
-		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_detail.jsp").forward(request, response);
+		request.setAttribute("sidebar","sj/sidebar.jsp");
+		request.setAttribute("contentPage","sj/warehouse/in_warehouse/in_warehouse_detail.jsp");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

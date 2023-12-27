@@ -32,25 +32,10 @@
 		</div>
 		<div class="content-body">
 			<div class="search-container">
-				<form action="WarehouseBoardC" method="get">
-					<label for="operationType">倉庫 :</label> 
-					<select
-						name="operationType" id="operationType" class="search-select">
-						<option value="all">全体</option>
-						<option value="one">1倉庫</option>
-						<option value="two">2倉庫</option>
-						<option value="three">3倉庫</option>
-					</select> 検索 : <select id="searchOption" name="searchOption" class="search-select">
-						<option value="x">検索条件</option>
-						<option value="p_name">商品名</option>
-						<option value="p_type">タイプ</option>
-						<option value="p_manufacturer">メーカー</option>
-					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word" class="search-input"
-						style="display: none;">
-					<button type="submit" class="search-button">確認</button>
-					<div class="right-align">
-						在庫価格 :
-						<c:choose>
+				<div class="search-line">
+					<span class="value-box">在庫価格 : </span> 
+						<span class="value">
+							<c:choose>
 							<c:when test="${operationType eq 'all' or operationType eq null}">
 								<c:set var="totalValue" value="0" />
 								<c:forEach var="ts" items="${totalStockList}">
@@ -66,9 +51,34 @@
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
-					</div>
-				</form>
+					</span>
+				</div>
+				<div class="search-line">
+					<form action="WarehouseBoardC" method="get">
+						<label for="operationType"> <span class="value-box">
+								倉庫 : </span>
+						</label> <select name="operationType" id="operationType"
+							class="search-select">
+							<option value="all">全体</option>
+							<option value="one">1倉庫</option>
+							<option value="two">2倉庫</option>
+							<option value="three">3倉庫</option>
+						</select> <span class="value-box"> 検索 : </span> <select id="searchOption"
+							name="searchOption" class="search-select">
+							<option value="x">検索条件</option>
+							<option value="p_name">商品名</option>
+							<option value="p_type">タイプ</option>
+							<option value="p_manufacturer">メーカー</option>
+						</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
+							class="search-input" style="display: none;">
+						<button type="submit" class="search-button">確認</button>
+					</form>
+				</div>
 			</div>
+
+
+
+
 			<div class="bbs-content">
 				<div class="bbs-content1 bbs-content">
 					<div class="bbs-content-main">
@@ -77,7 +87,6 @@
 								<div class="bbs-main">
 									<div class="bbs-main-text1 bbs-main-title">商品名</div>
 									<div class="bbs-main-text1 bbs-main-title">タイプ</div>
-									<div class="bbs-main-text1 bbs-main-title">単位量</div>
 									<div class="bbs-main-text1 bbs-main-title">単位</div>
 									<div class="bbs-main-text1 bbs-main-title">メーカー</div>
 									<div class="bbs-main-text1 bbs-main-title">単価</div>
@@ -92,8 +101,7 @@
 									<div class="bbs-main">
 										<div class="bbs-main-text1 bbs-main-text">${wb.p_name}</div>
 										<div class="bbs-main-text1 bbs-main-text">${wb.p_type}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.p_quantity}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.p_si}</div>
+										<div class="bbs-main-text1 bbs-main-text">${wb.p_quantity}${wb.p_si}</div>
 										<div class="bbs-main-text1 bbs-main-text">${wb.manufacture_name}</div>
 										<div class="bbs-main-text1 bbs-main-text">
 											<fmt:formatNumber value="${wb.p_unicost}" pattern="#,###" />
