@@ -13,6 +13,8 @@ public class DistributionMainBBSC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MainBBSDAO.getBbsdao().getNotice(request);
 		MainBBSDAO.getBbsdao().getSpecialNote(request);
+		MainBBSDAO.getBbsdao().getDeliverySaleListOfFive(request);
+		MainBBSDAO.getBbsdao().getReceiptListOfFive(request);
 		
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/main_bbs/main_bbs.jsp");

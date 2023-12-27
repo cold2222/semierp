@@ -9,8 +9,12 @@
 <link rel="stylesheet" href="sb/distribution_css/shift/shift.css">
 </head>
 <body>
+	<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">有給休暇取得確認</div>
+		</div>
+	</div>
 	<div class="content">
-	<h1 style="margin-bottom: 20px;">有給休暇取得確認</h1>
 		<table class="content-table">
 			<thead>
 				<tr>

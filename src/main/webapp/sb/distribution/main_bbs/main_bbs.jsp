@@ -41,16 +41,15 @@
 
 				<div class="board">
 					<div class="board-title">配車登録(販売)</div>
-					<div class="post">
-						<div class="post-title">제목 2-1</div>
-						<div class="post-info">날짜 2-1</div>
-					</div>
-					<div class="post">
-						<div class="post-title">제목 2-2</div>
-						<div class="post-info">날짜 2-2</div>
-					</div>
+					<c:forEach var="d" items="${deliverySaleList }">
+						<div class="post">
+							<div class="post-title">
+							<a href="DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&page=List">取引先名 :${d.c_name }</a>
+							</div>
+							<div class="post-info">納期日 :${d.c_due_date }</div>
+						</div>
+					</c:forEach>
 				</div>
-
 				<div class="board">
 					<div class="board-title">配車登録(受領)</div>
 					<div class="post">
