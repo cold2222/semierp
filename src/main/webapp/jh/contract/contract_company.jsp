@@ -21,7 +21,7 @@
 						onchange="showInput()">
 						<option value="all">全体検索</option>
 						<option value="b.c_name">取引先名</option>
-						<option value="a.c_status">契約状態</option>
+						<option value="a.c_status">取引状態</option>
 						<option value="a.c_type">契約書の種類</option>
 					</select> <input type="text" placeholder="検索するキーワードを入力してください"
 						name="inputWord" id="searchWord" class="search-input"
@@ -47,9 +47,7 @@
 						<div class="bbs-content-body">
 							<div class="bbs-content-bbs">
 								<div class="bbs-main">
-									<div class="bbs-main-title">取引先名</div>
-									<div class="bbs-main-title">作成日</div>
-									<div class="bbs-main-title">納期日</div>
+									<div class="bbs-main-title1">取引先名</div>
 									<div class="bbs-main-title">取引状態</div>
 									<div class="bbs-main-title">契約書の種類</div>
 									<div class="bbs-main-title">契約商品の詳細</div>
@@ -57,12 +55,10 @@
 								</div>
 								<c:forEach var="ct" items="${cts }">
 									<div class="bbs-main">
-										<div class="bbs-main-text">
+										<div class="bbs-main-with">
 											<a href='CompanyC?field=c_name&word=${ct.c_name }'>${ct.c_name }	</a>
 										</div>
-										<div class="bbs-main-text3 bbs-main-text">${ct.c_created_date }</div>
-										<div class="bbs-main-text3 bbs-main-text">${ct.c_due_date }</div>
-										<div class="bbs-main-text3 bbs-main-text">
+										<div class="bbs-main-text">
 											<c:if test="${ct.c_type eq 1 && ct.c_status eq 1}">配送未指定</c:if>
 											<c:if test="${ct.c_type eq 1 && ct.c_status eq 2}">配送日確定</c:if>
 											<c:if test="${ct.c_type eq 1 && ct.c_status eq 3}">配送完了</c:if>
@@ -127,6 +123,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
