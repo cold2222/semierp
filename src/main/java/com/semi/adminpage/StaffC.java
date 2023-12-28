@@ -16,7 +16,7 @@ public class StaffC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getDepts(request);
+				DeptDAO.getDeptsInfo(request);
 				StaffDAO.getStaffsInfo(request);
 				request.setAttribute("selectedPage", "staff");
 				request.setAttribute("contentPage", "staff_info.jsp");
