@@ -94,3 +94,29 @@
     font-style: italic;
     color: #888;
 }
+
+/* 출근사원 */
+.emp-board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between; /* 요소 사이의 간격을 균등하게 배치 */
+}
+.emp-board-title{
+	font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.emp-post {
+    width: calc(50% - 10px); /* 한 행에 두 개씩 표시하므로 너비 조정 */
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    flex: 0 0 calc(50% - 20px); /* flex 설정 */
+    box-sizing: border-box;
+}
+
+/* 출근사원 */

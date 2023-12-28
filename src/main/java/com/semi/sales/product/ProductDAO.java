@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.semi.distribution.db.DBManger;
-import com.semi.sales.bbs.DBManager;
 
 public class ProductDAO {
 	private ArrayList<Product> productItems;
@@ -65,7 +64,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -87,7 +86,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -115,7 +114,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -143,7 +142,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 	}
 
@@ -170,7 +169,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 	}
 
@@ -191,7 +190,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -240,7 +239,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -271,7 +270,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 
@@ -293,7 +292,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -316,7 +315,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -351,7 +350,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -383,7 +382,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -408,7 +407,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -450,7 +449,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -477,7 +476,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 
@@ -499,7 +498,7 @@ public class ProductDAO {
 			System.out.println("프로덕트 삭제 실패");
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 

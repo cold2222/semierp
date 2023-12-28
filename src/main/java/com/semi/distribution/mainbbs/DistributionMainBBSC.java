@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.distribution.delivery.DistributionWorkListAPI;
+import com.semi.distribution.delivery.DistributionWorkListDAO;
+
 @WebServlet("/DistributionMainBBSC")
 public class DistributionMainBBSC extends HttpServlet {
 
@@ -16,6 +19,8 @@ public class DistributionMainBBSC extends HttpServlet {
 		MainBBSDAO.getBbsdao().getDeliverySaleListOfFive(request);
 		MainBBSDAO.getBbsdao().getReceiptListOfFive(request);
 		MainBBSDAO.getBbsdao().getClearListOfFive(request);
+		DistributionWorkListAPI.getWapi().Shift
+		(DistributionWorkListDAO.getWdao().getEmpList(), DistributionWorkListDAO.getWdao().getRestMemberList(request), request, response);
 		
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/main_bbs/main_bbs.jsp");
