@@ -26,7 +26,7 @@ public class WarehouseBoardDAO {
 		    }
 		 
 		 public void paging(int pageNum, HttpServletRequest request) {
-				int pageSize = 10; // 한 페이지당 보여줄 개수
+				int pageSize = 15; // 한 페이지당 보여줄 개수
 				int totalData = warehouseBoard.size();
 				int totalPage = (int)Math.ceil((double)totalData / pageSize);
 				

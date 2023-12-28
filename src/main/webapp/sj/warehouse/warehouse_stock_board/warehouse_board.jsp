@@ -98,8 +98,8 @@
 								</div>
 								<!-- 1줄씩 나타내줄 것들 -->
 								<!-- 입고 데이터 표시 -->
-								<c:forEach var="wb" items="${warehouseBoard}">
-									<div class="bbs-main">
+								<c:forEach var="wb" items="${warehouseBoard}" varStatus="loop">
+									<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_name}</div>
 										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_type}</div>
 										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_quantity}${wb.p_si}</div>

@@ -43,23 +43,23 @@
 
 								</div>
 
-								<c:forEach var="t" items="${inWarehouse}">
-									<div class="bbs-main">
+								<c:forEach var="t" items="${inWarehouse}" varStatus="loop">
+									<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										<div class="bbs-main-text1 bbs-main-text">
 											<input name="c_contract_no_${t.c_contract_no}"
-												readonly="readonly" value="${t.c_contract_no}">
+												readonly="readonly" value="${t.c_contract_no}" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										</div>
 										<div class="bbs-main-text1 bbs-main-text">
 											<input name="c_contract_no_${t.c_created_date}"
-												readonly="readonly" value="${t.c_created_date}">
+												readonly="readonly" value="${t.c_created_date}" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										</div>
 										<div class="bbs-main-text1 bbs-main-text">
 											<input name="c_contract_no_${t.c_name}" value="${t.c_name}"
-												readonly="readonly">
+												readonly="readonly" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										</div>
 										<div class="bbs-main-text1 bbs-main-text">
 											<input name="c_contract_no_${t.e_name}" value="${t.e_name}"
-												readonly="readonly">
+												readonly="readonly" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										</div>
 										<div class="bbs-main-text1 bbs-main-text">
 											<a href="InWarehouseDetailC?c_contract_no=${t.c_contract_no}"><button>상세페이지</button></a>
