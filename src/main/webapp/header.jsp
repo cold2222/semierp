@@ -33,23 +33,12 @@
 			</div>
 		</div>
 		<div class="header2">
-<<<<<<< HEAD
-
-			<div class="header2-item" ${selectedHeader == 'main' ? 'id="selectedHeader"' : ''}>メイン</div>
-			<div class="header2-item" ${selectedHeader == 'stock' ? 'id="selectedHeader"' : ''}>在庫管理</div>
-			<div class="header2-item" ${selectedHeader == 'contract' ? 'id="selectedHeader"' : ''}>輸入/販売</div>
-			<div class="header2-item" ${selectedHeader == 'distribution' ? 'id="selectedHeader"' : ''}>運送</div>
-			<div class="header2-item" ${selectedHeader == 'statistic' ? 'id="selectedHeader"' : ''}>決算</div>
-
-=======
-			
 			<div class="header2-item" ${param.selectedHeader == 'main' ? 'id="selectedHeader"' : ''} onclick="location.href='HC'">メイン</div>
             <div class="header2-item" ${selectedHeader == 'stock' ? 'id="selectedHeader"' : ''} onclick="location.href='WarehouseBoardC'">在庫管理</div>
             <div class="header2-item" ${selectedHeader == 'contract' ? 'id="selectedHeader"' : ''} onclick="location.href='CompanyC'">輸入/販売</div>
             <div class="header2-item" ${selectedHeader == 'distribution' ? 'id="selectedHeader"' : '' } onclick="location.href='DistributionMainBBSC'">運送</div>
             <div class="header2-item" ${selectedHeader == 'statistic' ? 'id="selectedHeader"' : ''} onclick="location.href=''">決算</div>
 			
->>>>>>> 3738e4067afea58074aa7fe1e99767bb0f05a5a8
 		</div>
 	</div>
 </body>
