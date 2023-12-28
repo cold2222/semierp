@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.content_title {
+	font-size: 24px;
+}
+
+.contract-container {
+	margin-top: 25px;
+}
+
+.col-titles {
+	display: flex;
+	border: 1px solid black;
+	width: 100%;
+}
+
+.col-contents{
+	display: flex;
+	border: 1px solid black;
+	width: 100%;
+}
+
+.contract{
+	display: block; 
+    width: 11%;
+    height: 30px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.col-title{
+ 	
+    font-size: 20px;
+    border: 1px solid white;
+    background-color: #140652;
+    color: #FFD700;
+    font-weight: 500;
+}
+
+.col-content{
+    font-size: 18px;
+    border: 0.5px solid black;
+}

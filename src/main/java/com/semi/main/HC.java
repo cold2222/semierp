@@ -13,9 +13,6 @@ public class HC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("selectedHeader", "main");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-		response.sendRedirect("index.jsp?selectedHeader=main");
-		
-
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
