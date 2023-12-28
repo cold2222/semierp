@@ -14,7 +14,7 @@
 		<div class="header1">
 			<div class="header1-logo" onclick="goToMainPage()">
 				<img class="header1-logo-img" alt="" 
-				src="logoFolder/SollogisticsHeaderLogo.png">
+				src="logoFolder/SOLlogisticsHeaderLogoNew.png">
 			</div>
 			<div id="header1-empty"></div>
 			<div class="header1-atag">마이페이지</div>

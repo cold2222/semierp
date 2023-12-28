@@ -122,10 +122,35 @@
 	justify-content: center;
 	align-items: center;
 }
+.bbs-main-title-l {
+	font-weight: bold;
+	border-bottom: 2px solid black;
+	padding: 5px;
+	font-size: 20px;
+	height: 40px;
+	border-bottom: 1px solid black;
+	width: 46%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bbs-main-title-s {
+	font-weight: bold;
+	border-bottom: 2px solid black;
+	padding: 5px;
+	font-size: 20px;
+	height: 40px;
+	border-bottom: 1px solid black;
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 .bbs-main-text {
 	padding: 5px;
-	font-size: 18px;
+	font-size: 17px;
 	height: 40px;
 	border-bottom: 1px solid black;
 	width: 33%;
@@ -133,6 +158,32 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.bbs-main-text-l {
+	padding: 5px;
+	font-size: 17px;
+	height: 40px;
+	border-bottom: 1px solid black;
+	width: 46%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.bbs-main-text-s {
+	padding: 5px;
+	font-size: 17px;
+	height: 40px;
+	border-bottom: 1px solid black;
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
 
 .bbs-main-text button {
 	padding: 5px 5px;

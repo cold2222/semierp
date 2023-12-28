@@ -88,26 +88,26 @@
 						<div class="bbs-content-body">
 							<div class="bbs-content-bbs">
 								<div class="bbs-main">
-									<div class="bbs-main-text1 bbs-main-title">商品名</div>
-									<div class="bbs-main-text1 bbs-main-title">タイプ</div>
-									<div class="bbs-main-text1 bbs-main-title">単位</div>
-									<div class="bbs-main-text1 bbs-main-title">メーカー</div>
-									<div class="bbs-main-text1 bbs-main-title">単価</div>
-									<div class="bbs-main-text1 bbs-main-title">在庫数量</div>
+									<div class="bbs-main-text1 bbs-main-title-l">商品名</div>
+									<div class="bbs-main-text1 bbs-main-title-l">タイプ</div>
+									<div class="bbs-main-text1 bbs-main-title-s">単位</div>
+									<div class="bbs-main-text1 bbs-main-title-l">メーカー</div>
+									<div class="bbs-main-text1 bbs-main-title-s">単価</div>
+									<div class="bbs-main-text1 bbs-main-title-s">在庫数量</div>
 									<div class="bbs-main-text1 bbs-main-title">現在庫価格</div>
 								</div>
 								<!-- 1줄씩 나타내줄 것들 -->
 								<!-- 입고 데이터 표시 -->
 								<c:forEach var="wb" items="${warehouseBoard}">
 									<div class="bbs-main">
-										<div class="bbs-main-text1 bbs-main-text">${wb.p_name}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.p_type}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.p_quantity}${wb.p_si}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.manufacture_name}</div>
-										<div class="bbs-main-text1 bbs-main-text">
+										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_name}</div>
+										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_type}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_quantity}${wb.p_si}</div>
+										<div class="bbs-main-text1 bbs-main-text-l">${wb.manufacture_name}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">
 											<fmt:formatNumber value="${wb.p_unicost}" pattern="￥#,###"  />
 										</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.stock}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${wb.stock}</div>
 										<div class="bbs-main-text1 bbs-main-text">
 											<fmt:formatNumber value="${wb.stock * wb.p_unicost}"
 												pattern="￥#,###" />
