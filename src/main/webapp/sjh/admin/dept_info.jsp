@@ -59,7 +59,7 @@
 			<div class="col-content distribution1">${distributionDept.d_waiting }</div>
 			<div class="col-content distribution1">${distributionDept.d_allocated }</div>
 		</div>
-		<div class="col-titles  margin-top">
+		<div class="col-titles margin-top">
 			<div class="col-title distribution2">배차 완료(月)</div>
 			<div class="col-title distribution2">배송 완료(月)</div>
 			<div class="col-title distribution2">만기된 운송</div>
