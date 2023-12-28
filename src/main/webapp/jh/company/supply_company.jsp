@@ -6,70 +6,91 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="jh/css/supply_company.css">
 <script type="text/javascript" src="jh/js/search.js"></script>
 </head>
 <body>
-	<div>
-		<form action="CompanyC" method="GET">
-			<select name="field" id="searchField" onchange="showInput()">
-				<option value="all">全体検索</option>
-				<option value="c_name">会社名</option>
-				<option value="c_keeper">取引先の担当者</option>
-				<option value="c_addr">住所</option>
-			</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
-				id="searchWord" class="search-input" style="display: none;">
-			<button type="submit" class="search-button">検索</button>
-		</form>
+
+	<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">取引先一覧</div>
+		</div>
+		<div class="content-body">
+			<div class="search-container">
+				<form action="CompanyC" method="GET">
+					<select name="field" id="searchField" class="search-select"
+						onchange="showInput()">
+						<option value="all">全体検索</option>
+						<option value="c_name">会社名</option>
+						<option value="c_keeper">取引先の担当者</option>
+						<option value="c_addr">住所</option>
+					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
+						id="searchWord" class="search-input" style="display: none;">
+					<button type="submit" class="search-button">検索</button>
+				</form>
+			</div>
+			<div class="company-content">
+				<div class="company-content1 company-content">
+					<div class="company-content-main">
+						<div class="company-content-body">
+							<div class="company-content-company">
+								<div class="company-main">
+									<div class="company-main-with">取引先名</div>
+									<div class="company-main-title">取引担当者</div>
+									<div class="company-main-title">取引先の連絡先</div>
+									<div class="company-main-title">詳細</div>
+								</div>
+								<c:forEach var="c" items="${cs }">
+									<div class="company-main">
+										<div class="company-main-text1">${c.c_name }</div>
+										<div class="company-main-text">${c.c_keeper }</div>
+										<div class="company-main-text">${c.c_phone}</div>
+										<div class="company-main-text">
+											<button onclick="location.href='UpdateComC?c_no=${c.c_no }'">詳細</button>
+										</div>
+									</div>
+								</c:forEach>
+							</div>
+
+							<div class="paging">
+								<c:choose>
+									<c:when test="${pageNum != 1}">
+										<button
+											onclick="location.href='CompanyPageC?p=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
+									</c:when>
+								</c:choose>
+
+								<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
+									end="${pageNum + 3 <= pageCount ? pageNum + 3 : pageCount}"
+									step="1">
+									<c:choose>
+										<c:when test="${i eq pageNum}">
+											<a
+												href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }"
+												style="color: black; font-weight: bold;">${i}</a>
+										</c:when>
+										<c:otherwise>
+											<a
+												href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }">${i}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+
+								<c:choose>
+									<c:when test="${pageNum != pageCount}">
+										<button
+											onclick="location.href='CompanyPageC?p=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
+									</c:when>
+								</c:choose>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<table border="1" style="width: 83%; height: 800px;">
-		<c:forEach var="c" items="${cs }">
-			<tr>
-				<td>${c.c_no }</td>
-				<td>${c.c_name }</td>
-				<td>${c.c_keeper }</td>
-				<td>${c.c_phone }</td>
-				<td>${c.c_addr }</td>
-				<td>${c.c_text }</td>
-				<td>
-					<button onclick="location.href='UpdateComC?c_no=${c.c_no }'">수정</button>
-				</td>
-				<td>
-					<button onclick="deleteCompany('${c.c_no }')">삭제</button>
-				</td>
-			</tr>
-		</c:forEach>
-	</table>
 
-	<div>
-		<c:choose>
-			<c:when test="${pageNum != 1}">
-				<button
-					onclick="location.href='CompanyPageC?p=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
-			</c:when>
-		</c:choose>
 
-		<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
-			end="${pageNum + 3 <= pageCount ? pageNum + 3 : pageCount}" step="1">
-			<c:choose>
-				<c:when test="${i eq pageNum}">
-					<a
-						href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }"
-						style="color: black; font-weight: bold;">${i}</a>
-				</c:when>
-				<c:otherwise>
-					<a
-						href="CompanyPageC?p=${i}&field=${param.field }&word=${param.word }">${i}</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-
-		<c:choose>
-			<c:when test="${pageNum != pageCount}">
-				<button
-					onclick="location.href='CompanyPageC?p=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
-			</c:when>
-		</c:choose>
-	</div>
-	<script type="text/javascript" src="jh/js/supply_company.js"></script>
+	
 </body>
 </html>
