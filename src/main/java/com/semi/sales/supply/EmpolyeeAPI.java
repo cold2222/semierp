@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.semi.distribution.db.DBManger;
-import com.semi.sales.bbs.DBManager;
 
 public class EmpolyeeAPI {
 	
@@ -61,7 +60,7 @@ public class EmpolyeeAPI {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}

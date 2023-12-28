@@ -1,0 +1,83 @@
+@charset "UTF-8";
+.contents{
+	display: flex;
+	flex-direction: column;
+	justify-content : center;
+	align-items : center;
+	width:100%;
+}
+.content-head{
+	width: 100%;
+	height: 120px;
+}
+.content-head-text {
+	display: flex;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-top: 20px;
+	width: 300px;
+	height: 60px;
+	font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+    justify-content : center;
+    align-items : center;
+    text-transform: uppercase;
+    background-color: #f5f5f5; /* 연한 회색 배경 */
+    padding: 10px 20px; /* 내부 여백 설정 */
+    border: 1px solid #ddd; /* 테두리 설정 */
+    border-radius: 5px; /* 테두리의 모서리를 둥글게 설정 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 입체적인 박스 효과 */
+}
+.content-body {
+    width: 95%;
+    background-color: #fff;
+    display: flex;
+    padding: 20px;
+    margin-bottom: 30px;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* .bbs-content1 수정 */
+.bbs-content1 {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* .input-container 수정 */
+.input-container {
+    margin-bottom: 20px;
+}
+
+.input-container input[type="text"],
+.input-container input[type="date"],
+.input-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* .insert-btn 수정 */
+.insert-btn {
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.insert-btn:hover {
+    background-color: #2980b9;
+}

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.semi.distribution.db.DBManger;
-import com.semi.sales.bbs.DBManager;
 import com.semi.sales.product.Product;
 
 public class SupplyComDAO {
@@ -44,7 +43,7 @@ public class SupplyComDAO {
 		int start = (page - 1) * cnt;
 		int end = Math.min(start + cnt, total);
 
-		ArrayList<Company> items = new ArrayList<>();
+		ArrayList<Company> items = new ArrayList<Company>();
 		if (total > 0 && start < total) {
 			for (int i = start; i < end; i++) {
 				items.add(cs.get(i));
@@ -115,7 +114,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -143,7 +142,7 @@ public class SupplyComDAO {
 			e.printStackTrace();
 			System.out.println("거래처등록 실패");
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 
 	}
@@ -175,7 +174,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -254,7 +253,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 	}
 	
@@ -276,7 +275,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 	}
 
@@ -345,7 +344,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 	}
 
@@ -381,7 +380,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 		return null;
 	}
@@ -419,7 +418,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -449,7 +448,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 
@@ -481,7 +480,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 	}
 
@@ -514,7 +513,7 @@ public class SupplyComDAO {
 			System.out.println("계약서수정 실패");
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 	
@@ -569,7 +568,7 @@ public class SupplyComDAO {
 			System.out.println("계약서 아이템수정/등록 실패");
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 
@@ -602,7 +601,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 		return null;
 
@@ -632,7 +631,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 
@@ -670,7 +669,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -706,7 +705,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 	}
 
@@ -769,7 +768,7 @@ public class SupplyComDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManger.close(con, pstmt, rs);
 		}
 
 	}
@@ -791,7 +790,7 @@ public class SupplyComDAO {
 			System.out.println("회사 삭제 실패");
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, null);
+			DBManger.close(con, pstmt, null);
 		}
 	}
 

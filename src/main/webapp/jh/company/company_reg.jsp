@@ -6,73 +6,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-/* 배경 뒷부분 스타일 */
-.modal-background {
-	display: none;
-	position: fixed;
-	z-index: 999;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.4);
-	justify-content: center;
-	align-items: center;
-}
-
-/* 모달 스타일 */
-.modal-content {
-	display: none;
-	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	padding: 20px;
-	width: 800px;
-	height: 500px;
-	text-align: center;
-	position: relative;
-	justify-content: center;
-}
-
-.modal p {
-	margin-bottom: 20px;
-}
-
-.modal button {
-	padding: 8px 16px;
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-.modal button:hover {
-	background-color: #0056b3;
-}
-
-.modal-foot {
-	position: absolute;
-	bottom: 5px;
-}
-.div-row{
-	display: flex;
-}
-</style>
+<link rel="stylesheet" href="jh/css/company_reg.css">
 </head>
 <body>
-	<form action="CompanyRegC" method="post">
-		<table>
-			<tr>
-				<td><input name="c_name" placeholder="회사 이름" required="required"></td>
-				<td><input name="c_keeper" placeholder="업체쪽 담당자" required="required"></td>
-				<td><input name="c_phone" placeholder="업체쪽 연락처" required="required"></td>
-				<td><input name="c_addr" placeholder="회사 주소" required="required"></td>
-				<td><input name="c_text" placeholder="비고"></td>
-				<td><button>등록</button></td>
-			</tr>
-		</table>
-	</form>
+	<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">取引先登録</div>
+		</div>
+			<div class="content-body">
+				<div class="bbs-content1">
+					<form action="CompanyRegC" method="post">
+						<div class="input-container">
+							<label for="c_name" class="input-label">取引先名:</label> <input
+								name="c_name" id="c_name" required="required" type="text">
+						</div>
+						<div class="input-container">
+							<label for="c_keeper" class="input-label">取引先の担当者:</label> <input
+								name="c_keeper" id="c_keeper" required="required" type="text">
+						</div>
+						<div class="input-container">
+							<label for="c_phone" class="input-label">取引先の連絡先:</label> <input
+								name="c_phone" id="c_phone" required="required" type="text">
+						</div>
+						<div class="input-container">
+							<label for="c_addr" class="input-label">取引先の住所:</label> <input
+								name="c_addr" id="c_addr" required="required" type="text">
+						</div>
+						<div class="input-container">
+							<label for="c_text" class="input-label">備考:</label> <textarea
+								name="c_text" id="c_text" rows="4"></textarea>
+						</div>
+						<div class="button">
+							<button class="insert-btn">登録</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

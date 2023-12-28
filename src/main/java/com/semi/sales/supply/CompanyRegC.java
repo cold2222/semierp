@@ -12,6 +12,7 @@ public class CompanyRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("contentPage", "jh/company/company_reg.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.setAttribute("selectedHeader", "contract");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	

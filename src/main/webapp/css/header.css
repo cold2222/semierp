@@ -57,7 +57,7 @@
 }
 
 .header2-item {
-    color: #FFF; /* 초기 글자 색을 흰색으로 설정 */
+    color: #FFF; 
     height: 100%;
     width: 155px;
     font-size: 26px;
@@ -75,6 +75,14 @@
     color: #FFC436; /* 마우스 오버 시 글자 색을 노란색으로 변경 */
 }
 
+<<<<<<< HEAD
 #selectedHeader {
 	color: #FFC436;
 }
+=======
+#selectedHeader{
+	color: #FFC436;
+}
+
+
+>>>>>>> 3738e4067afea58074aa7fe1e99767bb0f05a5a8
