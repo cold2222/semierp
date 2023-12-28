@@ -64,7 +64,7 @@
 			</c:forEach>
 
 			<c:choose>
-				<c:when test="${pageNum != totalPage}">
+				<c:when test="${pageNum != totalPage && totalPage != 0}">
 					<button
 						onclick="location.href='DistributionEmployeePageC?pageNum=${pageNum + 1}'">next</button>
 				</c:when>
