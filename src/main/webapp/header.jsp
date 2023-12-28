@@ -33,11 +33,11 @@
 		</div>
 		<div class="header2">
 
-			<div class="header2-item" onclick="changeColor(this, 'HC')">メイン</div>
-			<div class="header2-item" onclick="changeColor(this, 'WarehouseBoardC')">在庫管理</div>
-			<div class="header2-item" onclick="changeColor(this, 'CompanyC')">輸入/販売</div>
-			<div class="header2-item" onclick="changeColor(this, 'DistributionMainBBSC')">運送</div>
-			<div class="header2-item" onclick="changeColor(this, '')">決算</div>
+			<div class="header2-item" ${selectedHeader == 'main' ? 'id="selectedHeader"' : ''}>メイン</div>
+			<div class="header2-item" ${selectedHeader == 'stock' ? 'id="selectedHeader"' : ''}>在庫管理</div>
+			<div class="header2-item" ${selectedHeader == 'contract' ? 'id="selectedHeader"' : ''}>輸入/販売</div>
+			<div class="header2-item" ${selectedHeader == 'distribution' ? 'id="selectedHeader"' : ''}>運送</div>
+			<div class="header2-item" ${selectedHeader == 'statistic' ? 'id="selectedHeader"' : ''}>決算</div>
 
 		</div>
 	</div>

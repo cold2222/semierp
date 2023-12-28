@@ -13,6 +13,38 @@ import com.semi.adminpage.util.AdminUtils;
 import com.semi.distribution.db.DBManger;
 
 public class DeptDAO {
+	public static void getDepts(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<DeptDTO> deptsInfo = new ArrayList<DeptDTO>();
+		String sql = "select * from dept order by d_deptno";
+		
+		
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				if (rs.getInt("d_deptno") == 999)
+					continue;
+				DeptDTO dept = new DeptDTO();
+				dept.setD_deptNo(rs.getInt(1));
+				dept.setD_dept(rs.getString(2));
+				deptsInfo.add(dept);
+			}
+
+			request.setAttribute("deptsInfo", deptsInfo);
+			System.out.println("getDepts");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("error", "DBFail");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+
+	}
 
 	public static void getDeptsInfo(HttpServletRequest request) {
 		Connection con = null;
