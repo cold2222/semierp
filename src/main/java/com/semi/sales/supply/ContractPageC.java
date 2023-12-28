@@ -15,6 +15,7 @@ public class ContractPageC extends HttpServlet {
 		SupplyComDAO.getSdao().pagingContract(Integer.parseInt(request.getParameter("pageNum")), request);
 		request.setAttribute("contentPage", "jh/contract/contract_company.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.setAttribute("selectedHeader", "contract");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

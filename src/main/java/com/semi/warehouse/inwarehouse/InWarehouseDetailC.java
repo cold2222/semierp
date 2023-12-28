@@ -15,6 +15,7 @@ public class InWarehouseDetailC extends HttpServlet {
 		InWarehouseDAO.getTwdao().getInDetail(request);
 		request.setAttribute("sidebar","sj/sidebar.jsp");
 		request.setAttribute("contentPage","sj/warehouse/in_warehouse/in_warehouse_detail.jsp");
+		request.setAttribute("selectedHeader", "stock");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

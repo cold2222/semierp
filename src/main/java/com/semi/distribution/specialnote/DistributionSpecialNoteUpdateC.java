@@ -18,6 +18,7 @@ public class DistributionSpecialNoteUpdateC extends HttpServlet {
 		SpecialNoteDAO.getSdao().contentEnter(request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/specialnote/specialnoteupdate.jsp");
+		request.setAttribute("selectedHeader", "distribution");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 		
 	}

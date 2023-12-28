@@ -42,6 +42,7 @@ public class InExBoardC extends HttpServlet {
 	        InExWarehouseDAO.getIedao().paging(pageNum, request);
 	        request.setAttribute("sidebar","sj/sidebar.jsp");
 	        request.setAttribute("contentPage","sj/warehouse/in_ex_warehouse/in_ex_board.jsp");
+	        request.setAttribute("selectedHeader", "stock");
 	        request.getRequestDispatcher("index2.jsp").forward(request, response);
 	    }
 	

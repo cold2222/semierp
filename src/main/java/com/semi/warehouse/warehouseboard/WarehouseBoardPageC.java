@@ -18,6 +18,7 @@ public class WarehouseBoardPageC extends HttpServlet {
         request.setAttribute("operationType",operationType);
 		request.setAttribute("sidebar","sj/sidebar.jsp");
 		request.setAttribute("contentPage","sj/warehouse/warehouse_stock_board/warehouse_board.jsp");
+		request.setAttribute("selectedHeader", "stock");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 		
 	}

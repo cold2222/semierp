@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="index-contents">
-		<div class="index-content">asd</div>
+		<div class="index-content">${selectedHeader }</div>
 	</div>
 	<div class="footer">
 		<jsp:include page="footer.jsp"></jsp:include>

@@ -13,6 +13,7 @@ public class ExWarehouseDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ExWarehouseDAO.getEwdao().getExDetail(request);
 		ExWarehouseDAO.getEwdao().getSelectedContract(request);
+		request.setAttribute("selectedHeader", "stock");
 		request.getRequestDispatcher("sj/warehouse/ex_warehouse/ex_warehouse_detail.jsp").forward(request, response);
 	
 		

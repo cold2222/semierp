@@ -16,6 +16,7 @@ public class InWarehouseC extends HttpServlet {
 	
 		request.setAttribute("sidebar","sj/sidebar.jsp");
 		request.setAttribute("contentPage","sj/warehouse/in_warehouse/in_warehouse_interface.jsp");
+		request.setAttribute("selectedHeader", "stock");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 		
 		
