@@ -63,7 +63,7 @@
 		</c:if>
 		<!-- 버튼을 클릭하여 모달 열기 -->
 		<c:if test="${param.page eq 'List' }">
-			<c:if test="${dec.c_status < 2 }">
+			<c:if test="${rec.c_status < 2 }">
 				<button id="openModal" class="modal-btn">配送担当者指定</button>
 			</c:if>
 		</c:if>

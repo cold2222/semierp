@@ -60,8 +60,10 @@ public class DeliverySaleDAO {
 		}
 
 		String sql = "select a.c_contract_no, a.c_c_no, a.c_e_id, a.c_created_date, a.c_due_date, a.c_status, "
-				+ "b.c_name, c.e_name " + "from contract a inner join company b on a.c_c_no = b.c_no "
-				+ "inner join employee c on  a.c_e_id = c.e_no " + "where a.c_status = 1 and a.c_type = 2 ";
+				+ "b.c_name, c.e_name " 
+				+ "from contract a inner join company b on a.c_c_no = b.c_no "
+				+ "inner join employee c on  a.c_e_id = c.e_no " 
+				+ "where a.c_status = 1 and a.c_type = 2 ";
 		if (search.get("word") != null && !search.get("field").equals("all")) {
 			sql += "and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
 		}
@@ -80,7 +82,6 @@ public class DeliverySaleDAO {
 				dec.setC_c_no(rs.getString("c_c_no"));
 				dec.setC_e_id(rs.getString("c_e_id"));
 				dec.setC_created_date(rs.getDate("c_created_date"));
-				;
 				dec.setC_due_date(rs.getDate("c_due_date"));
 				dec.setC_status(rs.getString("c_status"));
 				dec.setC_name(rs.getString("c_name"));

@@ -12,10 +12,8 @@ public class Encrypt {
 	private static String bytesToHex(byte[] bytes) {
         StringBuilder builder = new StringBuilder();
         for (byte b : bytes) {
-        	// 바이트 값을 16진수 문자열로 변환하여 StringBuilder에 추가
             builder.append(String.format("%02x", b)); 
         }
-        // StringBuilder의 내용을 문자열로 반환
         return builder.toString(); 
 	}
 	public static String getPW(String id, String pw) throws NoSuchAlgorithmException {

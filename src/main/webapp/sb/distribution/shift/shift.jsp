@@ -15,6 +15,11 @@
 <script type="text/javascript" src="sb/distribution_js/shift.js"></script>
 </head>
 <body>
+	<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">運送部　出勤登録</div>
+		</div>
+	</div>
 	<div class="content">
 		<h1>${year }年${month }月出勤簿</h1>
 		<div class="menu-top">
@@ -26,24 +31,18 @@
 				有給休暇
 			</div>
 			<div class="selectym">
-				년 : <input type="text" name="st_department" list="depList2" id="year" pattern="^[0-9]+$" value="${year }"><br>
+				<span>年&nbsp;</span><input type="text" name="st_department" list="depList2" id="year" pattern="^[0-9]+$" value="${year }"><br>
 				<datalist id="depList2">
 					<c:forEach begin="2000" end="2027" var="i">
 					<option value="${i}">${i }</option>
 					</c:forEach>
 				</datalist>
-				월 : <input type="text" name="st_department" list="depList" id="month"  pattern="^[0-9]+$" placeholder="${month }"><br>
+				<span>&nbsp;月&nbsp;</span><input type="text" name="st_department" list="depList" id="month"  pattern="^[0-9]+$" placeholder="${month }"><br>
 				<datalist id="depList">
 					<c:forEach begin="1" end="12" var="i">
 					<option value="${i}">${i }</option>
 					</c:forEach>
 				</datalist>
-
-
-				<label class="day-label" for="year">年:</label> <input type="number"
-					id="year" value="2023" pattern="^[0-9]+$"> <label
-					class="day-label" for="month">月:</label> <input type="number"
-					id="month" value="12" pattern="^[0-9]+$">
 				<button class="dis-btn" onclick="updateCalendar()">更新</button>
 			</div>
 		</div>

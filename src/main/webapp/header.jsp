@@ -20,18 +20,21 @@
 			<div class="header1-atag">개인메모</div>
 			<div class="header1-select1">환영합니다</div>
 			<div class="header1-select1">
-				<select>
-					<option>temp님</option>
+				<select id="mySelect">
+					<option>${sessionScope.empInfo.e_name }님</option>
 					<option>dropdown1</option>
 					<option>dropdown2</option>
+					<option value="AdminPage">AdminPage</option>
 					<option>Logout</option>
 				</select>
+				<!-- 셀렉트 자바스크립트 -->
+				<script type="text/javascript" src="js/indexSelect.js"></script>
 			</div>
 		</div>
 		<div class="header2">
 
 			<div class="header2-item" onclick="changeColor(this, 'HC')">メイン</div>
-			<div class="header2-item" onclick="changeColor(this, 'WarehousebbsC')">在庫管理</div>
+			<div class="header2-item" onclick="changeColor(this, 'WarehouseBoardC')">在庫管理</div>
 			<div class="header2-item" onclick="changeColor(this, 'CompanyC')">輸入/販売</div>
 			<div class="header2-item" onclick="changeColor(this, 'DistributionMainBBSC')">運送</div>
 			<div class="header2-item" onclick="changeColor(this, '')">決算</div>
