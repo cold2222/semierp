@@ -46,7 +46,6 @@ public class EmpolyeeAPI {
 				emp.setE_deptno(rs.getInt("e_deptno"));
 				emp.setE_tel(rs.getString("e_tel"));
 				emp.setE_email(rs.getString("e_email"));
-				// 이거 db 수정한뒤 _date 를 때야함
 				emp.setE_joined_company(rs.getDate("e_joined_company"));
 				emp.setE_pw(sql);
 				

@@ -19,8 +19,7 @@ public class MakeContractC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	SupplyComDAO.getSdao().regCont(request);
 	SupplyComDAO.getSdao().regContents(request);
-	SupplyComDAO.getSdao().getInsertContractNo(request);
-	response.sendRedirect("ContractDetailC?no="+request.getAttribute("c_contract_no"));
+	response.sendRedirect("ContractDetailC?no="+request.getAttribute("val"));
 	}
 
 }
