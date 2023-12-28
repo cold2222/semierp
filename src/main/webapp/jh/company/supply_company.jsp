@@ -35,17 +35,17 @@
 						<div class="company-content-body">
 							<div class="company-content-company">
 								<div class="company-main">
-									<div class="company-main-text4 company-main-title">取引先名</div>
-									<div class="company-main-text3 company-main-title">取引担当者</div>
-									<div class="company-main-text3 company-main-title">取引先の連絡先</div>
-									<div class="company-main-text3 company-main-title">詳細</div>
+									<div class="company-main-with">取引先名</div>
+									<div class="company-main-title">取引担当者</div>
+									<div class="company-main-title">取引先の連絡先</div>
+									<div class="company-main-title">詳細</div>
 								</div>
 								<c:forEach var="c" items="${cs }">
 									<div class="company-main">
-										<div class="company-main-text1 company-main-text">${c.c_name }</div>
-										<div class="company-main-text3 company-main-text">${c.c_keeper }</div>
-										<div class="company-main-text3 company-main-text">${c.c_phone}</div>
-										<div class="company-main-text4 company-main-text">
+										<div class="company-main-text1">${c.c_name }</div>
+										<div class="company-main-text">${c.c_keeper }</div>
+										<div class="company-main-text">${c.c_phone}</div>
+										<div class="company-main-text">
 											<button onclick="location.href='UpdateComC?c_no=${c.c_no }'">詳細</button>
 										</div>
 									</div>

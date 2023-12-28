@@ -15,7 +15,3 @@ function toggleEdit() {
     saveButton.style.display = (saveButton.style.display === 'none') ? 'block' : 'none';
 }
 
-function saveChanges() {
-    // 수정 사항을 서버로 전송하고 필요한 처리를 수행하는 로직을 추가합니다.
-    // 이 함수는 수정 버튼을 누를 때 호출됩니다.
-}
