@@ -15,5 +15,16 @@ public class AdminUtils {
 		
 		return currentYearMonth;
 	}
+	
+	public static String getCurrentDate() {
+		// 현재 날짜 가져오기
+        LocalDate currentDate = LocalDate.now();
 
+        // 날짜 포맷 지정
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // 포맷 적용하여 출력
+        String formattedDate = currentDate.format(formatter);
+        return formattedDate;
+	}
 }

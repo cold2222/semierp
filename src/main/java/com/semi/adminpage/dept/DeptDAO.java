@@ -51,7 +51,7 @@ public class DeptDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<DeptDTO> deptsInfo = new ArrayList<DeptDTO>();
-		String sql = "select d_deptno, d_dept, count(d_dept) as d_count\r\n" + "from employee\r\n" + "join dept\r\n"
+		String sql = "select d_deptno, d_dept, count(d_dept) as d_count\r\n" + "from employee\r\n" + "right outer join dept\r\n"
 				+ "on e_deptno = d_deptno\r\n" + "group by d_deptno, d_dept\r\n" + "order by d_deptno";
 		int staffSum = 0;
 		try {
@@ -149,8 +149,8 @@ public class DeptDAO {
 				+ "     WHERE d.d_deptno = 201) AS d_count,\r\n"
 				+ "    (SELECT COUNT(*) FROM contract WHERE c_status = 1) AS d_waiting,\r\n"
 				+ "    (SELECT COUNT(*) FROM contract WHERE c_status = 2) AS d_allocated,\r\n"
-				+ "    (SELECT COUNT(*) FROM contract WHERE c_status = 2 AND TO_CHAR(c_delivery_date, 'yyyy-mm') = '2021-12') AS d_allocatedThisMonth,\r\n"
-				+ "    (SELECT COUNT(*) FROM contract WHERE (c_status = 3 OR c_status=4) AND TO_CHAR(c_delivery_date, 'yyyy-mm') = '2021-12') AS d_completedThisMonth,\r\n"
+				+ "    (SELECT COUNT(*) FROM contract WHERE c_status = 2 AND TO_CHAR(c_delivery_date, 'yyyy-mm') = ?) AS d_allocatedThisMonth,\r\n"
+				+ "    (SELECT COUNT(*) FROM contract WHERE (c_status = 3 OR c_status=4) AND TO_CHAR(c_delivery_date, 'yyyy-mm') = ?) AS d_completedThisMonth,\r\n"
 				+ "    (SELECT count(*) FROM contract WHERE c_status < 3 AND ((TRUNC(c_due_date) < TRUNC(SYSDATE) AND c_type = 2) OR TRUNC(c_delivery_date) < TRUNC(SYSDATE))) as d_expired,\r\n"
 				+ "    (SELECT count(*) FROM contract WHERE c_status < 3 AND ((TRUNC(c_due_date) = TRUNC(SYSDATE) AND c_type = 2) OR TRUNC(c_delivery_date) = TRUNC(SYSDATE))) as d_dueDate,\r\n"
 				+ "    (SELECT count(*) FROM contract WHERE TRUNC(c_delivery_date) = TRUNC(SYSDATE)) as d_todayDelivery,\r\n"
@@ -180,6 +180,73 @@ public class DeptDAO {
 				distributionDept.setD_todayCompleted(11);
 				
 				request.setAttribute("distributionDept", distributionDept);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("error", "DBFail");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+	}
+	
+	public static void getWarehouseDeptInfo(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		WarehouseDeptDTO warehouseDept = new WarehouseDeptDTO();
+		String sql = "select d_deptno as w_deptno, d_dept as w_dept, count(*) as w_count,\r\n"
+				+ "    (select count(distinct p_id) from stock) as w_products,\r\n"
+				+ "    (select sum(stock * p_unitcost)\r\n"
+				+ "from product join \r\n"
+				+ "(select p_id, sum(rm_stock) as stock from stock group by p_id) b\r\n"
+				+ "on product.p_id = b.p_id) as w_value,\r\n"
+				+ "(select count(*)\r\n"
+				+ "from (select product.p_id, product.p_minstock, product.p_maxstock, nvl(sum_stock,0) as stocks from product left outer join (select p_id, sum(rm_stock) as sum_stock from stock group by p_id) b on b.p_id = product.p_id)\r\n"
+				+ "where p_minstock > stocks) as w_underMinStock,\r\n"
+				+ "(select count(*)\r\n"
+				+ "from (select product.p_id, product.p_minstock, product.p_maxstock, nvl(sum_stock,0) as stocks from product left outer join (select p_id, sum(rm_stock) as sum_stock from stock group by p_id) b on b.p_id = product.p_id)\r\n"
+				+ "where p_maxstock < stocks) as w_overMaxStock,\r\n"
+				+ "(select count(*) from contract where c_type = 1 and c_status=4 and to_char(c_completed_date,'yyyy-mm')=?) as w_stockInCompletedThisMonth,\r\n"
+				+ "(select count(*) from contract where c_type = 1 and (c_status=2 or c_status=3) and to_char(c_delivery_date,'yyyy-mm')=?) as w_watingStockInThisMonth,\r\n"
+				+ "(select count(*) from contract where c_type = 1 and c_status=4 AND TRUNC(c_completed_date) = TRUNC(SYSDATE)) as w_stockInToday,\r\n"
+				+ "(select count(*) from contract where c_type = 1 and (c_status=2 or c_status=3) AND TRUNC(c_delivery_date) = TRUNC(SYSDATE)) as w_stockInCompletedToday,\r\n"
+				+ "(select count(*) from contract where c_type = 2 and c_status=4 and to_char(c_completed_date,'yyyy-mm-dd')=?) as w_stockOutCompletedThisMonth,\r\n"
+				+ "(select count(*) from contract where c_type = 2 and (c_status=2 or c_status=3) and to_char(c_delivery_date,'yyyy-mm')=?) as w_watingStockOutThisMonth,\r\n"
+				+ "(select count(*) from contract where c_type = 2 and c_status=4 AND TRUNC(c_completed_date) = TRUNC(SYSDATE)) as w_stockOutToday,\r\n"
+				+ "(select count(*) from contract where c_type = 2 and (c_status=2 or c_status=3) AND TRUNC(c_delivery_date) = TRUNC(SYSDATE)) as w_stockOutCompletedToday\r\n"
+				+ "from dept\r\n"
+				+ "join employee\r\n"
+				+ "on d_deptno = e_deptno\r\n"
+				+ "where e_deptno = 202\r\n"
+				+ "group by d_dept, d_deptno";
+		String currentYearMonth = AdminUtils.getCurrentYearMonth();
+
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, currentYearMonth);
+			pstmt.setString(2, currentYearMonth);
+			pstmt.setString(3, currentYearMonth);
+			pstmt.setString(4, currentYearMonth);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				warehouseDept.setW_deptno(rs.getInt(1));
+				warehouseDept.setW_dept(rs.getString(2));
+				warehouseDept.setW_count(rs.getInt(3));
+				warehouseDept.setW_products(rs.getInt(4));
+				warehouseDept.setW_value(rs.getLong(5));
+				warehouseDept.setW_underMinStock(6);
+				warehouseDept.setW_overMaxStock(7);
+				warehouseDept.setW_stockInCompletedThisMonth(8);
+				warehouseDept.setW_watingStockInThisMonth(9);
+				warehouseDept.setW_stockInToday(10);
+				warehouseDept.setW_stockInCompletedToday(11);
+				warehouseDept.setW_stockOutCompletedThisMonth(12);
+				warehouseDept.setW_stockOutToday(14);
+				warehouseDept.setW_stockOutCompletedToday(15);
+				request.setAttribute("warehouseDept", warehouseDept);
 			}
 
 		} catch (Exception e) {

@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
 .content_title {
+	display:flex;
 	font-size: 24px;
+	justify-content: space-between;
 }
 
 .contract-container {
@@ -19,10 +21,13 @@
 	display: flex;
 	width: 100%;
 }
+.margin-top{
+	margin-top: 10px;
+}
 
 .contract{
 	display: block; 
-    width: 11%;
+    width: 13%;
     height: 30px;
     border-collapse: collapse;
     text-align: center;
@@ -45,11 +50,35 @@
 	margin-top: 25px;
 }
 
-.distribution{
+.distribution1{
+	display: block; 
+    width: 20%;
+    height: 30px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.distribution2{
 	display: block; 
     width: 16.6%;
     height: 30px;
     border-collapse: collapse;
     text-align: center;
 }
-
+.warehouse-container{
+	margin-top: 25px;
+}
+.warehouse1{
+	display: block; 
+    width: 16.6%;
+    height: 30px;
+    border-collapse: collapse;
+    text-align: center;
+}
+.warehouse2{
+	display: block; 
+    width: 12.5%;
+    height: 30px;
+    border-collapse: collapse;
+    text-align: center;
+}

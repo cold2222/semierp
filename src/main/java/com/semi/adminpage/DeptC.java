@@ -19,7 +19,8 @@ public class DeptC extends HttpServlet {
 				DeptDAO.getContractDeptInfo(request, 1);
 				DeptDAO.getContractDeptInfo(request, 2);
 				DeptDAO.getDistributionDeptInfo(request);
-				request.setAttribute("currentYearMonth", AdminUtils.getCurrentYearMonth());
+				DeptDAO.getWarehouseDeptInfo(request);
+				request.setAttribute("currentDate", AdminUtils.getCurrentDate());
 				request.setAttribute("selectedPage", "dept");
 				request.setAttribute("contentPage", "dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
