@@ -16,6 +16,7 @@ public class ExWarehouseC extends HttpServlet {
 		
 		request.setAttribute("sidebar","sj/sidebar.jsp");
         request.setAttribute("contentPage","sj/warehouse/ex_warehouse/ex_warehouse_interface.jsp");
+        request.setAttribute("selectedHeader", "stock");
         request.getRequestDispatcher("index2.jsp").forward(request, response);
 		
 	}

@@ -15,6 +15,7 @@ public class DistributionReceiptPageC extends HttpServlet {
 		ReceiptDAO.getRdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/receipt/receipt.jsp");
+		request.setAttribute("selectedHeader", "distribution");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

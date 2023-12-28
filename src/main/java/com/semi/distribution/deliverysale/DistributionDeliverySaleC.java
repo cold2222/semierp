@@ -17,6 +17,7 @@ public class DistributionDeliverySaleC extends HttpServlet {
 		DeliverySaleDAO.getDSdao().paging(1, request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/deliverysale/deliverysale.jsp");
+		request.setAttribute("selectedHeader", "distribution");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

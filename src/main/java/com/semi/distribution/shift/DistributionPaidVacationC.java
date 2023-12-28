@@ -14,6 +14,7 @@ public class DistributionPaidVacationC extends HttpServlet {
 		PaidVacationLogic.CalcPaidVacation(ShiftDAO.getEmployee(),PaidVacationDAO.getPaidVacation(),request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/shift/paidvacation.jsp");
+		request.setAttribute("selectedHeader", "distribution");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

@@ -16,7 +16,11 @@ public class WarehouseBoardPageC extends HttpServlet {
         WarehouseBoardDAO.getWbtdao().calcStock(request, operationType);
         WarehouseBoardDAO.getWbtdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
         request.setAttribute("operationType",operationType);
-		request.getRequestDispatcher("sj/warehouse/warehouse_stock_board/warehouse_board.jsp").forward(request, response);
+		request.setAttribute("sidebar","sj/sidebar.jsp");
+		request.setAttribute("contentPage","sj/warehouse/warehouse_stock_board/warehouse_board.jsp");
+		request.setAttribute("selectedHeader", "stock");
+		request.getRequestDispatcher("index2.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

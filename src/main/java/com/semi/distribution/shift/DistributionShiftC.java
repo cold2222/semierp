@@ -15,6 +15,7 @@ public class DistributionShiftC extends HttpServlet {
 		ShiftDAO.getCalendarStatus(ShiftDAO.getWorkStatus(request),ShiftDAO.getEmployee(),request);
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/shift/shift.jsp");
+		request.setAttribute("selectedHeader", "distribution");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 

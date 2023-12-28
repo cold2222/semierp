@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 public class HC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("index.jsp");
+		request.setAttribute("selectedHeader", "main");
+		response.sendRedirect("index.jsp?selectedHeader=main");
 		
+
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
