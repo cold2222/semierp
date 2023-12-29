@@ -32,7 +32,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 입체적인 박스 효과 */
 }
 .content-body {
-    width: 95%;
+    width: 91%;
     background-color: #fff;
     display: flex;
     padding: 20px;
@@ -41,34 +41,36 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+/* 여기까지는 완벽 */
 
-/* .bbs-content1 수정 */
 .bbs-content1 {
     padding: 20px;
     border-radius: 8px;
     text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
-/* .input-container 수정 */
 .input-container {
-    margin-bottom: 20px;
+	font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .input-container input[type="text"],
 .input-container input[type="date"],
 .input-container select {
-    width: 100%;
-    padding: 10px;
+    width: calc(100% - 10px);
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    margin-top: 5px;
+}
+.button{
+	text-align: right;
+	margin-bottom: 10px;
 }
 
-/* .insert-btn 수정 */
 .insert-btn {
-    padding: 12px 20px;
+    padding: 5px 16px;
     background-color: #3498db;
     color: #fff;
     border: none;
@@ -80,4 +82,45 @@
 
 .insert-btn:hover {
     background-color: #2980b9;
+}
+.contract-reg-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+
+.contract-reg-main .company-item-title,
+.contract-reg-main .company-main-title {
+	font-weight: bold;
+    flex-basis: 30%;
+    text-align: center;
+	}
+#contractTable {
+    margin-top: 20px;
+}
+.bbs-content2 {
+    display: flex;
+    gap: 10px;
+}
+
+
+.input-container2 {
+    display: inline-block;
+    width: 33%; /* 원하는 너비 설정 */
+    box-sizing: border-box; /* 여백 포함 설정 */
+}
+
+.input-container2 input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }

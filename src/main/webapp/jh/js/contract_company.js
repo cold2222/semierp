@@ -76,6 +76,6 @@ function setValue1(value, displayName, type, si, quantity) {
 	clickedInput.value = productData;
 	console.log(value, productData);
 	console.log(clickedInput.parentNode.previousElementSibling.children);
-	clickedInput.parentNode.previousElementSibling.children[0].value = value;
+	clickedInput.parentNode.previousElementSibling.value = value;
 	closeProductModal();
 }
