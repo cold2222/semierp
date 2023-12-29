@@ -18,7 +18,7 @@
 			<div class="col-title contract">員 数</div>
 			<div class="col-title contract">契約(月)</div>
 			<div class="col-title contract">契約物品(月)</div>
-			<div class="col-title contract">金額(月)</div>
+			<div class="col-title contract">仕入れ金額(月)</div>
 			<div class="col-title contract">契約完了(月)</div>
 			<div class="col-title contract">契約進行</div>
 		</div>
@@ -31,6 +31,16 @@
 			<div class="col-content contract">${importDept.c_total_price }</div>
 			<div class="col-content contract">${importDept.c_contract_completed }</div>
 			<div class="col-content contract">${importDept. c_awaiting_stock }</div>
+		</div>
+		<div class="col-titles margin-top">
+			<div class="col-title contract">コード</div>
+			<div class="col-title contract">部 署</div>
+			<div class="col-title contract">員 数</div>
+			<div class="col-title contract">契約(月)</div>
+			<div class="col-title contract">契約物品(月)</div>
+			<div class="col-title contract">売上(月)</div>
+			<div class="col-title contract">契約完了(月)</div>
+			<div class="col-title contract">契約進行</div>
 		</div>
 		<div class="col-contents">
 			<div class="col-content contract">${salesDept.c_deptno }</div>
