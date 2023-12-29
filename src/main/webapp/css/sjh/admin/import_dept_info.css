@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.content_title {
+	display:flex;
+	font-size: 24px;
+	justify-content: space-between;
+}

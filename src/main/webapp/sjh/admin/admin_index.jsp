@@ -23,10 +23,16 @@
 				<div class="side-menu-item" ${selectedPage == 'dept' ? 'id="selected"' : ''} onclick="location.href='DeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/depart_white.png">&nbsp;&nbsp;部署一覽
 				</div>
+				<div class="side-menu-item" ${selectedPage == 'import' ? 'id="selected"' : ''} onclick="location.href='ImportDeptC'">
+					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;輸入事業部
+				</div>
+				<div class="side-menu-item" ${selectedPage == 'import' ? 'id="selected"' : ''} onclick="location.href='DeptC'">
+					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;輸入事業部
+				</div>
 			</div>
 		</div>
 		<div class="left-area">
-		
+
 			<div class="top-menu shadow-def">
 				<span class="top-title">- 管理 -</span>
 				<div class="top-title-left">
