@@ -60,11 +60,15 @@
 		</div>
 		<div class="content-body">
 			<div class="bbs-content">
-				<form action="MakeContractC" method="post">
+				<form action="UpdateContC" method="post">
 					<div class="bbs-main">
 						<div class="bbs-content1">
 							<div class="content1-main">
 								<div class="input-container">
+									<div class="button">
+										<button type="button" class="insert-btn"
+											onclick="deleteContract('${contract.c_contract_no}')">契約書削除</button>
+									</div>
 									作成日: <input type="date" readonly="readonly"
 										name="c_created_date" value="${contract.c_created_date }">
 								</div>
@@ -73,23 +77,34 @@
 								id="selectedValue" value="${contract.c_c_no }">
 							<div class="input-container">
 								取引先: <input readonly="readonly" id="displayName"
-									placeholder="取引先検索" required="required" type="text">
+									value="${contract.c_name }" required="required" type="text">
 							</div>
 							<div class="input-container">
-								계약서 번호<input name="c_contract_no"
-									value="${contract.c_contract_no}">
+								契約書番号:<input name="c_contract_no"
+									value="${contract.c_contract_no}" type="text">
 							</div>
-							<input type="hidden" name="c_e_id" id="e_id" required="required"
+							<input type="text" name="c_e_id" id="e_id" required="required"
 								value="${contract.c_e_id }">
+							<c:if test="${contract.e_deptno eq 101 }">
+								<div class="input-container">
+									輸入／販売部門の担当社員: <input name="e_name" id="employeeSearch"
+										type="text" readonly="readonly" required="required"
+										value="輸入事業部 :${contract.e_rank } ${contract.e_name}">
+								</div>
+							</c:if>
+							<c:if test="${contract.e_deptno eq 102 }">
+								<div class="input-container">
+									輸入／販売部門の担当社員: <input name="e_name" id="employeeSearch"
+										type="text" readonly="readonly" required="required"
+										value="販売営業部 :${contract.e_rank } ${contract.e_name}">
+								</div>
+							</c:if>
 							<div class="input-container">
-								輸入／販売部門の担当社員: <input name="e_name" placeholder="社員検索"
-									id="employeeSearch" type="text" readonly="readonly"
-									required="required">
+								納期日: <input type="date" name="c_due_date" required="required"
+									value="${contract.c_due_date }">
 							</div>
-							<div class="input-container">
-								納期日: <input type="date" name="c_due_date" required="required">
-							</div>
-							<input type="hidden" name="c_status" placeholder="取引状態" value="1">
+							<input type="hidden" name="c_status" placeholder="取引状態"
+								value="${contract.c_status }">
 							<div class="input-container">
 								輸入／販売: <select id="transactionType" name="c_type">
 									<option value="1" selected="selected">輸入</option>
@@ -106,23 +121,22 @@
 							<div class="company-main-title">買い求める価格</div>
 						</div>
 						<div id="contractTable">
-							<div style="display: none;" class="bbs-content2">
+							<div class="bbs-content2">
 								<input name="ci_c_contract_no" type="hidden"> <input
 									type="hidden" name="ci_p_id" class="selectedValueP">
 								<div class="input-container2">
-									<input readonly="readonly" class="displayNameP" type="text"
-										placeholder="アイテム名">
+									<input readonly="readonly" class="displayNameP" type="text">
 								</div>
 								<div class="input-container2">
-									<input name="ci_count" placeholder="買い求める数" type="text">
+									<input name="ci_count" type="text">
 								</div>
 								<div class="input-container2">
-									<input name="ci_unit_price" placeholder="買い求める価格" type="text">
+									<input name="ci_unit_price" type="text">
 								</div>
 							</div>
 						</div>
 						<div class="button">
-							<button class="insert-btn">作成</button>
+							<button class="insert-btn">修正</button>
 						</div>
 					</div>
 				</form>

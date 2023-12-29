@@ -36,7 +36,7 @@
 							<div class="company-content-company">
 								<div class="company-main">
 									<div class="company-main-with">取引先名</div>
-									<div class="company-main-title">取引担当者</div>
+									<div class="company-main-title">取引先の担当者</div>
 									<div class="company-main-title">取引先の連絡先</div>
 									<div class="company-main-title">詳細</div>
 								</div>
