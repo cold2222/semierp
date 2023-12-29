@@ -48,8 +48,7 @@
 										<div class="bbs-main-text2 bbs-main-title-s">倉庫</div>
 									</div>
 									<c:forEach var="t" items="${inWarehouse}" varStatus="loop">
-												<input type="hidden" name="c_contract_no"
-													value="${param.c_contract_no }" >
+												<input type="hidden" name="c_contract_no" value="${param.c_contract_no }" >
 										<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 											<div class="bbs-main-text2 bbs-main-text-s">
 												<input name="ci_p_id" value="${t.ci_p_id}"

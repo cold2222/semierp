@@ -16,7 +16,6 @@
 		<div class="content-head">
 			<div class="content-head-text">出庫登録</div>
 		</div>
-	</div>
 	<div class="content-body">
 		<div class="search-container">
 			<form action="ExWarehouseC" method="GET">
@@ -72,7 +71,6 @@
 									</div>
 								</div>
 							</c:forEach>
-
 							<div class="paging">
 								<c:choose>
 									<c:when test="${pageNum != 1}">
@@ -110,7 +108,7 @@
 			</div>
 		</div>
 	</div>
-
+	</div>
 </body>
 </html>
 

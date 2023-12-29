@@ -260,11 +260,11 @@ public class ExWarehouseDAO {
 
 			}
 			request.setAttribute("contract", t);
-			System.out.println("입고 뷰 페이지 계약서조회 성공");
+			System.out.println("출고 뷰 페이지 계약서조회 성공");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("입고 뷰 페이지 계약서조회 실패");
+			System.out.println("출고 뷰 페이지 계약서조회 실패");
 		} finally {
 			DBManger.close(con, pstmt, rs);
 		}
