@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="content_title"><div>部署</div><div></div><div>日付 : </div></div>
+	<div class="content_title"><div>輸入</div><div></div><div>日付 : </div></div>
 	<hr>
 
 </body>
