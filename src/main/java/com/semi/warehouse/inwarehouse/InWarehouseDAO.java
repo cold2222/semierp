@@ -74,13 +74,13 @@ public class InWarehouseDAO {
 
 			while (rs.next()) {
 				int c_contract_no = rs.getInt("c_contract_no");
-				String c_created_date = rs.getString("c_created_date");
+				String c_created_date[] = rs.getString("c_created_date").split(" ");
 				String c_name = rs.getString("c_name");
 				String e_name = rs.getString("e_name");
 
 				t = new InWarehouseDTO();
 				t.setC_contract_no(c_contract_no);
-				t.setC_created_date(c_created_date);
+				t.setC_created_date(c_created_date[0]);
 				t.setC_name(c_name);
 				t.setE_name(e_name);
 				inWarehouse.add(t);
@@ -302,13 +302,13 @@ public class InWarehouseDAO {
 
 			if (rs.next()) {
 				int c_contract_no = rs.getInt("c_contract_no");
-				String c_created_date = rs.getString("c_created_date");
+				String c_created_date[] = rs.getString("c_created_date").split(" ");
 				String c_name = rs.getString("c_name");
 				String e_name = rs.getString("e_name");
 
 				t = new InWarehouseDTO();
 				t.setC_contract_no(c_contract_no);
-				t.setC_created_date(c_created_date);
+				t.setC_created_date(c_created_date[0]);
 				t.setC_name(c_name);
 				t.setE_name(e_name);
 				
