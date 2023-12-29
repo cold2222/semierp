@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="css/sjh/admin/staff_modify.css">
-				<script type="text/javascript" src="js/admin/staff_reg.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"
+	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+	crossorigin="anonymous"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -29,7 +31,7 @@
 			<div class="row">
 				<div class="row-title">社員番号</div>
 				<div class="row-content">
-					<input type="number" name="e_no" required>
+					<input type="number" name="e_no" id="e_no" required>
 				</div>
 			</div>
 			<div class="row">
@@ -60,17 +62,18 @@
 				<div class="row-title">入社日</div>
 				<div class="row-content">
 					<input type="date" id="dateInput" name="e_joined_company" required>
-				</div>		
+				</div>
 			</div>
 			<div class="row-btn">
 				<div class="row-btn-left">
-					<button type="submit" class="reg-btn btn">登録</button>
+					<button type="submit" class="reg-btn btn" id="reg-btn" style="display: none;">登録</button>
+					<button type="button" class="reg-btn check-btn" id="check-btn" style="display: block;">社員番号重複チェック</button>
 				</div>
 				<button class="back-btn btn" type="button"
 					onclick="location.href='StaffC'">戻る</button>
 			</div>
 		</form>
-
 	</div>
+<script type="text/javascript" src="js/sjh/admin/staff_reg.js"></script>
 </body>
 </html>
