@@ -30,16 +30,8 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 							<option value="${t.type}">${t.type}</option>
 						</c:forEach>
 				</select></td>
-				<c:choose>
-					<c:when test="${p.p_quantity == 0}">
-						<td><input name="p_quantity" placeholder="단위량" type="number"
-							value=""></td>
-					</c:when>
-					<c:otherwise>
-						<td><input name="p_quantity" placeholder="단위량" type="number"
+						<td><input name="p_quantity" placeholder="단위량" type="text"
 							value="${p.p_quantity}"></td>
-					</c:otherwise>
-				</c:choose>
 				<td><input name="p_name" placeholder="상품명" required="required"
 					value="${p.p_name}"></td>
 				<td><input name="p_unitCost" placeholder="가격" type="number"
