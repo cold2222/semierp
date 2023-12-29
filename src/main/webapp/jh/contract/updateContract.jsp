@@ -53,6 +53,102 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<button type="button" onclick="addRow()">행 추가</button>
+	<button type="button"
+		onclick="deleteContract('${contract.c_contract_no}')">계약서 삭제</button>
+	<form action="UpdateContC" method="post">
+		<table>
+			<tr>
+				<td>계약서 번호<input name="c_contract_no"
+					value="${contract.c_contract_no}"></td>
+				<td><input type="hidden" name="c_c_no" id="selectedValue"
+					value="${contract.c_c_no }"></td>
+				<td><input readonly="readonly" id="displayName"
+					placeholder="거래처검색" value="${contract.c_name }"></td>
+				<td><input type="hidden" name="c_e_id" placeholder="사원 id"
+					id="e_id" value="${contract.c_e_id }" required="required"></td>
+				<c:if test="${contract.e_deptno eq 101 }">
+					<td><input name="e_name" placeholder="사원검색"
+						id="employeeSearch" id="employeeSearch" readonly="readonly"
+						required="required"
+						value="輸入事業部 :${contract.e_rank } ${contract.e_name}"></td>
+				</c:if>
+				<c:if test="${contract.e_deptno eq 102 }">
+					<td><input name="e_name" placeholder="사원검색"
+						id="employeeSearch" id="employeeSearch" readonly="readonly"
+						required="required"
+						value="販売営業部 :${contract.e_rank } ${contract.e_name}"></td>
+				</c:if>
+				<td>계약서 작성일<input type="date" readonly="readonly"
+					name="c_created_date" value="${contract.c_created_date }"></td>
+				<td>납기일<input type="date" name="c_due_date" required="required"
+					value="${contract.c_due_date }"></td>
+				<td>배송예정일<input type="date" name="c_delivery_date"
+					readonly="readonly" value="${contract.c_delivery_date }"></td>
+				<td>완료일<input type="date" name="c_completed_date"
+					readonly="readonly" value="${contract.c_completed_date }"></td>
+				<td>거래상태 : <input type="hidden" name="c_status"
+					value="${contract.c_status }"> <c:if
+						test="${contract.c_type eq 1 && contract.c_status eq 1}">배송미지정</c:if>
+					<c:if test="${contract.c_type eq 1 && contract.c_status eq 2}">배송일확정</c:if>
+					<c:if test="${contract.c_type eq 1 && contract.c_status eq 3}">배송완료</c:if>
+					<c:if test="${contract.c_type eq 1 && contract.c_status eq 4}">창고적재완료</c:if>
+					<c:if test="${contract.c_type eq 2 && contract.c_status eq 1}">배송미지정</c:if>
+					<c:if test="${contract.c_type eq 2 && contract.c_status eq 2}">배송일확정</c:if>
+					<c:if test="${contract.c_type eq 2 && contract.c_status eq 3}">배송준비중</c:if>
+					<c:if test="${contract.c_type eq 2 && contract.c_status eq 4}">배송완료</c:if>
+				</td>
+				<td>계약서종류 <c:if test="${contract.c_type == 1 }">
+						<select id="transactionType" name="c_type">
+							<option value="1" selected="selected">구매</option>
+							<option value="2">판매</option>
+						</select>
+					</c:if> <c:if test="${contract.c_type == 2 }">
+						<select id="transactionType" name="c_type">
+							<option value="1">구매</option>
+							<option value="2" selected="selected">판매</option>
+						</select>
+					</c:if>
+				</td>
+			</tr>
+		</table>
+		<table id="contractTable">
+			<tr style="display: none;">
+				<td><input name="ci_no" type="hidden"></td>
+				<td><input type="hidden" name="ci_p_id" class="selectedValueP"></td>
+				<td><input readonly="readonly" class="displayNameP"
+					placeholder="상품명"></td>
+				<td><input name="ci_count" placeholder="몇 개 살건지"></td>
+				<td><input name="ci_unit_price" placeholder="얼마로 살건지"></td>
+			</tr>
+			<c:forEach var="items" items="${contract.items }">
+				<tr style="display: block;">
+					<td><input name="ci_no" type="hidden" value="${items.ci_no }"></td>
+					<td><input type="hidden" name="ci_p_id"
+						value="${items.ci_p_id }" class="selectedValueP"></td>
+					<td><input readonly="readonly" class="displayNameP"
+						value="${items.p_type } :${items.p_name } ${items.p_quantity}${items.p_si}"
+						placeholder="상품명"></td>
+					<td><input name="ci_count" placeholder="몇 개 살건지"
+						value="${items.ci_count }"></td>
+					<td><input name="ci_unit_price" placeholder="얼마로 살건지"
+						value="${items.ci_unit_price }"></td>
+					<td><button type="button"
+							onclick="deleteContractItem('${items.ci_no}','${contract.c_contract_no }')">アイテム削除</button>
+				<tr>
+				</tr>
+			</c:forEach>
+		</table>
+		<button>계약서 내용 작성</button>
+	</form>
 
 	<div class="contents">
 		<div class="content-head">
@@ -125,7 +221,7 @@
 								<input name="ci_c_contract_no" type="hidden"> <input
 									type="hidden" name="ci_p_id" class="selectedValueP">
 								<div class="input-container2">
-									<input readonly="readonly" class="displayNameP" type="text">
+									<input readonly="readonly" class="displayNameP" type="text" value="">
 								</div>
 								<div class="input-container2">
 									<input name="ci_count" type="text">

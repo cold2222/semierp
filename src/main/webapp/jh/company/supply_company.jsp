@@ -38,7 +38,7 @@
 									<div class="company-main-with">取引先名</div>
 									<div class="company-main-title">取引先の担当者</div>
 									<div class="company-main-title">取引先の連絡先</div>
-									<div class="company-main-title">詳細</div>
+									<div class="company-main-title">詳細／修正</div>
 								</div>
 								<c:forEach var="c" items="${cs }">
 									<div class="company-main">

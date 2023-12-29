@@ -14,9 +14,7 @@
 		<div class="content-head">
 			<div class="content-head-text">取引先の詳細内容</div>
 		</div>
-		<c:if test="${param.isSuccess != null }">
-			<div>${param.isSuccess }</div>
-		</c:if>
+
 		<div class="content-body">
 			<div class="bbs-content1">
 				<form action="UpdateComC" method="post">
@@ -47,14 +45,15 @@
 					</div>
 
 					<div class="button" id="saveButton" style="display: none;">
-						<button class="insert-btn">保存</button>
+						<button class="insert-btn3">保存</button>
 					</div>
 				</form>
+					<c:if test="${param.isSuccess != null }">
+						<div class="insert-btn1">修正完了</div>
+					</c:if>
 				<div class="button" id="editButton">
 					<button class="insert-btn" onclick="toggleEdit()">修正</button>
-				</div>
-				<div class="button">
-					<button class="insert-btn" onclick="deleteCompany('${c.c_no }')">削除</button>
+					<button class="insert-btn2" onclick="deleteCompany('${c.c_no }')">削除</button>
 				</div>
 			</div>
 		</div>
