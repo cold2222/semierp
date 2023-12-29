@@ -18,6 +18,7 @@ public class DeptC extends HttpServlet {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				DeptDAO.getContractDeptInfo(request, 1);
 				DeptDAO.getContractDeptInfo(request, 2);
+				DeptDAO.getDistributionDeptInfo(request);
 				request.setAttribute("currentYearMonth", AdminUtils.getCurrentYearMonth());
 				request.setAttribute("selectedPage", "dept");
 				request.setAttribute("contentPage", "dept_info.jsp");
