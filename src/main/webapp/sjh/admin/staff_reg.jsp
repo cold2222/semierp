@@ -75,5 +75,6 @@
 		</form>
 	</div>
 <script type="text/javascript" src="js/sjh/admin/staff_reg.js"></script>
+<script type="text/javascript" src="js/sjh/admin/utils/input_date_init.js"></script>
 </body>
 </html>

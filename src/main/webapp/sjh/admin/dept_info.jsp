@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/sjh/admin/dept_info.css">
+<script type="text/javascript" src="js/sjh/admin/utils/input_date_init.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="content_title"><div>部署</div><div></div><div>日付 : ${currentDate }</div></div>
+	<div class="content_title"><div>部署</div><div></div><div class="date">日付 : <input type="date" id="dateInput" name="setDate" required onchange="redirectToServlet('DeptC')"></div></div>
 	<hr>
 	<div class="contract-container">
 		<h2>輸入/販売</h2>
