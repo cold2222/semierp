@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="jh/css/contract_reg.css">
 </head>
 <body>
-	<!-- 사원 검색용모달 -->
+<!-- 사원 검색용모달 -->
 	<div id="empSearchModal" class="modal-background">
 		<div id="empModal" class="modal-content">
 			<div>
@@ -64,11 +64,11 @@
 							<div class="content1-main">
 								<div class="input-container-date">
 									作成日 <input type="date" readonly="readonly"
-										name="c_created_date" id="c_created_date">
+										name="c_created_date" id="c_created_date" value="${contract.c_created_date }">
 								</div>
 								<div class="content2-main">
 									<div class="input-container-date">
-										納期日 <input type="date" name="c_due_date" required="required">
+										納期日 <input type="date" name="c_due_date" required="required" value="${contract.c_due_date}">
 									</div>
 									<div class="input-container-date2">
 										輸入／販売 <select id="transactionType" name="c_type">
@@ -79,7 +79,7 @@
 								</div>
 							</div>
 							<input type="hidden" name="c_c_no" readonly="readonly"
-								id="selectedValue">
+								id="selectedValue" value="${contract.c_c_no}">
 							<div class="text-input">
 								<div class="text-input-graph">
 									<div>取引先の検索</div>
@@ -88,19 +88,19 @@
 								<div class="text-input-graph2">
 									<div class="input-container">
 										<input readonly="readonly" id="displayName"
-											placeholder="取引先検索" required="required" type="text">
+											placeholder="取引先検索" required="required" type="text" value="${contract.c_name}">
 									</div>
 									<div class="input-container">
 										<input name="e_name" placeholder="社員検索" id="employeeSearch"
-											type="text" readonly="readonly" required="required">
+											type="text" readonly="readonly" required="required" value="${contract.e_name}">
 									</div>
 								</div>
 							</div>
-							<input type="hidden" name="c_e_id" id="e_id" required="required">
+							<input type="hidden" name="c_e_id" id="e_id" required="required" value="${contract.c_e_id}">
 							<div class="input-container"></div>
 						</div>
 
-						<input type="hidden" name="c_status" placeholder="取引状態" value="1">
+						<input type="hidden" name="c_status" placeholder="取引状態" value="${contract.c_status}">
 
 					
 					<div class="contract-reg-main">
@@ -123,6 +123,22 @@
 								<input name="ci_unit_price" placeholder="単価" type="text">
 							</div>
 						</div>
+						<c:forEach var="items" items="${contract.items}">
+						<div style="display: block;" class="bbs-content2">
+							<input name="ci_c_contract_no" type="hidden"> <input
+								type="hidden" name="ci_p_id" class="selectedValueP">
+							<div class="input-container2">
+								<input readonly="readonly" class="displayNameP" type="text"
+									placeholder="アイテム名">
+							</div>
+							<div class="input-container2">
+								<input name="ci_count" placeholder="品の個数" type="text">
+							</div>
+							<div class="input-container2">
+								<input name="ci_unit_price" placeholder="単価" type="text">
+							</div>
+						</div>
+							</c:forEach>
 					</div>
 					<div class="button">
 						<button class="insert-btn" type="button" onclick="addRow()">アイテム欄の追加</button>

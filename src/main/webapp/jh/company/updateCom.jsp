@@ -48,13 +48,13 @@
 						<button class="insert-btn3">保存</button>
 					</div>
 				</form>
-					<c:if test="${param.isSuccess != null }">
-						<div class="insert-btn1">修正完了</div>
-					</c:if>
 				<div class="button" id="editButton">
 					<button class="insert-btn" onclick="toggleEdit()">修正</button>
 					<button class="insert-btn2" onclick="deleteCompany('${c.c_no }')">削除</button>
 				</div>
+					<c:if test="${param.isSuccess != null }">
+						<div class="insert-btn1">修正完了</div>
+					</c:if>
 			</div>
 		</div>
 	</div>
