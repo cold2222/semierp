@@ -57,7 +57,7 @@
 }
 
 .header2-item {
-    color: #FFF; /* 초기 글자 색을 흰색으로 설정 */
+    color: #FFF; 
     height: 100%;
     width: 155px;
     font-size: 26px;
@@ -74,3 +74,10 @@
 .header2-item:hover {
     color: #FFC436; /* 마우스 오버 시 글자 색을 노란색으로 변경 */
 }
+
+#selectedHeader {
+	color: #FFC436;
+}
+
+
+

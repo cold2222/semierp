@@ -15,7 +15,9 @@ public class InWarehousePageC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		InWarehouseDAO.getTwdao().getAll(request);
 		InWarehouseDAO.getTwdao().paging(Integer.parseInt(request.getParameter("pageNum")), request);
-		request.getRequestDispatcher("sj/warehouse/in_warehouse/in_warehouse_interface.jsp").forward(request, response);
+		request.setAttribute("sidebar","sj/sidebar.jsp");
+        request.setAttribute("contentPage","sj/warehouse/in_ex_warehouse/in_ex_board.jsp");
+        request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

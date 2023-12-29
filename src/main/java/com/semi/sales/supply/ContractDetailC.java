@@ -15,6 +15,7 @@ public class ContractDetailC extends HttpServlet {
 	
 	request.setAttribute("contentPage", "jh/contract/contract_output.jsp");
 	request.setAttribute("sidebar", "jh/sidebar.jsp");
+	request.setAttribute("selectedHeader", "contract");
 	request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	}

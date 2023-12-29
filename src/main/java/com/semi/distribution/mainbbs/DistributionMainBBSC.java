@@ -24,6 +24,9 @@ public class DistributionMainBBSC extends HttpServlet {
 		
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/main_bbs/main_bbs.jsp");
+		
+		request.setAttribute("selectedHeader", "distribution");
+		
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 	

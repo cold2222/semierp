@@ -17,6 +17,8 @@ public class CompanyC extends HttpServlet {
 		SupplyComDAO.getSdao().paging(1, request);
 		request.setAttribute("contentPage", "jh/company/supply_company.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		
+		request.setAttribute("selectedHeader", "contract");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 		
 	}

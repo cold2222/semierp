@@ -19,6 +19,7 @@ public class ProductC extends HttpServlet {
 		ProductDAO.getPdao().paging(1, request);
 		request.setAttribute("contentPage", "jh/product/supply_product.jsp");
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
+		request.setAttribute("selectedHeader", "contract");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 	

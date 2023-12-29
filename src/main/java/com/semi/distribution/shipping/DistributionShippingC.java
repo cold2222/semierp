@@ -13,6 +13,7 @@ public class DistributionShippingC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("sidebar","sb/distribution/distribution_sidebar.jsp");
 		request.setAttribute("contentPage","sb/distribution/shipping/shipping.jsp");
+		request.setAttribute("selectedHeader", "distribution");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -12,6 +12,7 @@ public class TestC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TestDAO.getCalendar(request);
+		request.setAttribute("selectedHeader", "distribution");
 		request.getRequestDispatcher(getServletInfo()).forward(request, response);
 	}
 
