@@ -5,7 +5,7 @@ public class WarehouseBoardDTO {
 	
 	private int p_id;
 	private String p_name;
-	private int p_quantity;
+	private String p_quantity;
 	private String p_si;
 	private String p_type;
 	private int p_unicost;
@@ -23,7 +23,7 @@ public class WarehouseBoardDTO {
 	}
 
 
-	public WarehouseBoardDTO(int p_id, String p_name, int p_quantity, String p_si, String p_type, int p_unicost,
+	public WarehouseBoardDTO(int p_id, String p_name, String p_quantity, String p_si, String p_type, int p_unicost,
 			String warehouse_name, String manufacture_name, int stock, String today_date, int warehouse_id,
 			int total_stock, String e_name) {
 		super();
@@ -63,12 +63,12 @@ public class WarehouseBoardDTO {
 	}
 
 
-	public int getP_quantity() {
+	public String getP_quantity() {
 		return p_quantity;
 	}
 
 
-	public void setP_quantity(int p_quantity) {
+	public void setP_quantity(String p_quantity) {
 		this.p_quantity = p_quantity;
 	}
 
@@ -172,6 +172,8 @@ public class WarehouseBoardDTO {
 		this.e_name = e_name;
 	}
 
+
+	
 	
 	
 	

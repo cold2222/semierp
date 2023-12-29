@@ -120,7 +120,7 @@ public class ExWarehouseDAO {
 				exWarehouse.setCi_p_id(rs.getInt("ci_p_id"));
 				exWarehouse.setP_name(rs.getString("p_name"));
 				exWarehouse.setP_type(rs.getString("p_type"));
-				exWarehouse.setP_quantity(rs.getInt("p_quantity"));
+				exWarehouse.setP_quantity(rs.getString("p_quantity"));
 				exWarehouse.setP_si(rs.getString("p_si"));
 				exWarehouse.setCi_count(rs.getInt("ci_count"));
 				exWarehouses.add(exWarehouse);

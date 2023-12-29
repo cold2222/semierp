@@ -128,7 +128,7 @@ public class InWarehouseDAO {
 				t.setCi_p_id(rs.getInt("ci_p_id"));
 				t.setP_name(rs.getString("p_name"));
 				t.setP_type(rs.getString("p_type"));
-				t.setP_quantity(rs.getInt("p_quantity"));
+				t.setP_quantity(rs.getString("p_quantity"));
 				t.setP_si(rs.getString("p_si"));
 				t.setCi_count(rs.getInt("ci_count"));
 				inWarehouse.add(t);

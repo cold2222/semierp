@@ -80,7 +80,7 @@ public class InExWarehouseDAO {
 				String p_name = rs.getString("p_name");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				int quantity = rs.getInt("quantity");
 				String warehouse_date = rs.getString("warehouse_date");
 				String warehouse_type = rs.getString("warehouse_type");
@@ -155,7 +155,7 @@ public class InExWarehouseDAO {
 				String p_name = rs.getString("p_name");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				int quantity = rs.getInt("quantity");
 				String warehouse_date = rs.getString("warehouse_date");
 				String warehouse_type = rs.getString("warehouse_type");
@@ -233,7 +233,7 @@ public class InExWarehouseDAO {
 				String p_name = rs.getString("p_name");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				int quantity = rs.getInt("quantity");
 				String warehouse_date = rs.getString("warehouse_date");
 				String warehouse_type = rs.getString("warehouse_type");
@@ -318,7 +318,7 @@ public class InExWarehouseDAO {
 				String p_name = rs.getString("p_name");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				int quantity = rs.getInt("quantity");
 				String warehouse_date = rs.getString("warehouse_date");
 				String warehouse_type = rs.getString("warehouse_type");

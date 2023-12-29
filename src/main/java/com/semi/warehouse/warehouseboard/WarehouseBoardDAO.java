@@ -127,7 +127,7 @@ public class WarehouseBoardDAO {
 				int p_id = rs.getInt("p_id");
 				String p_name = rs.getString("p_name");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				String p_si = rs.getString("p_si");
 				int p_unicost = rs.getInt("p_unitcost");
 				String manufacture_name = rs.getString("p_manufacturer");
