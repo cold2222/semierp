@@ -91,18 +91,19 @@
 									<div class="bbs-main-text1 bbs-main-title-l">商品名</div>
 									<div class="bbs-main-text1 bbs-main-title-l">タイプ</div>
 									<div class="bbs-main-text1 bbs-main-title-s">単位</div>
+									<div class="bbs-main-text1 bbs-main-title-s">単位量</div>
 									<div class="bbs-main-text1 bbs-main-title-l">メーカー</div>
 									<div class="bbs-main-text1 bbs-main-title-s">単価</div>
 									<div class="bbs-main-text1 bbs-main-title-s">在庫数量</div>
 									<div class="bbs-main-text1 bbs-main-title">現在庫価格</div>
 								</div>
-								<!-- 1줄씩 나타내줄 것들 -->
-								<!-- 입고 데이터 표시 -->
+								<!-- for 문으로 데이터 돌림  -->
 								<c:forEach var="wb" items="${warehouseBoard}" varStatus="loop">
 									<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_name}</div>
 										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_type}</div>
-										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_quantity}${wb.p_si}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_si}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_quantity}</div>
 										<div class="bbs-main-text1 bbs-main-text-l">${wb.manufacture_name}</div>
 										<div class="bbs-main-text1 bbs-main-text-s">
 											<fmt:formatNumber value="${wb.p_unicost}" pattern="￥#,###"  />
