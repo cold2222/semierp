@@ -3,6 +3,8 @@ package com.semi.adminpage.util;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class AdminUtils {
 
 	public static String getCurrentYearMonth() {
@@ -26,5 +28,23 @@ public class AdminUtils {
         // 포맷 적용하여 출력
         String formattedDate = currentDate.format(formatter);
         return formattedDate;
+	}
+	
+	public static String getParamDate(HttpServletRequest request) {
+		String ParamDate = request.getParameter("setDate");
+		if (ParamDate == null || ParamDate.isEmpty()) {
+			ParamDate = AdminUtils.getCurrentDate();
+		}
+		return ParamDate;
+	}
+	
+	public static String getParamYearMonth(HttpServletRequest request) {
+		String ParamDate = request.getParameter("setDate");
+		if (ParamDate == null || ParamDate.isEmpty()) {
+			return getCurrentYearMonth();
+		}
+		String[] dateSplit = ParamDate.split("-");
+		return dateSplit[0] + "-" + dateSplit[1];
+		
 	}
 }

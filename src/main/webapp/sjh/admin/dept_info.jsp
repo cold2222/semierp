@@ -57,76 +57,76 @@
 	<div class="distribution-container">
 	<h2>運送</h2>
 		<div class="col-titles">
-			<div class="col-title distribution1">コード</div>
-			<div class="col-title distribution1">部 署</div>
-			<div class="col-title distribution1">員 数</div>
-			<div class="col-title distribution1">배차대기</div>
-			<div class="col-title distribution1">배차완료</div>
+			<div class="col-title distribution">コード</div>
+			<div class="col-title distribution">部 署</div>
+			<div class="col-title distribution">員 数</div>
+			<div class="col-title distribution">배차대기</div>
+			<div class="col-title distribution">배차완료</div>
 		</div>
 		<div class="col-contents">
-			<div class="col-content distribution1">${distributionDept.d_deptno }</div>
-			<div class="col-content distribution1">${distributionDept.d_dept }</div>
-			<div class="col-content distribution1">${distributionDept.d_count }</div>
-			<div class="col-content distribution1">${distributionDept.d_waiting }</div>
-			<div class="col-content distribution1">${distributionDept.d_allocated }</div>
+			<div class="col-content distribution">${distributionDept.d_deptno }</div>
+			<div class="col-content distribution">${distributionDept.d_dept }</div>
+			<div class="col-content distribution">${distributionDept.d_count }</div>
+			<div class="col-content distribution">${distributionDept.d_waiting }</div>
+			<div class="col-content distribution">${distributionDept.d_allocated }</div>
 		</div>
 		<div class="col-titles margin-top">
-			<div class="col-title distribution2">배차 완료(月)</div>
-			<div class="col-title distribution2">배송 완료(月)</div>
-			<div class="col-title distribution2">만기된 운송</div>
-			<div class="col-title distribution2">만기일</div>
-			<div class="col-title distribution2">운송(日)</div>
-			<div class="col-title distribution2">운송 완료(日)</div>
+			<div class="col-title distribution">배차 완료(月)</div>
+			<div class="col-title distribution">배송 완료(月)</div>
+			<div class="col-title distribution">만기된 운송</div>
+			<div class="col-title distribution">만기일</div>
+			<div class="col-title distribution">운송(日)</div>
+			<div class="col-title distribution">운송 완료(日)</div>
 		</div>
 		<div class="col-contents">
-			<div class="col-content distribution2">${distributionDept.d_allocatedThisMonth }</div>
-			<div class="col-content distribution2">${distributionDept.d_completedThisMonth }</div>
-			<div class="col-content distribution2">${distributionDept.d_expired }</div>
-			<div class="col-content distribution2">${distributionDept.d_dueDate }</div>
-			<div class="col-content distribution2">${distributionDept.d_todayDelivery }</div>
-			<div class="col-content distribution2">${distributionDept.d_todayCompleted }</div>
+			<div class="col-content distribution">${distributionDept.d_allocatedThisMonth }</div>
+			<div class="col-content distribution">${distributionDept.d_completedThisMonth }</div>
+			<div class="col-content distribution">${distributionDept.d_expired }</div>
+			<div class="col-content distribution">${distributionDept.d_dueDate }</div>
+			<div class="col-content distribution">${distributionDept.d_todayDelivery }</div>
+			<div class="col-content distribution">${distributionDept.d_todayCompleted }</div>
 		</div>
 	</div>
 	<div class="warehouse-container">
 	<h2>在庫</h2>
 		<div class="col-titles">
-			<div class="col-title warehouse1">コード</div>
-			<div class="col-title warehouse1">部 署</div>
-			<div class="col-title warehouse1">員 数</div>
-			<div class="col-title warehouse1">상품종류</div>
-			<div class="col-title warehouse1">총가치</div>
-			<div class="col-title warehouse1">재고부족상품</div>
-			<div class="col-title warehouse1">재고초과상품</div>
+			<div class="col-title warehouse">コード</div>
+			<div class="col-title warehouse">部 署</div>
+			<div class="col-title warehouse">員 数</div>
+			<div class="col-title warehouse">상품종류</div>
+			<div class="col-title warehouse">총가치</div>
+			<div class="col-title warehouse">재고부족상품</div>
+			<div class="col-title warehouse">재고초과상품</div>
 		</div>
 		<div class="col-contents">
-			<div class="col-content warehouse1">${warehouseDept.w_deptno }</div>
-			<div class="col-content warehouse1">${warehouseDept.w_dept }</div>
-			<div class="col-content warehouse1">${warehouseDept.w_count }</div>
-			<div class="col-content warehouse1">${warehouseDept.w_products }</div>
-			<div class="col-content warehouse1">${warehouseDept.w_value }</div>
-			<div class="col-content warehouse1">${warehouseDept.w_underMinStock }</div>
-			<div class="col-content warehouse1">${warehouseDept.w_overMaxStock }</div>
+			<div class="col-content warehouse">${warehouseDept.w_deptno }</div>
+			<div class="col-content warehouse">${warehouseDept.w_dept }</div>
+			<div class="col-content warehouse">${warehouseDept.w_count }</div>
+			<div class="col-content warehouse">${warehouseDept.w_products }</div>
+			<div class="col-content warehouse">${warehouseDept.w_value }</div>
+			<div class="col-content warehouse">${warehouseDept.w_underMinStock }</div>
+			<div class="col-content warehouse">${warehouseDept.w_overMaxStock }</div>
 		</div>
 		
 		<div class="col-titles margin-top">
-			<div class="col-title warehouse2">입고완료(月)</div>
-			<div class="col-title warehouse2">입고대기(月)</div>
-			<div class="col-title warehouse2">입고(日)</div>
-			<div class="col-title warehouse2">입고완료(日)</div>
-			<div class="col-title warehouse2">출고완료(月)</div>
-			<div class="col-title warehouse2">출고대기(月)</div>
-			<div class="col-title warehouse2">출고(日)</div>
-			<div class="col-title warehouse2">출고완료(日)</div>
+			<div class="col-title warehouse">입고완료(月)</div>
+			<div class="col-title warehouse">입고대기(月)</div>
+			<div class="col-title warehouse">입고(日)</div>
+			<div class="col-title warehouse">입고완료(日)</div>
+			<div class="col-title warehouse">출고완료(月)</div>
+			<div class="col-title warehouse">출고대기(月)</div>
+			<div class="col-title warehouse">출고(日)</div>
+			<div class="col-title warehouse">출고완료(日)</div>
 		</div>
 		<div class="col-contents">
-			<div class="col-content warehouse2">${warehouseDept.w_stockInCompletedThisMonth }</div>
-			<div class="col-content warehouse2">${warehouseDept.w_watingStockInThisMonth }</div>
-			<div class="col-content warehouse2">${warehouseDept.w_stockInToday }</div>
-			<div class="col-content warehouse2">${warehouseDept.w_stockInCompletedToday }</div>
-			<div class="col-content warehouse2">${warehouseDept.w_stockOutCompletedThisMonth }</div>
-			<div class="col-content warehouse2">${warehouseDept.w_watingStockOutThisMonth }</div>
-			<div class="col-content warehouse2">${warehouseDept.w_stockOutToday }</div>
-			<div class="col-content warehouse2">${warehouseDept.w_stockOutCompletedToday }</div>
+			<div class="col-content warehouse">${warehouseDept.w_stockInCompletedThisMonth }</div>
+			<div class="col-content warehouse">${warehouseDept.w_watingStockInThisMonth }</div>
+			<div class="col-content warehouse">${warehouseDept.w_stockInToday }</div>
+			<div class="col-content warehouse">${warehouseDept.w_stockInCompletedToday }</div>
+			<div class="col-content warehouse">${warehouseDept.w_stockOutCompletedThisMonth }</div>
+			<div class="col-content warehouse">${warehouseDept.w_watingStockOutThisMonth }</div>
+			<div class="col-content warehouse">${warehouseDept.w_stockOutToday }</div>
+			<div class="col-content warehouse">${warehouseDept.w_stockOutCompletedToday }</div>
 		</div>
 </body>
 </html>

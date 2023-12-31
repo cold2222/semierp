@@ -15,19 +15,19 @@
 			<hr style="margin: 50px 30px 0px 30px;">
 			<div class="side-menu-items">
 				<div class="side-menu-item" onclick="location.href=''">
-					<img class="side-menu-icon" src="files/sjh/adminpage/notice_white.png">&nbsp;&nbsp;お知らせ
+					<img class="side-menu-icon" src="files/sjh/adminpage/notice_white.png">&nbsp;&nbsp;<span class="side-menu-text">お知らせ</span>
 				</div>
 				<div class="side-menu-item" ${selectedPage == 'staff' ? 'id="selected"' : ''} onclick="location.href='StaffC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/staff_white.png">&nbsp;&nbsp;社員一覽
+					<img class="side-menu-icon" src="files/sjh/adminpage/staff_white.png">&nbsp;&nbsp;<span class="side-menu-text">社員一覽</span>
 				</div>
 				<div class="side-menu-item" ${selectedPage == 'dept' ? 'id="selected"' : ''} onclick="location.href='DeptC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/depart_white.png">&nbsp;&nbsp;部署一覽
+					<img class="side-menu-icon" src="files/sjh/adminpage/depart_white.png">&nbsp;&nbsp;<span class="side-menu-text">部署一覽</span>
 				</div>
 				<div class="side-menu-item" ${selectedPage == 'import' ? 'id="selected"' : ''} onclick="location.href='ImportDeptC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;輸入事業部
+					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;<span class="side-menu-text">輸入事業部</span> 
 				</div>
-				<div class="side-menu-item" ${selectedPage == 'import' ? 'id="selected"' : ''} onclick="location.href='DeptC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;輸入事業部
+				<div class="side-menu-item" ${selectedPage == 'sales' ? 'id="selected"' : ''} onclick="location.href='SalesDeptC'">
+					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;<span class="side-menu-text">販売営業部</span>
 				</div>
 			</div>
 		</div>

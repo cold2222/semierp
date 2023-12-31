@@ -30,9 +30,8 @@ body {
 	justify-content: center;
 	color: white;
 	font-size: 30px;
-	line-height: 30px;
 	text-align: left;
-	margin-top: 35px;
+ 	margin-top: 20px; 
 }
 
 .side-menu-icon {
@@ -116,4 +115,7 @@ body {
 
 #selected{
 	color: #FFD700;
+} 
+.side-menu-text{
+
 }
