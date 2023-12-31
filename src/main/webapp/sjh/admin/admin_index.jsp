@@ -23,11 +23,11 @@
 				<div class="side-menu-item" ${selectedPage == 'dept' ? 'id="selected"' : ''} onclick="location.href='DeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/depart_white.png">&nbsp;&nbsp;<span class="side-menu-text">部署一覽</span>
 				</div>
-				<div class="side-menu-item" ${selectedPage == 'import' ? 'id="selected"' : ''} onclick="location.href='ImportDeptC'">
+				<div class="side-menu-item" ${selectedPage == 'importDept' ? 'id="selected"' : ''} onclick="location.href='ImportDeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;<span class="side-menu-text">輸入事業部</span> 
 				</div>
-				<div class="side-menu-item" ${selectedPage == 'sales' ? 'id="selected"' : ''} onclick="location.href='SalesDeptC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;<span class="side-menu-text">販売営業部</span>
+				<div class="side-menu-item" ${selectedPage == 'salesDept' ? 'id="selected"' : ''} onclick="location.href='SalesDeptC'">
+					<img class="side-menu-icon" src="files/sjh/adminpage/sales_white.png">&nbsp;&nbsp;<span class="side-menu-text">販売営業部</span>
 				</div>
 			</div>
 		</div>

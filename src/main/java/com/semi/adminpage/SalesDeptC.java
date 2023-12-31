@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.semi.adminpage.dept.DeptDAO;
 import com.semi.login.EmployeeDAO;
 
-@WebServlet("/ImportDeptC")
-public class ImportDeptC extends HttpServlet {
+@WebServlet("/SalesDeptC")
+public class SalesDeptC extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getContractDeptInfo(request, 1);
-				
-				request.setAttribute("selectedPage", "importDept");
-				request.setAttribute("contentPage", "import_dept_info.jsp");
+				DeptDAO.getContractDeptInfo(request, 2);
+				request.setAttribute("selectedPage", "salesDept");
+				request.setAttribute("contentPage", "sales_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);
@@ -26,8 +26,8 @@ public class ImportDeptC extends HttpServlet {
 		else 
 			response.sendRedirect("Login"); 
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

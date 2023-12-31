@@ -2,7 +2,8 @@
 
 .content_title {
 	display:flex;
-	font-size: 24px;
+	font-size: 26px;
+	font-weight: 600;
 	justify-content: space-between;
 }
 
