@@ -29,6 +29,9 @@
 				<div class="side-menu-item" ${selectedPage == 'salesDept' ? 'id="selected"' : ''} onclick="location.href='SalesDeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/sales_white.png">&nbsp;&nbsp;<span class="side-menu-text">販売営業部</span>
 				</div>
+				<div class="side-menu-item" ${selectedPage == 'distributionDept' ? 'id="selected"' : ''} onclick="location.href='DistributionDeptC'">
+					<img class="side-menu-icon" src="files/sjh/adminpage/distribution_white.png">&nbsp;&nbsp;<span class="side-menu-text">運送部</span>
+				</div>
 			</div>
 		</div>
 		<div class="left-area">

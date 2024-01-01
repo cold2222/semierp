@@ -13,7 +13,7 @@ import com.semi.distribution.db.DBManger;
 import com.semi.login.Encrypt;
 
 public class StaffDAO {
-
+	// 직원 일관 페이지 직원'들' 정보
 	public static void getStaffsInfo(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -46,7 +46,8 @@ public class StaffDAO {
 			System.out.println("getStaffsInfo");
 			
 			// 페이징
-	        AdminUtils.setPaging(request, staffsInfo, 15);
+	        request.setAttribute("staffsInfo", AdminUtils.setPaging(request, staffsInfo, 15));
+			
 	        
 	        	
 
@@ -58,7 +59,7 @@ public class StaffDAO {
 		}
 
 	}
-
+	// 직원 개인 정보
 	public static void getStaffInfo(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -100,6 +101,7 @@ public class StaffDAO {
 
 	}
 
+	// 직원 정보 수정
 	public static void modifyStaff(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -131,7 +133,8 @@ public class StaffDAO {
 		
 		
 	}
-
+	
+	// 직원의 로그인 비밀번호를 아이디와 같은 값으로 초기화
 	public static void resetPW(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -154,7 +157,8 @@ public class StaffDAO {
 			request.setAttribute("error", "DBFail");
 		}
 	}
-
+	
+	// 직원 등록(로그인 비밀 번호 자신의 아이디 값으로 초기화)
 	public static void staffReg(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -185,6 +189,8 @@ public class StaffDAO {
 		
 	}
 	
+	// 계약관련 부서 스테프들의 정보 반환 c_type값 1일 경우 수입, 2일 경우 수출
+	// input 파라미터로 날자값 받아서 월을 기준으로 통계값 반환
 	public static void getContractStaffsInfo(HttpServletRequest request, int c_type) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -222,16 +228,14 @@ public class StaffDAO {
 				tempContractStaffInfo.setCs_thisMonthContract(rs.getInt(6));
 				tempContractStaffInfo.setCs_thisMonthProduct(rs.getInt(7));
 				tempContractStaffInfo.setCs_thisMonthTotalPrice(rs.getInt(8));
-				System.out.println(tempContractStaffInfo);
 				
 				contractStaffsInfo.add(tempContractStaffInfo);
 			}
 			
 			
 			
-			request.setAttribute("contractStaffsInfo", contractStaffsInfo);
+			request.setAttribute("contractStaffsInfo", AdminUtils.setPaging(request, contractStaffsInfo, 10));
 			System.out.println("getContractStaffsInfo");
-			AdminUtils.setPaging(request, contractStaffsInfo, 10);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("error", "DBFail");
@@ -241,6 +245,10 @@ public class StaffDAO {
 	
 		
 		
+		
+	}
+	public static void getDistributionStaffsInfo(HttpServletRequest request) {
+		// TODO Auto-generated method stub
 		
 	}
 

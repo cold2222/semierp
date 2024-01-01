@@ -5,11 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/sjh/admin/dept_info.css">
-<script type="text/javascript" src="js/sjh/admin/utils/input_date_init.js"></script>
+<script type="text/javascript"
+	src="js/sjh/admin/utils/input_date_init.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="content_title"><div>部署</div><div></div><div class="date">日付 : <input type="date" id="dateInput" name="setDate" required onchange="redirectToServlet('DeptC')"></div></div>
+	<div class="content_title">
+		<div>部署</div>
+		<div></div>
+		<div class="date">
+			日付 : <input type="date" id="dateInput" name="setDate" required
+				onchange="redirectToServlet('DeptC')">
+		</div>
+	</div>
 	<hr>
 	<div class="contract-container">
 		<h2>輸入/販売</h2>
@@ -55,7 +63,7 @@
 		</div>
 	</div>
 	<div class="distribution-container">
-	<h2>運送</h2>
+		<h2>運送</h2>
 		<div class="col-titles">
 			<div class="col-title distribution">コード</div>
 			<div class="col-title distribution">部 署</div>
@@ -88,7 +96,7 @@
 		</div>
 	</div>
 	<div class="warehouse-container">
-	<h2>在庫</h2>
+		<h2>在庫</h2>
 		<div class="col-titles">
 			<div class="col-title warehouse">コード</div>
 			<div class="col-title warehouse">部 署</div>
@@ -107,7 +115,7 @@
 			<div class="col-content warehouse">${warehouseDept.w_underMinStock }</div>
 			<div class="col-content warehouse">${warehouseDept.w_overMaxStock }</div>
 		</div>
-		
+
 		<div class="col-titles margin-top">
 			<div class="col-title warehouse">입고완료(月)</div>
 			<div class="col-title warehouse">입고대기(月)</div>
@@ -128,5 +136,6 @@
 			<div class="col-content warehouse">${warehouseDept.w_stockOutToday }</div>
 			<div class="col-content warehouse">${warehouseDept.w_stockOutCompletedToday }</div>
 		</div>
+	</div>
 </body>
 </html>

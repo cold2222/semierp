@@ -13,6 +13,7 @@ import com.semi.adminpage.util.AdminUtils;
 import com.semi.distribution.db.DBManger;
 
 public class DeptDAO {
+	// 부서 테이블 정보(부서 코드, 부서 이름)
 	public static void getDepts(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -45,7 +46,8 @@ public class DeptDAO {
 		}
 
 	}
-
+	
+	// 부서 정보(부서 코드, 부서이름, 소속 인원수)
 	public static void getDeptsInfo(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -77,7 +79,8 @@ public class DeptDAO {
 		}
 
 	}
-
+	
+	// 계약관련 부서 정보(c_type = 1 수입부서 정보 c_type = 2 판매 부서 정보 날짜(월)에 따른 통계 데이터 함)
 	public static void getContractDeptInfo(HttpServletRequest request, int c_type) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -137,6 +140,7 @@ public class DeptDAO {
 		}
 	}
 	
+	// 유통(운송) 부서정보 월과 일별 통계 데이터 포함
 	public static void getDistributionDeptInfo(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -198,6 +202,7 @@ public class DeptDAO {
 		}
 	}
 	
+	// 창고부서 정보 In, Out 각각을 월 일 데이터로 
 	public static void getWarehouseDeptInfo(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
