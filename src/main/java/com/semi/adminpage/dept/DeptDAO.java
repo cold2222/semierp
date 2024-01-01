@@ -182,14 +182,14 @@ public class DeptDAO {
 				distributionDept.setD_deptno(rs.getInt(1));
 				distributionDept.setD_dept(rs.getString(2));
 				distributionDept.setD_count(rs.getInt(3));
-				distributionDept.setD_waiting(4);
-				distributionDept.setD_allocated(5);
-				distributionDept.setD_allocatedThisMonth(6);
-				distributionDept.setD_completedThisMonth(7);
+				distributionDept.setD_waiting(rs.getInt(4));
+				distributionDept.setD_allocated(rs.getInt(5));
+				distributionDept.setD_allocatedThisMonth(rs.getInt(6));
+				distributionDept.setD_completedThisMonth(rs.getInt(7));
 				distributionDept.setD_expired(rs.getInt(8));
 				distributionDept.setD_dueDate(rs.getInt(9));
-				distributionDept.setD_todayDelivery(10);
-				distributionDept.setD_todayCompleted(11);
+				distributionDept.setD_todayDelivery(rs.getInt(10));
+				distributionDept.setD_todayCompleted(rs.getInt(11));
 				
 				request.setAttribute("distributionDept", distributionDept);
 			}

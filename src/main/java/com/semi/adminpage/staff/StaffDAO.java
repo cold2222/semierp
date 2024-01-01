@@ -251,5 +251,40 @@ public class StaffDAO {
 		// TODO Auto-generated method stub
 		
 	}
+	public static void getWarehouseStffsInfo(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<WarehouseStaffDTO> warehouseStaffsInfo = new ArrayList<WarehouseStaffDTO>();
+		String sql = "select e_no as ds_no, e_name as ds_name, e_rank as ds_rank, e_tel as ds_tel, e_email as ds_email  from employee where e_deptno=202 order by ds_no";
+		
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				WarehouseStaffDTO tempWarehouseStaffInfo = new WarehouseStaffDTO();
+				tempWarehouseStaffInfo.setWs_no(rs.getInt(1));
+				tempWarehouseStaffInfo.setWs_name(rs.getString(2));
+				tempWarehouseStaffInfo.setWs_rank(rs.getString(3));
+				tempWarehouseStaffInfo.setWs_tel(rs.getString(4));
+				tempWarehouseStaffInfo.setWs_email(rs.getNString(5));
+				warehouseStaffsInfo.add(tempWarehouseStaffInfo);
+			}
+			
+			// 페이징
+	        request.setAttribute("warehouseStaffsInfo", AdminUtils.setPaging(request, warehouseStaffsInfo, 5));       
+	        	
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("error", "DBFail");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+
+	}
+		
+	
 
 }

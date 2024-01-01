@@ -26,12 +26,13 @@
 	border-collapse: collapse;
 	text-align: center;
 }
+ 
 
-.row-content > input{
+.row-content>input {
 	text-align: center;
 }
 
-.row-btn{
+.row-btn {
 	display: flex;
 	justify-content: space-between;
 	width: 354px;
@@ -39,20 +40,20 @@
 	height: 40px;
 }
 
-.reg-btn{
+.reg-btn {
 	display: block;
 	background-color: skyblue;
 	color: white;
 }
 
-.row-btn-left{
+.row-btn-left {
 	display: flex;
 }
 
-.btn{
+.btn {
 	width: 80px;
 	font-size: 16px;
 	font-weight: 500;
 	border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

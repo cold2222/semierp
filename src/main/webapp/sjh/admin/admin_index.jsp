@@ -33,7 +33,7 @@
 					<img class="side-menu-icon" src="files/sjh/adminpage/distribution_white.png">&nbsp;&nbsp;<span class="side-menu-text">運送部</span>
 				</div>
 				<div class="side-menu-item" ${selectedPage == 'warehouseDept' ? 'id="selected"' : ''} onclick="location.href='WarehouseDeptC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/distribution_white.png">&nbsp;&nbsp;<span class="side-menu-text">運送部</span>
+					<img class="side-menu-icon" src="files/sjh/adminpage/warehouse_white.png">&nbsp;&nbsp;<span class="side-menu-text">倉庫管理部</span>
 				</div>
 			</div>
 		</div>

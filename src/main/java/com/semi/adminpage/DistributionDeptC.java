@@ -18,7 +18,7 @@ public class DistributionDeptC extends HttpServlet {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				DeptDAO.getDistributionDeptInfo(request);
 				StaffDAO.getDistributionStaffsInfo(request);
-				request.setAttribute("selectedPage", "distribution");
+				request.setAttribute("selectedPage", "distributionDept");
 				request.setAttribute("contentPage", "distribution_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else

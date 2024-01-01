@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="content_title">
-		<div>運送</div>
+		<div>倉庫</div>
 		<div></div>
 		<div class="date">
 			日付 : <input type="date" id="dateInput" name="setDate" required
@@ -60,6 +60,47 @@
 			<div class="col-content warehouse">${warehouseDept.w_watingStockOutThisMonth }</div>
 			<div class="col-content warehouse">${warehouseDept.w_stockOutToday }</div>
 			<div class="col-content warehouse">${warehouseDept.w_stockOutCompletedToday }</div>
+		</div>
+	</div>
+	<hr>
+	<div class="Staff_container">
+		<div class="col-titles">
+			<div class="col-title-item">社員番号</div>
+			<div class="col-title-item">お名前</div>
+			<div class="col-title-item">職 級</div>
+			<div class="col-title-item">Tel</div>
+			<div class="col-title-item col-long">E-Mail</div>
+		</div>
+		<c:forEach var="warehouseStaffInfo" items="${warehouseStaffsInfo}">
+			<div class="col-contents">
+				<div class="col-content-item">${warehouseStaffInfo.ws_no }</div>
+				<div class="col-content-item">${warehouseStaffInfo.ws_name}</div>
+				<div class="col-content-item">${warehouseStaffInfo.ws_rank }</div>
+				<div class="col-content-item">${warehouseStaffInfo.ws_tel}</div>
+				<div class="col-content-item col-long">${warehouseStaffInfo.ws_email }</div>
+			</div>
+		</c:forEach>
+		<div class="btn-area">
+			<div></div>
+			<div class="btn-area-mid">
+				<c:if test="${currentPage != 1 }">
+					<button class="idx-btn"
+						onclick="location.href='WarehouseDeptC?pageNo=${currentPage - 1}&setDate=${param.setDate}'">
+						prev</button>
+				</c:if>
+				<c:forEach var="index" items="${indexList}">
+					<c:if test="${index ne 0}">
+						<button class="idx-btn"
+							onclick="location.href='WarehouseDeptC?pageNo=${index}&setDate=${param.setDate}'">${index}</button>
+					</c:if>
+				</c:forEach>
+				<c:if test="${currentPage != lastPage }">
+					<button class="idx-btn"
+						onclick="location.href='WarehouseDeptC?pageNo=${currentPage + 1}&setDate=${param.setDate}'">
+						next</button>
+				</c:if>
+			</div>
+			<div></div>
 		</div>
 	</div>
 
