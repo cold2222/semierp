@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.adminpage.dept.DeptDAO;
+import com.semi.adminpage.staff.StaffDAO;
 import com.semi.login.EmployeeDAO;
 
 @WebServlet("/SalesDeptC")
@@ -17,6 +18,7 @@ public class SalesDeptC extends HttpServlet {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				DeptDAO.getContractDeptInfo(request, 2);
+				StaffDAO.getContractStaffsInfo(request, 2);
 				request.setAttribute("selectedPage", "salesDept");
 				request.setAttribute("contentPage", "sales_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
@@ -27,7 +29,6 @@ public class SalesDeptC extends HttpServlet {
 			response.sendRedirect("Login"); 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

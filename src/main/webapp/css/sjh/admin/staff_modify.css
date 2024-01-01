@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-.content_title {
-	font-size: 24px;
-}
+
 
 .row {
 	display: flex;
@@ -31,46 +29,47 @@
 	text-align: center;
 }
 
-.row-content > input{
+.row-content>input {
 	text-align: center;
 }
 
-.row-btn{
+.row-btn {
 	display: flex;
 	justify-content: space-between;
 	width: 404px;
 	margin-top: 5px;
 	height: 40px;
 }
-.pw-btn{
+
+.pw-btn {
 	display: block;
 	background-color: red;
 	color: white;
 }
-.reg-btn{
+
+.reg-btn {
 	display: block;
 	background-color: skyblue;
 	color: white;
 }
 
-.row-btn-left{
+.row-btn-left {
 	display: flex;
 }
 
-.btn{
+.btn {
 	width: 80px;
 	font-size: 16px;
 	font-weight: 600;
 	border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.check-btn{
+.check-btn {
 	width: 120px;
-	height : 50px;
+	height: 50px;
 	font-size: 16px;
 	font-weight: 600;
 	border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-

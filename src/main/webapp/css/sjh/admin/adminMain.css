@@ -116,6 +116,9 @@ body {
 #selected{
 	color: #FFD700;
 } 
-.side-menu-text{
-
+.content_title {
+	display:flex;
+	font-size: 26px;
+	font-weight: 600;
+	justify-content: space-between;
 }

@@ -12,26 +12,26 @@
 	<div class="content_title">社員</div>
 	<hr>
 	<div class="dept_container">
-		<div class="row-title">
+		<div class="row-titles">
 			<div class="row-title-item">部 署</div>
 			<div class="row-title-item">コード</div>
 			<div class="row-title-item">員 数</div>
 		</div>
 		<c:forEach var="dept" items="${deptsInfo}">
-			<div class="row-content">
+			<div class="row-contents">
 				<div class="row-content-item">${dept.d_dept}</div>
 				<div class="row-content-item">${dept.d_deptno}</div>
 				<div class="row-content-item">${dept.d_count}</div>
 			</div>
 		</c:forEach>
-		<div class="row-content">
+		<div class="row-contents">
 			<div class="row-content-item">社員</div>
 			<div class="row-content-item">-</div>
 			<div class="row-content-item">${staffSum}</div>
 		</div>
 	</div>
 	<div class="Staff_container">
-		<div class="col-title">
+		<div class="col-titles">
 			<div class="col-title-item col-deptno">コード</div>
 			<div class="col-title-item">部 署</div>
 			<div class="col-title-item">社員番号</div>
@@ -43,7 +43,7 @@
 			<div class="col-title-item button">修 正</div>
 		</div>
 		<c:forEach var="staff" items="${staffsInfo}">
-			<div class="col-content">
+			<div class="col-contents">
 				<div class="col-content-item col-deptno">${staff.e_deptno }</div>
 				<div class="col-content-item">${staff.e_dept }</div>
 				<div class="col-content-item">${staff.e_no }</div>

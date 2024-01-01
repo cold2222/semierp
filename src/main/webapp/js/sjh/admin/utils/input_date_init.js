@@ -24,10 +24,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('dateInput').value = initialDate;
 });
 
-function redirectToServlet(servlet) {
+function redirectToServlet(servlet, pageNo) {
             // 날짜 입력 필드의 값 가져오기
             var selectedDate = document.getElementById('dateInput').value;
+            
+            if(pageNo != null & pageNo != ""){
+				pageNo = "&pageNo="+pageNo;
+			} else {
+				pageNo="";
+			}
 
             // 서블릿으로 이동
-            location.href = servlet+'?setDate=' + encodeURIComponent(selectedDate);
+            location.href = servlet+'?setDate=' + encodeURIComponent(selectedDate)+pageNo;
         }

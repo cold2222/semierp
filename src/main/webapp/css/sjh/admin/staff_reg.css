@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-
-
-.content_title {
-	font-size: 24px;
-}
-
 .row {
 	display: flex;
 }
