@@ -94,5 +94,11 @@
 	
 }
 .idx-btn{
-	height: 30px;
+	height: 24px;
+	background-color: #140652;
+	color: white;
+	border-radius: 3px;
+}
+.colorGold{
+	color: #FFD700;
 }

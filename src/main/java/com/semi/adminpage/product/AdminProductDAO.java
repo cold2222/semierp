@@ -38,9 +38,7 @@ public class AdminProductDAO {
 				+ "    (SELECT p_id AS s_p_id, SUM(rm_stock) AS s_stock FROM stock GROUP BY p_id) s\r\n"
 				+ "ON \r\n"
 				+ "    p.p_id = s.s_p_id\r\n"
-				+ "order by p_check desc, p_id;\r\n"
-				+ "\r\n"
-				+ "SELECT p_id AS s_p_id, SUM(rm_stock) AS s_stock FROM stock GROUP BY p_id";
+				+ "order by p_check desc, p_id";
 
 		try {
 			con = DBManger.connect();
@@ -61,6 +59,7 @@ public class AdminProductDAO {
 						rs.getInt(11));
 				
 				productsInfo.add(tempProductDTO);
+				System.out.println(tempProductDTO);
 			}
 
 			// 페이징

@@ -17,7 +17,7 @@
 		<div></div>
 		<div class="date">
 			日付 : <input type="date" id="dateInput" name="setDate" required
-				onchange="redirectToServlet('DistributionDeptC','${param.pageNo }')">
+				onchange="redirectToServletWithTowPaging('WarehouseDeptC','${param.pageNo1 }', '${param.pageNo1 }')">
 		</div>
 	</div>
 	<hr>
@@ -63,6 +63,7 @@
 		</div>
 	</div>
 	<hr>
+	<div class="tableName"> - 社員 - </div>
 	<div class="staff_container">
 		<div class="staffInfoArea">
 			<div class="col-titles">
@@ -86,19 +87,19 @@
 			<div></div>
 			<div class="btn-area-mid">
 				<c:if test="${currentPage1 != 1 }">
-					<button class="idx-btn"
-						onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1 - 1}&setDate=${param.setDate}&pageNo2=${currentPage2 - 1}'">
+					<button class="idx-btn colorGold"
+						onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1 - 1}&setDate=${param.setDate}&pageNo2=${currentPage2}'">
 						prev</button>
 				</c:if>
 				<c:forEach var="index" items="${indexList1}">
 					<c:if test="${index ne 0}">
-						<button class="idx-btn"
-							onclick="location.href='WarehouseDeptC?pageNo1=${index}&setDate=${param.setDate}&pageNo2=${currentPage2 - 1}'">${index}</button>
+						<button class="idx-btn ${currentPage1 == index ? 'colorGold' : ''}"
+							onclick="location.href='WarehouseDeptC?pageNo1=${index}&setDate=${param.setDate}&pageNo2=${currentPage2}'">${index}</button>
 					</c:if>
 				</c:forEach>
 				<c:if test="${currentPage1 != lastPage1 }">
-					<button class="idx-btn"
-						onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1 + 1}&setDate=${param.setDate}&pageNo2=${currentPage2 - 1}'">
+					<button class="idx-btn colorGold"
+						onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1 + 1}&setDate=${param.setDate}&pageNo2=${currentPage2}'">
 						next</button>
 				</c:if>
 			</div>
@@ -106,6 +107,51 @@
 		</div>
 	</div>
 	<hr>
+	<div class="tableName">- 商品 -</div>
+	<div class="product_container">
+		<div class="productInfoArea">
+			<div class="col-titles">
+				<div class="col-title-item col-short">番号</div>
+				<div class="col-title-item">商品名</div>
+				<div class="col-title-item col-long">情報</div>
+				<div class="col-title-item">ストック【Min, Max】</div>
+				<div class="col-title-item">コスト【総合】</div>
+				<div class="col-title-item">メーカー</div>
+			</div>
+			<c:forEach var="productInfo" items="${productsInfo }">
+				<div class="col-contents">
+					<div class="col-content-item col-short">${productInfo.p_id }</div>
+					<div class="col-content-item">${productInfo.p_name}</div>
+					<div class="col-content-item col-long">${productInfo.p_type } ${productInfo.p_si } ${productInfo.p_quantity }</div>
+					<div class="col-content-item">${productInfo.p_stock }【${productInfo.p_minStock }, ${productInfo.p_maxStock }】</div>
+					<div class="col-content-item">${productInfo.p_unitCost}【${productInfo.p_unitCost * productInfo.p_stock }】</div>
+					<div class="col-content-item">${productInfo.p_manufacturer}</div>
+				</div>
+			</c:forEach>
+		</div>
+		<div class="btn-area">
+			<div></div>
+			<div class="btn-area-mid">
+				<c:if test="${currentPage2 != 1 }">
+					<button class="idx-btn colorGold"
+						onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1}&setDate=${param.setDate}&pageNo2=${currentPage2 - 1}'">
+						prev</button>
+				</c:if>
+				<c:forEach var="index" items="${indexList2}">
+					<c:if test="${index ne 0}">
+						<button class="idx-btn ${currentPage2 == index ? 'colorGold' : ''}"
+							onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1}&setDate=${param.setDate}&pageNo2=${index}'">${index}</button>
+					</c:if>
+				</c:forEach>
+				<c:if test="${currentPage2 != lastPage2 }">
+					<button class="idx-btn colorGold"
+						onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1}&setDate=${param.setDate}&pageNo2=${currentPage2 + 1}'">
+						next</button>
+				</c:if>
+			</div>
+			<div></div>
+		</div>
+	</div>
 
 </body>
 </html>

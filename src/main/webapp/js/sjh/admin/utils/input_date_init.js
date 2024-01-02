@@ -37,3 +37,21 @@ function redirectToServlet(servlet, pageNo) {
             // 서블릿으로 이동
             location.href = servlet+'?setDate=' + encodeURIComponent(selectedDate)+pageNo;
         }
+function redirectToServletWithTowPaging(servlet, pageNo1, pageNo2) {
+            // 날짜 입력 필드의 값 가져오기
+            var selectedDate = document.getElementById('dateInput').value;
+            
+            if(pageNo1 != null & pageNo1 != ""){
+				pageNo1 = "&pageNo1="+pageNo1;
+			} else {
+				pageNo1="";
+			}
+			if(pageNo2 != null & pageNo2 != ""){
+				pageNo2 = "&pageNo2="+pageNo2;
+			} else {
+				pageNo2="";
+			}
+
+            // 서블릿으로 이동
+            location.href = servlet+'?setDate=' + encodeURIComponent(selectedDate)+ pageNo1 + pageNo2;
+        }

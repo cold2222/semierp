@@ -62,19 +62,19 @@
 			<div></div>
 			<div class="btn-area-mid">
 				<c:if test="${currentPage != 1 }">
-					<button class="idx-btn"
+					<button class="idx-btn colorGold"
 						onclick="location.href='StaffC?pageNo=${currentPage - 1}'">
 						prev
 					</button>
 				</c:if>
 				<c:forEach var="index" items="${indexList}">
 					<c:if test="${index ne 0}">
-						<button class="idx-btn"
+						<button class="idx-btn ${currentPage == index ? 'colorGold' : ''}"
 							onclick="location.href='StaffC?pageNo=${index}'">${index}</button>
 					</c:if>
 				</c:forEach>
 				<c:if test="${currentPage != lastPage }">
-					<button class="idx-btn"
+					<button class="idx-btn colorGold"
 						onclick="location.href='StaffC?pageNo=${currentPage + 1}'">
 						next
 					</button>

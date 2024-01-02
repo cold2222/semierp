@@ -23,7 +23,7 @@
 }
 
 .staffInfoArea{
-	height: 210px;
+	height: 190px;
 }
 
 
@@ -40,7 +40,7 @@
 
 .col-title-item {
 	display: block;
-	width: 18%;
+	width: 20%;
 	font-size: 20px;
 	height: 30px;
 	border: 1px solid white; 
@@ -56,16 +56,22 @@
 }
 .col-content-item{
 	display: block;
-	width: 18%;
+	width: 20%;
 	font-size: 18px;
 	height: 30px;
 	border: 0.5px solid black; 
 	border-collapse: collapse;
 	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 	
 }
 .col-long{
  	width: 28%; 
+}
+.col-short{
+	width: 7%;
 }
 
 .button{
@@ -79,5 +85,17 @@
 
 
 .idx-btn{
-	height: 30px;
+	height: 24px;
+	background-color: #140652;
+	color: white;
+	border-radius: 3px;
+}
+.colorGold{
+	color: #FFD700;
+}
+.tableName{
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 5px;
+
 }
