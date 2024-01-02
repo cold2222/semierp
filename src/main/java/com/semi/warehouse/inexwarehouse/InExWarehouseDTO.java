@@ -6,7 +6,7 @@ public class InExWarehouseDTO {
 	private String p_name;
 	private String p_si;
 	private String p_type;
-	private int p_quantity;
+	private String p_quantity;
 	private int quantity;
 	private String warehouse_date;
 	private String warehouse_type;
@@ -17,7 +17,7 @@ public class InExWarehouseDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public InExWarehouseDTO(int p_id, String p_name, String p_si, String p_type, int p_quantity, int quantity,
+	public InExWarehouseDTO(int p_id, String p_name, String p_si, String p_type, String p_quantity, int quantity,
 			String warehouse_date, String warehouse_type, int warehouse_id, String warehouse_name) {
 		super();
 		this.p_id = p_id;
@@ -64,11 +64,11 @@ public class InExWarehouseDTO {
 		this.p_type = p_type;
 	}
 
-	public int getP_quantity() {
+	public String getP_quantity() {
 		return p_quantity;
 	}
 
-	public void setP_quantity(int p_quantity) {
+	public void setP_quantity(String p_quantity) {
 		this.p_quantity = p_quantity;
 	}
 
@@ -112,6 +112,8 @@ public class InExWarehouseDTO {
 		this.warehouse_name = warehouse_name;
 	}
 
+	
+	
 	
 	
 	

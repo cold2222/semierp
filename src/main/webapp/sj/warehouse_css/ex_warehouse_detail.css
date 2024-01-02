@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@charset "UTF-8";
 /* 검색 */
 .search-container {
     text-align: right;
@@ -87,7 +88,6 @@
 .bbs-main{
 	display: flex;
 	margin-left: 10px;
-	
 }
 .bbs-main-title{
 	font-weight: bold;
@@ -95,7 +95,6 @@
 	padding : 5px;
 	font-size: 20px;
 	height: 40px;
-	border-bottom: 1px solid black;
 	width: 33%;
 	display: flex;
 	justify-content: center;
@@ -111,10 +110,15 @@
 	justify-content: center;
 	align-items: center;
 }
+
+/*
 .bbs-main-text button{
 	padding: 5px 5px;
 	font-size: 18px;
-}
+} 
+*/
+
+
 .paging {
 	margin-top: 20px;
 	text-align: center;
@@ -155,7 +159,7 @@
 
 
 .bbs-main-text1 input {
-    border: none;
+    border: none; 
     text-align: center; 
     outline: none; 
     font-size: 16px;
@@ -165,36 +169,164 @@
     width: auto; /* 너비 조절 */
 }
 
-
-
-.detail-button {
-    display: inline-block;
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.bbs-main-text2 select {
+    text-align: center; 
+    outline: none; 
+    font-size: 16px;
+    width: 100px; /* 너비 조절 */
 }
 
-.detail-button:hover {
+
+.bbs-main-text2 input {
+    border: none;
+    text-align: center; 
+    font-size: 14px;
+    height: 35px; /* 원하는 높이로 조절 */
+}
+
+.input-s {
+    width: 80px; /* 너비 조절 */
+	
+}
+
+.input-l {
+    width: 200px; /* 너비 조절 */
+	
+}
+
+
+
+.bbs-main-text-a{
+	padding : 5px;
+	font-size: 18px;
+	height: 40px;
+	width: 46%;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+
+
+.bbs-main-title-s{
+	font-weight: bold;
+	border-bottom: 2px solid black;
+	border-top: 3px solid black;
+	padding : 5px;
+	font-size: 20px;
+	height: 40px;
+	width: 25%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.bbs-main-text-s{
+	padding : 5px;
+	font-size: 18px;
+	height: 40px;
+	border-bottom: 1px solid black;
+	width: 25%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.bbs-main-title-l{
+	font-weight: bold;
+	border-bottom: 2px solid black;
+	border-top: 3px solid black;
+	padding : 5px;
+	font-size: 20px;
+	height: 40px;
+	width: 46%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.bbs-main-text-l{
+	padding : 5px;
+	font-size: 18px;
+	height: 40px;
+	border-bottom: 1px solid black;
+	width: 46%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    margin-top: 20px; 
+}
+
+/* 버튼 스타일 */
+button {
+    padding: 10px 20px;
+    margin-left: 10px; 
+    background-color: #007bff;
+    color: #ffffff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+button:hover {
     background-color: #0056b3;
 }
 
-.detail-button button {
-    border: none;
-    background: none;
-    color: inherit;
-    font-size: 16px;
-    cursor: pointer;
+/* 돌아가기 버튼을 수령확인 버튼보다 왼쪽으로 조정 */
+button:last-child {
+    margin-left: 10px;
 }
 
-.detail-button button:focus {
-    outline: none;
+.contract-bbs{
+	justify-content : space-between;
+	padding : 7px 20px;
+	width: 100%;
+}
+
+.bbs-main-text3{
+	font-size: 18px;
+	height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bbs-main-text4{
+	font-size: 18px;
+	height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 
+.bbs-main-title-a{
+	font-weight: bold;
+	padding : 5px;
+	font-size: 20px;
+	height: 20px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
 
+.bbs-main-title-b{
+	font-weight: bold;
+	padding : 5px;
+	font-size: 20px;
+	height: 20px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
 
+.bbs-main-between{
+	margin-bottom: 15px;	
+}
 

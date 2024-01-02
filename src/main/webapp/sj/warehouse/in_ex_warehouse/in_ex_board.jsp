@@ -7,48 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<style>
-.input-container {
-	display: flex;
-	margin-bottom: 10px;
-}
-
-.input-box {
-	border: 1px solid #ccc;
-}
-
-.in_name {
-	border: 1px solid #ccc;
-	width: 73px;
-}
-
-.input-container div {
-	/* margin-right: 10px; */
-	
-}
-
-.input-container input, .input-container select {
-	width: 70px;
-}
-
-.paging {
-	margin-top: 10px;
-}
-
-.paging a, .paging span {
-	margin-right: 5px;
-	text-decoration: none;
-	padding: 5px 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	color: #333;
-}
-
-.paging a:hover {
-	background-color: #f0f0f0;
-}
-</style>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		document.getElementById('searchOption').addEventListener(
@@ -61,90 +19,103 @@
 
 	});
 </script>
-
-
+<link rel="stylesheet" href="sj/warehouse_css/in_ex_board.css">
 </head>
 <body>
-	<h1 style="font-size: 30pt;">입고 출고 테이블</h1>
-
-
-	<form action="InExBoardC" method="get">
-		<div class="input-container">
-			<label for="operationType">구분 :</label> <select name="operationType"
-				id="operationType">
-				<option value="all">전체</option>
-				<option value="inWarehouse">입고</option>
-				<option value="exWarehouse">출고</option>
-			</select> 검색 : <select id="searchOption" name="searchOption">
-				<option value="x">검색조건선택</option>
-				<option value="p_name">제품명</option>
-				<option value="p_type">타입</option>
-			</select> <input type="text" name="word" class="searchInput"
-				style="display: none;">
-			<button type="submit">확인</button>
+	<div class="contents">
+		<div class="content-head">
+			<div class="content-head-text">入庫-出庫内訳</div>
 		</div>
-	</form>
+		<div class="content-body">
+			<div class="search-container">
+				<div class="search-line">
+
+					<form action="InExBoardC" method="get">
+							<label for="operationType"><span class="value-box">
+									種類: </span></label> <select name="operationType" id="operationType"
+								class="search-select">
+								<option value="all">全体</option>
+								<option value="inWarehouse">入庫</option>
+								<option value="exWarehouse">出庫</option>
+							</select> <span class="value-box"> 検索 : </span> <select id="searchOption"
+								name="searchOption" class="search-select">
+								<option value="x">検索条件</option>
+								<option value="p_name">商品名</option>
+								<option value="p_type">タイプ</option>
+							</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
+								class="search-input" style="display: none;">
+							<button type="submit" class="search-button">確認</button>
+					</form>
+				</div>
+			</div>
 
 
-	<div class="input-box input-container">
+			<div class="bbs-content">
+				<div class="bbs-content1 bbs-content">
+					<div class="bbs-content-main">
+						<div class="bbs-content-body">
+							<div class="bbs-content-bbs">
+								<div class="bbs-main">
+									<div class="bbs-main-text1 bbs-main-title-s">種類</div>
+									<div class="bbs-main-text1 bbs-main-title-l">商品名</div>
+									<div class="bbs-main-text1 bbs-main-title-l">タイプ</div>
+									<div class="bbs-main-text1 bbs-main-title-s">単位</div>
+									<div class="bbs-main-text1 bbs-main-title-s">単位量</div>
+									<div class="bbs-main-text1 bbs-main-title-s">在庫数量</div>
+									<div class="bbs-main-text1 bbs-main-title-s">入-出庫日</div>
+									<div class="bbs-main-text1 bbs-main-title-s">倉庫</div>
+								</div>
+								<!-- 전체 데이터 표시 -->   
+								<c:forEach var="al" items="${allInExWarehouse}" varStatus="loop">
+									<div class="bbs-main"
+										style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+										<div class="bbs-main-text1 bbs-main-text-s">${al.warehouse_type}</div>
+										<div class="bbs-main-text1 bbs-main-text-l">${al.p_name}</div>
+										<div class="bbs-main-text1 bbs-main-text-l">${al.p_type}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${al.p_quantity}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${al.p_si}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${al.quantity}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${al.warehouse_date}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${al.warehouse_name}</div>
+									</div>
+								</c:forEach>
+							</div>
 
-		<div class="in_name">구분</div>
-		<div class="in_name">제품 이름</div>
-		<div class="in_name">타입</div>
-		<div class="in_name">p_quantity</div>
-		<div class="in_name">단위</div>
-		<div class="in_name">수량</div>
-		<div class="in_name">날짜</div>
-		<div class="in_name">창고</div>
+							<div class="paging">
+								<c:choose>
+									<c:when test="${pageNum != 1}">
+										<a
+											href="InExBoardC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">前のページ</a>
+									</c:when>
+								</c:choose>
+
+								<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
+									end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}"
+									step="1">
+									<c:choose>
+										<c:when test="${i eq pageNum}">
+											<span>${i}</span>
+										</c:when>
+										<c:otherwise>
+											<a
+												href="InExBoardC?pageNum=${i}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">${i}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+
+								<c:choose>
+									<c:when test="${pageNum != totalPage && totalPage != 0}">
+										<a
+											href="InExBoardC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">次のページ</a>
+									</c:when>
+								</c:choose>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<!-- 1줄씩 나타내줄 것들 -->
-	<!-- 전체 데이터 표시 -->
-	<c:forEach var="al" items="${allInExWarehouse}">
-		<div class="input-box input-container">
-			<div class="in_name">${al.warehouse_type}</div>
-			<div class="in_name">${al.p_name}</div>
-			<div class="in_name">${al.p_type}</div>
-			<div class="in_name">${al.p_quantity}</div>
-			<div class="in_name">${al.p_si}</div>
-			<div class="in_name">${al.quantity}</div>
-			<div class="in_name">${al.warehouse_date}</div>
-			<div class="in_name">${al.warehouse_name}</div>
-		</div>
-	</c:forEach>
-
-
-
-
-
-	<div class="paging">
-    <c:choose>
-        <c:when test="${pageNum != 1}">
-            <a href="InExBoardC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">이전</a>
-        </c:when>
-    </c:choose>
-
-    <c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}" end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}" step="1">
-        <c:choose>
-            <c:when test="${i eq pageNum}">
-                <span>${i}</span>
-            </c:when>
-            <c:otherwise>
-                <a href="InExBoardC?pageNum=${i}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">${i}</a>
-            </c:otherwise>
-        </c:choose>
-    </c:forEach>
-
-    <c:choose>
-        <c:when test="${pageNum != totalPage && totalPage != 0}">
-            <a href="InExBoardC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">다음</a>
-        </c:when>
-    </c:choose>
-</div>
-
-
-
-
-
-
+	
 </body>
 </html>

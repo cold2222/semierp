@@ -5,7 +5,7 @@ public class ExWarehouseDTO {
 	private int ci_p_id;
 	private String p_name;
 	private String p_type;
-	private int p_quantity;
+	private String p_quantity;
 	private String p_si;
 	private int ci_count;
 	private String c_completed_date;
@@ -23,7 +23,7 @@ public class ExWarehouseDTO {
 	}
 
 
-	public ExWarehouseDTO(int ci_p_id, String p_name, String p_type, int p_quantity, String p_si, int ci_count,
+	public ExWarehouseDTO(int ci_p_id, String p_name, String p_type, String p_quantity, String p_si, int ci_count,
 			String c_completed_date, int c_status, int c_contract_no, String c_created_date, String c_name,
 			String e_name) {
 		super();
@@ -72,12 +72,12 @@ public class ExWarehouseDTO {
 	}
 
 
-	public int getP_quantity() {
+	public String getP_quantity() {
 		return p_quantity;
 	}
 
 
-	public void setP_quantity(int p_quantity) {
+	public void setP_quantity(String p_quantity) {
 		this.p_quantity = p_quantity;
 	}
 
@@ -163,9 +163,6 @@ public class ExWarehouseDTO {
 
 
 	
-
-	
-
 	
 	
 	
