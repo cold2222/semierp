@@ -48,14 +48,12 @@
 				setTimeout(function() {
 					$('label').removeClass('warning');
 				}, 1500);
-				/* alert("IDを入力してください！"); */
 				
 			} else if ($(pw).val() == "") {
 				$(pw).next('label').addClass('warning');
 				setTimeout(function() {
 					$('label').removeClass('warning');
 				}, 1500);
-				/* alert("PWを入力してください！"); */
 			}	
  		});
     </script>

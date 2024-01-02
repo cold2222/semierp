@@ -24,8 +24,6 @@
 <body>
 
 
-
-
 	<div class="contents">
 		<div class="content-head">
 			<div class="content-head-text">在庫確認</div>
