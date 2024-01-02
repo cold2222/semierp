@@ -65,7 +65,7 @@
 									<div class="bbs-main-text1 bbs-main-title-s">入-出庫日</div>
 									<div class="bbs-main-text1 bbs-main-title-s">倉庫</div>
 								</div>
-								<!-- 전체 데이터 표시 -->
+								<!-- 전체 데이터 표시 -->   
 								<c:forEach var="al" items="${allInExWarehouse}" varStatus="loop">
 									<div class="bbs-main"
 										style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">

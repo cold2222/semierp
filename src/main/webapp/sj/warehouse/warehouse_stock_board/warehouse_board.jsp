@@ -100,7 +100,7 @@
 								<!-- for 문으로 데이터 돌림  -->
 								<c:forEach var="wb" items="${warehouseBoard}" varStatus="loop">
 									<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
-										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_name}</div>
+										<div class="bbs-main-text1 bbs-main-text-l"> <a href="?????PageC?p_id=${param.p_id}">${wb.p_name}</a> </div>
 										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_type}</div>
 										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_si}</div>
 										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_quantity}</div>
