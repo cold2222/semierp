@@ -59,13 +59,38 @@
 }
 
 
-.item-details2 > div > span {
-  display: block;
+
+.number{
+	display: block;
   padding: 8px;
   border-bottom: 1px solid #ddd;
   text-align: center;
   font-weight: bold;
-  width: 25%;
+  width: 5%;
+}
+.item-name{
+	display: block;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+  width: 30%;
+}
+.item-count{
+	display: block;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+  width: 8%;
+}
+.item-cost{
+	display: block;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+  width: 10%;
 }
 
 .contract-details {

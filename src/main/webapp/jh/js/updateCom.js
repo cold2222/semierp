@@ -3,10 +3,10 @@ function toggleEdit() {
 	var textarea = document.querySelector('textarea');
 
 	for (var i = 0; i < inputs.length; i++) {
-		inputs[i].readOnly = !inputs[i].readOnly;
+		inputs[i].disabled = !inputs[i].disabled;
 	}
 
-	textarea.readOnly = !textarea.readOnly;
+	textarea.disabled = !textarea.disabled;
 
 	var editButton = document.getElementById('editButton');
 	editButton.style.display = (editButton.style.display === 'none') ? 'block' : 'none';

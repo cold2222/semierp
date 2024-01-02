@@ -46,8 +46,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 								<div class="bbs-main-title-s">単位量</div>
 								<div class="bbs-main-title-l">アイテム名</div>
 								<div class="bbs-main-title-s">価格</div>
-								<div class="bbs-main-title-s">最小保有量</div>
-								<div class="bbs-main-title-s">最大保有量</div>
+								<div class="bbs-main-title-s">最小/最大<br>保有量</div>
 								<div class="bbs-main-title-s">製造社</div>
 							</div>
 							<!-- 전체 데이터 표시 -->
@@ -65,10 +64,9 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
         </c:otherwise>
 										</c:choose>
 									</div>
-									<div class="bbs-main-text-l">${p.p_name}</div>
+									<div class="bbs-main-text-l"><span>${p.p_name}</span></div>
 									<div class="bbs-main-text-s">${p.p_unitCost}</div>
-									<div class="bbs-main-text-s">${p.p_minStock}</div>
-									<div class="bbs-main-text-s">${p.p_maxStock}</div>
+									<div class="bbs-main-text-s">${p.p_minStock}/${p.p_maxStock}</div>
 									<div class="bbs-main-text-s">
 										<c:choose>
 											<c:when test="${p.p_manufacturer == null}">
@@ -79,12 +77,10 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
         </c:otherwise>
 										</c:choose>
 									</div>
-									<div>
-										<button onclick="location.href='UpdateProductC?id=${p.p_id}'">수정</button>
-									</div>
-									<div>
-										<button onclick="deleteProduct('${p.p_id}')">삭제</button>
-									</div>
+									<div style="">
+										<button class="insert-btn ud" onclick="location.href='UpdateProductC?id=${p.p_id}'">수정</button>
+										<button class="insert-btn ud" onclick="deleteProduct('${p.p_id}')">삭제</button>
+									</div> 
 								</div>
 							</c:forEach>
 						</div>

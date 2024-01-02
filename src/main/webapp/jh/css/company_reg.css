@@ -89,6 +89,8 @@
 
 input[type="text"],input[type="number"],
 textarea {
+	resize: none; /* 사용자가 크기 조절할 수 없도록 함 */
+    overflow: hidden; /* 스크롤바를 숨김 */
     flex: 2; /* 인풋창이 더 많은 공간을 차지하도록 설정 */
     width: 100%;
     padding: 15px;
@@ -98,13 +100,14 @@ textarea {
 }
 
 textarea {
+	resize: none; /* 사용자가 크기 조절할 수 없도록 함 */
+    overflow: hidden; /* 스크롤바를 숨김 */
     flex: 2;
     width: 100%; /* 텍스트영역의 너비를 더 크게 조정 */
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    resize: vertical;
 }
 
 .insert-btn {

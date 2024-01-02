@@ -16,7 +16,6 @@ function showCompany(data) {
 	let coms = '';
 	data.forEach(company => {
 		let div = `<div class='div-row' onclick="setValue('${company.c_no}','${company.c_name}')">
-        <div>${company.c_no}</div>
         <div>${company.c_name}</div>
         <div>${company.c_addr}</div>
         <div>${company.c_keeper}</div>

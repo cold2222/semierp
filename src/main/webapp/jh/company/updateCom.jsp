@@ -22,26 +22,26 @@
 					<div class="input-container">
 						<label for="c_name" class="input-label">取引先名:</label> <input
 							name="c_name" id="c_name" required="required" type="text"
-							value="${c.c_name }" readonly="readonly">
+							value="${c.c_name }" disabled="disabled">
 					</div>
 					<div class="input-container">
 						<label for="c_keeper" class="input-label">取引先の担当者:</label> <input
 							name="c_keeper" id="c_keeper" required="required" type="text"
-							value="${c.c_keeper }" readonly="readonly">
+							value="${c.c_keeper }" disabled="disabled">
 					</div>
 					<div class="input-container">
 						<label for="c_phone" class="input-label">取引先の連絡先:</label> <input
 							name="c_phone" id="c_phone" required="required" type="text"
-							value="${c.c_phone }" readonly="readonly">
+							value="${c.c_phone }" disabled="disabled">
 					</div>
 					<div class="input-container">
 						<label for="c_addr" class="input-label">取引先の住所:</label> <input
 							name="c_addr" id="c_addr" required="required" type="text"
-							value="${c.c_addr }" readonly="readonly">
+							value="${c.c_addr }" disabled="disabled">
 					</div>
 					<div class="input-container">
 						<label for="c_text" class="input-label">備考:</label>
-						<textarea name="c_text" id="c_text" rows="4" readonly>${c.c_text }</textarea>
+						<textarea name="c_text" id="c_text" rows="4" disabled="disabled">${c.c_text }</textarea>
 					</div>
 
 					<div class="button" id="saveButton" style="display: none;">

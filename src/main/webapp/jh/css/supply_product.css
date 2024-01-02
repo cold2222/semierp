@@ -83,34 +83,19 @@
 }
 
 .bbs-content-bbs {
-	width: 95%;
+	width: 100%;
 }
 
 .bbs-main {
 	display: flex;
-	margin-left: 10px;
+	border-bottom: 1px solid black;
 }
 
-.bbs-main-title {
-	font-weight: bold;
-	border-bottom: 2px solid black;
-	padding: 5px;
-	font-size: 20px;
-	height: 40px;
-	border-bottom: 1px solid black;
-	width: 20%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 .bbs-main-title-l {
 	font-weight: bold;
-	border-bottom: 2px solid black;
-	padding: 5px;
 	font-size: 20px;
-	height: 40px;
-	border-bottom: 1px solid black;
-	width: 47%;
+	height: 60px;
+	width: 500px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -118,34 +103,41 @@
 
 .bbs-main-title-s {
 	font-weight: bold;
-	border-bottom: 2px solid black;
-	padding: 5px;
 	font-size: 20px;
-	height: 40px;
-	border-bottom: 1px solid black;
-	width: 20%;
+	height: 60px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-shrink: 0;
 }
-
-.bbs-main-text {
-	padding: 2px;
-	font-size: 14px;
-	height: 35px;
-	border-bottom: 1px solid black;
-	width: 33%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.bbs-main-title-s:nth-child(1){
+	flex-basis:  80px;
+}
+.bbs-main-title-s:nth-child(2){
+	flex-basis:  160px;
+}
+.bbs-main-title-s:nth-child(3){
+	flex-basis:  100px;
+}
+.bbs-main-title-s:nth-child(4){
+	flex-basis: 100px;
+}
+.bbs-main-title-s:nth-child(5){
+	flex-basis: 80px;
+}
+.bbs-main-title-s:nth-child(6){
+	flex-basis: 150px;
+	text-align: center;
+}
+.bbs-main-title-s:nth-child(7){
+	flex-basis: 250px;
 }
 
 .bbs-main-text-l {
-	padding: 2px;
 	font-size: 14px;
 	height: 35px;
-	border-bottom: 1px solid black;
-	width: 47%;
+	flex-basis: 500px;
+	flex-shrink:0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -153,16 +145,36 @@
 
 
 .bbs-main-text-s {
-	padding: 2px;
+	text-align: center;
 	font-size: 14px;
 	height: 35px;
-	border-bottom: 1px solid black;
-	width: 20%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-shrink: 0;
 }
 
+.bbs-main-text-s:nth-child(1){
+	flex-basis: 80px;
+}
+.bbs-main-text-s:nth-child(2){
+	flex-basis: 160px;
+}
+.bbs-main-text-s:nth-child(3){
+	flex-basis: 100px;
+}
+.bbs-main-text-s:nth-child(4){
+	flex-basis: 100px;
+}
+.bbs-main-text-s:nth-child(5){
+	flex-basis: 80px;
+}
+.bbs-main-text-s:nth-child(6){
+	flex-basis: 150px;
+}
+.bbs-main-text-s:nth-child(7){
+	flex-basis: 250px;
+}
 
 
 
