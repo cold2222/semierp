@@ -32,7 +32,10 @@ function showEmployee(data) {
 	let coms = '';
 	data.forEach(employee => {
 		let div = `<div class='div-row' onclick="empSetValue('${employee.e_no}','${employee.e_name}','${employee.e_rank}',${employee.e_deptno})">
-        <div>${employee.e_name}</div>
+        <div>取引担当社員番号：${employee.e_no}</div>
+        <div>　名前：${employee.e_name}</div>
+        <div>　階級：${employee.e_rank}</div>
+        <div>　部門番号：${employee.e_deptno}</div>
       </div>`;
 		coms += div;
 	});

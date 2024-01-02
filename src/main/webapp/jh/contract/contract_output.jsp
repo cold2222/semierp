@@ -51,19 +51,20 @@
 				</div>
 				<div class="span-wrap1">
 
-					<span class="number">Num</span> <span class="item-name">タイプ</span><span
-						class="item-name">アイテム名</span> <span class="item-count">単位量</span>
-					<span class="item-count">単位</span> <span class="item-count">品の個数</span>
+					<span class="number">Num</span> <span class="item-cost">タイプ</span><span
+						class="item-name">アイテム名</span> <span class="item-count">単位</span><span
+						class="item-count">単位量</span> <span class="item-count">品の個数</span>
 					<span class="item-cost">単価</span>
 				</div>
 				<c:forEach var="item" items="${contract.items}" varStatus="loop">
 					<div class="span-wrap">
 
 						<span class="number">${loop.index + 1}</span> <span
-							class="item-name">${item.p_type} </span> <span class="item-name">${item.p_name}</span>
-						<span class="item-count">${item.p_quantity}</span> <span
-							class="item-count">${item.p_si}</span> <span class="item-count">${item.ci_count}</span>
-						<span class="item-cost">${item.ci_unit_price}</span>
+							class="item-cost">${item.p_type} </span> <span class="item-name">${item.p_name}</span>
+						<span class="item-count">${item.p_si}</span> <span
+							class="item-count">${item.p_quantity}</span><span
+							class="item-count">${item.ci_count}</span> <span
+							class="item-cost">${item.ci_unit_price}</span>
 					</div>
 				</c:forEach>
 			</div>

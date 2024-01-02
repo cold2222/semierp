@@ -16,9 +16,9 @@ function showCompany(data) {
 	let coms = '';
 	data.forEach(company => {
 		let div = `<div class='div-row' onclick="setValue('${company.c_no}','${company.c_name}')">
-        <div>${company.c_name}</div>
-        <div>${company.c_addr}</div>
-        <div>${company.c_keeper}</div>
+        <div>会社名 : ${company.c_name}</div>
+        <div>　住所 : ${company.c_addr}</div>
+        <div>　取引先の担当者 : ${company.c_keeper}</div>
       </div>`;
 		coms += div;
 	});
@@ -63,7 +63,10 @@ function showProduct(data) {
 	data.forEach(product => {
 		let div = `
       <div class='div-row' onclick="setValue1('${product.p_id}','${product.p_name}','${product.p_type}','${product.p_si}','${product.p_quantity}')">
-        <div>${product.p_type} : ${product.p_name} (${product.p_quantity}${product.p_si})</div>
+        <div>タイプ：${product.p_type}</div>
+        <div>　アイテム名：${product.p_name}</div>
+        <div>　単位：${product.p_si}</div>
+        <div>　単位量：${product.p_quantity}</div>
       </div>`;
 		coms += div;
 	});

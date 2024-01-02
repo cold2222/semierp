@@ -1,11 +1,10 @@
 @charset "UTF-8";
-
-@charset "UTF-8";
 /* 검색 */
+
 .search-container {
 	margin: 20px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 
 .value-box {
@@ -114,7 +113,8 @@
 	padding: 5px;
 	font-size: 20px;
 	height: 40px;
-	width: 30%;
+	border-bottom: 1px solid black;
+	width: 33%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -125,6 +125,7 @@
 	padding: 5px;
 	font-size: 20px;
 	height: 40px;
+	border-bottom: 1px solid black;
 	width: 47%;
 	display: flex;
 	justify-content: center;
@@ -137,27 +138,22 @@
 	padding: 5px;
 	font-size: 20px;
 	height: 40px;
+	border-bottom: 1px solid black;
 	width: 20%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-
 .bbs-main-text {
 	padding: 2px;
 	font-size: 14px;
 	height: 35px;
 	border-bottom: 1px solid black;
-	width: 30%;
+	width: 33%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-.bbs-main-text1 {
-	justify-content: center;
-	align-items: center;
-	text-align: center;
 }
 
 .bbs-main-text-l {
@@ -182,6 +178,7 @@
 	justify-content: center;
 	align-items: center;
 }
+
 
 
 
@@ -224,3 +221,4 @@
 	border-color: #007bff;
 	font-weight: bold;
 }
+

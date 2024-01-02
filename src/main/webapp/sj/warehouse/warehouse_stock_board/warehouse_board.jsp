@@ -22,11 +22,6 @@
 <link rel="stylesheet" href="sj/warehouse_css/warehouse_board.css">
 </head>
 <body>
-<c:if test="${param.operationType != 'all' && param.operationType != null}">
-<div>
-창고이름 : ${warehouseBoard[0].warehouse_name } 창고 담당자 :${warehouseBoard[0].e_name }
-</div>
-</c:if>
 
 
 	<div class="contents">
@@ -36,15 +31,18 @@
 		<div class="content-body">
 			<div class="search-container">
 				<div class="search-line">
-					<span class="value-box">在庫価格 : </span> 
-						<span class="value">
-							<c:choose>
+				<c:if test="${param.operationType != 'all' && param.operationType != null }">
+					<div><span class="value-box">倉庫 :</span><span class="value"> ${warehouseBoard[0].warehouse_name }</span></div>
+					<div> <span class="value-box">倉庫担当者 : </span> <span class="value">${warehouseBoard[0].e_name }</span></div>
+				</c:if>
+					<span class="value-box">在庫価格 : </span> <span class="value">
+						<c:choose>
 							<c:when test="${operationType eq 'all' or operationType eq null}">
 								<c:set var="totalValue" value="0" />
 								<c:forEach var="ts" items="${totalStockList}">
 									<c:set var="totalValue" value="${totalValue + ts.total_stock}" />
 								</c:forEach>
-								<fmt:formatNumber value="${totalValue}" pattern="#,###" />
+								<fmt:formatNumber value="${totalValue}" pattern="￥#,###" />
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="ts" items="${totalStockList}">
@@ -88,29 +86,30 @@
 						<div class="bbs-content-body">
 							<div class="bbs-content-bbs">
 								<div class="bbs-main">
-									<div class="bbs-main-text1 bbs-main-title">商品名</div>
-									<div class="bbs-main-text1 bbs-main-title">タイプ</div>
-									<div class="bbs-main-text1 bbs-main-title">単位</div>
-									<div class="bbs-main-text1 bbs-main-title">メーカー</div>
-									<div class="bbs-main-text1 bbs-main-title">単価</div>
-									<div class="bbs-main-text1 bbs-main-title">在庫数量</div>
+									<div class="bbs-main-text1 bbs-main-title-l">商品名</div>
+									<div class="bbs-main-text1 bbs-main-title-l">タイプ</div>
+									<div class="bbs-main-text1 bbs-main-title-s">単位</div>
+									<div class="bbs-main-text1 bbs-main-title-s">単位量</div>
+									<div class="bbs-main-text1 bbs-main-title-l">メーカー</div>
+									<div class="bbs-main-text1 bbs-main-title-s">単価</div>
+									<div class="bbs-main-text1 bbs-main-title-s">在庫数量</div>
 									<div class="bbs-main-text1 bbs-main-title">現在庫価格</div>
 								</div>
-								<!-- 1줄씩 나타내줄 것들 -->
-								<!-- 입고 데이터 표시 -->
-								<c:forEach var="wb" items="${warehouseBoard}">
-									<div class="bbs-main">
-										<div class="bbs-main-text1 bbs-main-text">${wb.p_name}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.p_type}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.p_quantity}${wb.p_si}</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.manufacture_name}</div>
-										<div class="bbs-main-text1 bbs-main-text">
-											<fmt:formatNumber value="${wb.p_unicost}" pattern="#,###" />
+								<!-- for 문으로 데이터 돌림  -->
+								<c:forEach var="wb" items="${warehouseBoard}" varStatus="loop">
+									<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+										<div class="bbs-main-text1 bbs-main-text-l"> <a href="ProductC?field=p_name&word=${wb.p_name}">${wb.p_name}</a> </div>
+										<div class="bbs-main-text1 bbs-main-text-l">${wb.p_type}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_si}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${wb.p_quantity}</div>
+										<div class="bbs-main-text1 bbs-main-text-l">${wb.manufacture_name}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">
+											<fmt:formatNumber value="${wb.p_unicost}" pattern="￥#,###"  />
 										</div>
-										<div class="bbs-main-text1 bbs-main-text">${wb.stock}</div>
+										<div class="bbs-main-text1 bbs-main-text-s">${wb.stock}</div>
 										<div class="bbs-main-text1 bbs-main-text">
 											<fmt:formatNumber value="${wb.stock * wb.p_unicost}"
-												pattern="#,###" />
+												pattern="￥#,###" />
 										</div>
 									</div>
 								</c:forEach>
@@ -150,68 +149,6 @@
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
-=======
-	</form>
-	<div class="input-box input-container">
-
-		<div class="in_name">商品名</div>
-		<div class="in_name">タイプ</div>
-		<div class="in_name">quantity</div>
-		<div class="in_name">단위</div>
-		<div class="in_name">제조사</div>
-		<div class="in_name">단가</div>
-		<div class="in_name">재고수량</div>
-		<div class="in_name">현 재고 값</div>
-	</div>
-	<!-- 1줄씩 나타내줄 것들 -->
-	<!-- 입고 데이터 표시 -->
-	<c:forEach var="wb" items="${warehouseBoard}">
-		<div class="input-box input-container">
-			<div class="in_name">${wb.p_name}</div>
-			<div class="in_name">${wb.p_type}</div>
-			<div class="in_name">${wb.p_quantity}</div>
-			<div class="in_name">${wb.p_si}</div>
-			<div class="in_name">${wb.manufacture_name}</div>
-			<div class="in_name">
-				<fmt:formatNumber value="${wb.p_unicost}" pattern="#,###" />
-			</div>
-			<div class="in_name">${wb.stock}</div>
-			<div class="in_name">
-				<fmt:formatNumber value="${wb.stock * wb.p_unicost}" pattern="#,###" />
-			</div>
-		</div>
-	</c:forEach>
-	<div class="paging">
-		<c:choose>
-			<c:when test="${pageNum != 1}">
-				<button
-					onclick="location.href='WarehouseBoardPageC?pageNum=${pageNum - 1}&field=${param.field }&word=${param.word }'">prev</button>
-			</c:when>
-		</c:choose>
-		<c:forEach var="i" begin="${pageNum - 3 > 0 ? pageNum - 3 : 1}"
-			end="${pageNum + 3 <= totalPage ? pageNum + 3 : totalPage}" step="1">
-			<c:choose>
-				<c:when test="${i eq pageNum}">
-					<a
-						href="WarehouseBoardPageC?pageNum=${i}&field=${param.field }&word=${param.word }"
-						style="color: black; font-weight: bold;">${i}</a>
-				</c:when>
-				<c:otherwise>
-					<a
-						href="WarehouseBoardPageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-
-		<c:choose>
-			<c:when test="${pageNum != totalPage && totalPage != 0}">
-				<button
-					onclick="location.href='WarehouseBoardPageC?pageNum=${pageNum + 1}&field=${param.field }&word=${param.word }'">next</button>
-			</c:when>
-		</c:choose>
-	</div>
->>>>>>> ea5a73ee67dc67cf4440f7680258a5c229899fd9
 	</div>
 
 </body>

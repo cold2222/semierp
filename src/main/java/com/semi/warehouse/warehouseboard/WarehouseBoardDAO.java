@@ -24,9 +24,9 @@ public class WarehouseBoardDAO {
 		 public static WarehouseBoardDAO getWbtdao() {
 		        return WBTDAO;
 		    }
-		 
+		 // 페이징 처리
 		 public void paging(int pageNum, HttpServletRequest request) {
-				int pageSize = 3; // 한 페이지당 보여줄 개수
+				int pageSize = 15; // 한 페이지당 보여줄 개수
 				int totalData = warehouseBoard.size();
 				int totalPage = (int)Math.ceil((double)totalData / pageSize);
 				
@@ -44,7 +44,7 @@ public class WarehouseBoardDAO {
 				request.setAttribute("totalPage", totalPage);
 				
 			}
-	
+		 // 모든거 다 가져오기 
 	public void getWBTest(HttpServletRequest request, String operationType) {
 		String searchOption = request.getParameter("searchOption");
         String searchWord = request.getParameter("word");
@@ -127,7 +127,7 @@ public class WarehouseBoardDAO {
 				int p_id = rs.getInt("p_id");
 				String p_name = rs.getString("p_name");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				String p_si = rs.getString("p_si");
 				int p_unicost = rs.getInt("p_unitcost");
 				String manufacture_name = rs.getString("p_manufacturer");
