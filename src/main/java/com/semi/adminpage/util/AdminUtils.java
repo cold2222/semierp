@@ -18,24 +18,24 @@ public class AdminUtils {
 		// 형식화된 년월 가져오기 (YY-MM 형식)
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
 		String currentYearMonth = currentDate.format(formatter);
-		
+
 		return currentYearMonth;
 	}
-	
+
 	// 현재 날자의 yyyy-MM-DD
 	public static String getCurrentDate() {
 		// 현재 날짜 가져오기
-        LocalDate currentDate = LocalDate.now();
+		LocalDate currentDate = LocalDate.now();
 
-        // 날짜 포맷 지정
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		// 날짜 포맷 지정
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        // 포맷 적용하여 출력
-        String formattedDate = currentDate.format(formatter);
-        return formattedDate;
+		// 포맷 적용하여 출력
+		String formattedDate = currentDate.format(formatter);
+		return formattedDate;
 	}
-	
-	// 파라미터의 yyyy-MM-DD 값 리턴, 값이 없을 경우 현재의 날자값 기준으로 반환 
+
+	// 파라미터의 yyyy-MM-DD 값 리턴, 값이 없을 경우 현재의 날자값 기준으로 반환
 	public static String getParamDate(HttpServletRequest request) {
 		String ParamDate = request.getParameter("setDate");
 		if (ParamDate == null || ParamDate.isEmpty()) {
@@ -43,7 +43,7 @@ public class AdminUtils {
 		}
 		return ParamDate;
 	}
-	
+
 	// 파라미터의 yyyy-MM 값 리턴, 값이 없을 경우 현재의 날자값 기준으로 반환
 	public static String getParamYearMonth(HttpServletRequest request) {
 		String ParamDate = request.getParameter("setDate");
@@ -52,38 +52,70 @@ public class AdminUtils {
 		}
 		String[] dateSplit = ParamDate.split("-");
 		return dateSplit[0] + "-" + dateSplit[1];
-		
+
 	}
-	
+
 	// 페이징 처리(request, 대상 DTO배열, 한페이지당 표시할 열 갯수)
 	public static <T> List<T> setPaging(HttpServletRequest request, ArrayList<T> arrayList, int itemsPerPage) {
 		// 페이징
-        int totalItems = arrayList.size();
-        int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
-        int currentPage = 1;
-        int[] indexList = new int[5];
-        String pageNoParam = request.getParameter("pageNo");
-        if (pageNoParam != null && !pageNoParam.isEmpty())
-        	currentPage = Integer.parseInt(pageNoParam);
-        
-        int startIndex = (currentPage - 1) * itemsPerPage;
-        int endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-        request.setAttribute("currentPage", currentPage);
-        request.setAttribute("lastPage", totalPages);
-        
-        int startPageIndex = 1;
-        int count = 0;
-        if(currentPage > 3 && totalPages > 5) {
-        	startPageIndex = currentPage-2;
-        	for(int i = startPageIndex; i <= currentPage + 2; i++)
-        		indexList[count++] = i;
-        } else {
-        	for(int i = startPageIndex; i <= totalPages; i++)
-        		indexList[count++] = i;
-        }
-        request.setAttribute("indexList", indexList);
-        
-        return arrayList.subList(startIndex, endIndex);
-				
+		int totalItems = arrayList.size();
+		int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
+		int currentPage = 1;
+		int[] indexList = new int[5];
+		String pageNoParam = request.getParameter("pageNo");
+		if (pageNoParam != null && !pageNoParam.isEmpty())
+			currentPage = Integer.parseInt(pageNoParam);
+
+		int startIndex = (currentPage - 1) * itemsPerPage;
+		int endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("lastPage", totalPages);
+
+		int startPageIndex = 1;
+		int count = 0;
+		if (currentPage > 3 && totalPages > 5) {
+			startPageIndex = currentPage - 2;
+			for (int i = startPageIndex; i <= currentPage + 2; i++)
+				indexList[count++] = i;
+		} else {
+			for (int i = startPageIndex; i <= totalPages; i++)
+				indexList[count++] = i;
+		}
+		request.setAttribute("indexList", indexList);
+
+		return arrayList.subList(startIndex, endIndex);
+
+	}
+
+	public static <T> List<T> setPagingWithIndex(HttpServletRequest request, ArrayList<T> arrayList, int itemsPerPage,
+			int index) {
+		// 페이징
+		int totalItems = arrayList.size();
+		int totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
+		int currentPage = 1;
+		int[] indexList = new int[5];
+		String pageNoParam = request.getParameter("pageNo" + index);
+		if (pageNoParam != null && !pageNoParam.isEmpty())
+			currentPage = Integer.parseInt(pageNoParam);
+
+		int startIndex = (currentPage - 1) * itemsPerPage;
+		int endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+		request.setAttribute("currentPage" + index, currentPage);
+		request.setAttribute("lastPage" + index, totalPages);
+
+		int startPageIndex = 1;
+		int count = 0;
+		if (currentPage > 3 && totalPages > 5) {
+			startPageIndex = currentPage - 2;
+			for (int i = startPageIndex; i <= currentPage + 2; i++)
+				indexList[count++] = i;
+		} else {
+			for (int i = startPageIndex; i <= totalPages; i++)
+				indexList[count++] = i;
+		}
+		request.setAttribute("indexList" + index, indexList);
+
+		return arrayList.subList(startIndex, endIndex);
+
 	}
 }

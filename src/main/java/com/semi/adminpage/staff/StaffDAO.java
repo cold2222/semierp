@@ -273,7 +273,7 @@ public class StaffDAO {
 			}
 			
 			// 페이징
-	        request.setAttribute("warehouseStaffsInfo", AdminUtils.setPaging(request, warehouseStaffsInfo, 5));       
+	        request.setAttribute("warehouseStaffsInfo", AdminUtils.setPagingWithIndex(request, warehouseStaffsInfo, 5, 1));       
 	        	
 
 		} catch (Exception e) {

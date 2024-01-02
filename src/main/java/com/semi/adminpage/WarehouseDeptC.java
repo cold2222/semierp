@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.adminpage.dept.DeptDAO;
+import com.semi.adminpage.product.AdminProductDAO;
 import com.semi.adminpage.staff.StaffDAO;
 import com.semi.login.EmployeeDAO;
 
@@ -18,6 +19,7 @@ public class WarehouseDeptC extends HttpServlet {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				DeptDAO.getWarehouseDeptInfo(request);
 				StaffDAO.getWarehouseStffsInfo(request);
+				AdminProductDAO.getWarehouseProductsInfo(request);
 				request.setAttribute("selectedPage", "warehouseDept");
 				request.setAttribute("contentPage", "warehouse_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);

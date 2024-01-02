@@ -64,45 +64,48 @@
 	</div>
 	<hr>
 	<div class="staff_container">
-		<div class="col-titles">
-			<div class="col-title-item">社員番号</div>
-			<div class="col-title-item">お名前</div>
-			<div class="col-title-item">職 級</div>
-			<div class="col-title-item">Tel</div>
-			<div class="col-title-item col-long">E-Mail</div>
-		</div>
-		<c:forEach var="warehouseStaffInfo" items="${warehouseStaffsInfo}">
-			<div class="col-contents">
-				<div class="col-content-item">${warehouseStaffInfo.ws_no }</div>
-				<div class="col-content-item">${warehouseStaffInfo.ws_name}</div>
-				<div class="col-content-item">${warehouseStaffInfo.ws_rank }</div>
-				<div class="col-content-item">${warehouseStaffInfo.ws_tel}</div>
-				<div class="col-content-item col-long">${warehouseStaffInfo.ws_email }</div>
+		<div class="staffInfoArea">
+			<div class="col-titles">
+				<div class="col-title-item">社員番号</div>
+				<div class="col-title-item">お名前</div>
+				<div class="col-title-item">職 級</div>
+				<div class="col-title-item">Tel</div>
+				<div class="col-title-item col-long">E-Mail</div>
 			</div>
-		</c:forEach>
+			<c:forEach var="warehouseStaffInfo" items="${warehouseStaffsInfo}">
+				<div class="col-contents">
+					<div class="col-content-item">${warehouseStaffInfo.ws_no }</div>
+					<div class="col-content-item">${warehouseStaffInfo.ws_name}</div>
+					<div class="col-content-item">${warehouseStaffInfo.ws_rank }</div>
+					<div class="col-content-item">${warehouseStaffInfo.ws_tel}</div>
+					<div class="col-content-item col-long">${warehouseStaffInfo.ws_email }</div>
+				</div>
+			</c:forEach>
+		</div>
 		<div class="btn-area">
 			<div></div>
 			<div class="btn-area-mid">
-				<c:if test="${currentPage != 1 }">
+				<c:if test="${currentPage1 != 1 }">
 					<button class="idx-btn"
-						onclick="location.href='WarehouseDeptC?pageNo=${currentPage - 1}&setDate=${param.setDate}'">
+						onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1 - 1}&setDate=${param.setDate}&pageNo2=${currentPage2 - 1}'">
 						prev</button>
 				</c:if>
-				<c:forEach var="index" items="${indexList}">
+				<c:forEach var="index" items="${indexList1}">
 					<c:if test="${index ne 0}">
 						<button class="idx-btn"
-							onclick="location.href='WarehouseDeptC?pageNo=${index}&setDate=${param.setDate}'">${index}</button>
+							onclick="location.href='WarehouseDeptC?pageNo1=${index}&setDate=${param.setDate}&pageNo2=${currentPage2 - 1}'">${index}</button>
 					</c:if>
 				</c:forEach>
-				<c:if test="${currentPage != lastPage }">
+				<c:if test="${currentPage1 != lastPage1 }">
 					<button class="idx-btn"
-						onclick="location.href='WarehouseDeptC?pageNo=${currentPage + 1}&setDate=${param.setDate}'">
+						onclick="location.href='WarehouseDeptC?pageNo1=${currentPage1 + 1}&setDate=${param.setDate}&pageNo2=${currentPage2 - 1}'">
 						next</button>
 				</c:if>
 			</div>
 			<div></div>
 		</div>
 	</div>
+	<hr>
 
 </body>
 </html>
