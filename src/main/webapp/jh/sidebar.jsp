@@ -22,7 +22,8 @@
 			</ul>
 			<div class="sidebar-index">アイテム管理</div>
 			<ul>
-				<li onclick="location.href='ProductC'">&nbsp;- アイテム登録／一覧</li>
+				<li onclick="location.href='ProductC'">&nbsp;- アイテム一覧</li>
+				<li onclick="location.href='ProductRegC'">&nbsp;- アイテム登録</li>
 			</ul>
 		</div>
 	</div>

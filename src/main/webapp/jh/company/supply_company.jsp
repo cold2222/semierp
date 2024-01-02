@@ -30,7 +30,6 @@
 				</form>
 			</div>
 			<div class="company-content">
-				<div class="company-content1 company-content">
 					<div class="company-content-main">
 						<div class="company-content-body">
 							<div class="company-content-company">
@@ -88,7 +87,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
 
 	
