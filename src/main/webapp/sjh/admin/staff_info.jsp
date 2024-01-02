@@ -30,7 +30,7 @@
 			<div class="row-content-item">${staffSum}</div>
 		</div>
 	</div>
-	<div class="Staff_container">
+	<div class="staff_container">
 		<div class="col-titles">
 			<div class="col-title-item col-deptno">コード</div>
 			<div class="col-title-item">部 署</div>

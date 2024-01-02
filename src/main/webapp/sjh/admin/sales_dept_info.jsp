@@ -43,7 +43,7 @@
 			<div class="col-content contract">${salesDept. c_awaiting_stock }</div>
 		</div>
 	</div>
-	<div class="Staff_container">
+	<div class="staff_container">
 		<div class="col-titles">
 			<div class="col-title-item">社員番号</div>
 			<div class="col-title-item">お名前</div>
