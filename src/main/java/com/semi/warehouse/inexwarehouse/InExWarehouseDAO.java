@@ -53,14 +53,14 @@ public class InExWarehouseDAO {
 		String sql = "SELECT\n" + "    product.p_id,\n" + "    product.p_name,\n" + "    product.p_type,\n"
 				+ "    product.p_quantity,\n" + "    product.p_si,\n"
 				+ "    in_warehouse.in_warehouse_quantity AS quantity,\n"
-				+ "    in_warehouse.in_warehouse_date AS warehouse_date,\n" + "    '입고' AS warehouse_type,\n"
+				+ "    in_warehouse.in_warehouse_date AS warehouse_date,\n" + "    '入庫' AS warehouse_type,\n"
 				+ "    in_warehouse.warehouse_id,\n" + "    warehouse.warehouse_name AS warehouse_name\n" + "FROM\n"
 				+ "    in_warehouse\n" + "LEFT JOIN\n" + "    product ON product.p_id = in_warehouse.p_id\n"
 				+ "LEFT JOIN\n" + "    warehouse ON in_warehouse.warehouse_id = warehouse.warehouse_id\n" + "UNION\n"
 				+ "\n" + "SELECT\n" + "    product.p_id,\n" + "    product.p_name,\n" + "    product.p_type,\n"
 				+ "    product.p_quantity,\n" + "    product.p_si,\n"
 				+ "    ex_warehouse.ex_warehouse_quantity AS quantity,\n"
-				+ "    ex_warehouse.ex_warehouse_date AS warehouse_date,\n" + "    '출고' AS warehouse_type,\n"
+				+ "    ex_warehouse.ex_warehouse_date AS warehouse_date,\n" + "    '出庫' AS warehouse_type,\n"
 				+ "    ex_warehouse.warehouse_id,\n" + "    warehouse.warehouse_name AS warehouse_name\n" + "FROM\n"
 				+ "    ex_warehouse\n" + "LEFT JOIN\n" + "    product ON product.p_id = ex_warehouse.p_id\n"
 				+ "LEFT JOIN\n" + "    warehouse ON ex_warehouse.warehouse_id = warehouse.warehouse_id\n" + "ORDER BY\n"
@@ -80,7 +80,7 @@ public class InExWarehouseDAO {
 				String p_name = rs.getString("p_name");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				int quantity = rs.getInt("quantity");
 				String warehouse_date = rs.getString("warehouse_date");
 				String warehouse_type = rs.getString("warehouse_type");
@@ -131,7 +131,7 @@ public class InExWarehouseDAO {
 		String sql = "SELECT\n" + "    product.p_id,\n" + "    product.p_name,\n" + "    product.p_type,\n"
 				+ "    product.p_quantity,\n" + "    product.p_si,\n"
 				+ "    ex_warehouse.ex_warehouse_quantity AS quantity,\n"
-				+ "    ex_warehouse.ex_warehouse_date AS warehouse_date,\n" + "    '출고' AS warehouse_type,\n"
+				+ "    ex_warehouse.ex_warehouse_date AS warehouse_date,\n" + "    '出庫' AS warehouse_type,\n"
 				+ "    ex_warehouse.warehouse_id,\n" + "    warehouse.warehouse_name AS warehouse_name\n" + "FROM\n"
 				+ "    ex_warehouse\n" + "LEFT JOIN\n" + "    product ON product.p_id = ex_warehouse.p_id\n"
 				+ "LEFT JOIN\n" + "    warehouse ON ex_warehouse.warehouse_id = warehouse.warehouse_id ";
@@ -155,7 +155,7 @@ public class InExWarehouseDAO {
 				String p_name = rs.getString("p_name");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				int quantity = rs.getInt("quantity");
 				String warehouse_date = rs.getString("warehouse_date");
 				String warehouse_type = rs.getString("warehouse_type");
@@ -209,7 +209,7 @@ public class InExWarehouseDAO {
 		String sql = "SELECT\n" + "    product.p_id,\n" + "    product.p_name,\n" + "    product.p_type,\n"
 				+ "    product.p_quantity,\n" + "    product.p_si,\n"
 				+ "    in_warehouse.in_warehouse_quantity AS quantity,\n"
-				+ "    in_warehouse.in_warehouse_date AS warehouse_date,\n" + "    '입고' AS warehouse_type,\n"
+				+ "    in_warehouse.in_warehouse_date AS warehouse_date,\n" + "    '入庫' AS warehouse_type,\n"
 				+ "    in_warehouse.warehouse_id,\n" + "    warehouse.warehouse_name AS warehouse_name\n" + "FROM\n"
 				+ "    in_warehouse\n" + "LEFT JOIN\n" + "    product ON product.p_id = in_warehouse.p_id\n"
 				+ "LEFT JOIN\n" + "    warehouse ON in_warehouse.warehouse_id = warehouse.warehouse_id ";
@@ -233,7 +233,7 @@ public class InExWarehouseDAO {
 				String p_name = rs.getString("p_name");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				int quantity = rs.getInt("quantity");
 				String warehouse_date = rs.getString("warehouse_date");
 				String warehouse_type = rs.getString("warehouse_type");
@@ -318,7 +318,7 @@ public class InExWarehouseDAO {
 				String p_name = rs.getString("p_name");
 				String p_si = rs.getString("p_si");
 				String p_type = rs.getString("p_type");
-				int p_quantity = rs.getInt("p_quantity");
+				String p_quantity = rs.getString("p_quantity");
 				int quantity = rs.getInt("quantity");
 				String warehouse_date = rs.getString("warehouse_date");
 				String warehouse_type = rs.getString("warehouse_type");

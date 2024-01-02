@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@charset "UTF-8";
 /* 검색 */
 .search-container {
     text-align: right;
@@ -88,6 +87,7 @@
 .bbs-main{
 	display: flex;
 	margin-left: 10px;
+	
 }
 .bbs-main-title{
 	font-weight: bold;
@@ -164,6 +164,37 @@
 .bbs-main-text1 input[type="text"] {
     width: auto; /* 너비 조절 */
 }
+
+
+
+.detail-button {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.detail-button:hover {
+    background-color: #0056b3;
+}
+
+.detail-button button {
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.detail-button button:focus {
+    outline: none;
+}
+
+
 
 
 

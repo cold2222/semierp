@@ -14,7 +14,9 @@ public class ExWarehouseDetailC extends HttpServlet {
 		ExWarehouseDAO.getEwdao().getExDetail(request);
 		ExWarehouseDAO.getEwdao().getSelectedContract(request);
 		request.setAttribute("selectedHeader", "stock");
-		request.getRequestDispatcher("sj/warehouse/ex_warehouse/ex_warehouse_detail.jsp").forward(request, response);
+		request.setAttribute("sidebar","sj/sidebar.jsp");
+        request.setAttribute("contentPage","sj/warehouse/ex_warehouse/ex_warehouse_detail.jsp");
+        request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
 		
 	}
