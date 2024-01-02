@@ -10,7 +10,12 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="index-contents">
-		<div class="index-content">${selectedHeader }</div>
+		<div class="index-content">
+			<div class="backgroundContainer">
+				<img src="backgroundImgFolder/mainBackground.jpg"
+					class="backgroundImage">
+			</div>
+		</div>
 	</div>
 	<div class="footer">
 		<jsp:include page="footer.jsp"></jsp:include>
