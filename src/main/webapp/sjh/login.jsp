@@ -20,7 +20,7 @@
                         <div class="int-area"> 
                         <input name="id" id="id" type="text" autocomplete="off" required>
                         <label for="id">USER NAME</label>
-                   s     </div>
+                        </div>
                         <div class="int-area">
                         <input name="pw" id="pw" type="text" autocomplete="off" required> 
                         <label for="pw">PASSWORD</label>
