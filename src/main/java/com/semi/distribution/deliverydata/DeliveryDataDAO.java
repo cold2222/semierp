@@ -55,10 +55,12 @@ public class DeliveryDataDAO {
 			search.put("word", word);
 		}
 		
-		String sql = "SELECT a.c_contract_no, a.c_delivery_date, a.c_type, b.c_name, c.e_name " + "FROM contract a "
+		String sql = "SELECT a.c_contract_no, a.c_delivery_date, a.c_type, b.c_name, c.e_name " 
+				+ "FROM contract a "
 				+ "INNER JOIN company b ON a.c_c_no = b.c_no "
 				+ "INNER JOIN shipping d ON a.c_contract_no = d.s_contract_no "
-				+ "INNER JOIN employee c ON d.s_e_no = c.e_no " + "WHERE a.c_status = 2 ";
+				+ "INNER JOIN employee c ON d.s_e_no = c.e_no " 
+				+ "WHERE (a.c_type = 1 and a.c_status = 2) or (a.c_type = 2 and a.c_status = 2) or (a.c_type = 2 and a.c_status = 3) ";
 				if (search.get("word") != null && !search.get("field").equals("all")) {
 					sql += "and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
 				}
@@ -121,6 +123,7 @@ public class DeliveryDataDAO {
 				deliveryData.setC_delivery_date(rs.getDate("c_delivery_date"));
 				deliveryData.setC_name(rs.getString("c_name"));
 				deliveryData.setE_name(rs.getString("e_name"));
+				deliveryData.setC_type(rs.getString("c_type"));
 				if (rs.getString("c_type").equals("1")) {
 					deliveryData.setC_type("購買");
 				} else {

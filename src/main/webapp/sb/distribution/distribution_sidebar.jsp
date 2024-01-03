@@ -19,14 +19,14 @@
 				<li onclick="location.href='DistributionDeliverySaleC'">&nbsp;- 配車登録 (販売)　</li>
 				<li onclick="location.href='DistributionReceiptC'">&nbsp;- 配車登録 (受領)</li>
 			</ul>
+			<div class="sidebar-index">配車管理</div>
+			<ul>
+				<li onclick="location.href='DistributionDeliveryDataC'">&nbsp;- 配車情報 確認/修正</li>
+			</ul>
 			<div class="sidebar-index">配送完了登録</div>
 			<ul>
 				<li onclick="location.href='DistributionDeliverySaleClearC'">&nbsp;- 配送完了登録 (販売)</li>
 				<li onclick="location.href='DistributionReceiptClearC'">&nbsp;- 配送完了登録 (受領)</li>
-			</ul>
-			<div class="sidebar-index">配車管理</div>
-			<ul>
-				<li onclick="location.href='DistributionDeliveryDataC'">&nbsp;- 配車情報 確認/修正</li>
 			</ul>
 			<div class="sidebar-index">運送部　掲示板</div>
 			<ul>

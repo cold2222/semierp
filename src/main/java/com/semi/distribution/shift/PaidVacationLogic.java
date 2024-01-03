@@ -1,6 +1,5 @@
 package com.semi.distribution.shift;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,82 +14,72 @@ public class PaidVacationLogic {
 			HttpServletRequest request) {
 
 		HashMap<String, ArrayList<String>> empPaidVacation = new HashMap<String, ArrayList<String>>();
-		
+
 		for (EmployeeDTO emp : emps) {
 			ArrayList<String> paidVacationDate = new ArrayList<String>();
 			for (int i = 0; i < paidVacation.size(); i++) {
-				
+
 				if (paidVacation.get(i).getE_id().equals(emp.getE_no())) {
 					paidVacationDate.add(paidVacation.get(i).getW_date());
 				}
-			
+
 			}
 			empPaidVacation.put(emp.getE_no(), paidVacationDate);
 		}
-		
+
 		HashMap<String, String[]> empsPaidVacationNum = new HashMap<String, String[]>();
 		ArrayList<String> date = null;
-		
+		int testcnt = 0;
 		for (EmployeeDTO emp : emps) {
+			System.out.println("-----------------");
+			testcnt++; // ing
+			System.out.println(testcnt);
 			String[] nowAndLast = new String[3];
 			int nowYearUse = 0;
 			int lastYearUse = 0;
-			
+
 			LocalDate hireDate = emp.getE_joined_company().toLocalDate();
-			int nowYear = LocalDate.now().getYear();
-			int month = hireDate.getMonthValue() + 6;
-			if(month > 12) {
-				month -= 12;
-			}
-			String paidMonth = month+"";
-			int nowMonth = LocalDate.now().getMonthValue();
-			int year = nowYear;
-			if(month < nowMonth) {
-				year -= 1;
-			}
-			LocalDate lastYearStart = LocalDate.of(year, month, 1);
-			month += 11;
-			if(month > 12) {
-				month -= 11;
-				year++;
-			}
-			LocalDate tempDate = LocalDate.of(year, month-1, 1);
-			int day = tempDate.lengthOfMonth();
-			LocalDate lastYearEnd = LocalDate.of(year, month-1, day);
-			LocalDate nowYearStart = LocalDate.of(year, month, 1);
+			LocalDate now = LocalDate.now();
+			LocalDate paidVacationMonth = hireDate.plusMonths(6);
+			String paidMonth = paidVacationMonth.getMonthValue() + "";
 			
-			/*
-			 * System.out.println(emp.getE_id()+"작년시작"+lastYearStart);
-			 * System.out.println(emp.getE_id()+"작년끝"+lastYearEnd);
-			 * System.out.println(emp.getE_id()+"올해시작"+nowYearStart);
-			 * System.out.println("날짜나옴?"+hireDate);
-			 */
+			LocalDate currentYear = now;
+			if (paidVacationMonth.isBefore(now)) {
+				currentYear = currentYear.minusYears(1);
+			}
 			
+			LocalDate lastYearStart = LocalDate.of(now.minusYears(2).getYear(), paidVacationMonth.getMonth(), 1);
+			paidVacationMonth.plusMonths(11);
+			LocalDate lastYearEnd = lastYearStart.plusYears(1).minusDays(1);
+			LocalDate nowYearStart = lastYearEnd.plusDays(1);
+				
+			System.out.println("작년 스타트 :    " + lastYearStart);
+			System.out.println("작년 끝 :    " + lastYearEnd);
+			System.out.println("올해 스타트 :    " + nowYearStart);
 			ArrayList<String> temp = empPaidVacation.get(emp.getE_no());
+			
+			
 			for (String pV : temp) {
 				LocalDate pVDate = LocalDate.parse(pV);
-				if(!pVDate.isBefore(lastYearStart) && !pVDate.isAfter(lastYearEnd)) {
+				System.out.println(pVDate);
+				if (!pVDate.isBefore(lastYearStart) && !pVDate.isAfter(lastYearEnd)) {
 					lastYearUse++;
 				}
-				if(!pVDate.isBefore(nowYearStart)) {
+				if (!pVDate.isBefore(nowYearStart)) {
 					nowYearUse++;
 				}
-				
+
 			}
-			nowAndLast[0] = nowYearUse+"";
-			nowAndLast[1] = lastYearUse+"";
+			nowAndLast[0] = nowYearUse + "";
+			nowAndLast[1] = lastYearUse + "";
 			nowAndLast[2] = paidMonth;
-			
+
 			empsPaidVacationNum.put(emp.getE_no(), nowAndLast);
-			
+			System.out.println("------------------------");
 		}
-		
+
 		request.setAttribute("paidVacation", empsPaidVacationNum);
 		request.setAttribute("emps", emps);
-		
-		
 
-
-		
 	}
 }

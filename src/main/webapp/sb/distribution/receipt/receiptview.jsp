@@ -7,12 +7,15 @@
 <meta charset="UTF-8">
 <title>運送部　配送完了(購買)ページ</title>
 <link rel="stylesheet"
-	href="sb/distribution_css/deliverydata/deliverydataview.css">
+	href="sb/distribution_css/receipt/receiptview.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
 </head>
 <body>
+		<div class="content-head">
+			<div class="content-head-text">受領配車登録</div>
+		</div>
 	<div class="content">
 		<div class="detail-info">
 			<div class="info-row">
@@ -34,7 +37,7 @@
 				<span class="info-label">配送場所:</span> <span class="info-value">長崎港</span>
 			</div>
 			<div class="info-row">
-				<span class="info-label">納期日:</span> <span class="info-value"
+				<span class="info-label">入港日:</span> <span class="info-value"
 					id="c_due_date">${rec.c_due_date }</span>
 			</div>
 		</div>
@@ -42,9 +45,12 @@
 			<h2 class="contract_items">契約書詳細</h2>
 			<c:forEach var="i" items="${itemList }">
 				<div class="item">
-					<span class="item-name">${i.p_name }</span> <span
-						class="item-details">${i.p_type } ${i.p_quantity }${i.p_si }
-						数: ${i.ci_count} 値段: ${i.ci_unit_price}</span>
+					<span class="item-name">アイテム名 : ${i.p_name }</span> 
+					<span class="item-details"><span class="item-details-span">タイプ: </span> ${i.p_type }
+					 <span class="item-details-span">単位: </span>${i.p_si }
+					 <span class="item-details-span">単位量: </span>${i.p_quantity }</span>
+					<span class="item-details"><span class="item-details-span">数量: </span>${i.ci_count}
+					<span class="item-details-span">単価: </span>${i.ci_unit_price}</span>
 				</div>
 			</c:forEach>
 		</div>

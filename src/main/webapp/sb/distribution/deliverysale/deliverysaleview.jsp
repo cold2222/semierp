@@ -13,6 +13,9 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+        <div class="content-head">
+			<div class="content-head-text">販売契約書詳細</div>
+		</div>
     <div class="content">
         <div class="detail-info">
             <div class="info-row">
@@ -47,11 +50,15 @@
         <div class="item-list">
             <h2 class="contract_items">契約書詳細</h2>
             <c:forEach var="i" items="${itemList }">
-                <div class="item">
-                    <span class="item-name">${i.p_name }</span>
-                    <span class="item-details">${i.p_type } ${i.p_quantity }${i.p_si }  数: ${i.ci_count} 値段: ${i.ci_unit_price}</span>
-                </div>
-            </c:forEach>
+				<div class="item">
+					<span class="item-name">アイテム名 : ${i.p_name }</span> 
+					<span class="item-details"><span class="item-details-span">タイプ: </span> ${i.p_type }
+					 <span class="item-details-span">単位: </span>${i.p_si }
+					 <span class="item-details-span">単位量: </span>${i.p_quantity }</span>
+					<span class="item-details"><span class="item-details-span">数量: </span>${i.ci_count}
+					<span class="item-details-span">単位量: </span>${i.ci_unit_price}</span>
+				</div>
+			</c:forEach>
         </div>
         <c:if test="${param.page eq 'clearList' }">
 		<div class="item-list">
