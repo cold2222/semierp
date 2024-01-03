@@ -27,7 +27,6 @@ public class CompanyInformDAO {
 						rs.getDate(4), rs.getInt(5), rs.getInt(6));
 				
 				companyInforms.add(tempCompanyInform);
-				System.out.println(tempCompanyInform);
 			}
 			request.setAttribute("companyInforms", AdminUtils.setPaging(request, companyInforms, 18));
 			
