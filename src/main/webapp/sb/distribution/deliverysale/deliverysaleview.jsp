@@ -56,7 +56,7 @@
 					 <span class="item-details-span">単位: </span>${i.p_si }
 					 <span class="item-details-span">単位量: </span>${i.p_quantity }</span>
 					<span class="item-details"><span class="item-details-span">数量: </span>${i.ci_count}
-					<span class="item-details-span">単位量: </span>${i.ci_unit_price}</span>
+					<span class="item-details-span">単価: </span>${i.ci_unit_price}</span>
 				</div>
 			</c:forEach>
         </div>
