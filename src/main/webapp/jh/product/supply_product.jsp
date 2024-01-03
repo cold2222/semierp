@@ -77,9 +77,9 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
         </c:otherwise>
 										</c:choose>
 									</div>
-									<div style="">
-										<button class="insert-btn ud" onclick="location.href='UpdateProductC?id=${p.p_id}'">수정</button>
-										<button class="insert-btn ud" onclick="deleteProduct('${p.p_id}')">삭제</button>
+									<div class="button">
+										<button class="insert-btn" onclick="location.href='UpdateProductC?id=${p.p_id}'">修正</button>
+										<button class="insert-btn" onclick="deleteProduct('${p.p_id}')">削除</button>
 									</div> 
 								</div>
 							</c:forEach>

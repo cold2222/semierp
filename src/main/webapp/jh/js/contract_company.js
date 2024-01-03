@@ -13,16 +13,26 @@ searchBtn.addEventListener("input", function(e) {
 
 function showCompany(data) {
 	let list = document.querySelector('.list');
-	let coms = '';
+	list.innerHTML = '';
+	
+  let div = `<div class='modal'>
+  <div class='table'>
+    <div class='table-header'>
+      <div class='table-cell'>会社名</div>
+      <div class='table-cell'>住所</div>
+      <div class='table-cell'>取引先の担当者</div>
+    </div>`;
 	data.forEach(company => {
-		let div = `<div class='div-row' onclick="setValue('${company.c_no}','${company.c_name}')">
-        <div>会社名 : ${company.c_name}</div>
-        <div>　住所 : ${company.c_addr}</div>
-        <div>　取引先の担当者 : ${company.c_keeper}</div>
-      </div>`;
-		coms += div;
+		div += `
+    <div class='table-row' onclick="setValue('${company.c_no}','${company.c_name}')">
+      <div class='table-cell'>${company.c_name}</div>
+      <div class='table-cell'>${company.c_addr}</div>
+      <div class='table-cell'>${company.c_keeper}</div>
+    </div>
+`;
 	});
-	list.innerHTML = coms;
+	div += `</div>`;
+	list.innerHTML = div;
 }
 
 function setValue(value, displayName) {
@@ -59,20 +69,29 @@ searchBtn1.addEventListener("input", function(e) {
 
 function showProduct(data) {
 	let list = document.querySelector('.listProduct');
-	let coms = '';
-	data.forEach(product => {
-		let div = `
-      <div class='div-row' onclick="setValue1('${product.p_id}','${product.p_name}','${product.p_type}','${product.p_si}','${product.p_quantity}')">
-        <div>タイプ：${product.p_type}</div>
-        <div>　アイテム名：${product.p_name}</div>
-        <div>　単位：${product.p_si}</div>
-        <div>　単位量：${product.p_quantity}</div>
-      </div>`;
-		coms += div;
-	});
-	list.innerHTML = coms;
-}
+		list.innerHTML = '';
 
+let div = `<div class='modal'>
+  <div class='table'>
+    <div class='table-header'>
+      <div class='table-cell'>タイプ</div>
+      <div class='table-cell'>アイテム名</div>
+      <div class='table-cell'>単位</div>
+      <div class='table-cell'>単位量</div>
+    </div>`;
+	data.forEach(product => {
+		 div += `
+      <div class='table-row' onclick="setValue1('${product.p_id}','${product.p_name}','${product.p_type}','${product.p_si}','${product.p_quantity}')">
+        <div class='table-cell'>${product.p_type}</div>
+        <div class='table-cell'>${product.p_name}</div>
+        <div class='table-cell'>${product.p_si}</div>
+        <div class='table-cell'>${product.p_quantity}</div>
+      </div>`;
+	});
+		div += `</div>`;
+	list.innerHTML = div;
+}
+	
 function setValue1(value, displayName, type, si, quantity) {
 	let productData = type +": "+displayName+" "+quantity+si;
 	clickedInput.value = productData;

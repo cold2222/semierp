@@ -30,7 +30,8 @@ public class EmpolyeeAPI {
 		ResultSet rs = null;
 		try {
 
-			String sql = "select * from employee where e_name like ? AND (e_deptno = 101 OR e_deptno = 102)";
+			String sql = "select e.*, d.d_dept from employee e, dept d where e.e_deptno = d.d_deptno and e_name like ? AND (e_deptno = 101 OR e_deptno = 102)";
+					
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "%" + request.getParameter("search") + "%");
@@ -47,6 +48,7 @@ public class EmpolyeeAPI {
 				emp.setE_tel(rs.getString("e_tel"));
 				emp.setE_email(rs.getString("e_email"));
 				emp.setE_joined_company(rs.getDate("e_joined_company"));
+				emp.setD_dept(rs.getString("d_dept"));
 				emp.setE_pw(sql);
 				
 				emps.add(emp);

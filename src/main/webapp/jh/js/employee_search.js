@@ -28,30 +28,38 @@ empSearchBtn.addEventListener("input", function(e) {
 });
 
 function showEmployee(data) {
+	console.log(data);
 	let list = document.querySelector('.empList');
-	let coms = '';
+	list.innerHTML = '';
+	let div = `<div class='modal'>
+  <div class='table'>
+    <div class='table-header'>
+      <div class='table-cell'>社員番号</div>
+      <div class='table-cell'>名前</div>
+      <div class='table-cell'>役職</div>
+      <div class='table-cell'>部署番号</div>
+    </div>`;
 	data.forEach(employee => {
-		let div = `<div class='div-row' onclick="empSetValue('${employee.e_no}','${employee.e_name}','${employee.e_rank}',${employee.e_deptno})">
-        <div>取引担当社員番号：${employee.e_no}</div>
-        <div>　名前：${employee.e_name}</div>
-        <div>　階級：${employee.e_rank}</div>
-        <div>　部門番号：${employee.e_deptno}</div>
+		div += `<div class='table-row' onclick="empSetValue('${employee.e_no}','${employee.e_name}','${employee.e_rank}','${employee.d_dept}')">
+        <div class='table-cell'>${employee.e_no}</div>
+        <div class='table-cell'>${employee.e_name}</div>
+        <div class='table-cell'>${employee.e_rank}</div>
+        <div class='table-cell'>
+
+${employee.d_dept}
+
+		</div>
       </div>`;
-		coms += div;
 	});
-	list.innerHTML = coms;
+		div += `</div>`;
+	list.innerHTML = div;
 }
 
-function empSetValue(e_no, e_name,e_rank,e_deptno) {
-	let deptName = "輸入事業部";
-		if(e_deptno == 102){
-			deptName = "販売営業部"
-		}
-	
+function empSetValue(e_no, e_name,e_rank,d_dept) {
 	let e_noInput = document.getElementById('e_id');
 	let employeeSearchInput = document.getElementById('employeeSearch');
 	e_noInput.value = e_no;
-	employeeSearchInput.value =deptName+" :"+e_rank+" "+e_name;
+	employeeSearchInput.value =d_dept+" :"+e_rank+" "+e_name;
 	empCloseModal();
 }
 

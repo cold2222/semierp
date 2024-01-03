@@ -45,7 +45,7 @@
 										<div class="company-main-text">${c.c_keeper }</div>
 										<div class="company-main-text">${c.c_phone}</div>
 										<div class="company-main-text">
-											<button onclick="location.href='UpdateComC?c_no=${c.c_no }'">詳細</button>
+											<button class="insert-btn" onclick="location.href='UpdateComC?c_no=${c.c_no }'">Move</button>
 										</div>
 									</div>
 								</c:forEach>

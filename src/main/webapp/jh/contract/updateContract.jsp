@@ -21,19 +21,22 @@
 </script>
 <link rel="stylesheet" href="jh/css/contract_reg_modal.css">
 <link rel="stylesheet" href="jh/css/contract_reg.css">
+<link rel="stylesheet" href="jh/css/contract_modal.css">
 </head>
 <body>
 	<!-- 사원 검색용모달 -->
 	<div id="empSearchModal" class="modal-background">
 		<div id="empModal" class="modal-content">
 			<div>
-				<div>
-					<input placeholder="本社員検索" id="empSearchBtn">
+				<div class="search-input">
+					<input class="search-btn" placeholder="本社員検索" id="empSearchBtn">
+					<button class="close-button" id="empCloseModalBtn">
+						<div class="close-icon"></div>
+					</button>
 				</div>
 				<div class="empList"></div>
 			</div>
 			<div class="modal-foot">
-				<button id="empCloseModalBtn">閉じる</button>
 			</div>
 		</div>
 	</div>
@@ -41,13 +44,15 @@
 		<!-- 모달 내용 -->
 		<div id="myModal" class="modal-content">
 			<div>
-				<div>
-					<input placeholder="取引先検索" id="search-btn">
+				<div class="search-input">
+					<input class="search-btn" placeholder="取引先検索" id="search-btn">
+					<button class="close-button" id="closeModalBtn">
+						<div class="close-icon"></div>
+					</button>
 				</div>
 				<div class="list"></div>
 			</div>
 			<div class="modal-foot">
-				<button id="closeModalBtn">閉じる</button>
 			</div>
 		</div>
 	</div>
@@ -56,13 +61,15 @@
 	<div id="productModalBackground" class="modal-background">
 		<div id="productModal" class="modal-content">
 			<div>
-				<div>
-					<input placeholder="アイテム検索" id="productSearchInput">
+				<div class="search-input">
+					<input class="search-btn" placeholder="アイテム検索" id="productSearchInput">
+					<button class="close-button" id="closeProductModalBtn">
+						<div class="close-icon"></div>
+					</button>
 				</div>
 				<div class="listProduct"></div>
 			</div>
 			<div class="modal-foot">
-				<button id="closeProductModalBtn">閉じる</button>
 			</div>
 		</div>
 	</div>
@@ -182,7 +189,7 @@
 								<input name="ci_unit_price" placeholder="単価" type="text"
 									value="${items.ci_unit_price}">
 							</div>
-							<button type="button"
+							<button type="button" class="insert-btn"
 								onclick="deleteContractItem('${items.ci_no}','${contract.c_contract_no}')">削除</button>
 						</div>
 					</c:forEach>

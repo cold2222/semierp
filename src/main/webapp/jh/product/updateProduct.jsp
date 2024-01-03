@@ -19,7 +19,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">アイテムの詳細／修正</div>
+			<div class="content-head-text">アイテム修正</div>
 		</div>
 
 		<div class="content-body">

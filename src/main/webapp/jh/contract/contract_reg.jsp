@@ -8,18 +8,19 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="jh/css/contract_reg_modal.css">
 <link rel="stylesheet" href="jh/css/contract_reg.css">
+<link rel="stylesheet" href="jh/css/contract_modal.css">
 <script>
-function toggleDateField() {
-    var transactionType = document.getElementById("transactionType");
-    var dateField = document.getElementById("dateField");
-    var labelDate = document.getElementById("labelDate");
+	function toggleDateField() {
+		var transactionType = document.getElementById("transactionType");
+		var dateField = document.getElementById("dateField");
+		var labelDate = document.getElementById("labelDate");
 
-    if (transactionType.value === "1") { // 선택된 값이 '1'인 경우(입항)
-        labelDate.innerText = "入港日"; // 필드 라벨 변경
-    } else if (transactionType.value === "2") { // 선택된 값이 '2'인 경우(납기)
-        labelDate.innerText = "納期日"; // 필드 라벨 변경
-    }
-}
+		if (transactionType.value === "1") { // 선택된 값이 '1'인 경우(입항)
+			labelDate.innerText = "入港日"; // 필드 라벨 변경
+		} else if (transactionType.value === "2") { // 선택된 값이 '2'인 경우(납기)
+			labelDate.innerText = "納期日"; // 필드 라벨 변경
+		}
+	}
 </script>
 </head>
 <body>
@@ -27,13 +28,15 @@ function toggleDateField() {
 	<div id="empSearchModal" class="modal-background">
 		<div id="empModal" class="modal-content">
 			<div>
-				<div>
-					<input placeholder="本社員検索" id="empSearchBtn">
+				<div class="search-input">
+					<input class="search-btn" placeholder="本社員検索" id="empSearchBtn">
+					<button class="close-button" id="empCloseModalBtn">
+						<div class="close-icon"></div>
+					</button>
 				</div>
 				<div class="empList"></div>
 			</div>
 			<div class="modal-foot">
-				<button id="empCloseModalBtn">閉じる</button>
 			</div>
 		</div>
 	</div>
@@ -41,14 +44,15 @@ function toggleDateField() {
 		<!-- 모달 내용 -->
 		<div id="myModal" class="modal-content">
 			<div>
-				<div>
-					<input placeholder="取引先検索" id="search-btn">
+				<div class="search-input">
+					<input class="search-btn" placeholder="取引先検索" id="search-btn">
+					<button class="close-button" id="closeModalBtn">
+						<div class="close-icon"></div>
+					</button>
 				</div>
 				<div class="list"></div>
 			</div>
-			<div class="modal-foot">
-				<button id="closeModalBtn">閉じる</button>
-			</div>
+			<div class="modal-foot"></div>
 		</div>
 	</div>
 
@@ -56,13 +60,15 @@ function toggleDateField() {
 	<div id="productModalBackground" class="modal-background">
 		<div id="productModal" class="modal-content">
 			<div>
-				<div>
-					<input placeholder="アイテム検索" id="productSearchInput">
+				<div class="search-input">
+					<input class="search-btn" placeholder="アイテム検索" id="productSearchInput">
+					<button class="close-button" id="closeProductModalBtn">
+						<div class="close-icon"></div>
+					</button>
 				</div>
 				<div class="listProduct"></div>
 			</div>
 			<div class="modal-foot">
-				<button id="closeProductModalBtn">閉じる</button>
 			</div>
 		</div>
 	</div>

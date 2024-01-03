@@ -49,7 +49,7 @@
 					</div>
 				</form>
 				<div class="button" id="editButton">
-					<button class="insert-btn" onclick="toggleEdit()">修正</button>
+					<button class="insert-btn" onclick="toggleEdit()">修正する</button>
 					<button class="insert-btn2" onclick="deleteCompany('${c.c_no }')">削除</button>
 				</div>
 					<c:if test="${param.isSuccess != null }">
