@@ -12,7 +12,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">お知らせ</div>
+			<div class="content-head-text">運送部お知らせ</div>
 		</div>
 		<div class="content-body">
 			<div class="search-container">
@@ -78,9 +78,11 @@
 								</div>
 							</div>
 							<!-- 권한설정 해야됨 -->
-							<div class="insert-btn">
-								<button onclick="location.href='DistributionNoticeInsertC'">掲示物作成</button>
-							</div>
+							<c:if test="${sessionScope.empInfo.e_deptno eq 201 && sessionScope.empInfo.e_rank eq '部長' }">
+								<div class="insert-btn">
+									<button onclick="location.href='DistributionNoticeInsertC'">掲示物作成</button>
+								</div>
+							</c:if>
 						</div>
 					</div>
 				</div>

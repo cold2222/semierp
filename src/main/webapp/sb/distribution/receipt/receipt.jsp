@@ -40,14 +40,14 @@
 									<div class="bbs-main-text3 bbs-main-title">契約書作成日</div>
 									<div class="bbs-main-text4 bbs-main-title">詳細確認</div>
 								</div>
-								<c:forEach var="r" items="${receiptList }">
-								<div class="bbs-main">
+								<c:forEach var="r" items="${receiptList }" varStatus="loop">
+								<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 									<div class="bbs-main-text1 bbs-main-text">${r.c_contract_no }</div>
 									<div class="bbs-main-text1 bbs-main-text">${r.c_name }</div>
 									<div class="bbs-main-text3 bbs-main-text">${r.c_due_date }</div>
 									<div class="bbs-main-text3 bbs-main-text">${r.e_name}</div>
 									<div class="bbs-main-text3 bbs-main-text">${r.c_created_date }</div>
-									<div class="bbs-main-text4 bbs-main-text"><button onclick="location.href='DistributionReceiptViewC?c_contract_no=${r.c_contract_no }&page=List'">Move</button></div>
+									<div class="bbs-main-text4 bbs-main-text"><button class="select-btn" onclick="location.href='DistributionReceiptViewC?c_contract_no=${r.c_contract_no }&page=List'">Move</button></div>
 								</div>
 								</c:forEach>
 							</div>

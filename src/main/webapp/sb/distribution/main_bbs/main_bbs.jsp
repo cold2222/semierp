@@ -11,7 +11,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">運送部メイン掲示板</div>
+			<div class="content-head-text">メイン掲示板</div>
 		</div>
 		<div class="content-body">
 			<div class="bbs-content1 bbs-content">
