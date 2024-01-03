@@ -156,13 +156,14 @@
 	width: calc(18% - 10px);
 	flex: 0 0 calc(18% - 20px);
 }
+
 .bbs-content .board:nth-child(4) {
 	width: calc(24% - 10px);
 	flex: 0 0 calc(24% - 20px);
 }
 
 /* 나머지 넓이 조절 */
-.bbs-content .board:nth-child(2), .bbs-content .board:nth-child(3){
+.bbs-content .board:nth-child(2), .bbs-content .board:nth-child(3) {
 	width: calc(39% - 10px);
 	flex: 0 0 calc(39% - 20px);
 }
@@ -188,6 +189,8 @@
 	font-weight: bold;
 	color: #007bff;
 	margin-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .post-info {
@@ -205,6 +208,7 @@
 	justify-content: center;
 	text-align: center;
 	padding: 20px;
+	width: 90%;
 	margin-top: 30px;
 }
 
@@ -212,21 +216,35 @@
 	display: flex;
 	font-size: 18px;
 	color: black;
+	width: 100%;
 	white-space: nowrap;
 	margin-bottom: 10px;
 }
 
 .myself-line1 {
-		
+	border-right: 2px solid black;
+	flex: 3;
+	text-align: right; /* 가운데 정렬 추가 */
 }
+
 .myself-line2 {
-		
+	flex: 7;
+	text-align: left; /* 가운데 정렬 추가 */
+}
+
+.post-title-info {
+	display: flex;
+}
+
+.post-title-info-date {
+	font-style: italic;
+	color: black;
 }
 
 .board-button {
 	margin-top: 10px;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 }
 
 .board-button button {
