@@ -117,7 +117,7 @@
 	flex-basis:  160px;
 }
 .bbs-main-title-s:nth-child(3){
-	flex-basis:  100px;
+	flex-basis:  80px;
 }
 .bbs-main-title-s:nth-child(4){
 	flex-basis: 100px;
@@ -161,7 +161,7 @@
 	flex-basis: 160px;
 }
 .bbs-main-text-s:nth-child(3){
-	flex-basis: 100px;
+	flex-basis: 80px;
 }
 .bbs-main-text-s:nth-child(4){
 	flex-basis: 100px;
@@ -221,12 +221,25 @@
 	display: flex;
 }
 .insert-btn{
-	padding: 8px 16px;
-	background-color: #007bff;
-	color: #fff;
-	text-decoration: none;
+	font-size: 9pt;
+	padding: 5px 20px;
+	border: none;
 	border-radius: 4px;
-	transition: background-color 0.3s ease;
+	background-color: #007bff;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+.insert-btn2{
+	margin-left: 6px;
+	font-size: 9pt;
+	padding: 5px 20px;
+	border: none;
+	border-radius: 4px;
+	background-color: #007bff;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s;
 }
 .insert-btn:hover {
 	background-color: #0056b3;

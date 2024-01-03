@@ -29,7 +29,7 @@
 		<div id="empModal" class="modal-content">
 			<div>
 				<div class="search-input">
-					<input class="search-btn" placeholder="本社員検索" id="empSearchBtn">
+					<input class="search-btn" placeholder="本社員検索" id="empSearchBtn" >
 					<button class="close-button" id="empCloseModalBtn">
 						<div class="close-icon"></div>
 					</button>
@@ -126,7 +126,7 @@
 
 				<div class="contract-reg-main">
 					<div class="company-item-title">アイテム名</div>
-					<div class="company-main-title">品の個数</div>
+					<div class="company-main-title">数量</div>
 					<div class="company-main-title">単価</div>
 				</div>
 				<div id="contractTable">
@@ -134,14 +134,14 @@
 						<input name="ci_c_contract_no" type="hidden"> <input
 							type="hidden" name="ci_p_id" class="selectedValueP">
 						<div class="input-container2">
-							<input readonly="readonly" class="displayNameP" type="text"
+							<input readonly="readonly" class="displayNameP" type="text" required="required"
 								placeholder="アイテム名">
 						</div>
 						<div class="input-container2">
-							<input name="ci_count" placeholder="品の個数" type="text">
+							<input name="ci_count" placeholder="数量" type="text" required="required">
 						</div>
 						<div class="input-container2">
-							<input name="ci_unit_price" placeholder="単価" type="text">
+							<input name="ci_unit_price" placeholder="単価" type="text" required="required"	>
 						</div>
 					</div>
 				</div>

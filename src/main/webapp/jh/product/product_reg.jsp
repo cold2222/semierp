@@ -17,7 +17,7 @@
 		<div class="content-body">
 			<div>
 				<form action="UnitC">
-					<button>単位とタイプ</button>
+					<button class="insert-btn2">単位とタイプ</button>
 				</form>
 			</div>
 			<div class="bbs-content1">
