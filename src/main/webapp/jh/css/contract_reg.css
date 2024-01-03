@@ -1,15 +1,18 @@
 @charset "UTF-8";
-.contents{
+
+.contents {
 	display: flex;
 	flex-direction: column;
-	justify-content : center;
-	align-items : center;
-	width:100%;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
-.content-head{
+
+.content-head {
 	width: 100%;
 	height: 120px;
 }
+
 .content-head-text {
 	display: flex;
 	margin-left: 2.5%;
@@ -18,109 +21,268 @@
 	width: 300px;
 	height: 60px;
 	font-size: 28px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #000;
-    justify-content : center;
-    align-items : center;
-    text-transform: uppercase;
-    background-color: #f5f5f5; /* 연한 회색 배경 */
-    padding: 10px 20px; /* 내부 여백 설정 */
-    border: 1px solid #ddd; /* 테두리 설정 */
-    border-radius: 5px; /* 테두리의 모서리를 둥글게 설정 */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 입체적인 박스 효과 */
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 20px;
+	color: #000;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+	background-color: #f5f5f5; /* 연한 회색 배경 */
+	padding: 10px 20px; /* 내부 여백 설정 */
+	border: 1px solid #ddd; /* 테두리 설정 */
+	border-radius: 5px; /* 테두리의 모서리를 둥글게 설정 */
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 입체적인 박스 효과 */
 }
+
 .content-body {
-    width: 91%;
-    background-color: #fff;
-    display: flex;
-    padding: 20px;
-    margin-bottom: 30px;
-    flex-direction: column;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	width: 91%;
+	background-color: white;
+	display: flex;
+	padding: 20px 30px;
+	margin-bottom: 30px;
+	flex-direction: column;
+	margin-bottom: 130px;
+	font-weight: bold;
 }
 /* 여기까지는 완벽 */
-
 .bbs-content1 {
     padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    text-align: left;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
 }
-
-.input-container {
-	font-weight: bold;
+.input-container-date,
+.input-container-date2 {
     margin-bottom: 15px;
 }
 
-.input-container input[type="text"],
-.input-container input[type="date"],
-.input-container select {
-    width: calc(100% - 10px);
+.input-container-date input[type="date"],
+.input-container-date2 select,
+.text-input-graph2 .input-container input[type="text"] {
+    width: calc(100% - 12px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.text-input-graph{
+	display: flex;
+}
+.text-input-graph2 {
+    display: flex;
+    justify-content: space-between;
+    /* 입력 요소를 좀 더 간격을 둔 형태로 정렬 */
+    align-items: flex-start;
+    flex-wrap: wrap; /* 요소들이 차지하는 공간이 줄어들면 다음 줄로 넘어가도록 설정 */
+}
+
+.text-input-graph2 > div {
+    flex: 0 0 calc(50% - 10px); /* 요소의 너비를 50%로 설정 */
+    margin-bottom: 10px; /* 요소 사이 여백 설정 */
+}
+
+.text-input-graph2 .input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-input-graph2 .input-container input[type="text"],
+.text-input-graph2 .input-container input[type="date"],
+.text-input-graph2 .input-container select {
+    width: calc(100% - 12px); /* 입력창 너비 조정 */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+/* 두 개의 입력 요소를 한 줄에 정렬 */
+.content2-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.content2-main > div {
+    flex: 0 0 calc(50% - 10px);
+    margin-right: 10px;
+}
+
+.button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.insert-btn {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.insert-btn:hover {
+    background-color: #45a049;
+}
+
+.id-search{
+	margin-left: 44%;
+}
+
+.input-container input[type="text"] {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-container-date2 select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
     margin-top: 5px;
 }
-.button{
+.input-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-container input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+
+
+.content1-main {
+	display: flex;
+}
+
+.content2-main {
+	display: flex;
+	margin-left: 10%;
+}
+
+
+.input-container-date input[type="date"], .input-container select {
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-top: 5px;
+}
+
+.button {
 	text-align: right;
 	margin-bottom: 10px;
 }
 
 .insert-btn {
-    padding: 5px 16px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 15px;
+	padding: 5px 16px;
+	background-color: #3498db;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: inline-block;
 }
 
 .insert-btn:hover {
-    background-color: #2980b9;
+	background-color: #2980b9;
 }
+
 .contract-reg-main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-    font-weight: bold;
-    color: #333;
-    font-size: 16px;
-}
-
-.contract-reg-main .company-item-title,
-.contract-reg-main .company-main-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: #f5f5f5;
+	border-bottom: 1px solid #ddd;
 	font-weight: bold;
-    flex-basis: 30%;
-    text-align: center;
-	}
-#contractTable {
-    margin-top: 20px;
-}
-.bbs-content2 {
-    display: flex;
-    gap: 10px;
+	color: #333;
+	font-size: 16px;
 }
 
+.contract-reg-main .company-item-title, .contract-reg-main .company-main-title
+	{
+	font-weight: bold;
+	flex-basis: 30%;
+	text-align: center;
+}
+
+#contractTable {
+	margin-top: 20px;
+}
+
+.bbs-content2 {
+	display: flex;
+	gap: 10px;
+}
 
 .input-container2 {
-    display: inline-block;
-    width: 33%; /* 원하는 너비 설정 */
-    box-sizing: border-box; /* 여백 포함 설정 */
+	display: inline-block;
+	width: 33%; /* 원하는 너비 설정 */
+	box-sizing: border-box; /* 여백 포함 설정 */
 }
 
 .input-container2 input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+.search-input{
+	display: flex;
+	justify-content: center;
+}
+.search-btn{
+	margin-left: 350px;
+	width: 35%;
+	height: 35px;
+}
+.close-button {
+	margin-left: 350px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.close-icon {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.close-icon:before,
+.close-icon:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: #333;
+}
+
+.close-icon:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close-icon:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }

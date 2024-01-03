@@ -277,7 +277,7 @@ public class DeliverySaleDAO {
 				+ "INNER JOIN employee c ON b.s_e_no = c.e_no " 
 				+ "INNER JOIN company d ON a.c_c_no = d.c_no "
 				+ "WHERE a.c_type = 2 " 
-				+ "AND a.c_status = 2 " 
+				+ "AND a.c_status = 3 " 
 				+ "AND a.c_delivery_date <= SYSDATE ";
 		if (search.get("word") != null && !search.get("field").equals("all")) {
 			sql += " and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";

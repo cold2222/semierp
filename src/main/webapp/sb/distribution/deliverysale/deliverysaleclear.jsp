@@ -42,15 +42,15 @@
 									<div class="bbs-main-text4 bbs-main-title">詳細確認</div>
 									<div class="bbs-main-text4 bbs-main-title">配送完了</div>
 								</div>
-								<c:forEach var="d" items="${deliverySaleList }">
-								<div class="bbs-main">
+								<c:forEach var="d" items="${deliverySaleList }" varStatus="loop">
+								<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 									<div class="bbs-main-text1 bbs-main-text">${d.c_contract_no }</div>
 									<div class="bbs-main-text1 bbs-main-text">${d.c_name }</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.c_due_date }</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.e_name}</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.c_delivery_date }</div>
-									<div class="bbs-main-text3 bbs-main-text"><button onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&page=clearList'">Move</button></div>
-									<div class="bbs-main-text4 bbs-main-text"><button onclick="DistributionReceiptClear('${d.c_contract_no}')">完了</button></div>
+									<div class="bbs-main-text3 bbs-main-text"><button class="select-btn" onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&page=clearList'">Move</button></div>
+									<div class="bbs-main-text4 bbs-main-text"><button class="clear-btn" onclick="DistributionReceiptClear('${d.c_contract_no}')">完了</button></div>
 								</div>
 								</c:forEach>
 							</div>

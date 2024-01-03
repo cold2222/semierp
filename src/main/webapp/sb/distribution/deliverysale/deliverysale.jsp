@@ -12,7 +12,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">納品配車登録</div>
+			<div class="content-head-text">販売配車登録</div>
 		</div>
 		<div class="content-body">
 		<div class="search-container">
@@ -40,14 +40,14 @@
 									<div class="bbs-main-text3 bbs-main-title">契約書作成日</div>
 									<div class="bbs-main-text4 bbs-main-title">詳細確認</div>
 								</div>
-								<c:forEach var="d" items="${deliverySaleList }">
-								<div class="bbs-main">
+								<c:forEach var="d" items="${deliverySaleList }" varStatus="loop">
+								<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 									<div class="bbs-main-text1 bbs-main-text">${d.c_contract_no }</div>
 									<div class="bbs-main-text1 bbs-main-text">${d.c_name }</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.c_due_date }</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.e_name}</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.c_created_date }</div>
-									<div class="bbs-main-text4 bbs-main-text"><button onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&&page=List'">Move</button></div>
+									<div class="bbs-main-text4 bbs-main-text"><button class="select-btn" onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&&page=List'">Move</button></div>
 								</div>
 								</c:forEach>
 							</div>

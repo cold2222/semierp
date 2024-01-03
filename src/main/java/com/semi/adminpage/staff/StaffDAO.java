@@ -20,8 +20,19 @@ public class StaffDAO {
 		ResultSet rs = null;
 		ArrayList<StaffDTO> staffsInfo = new ArrayList<StaffDTO>();
 		String sql = "select e_deptno, d_dept as e_dept, e_no, e_name, e_rank, e_tel, e_email, e_joined_company\r\n"
+<<<<<<< HEAD
 				+ "from employee\r\n" + "join dept\r\n" + "on e_deptno = d_deptno\r\n" + "order by e_deptno, e_no";
 		
+=======
+				+ "from employee\r\n" + "join dept\r\n" + "on e_deptno = d_deptno\r\n" + "order by e_deptno,\r\n"
+						+ "case e_rank when '社長' then 1 "
+						+ "when '部長' then 2 "
+						+ "when '課長' then 3 "
+						+ "when '係長' then 4 "
+						+ "when '主任' then 5 "
+						+ "when '社員' then 6 else 7 end, e_name ";
+		int[] indexList = new int[5];
+>>>>>>> c1fcd6c0dbb55460edc3938e72e865df8baeb1da
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);

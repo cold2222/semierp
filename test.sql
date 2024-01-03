@@ -60,6 +60,7 @@ create table product(
 );
 
 drop table product;
+
 create SEQUENCE product_seq START WITH 1 INCREMENT BY 1;
 ALTER TABLE product MODIFY (p_manufacturer NUMBER(10));
 insert into product values(1, 'L', 'oil', 3, 'dkdk', 3939, 9393, 3939, 1);
