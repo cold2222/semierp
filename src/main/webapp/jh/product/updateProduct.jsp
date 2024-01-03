@@ -73,7 +73,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 						value="${p.p_manufacturer}">
 				</div>
 				<div class="button" id="saveButton">
-					<button onclick="updateProduct()">修正</button>
+					<button class="insert-btn3" onclick="updateProduct()">修正</button>
 				</div>
 			</div>
 		</div>
