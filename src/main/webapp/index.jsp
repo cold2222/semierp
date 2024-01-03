@@ -15,17 +15,31 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="index-contents">
 		<div class="index-content">
-			<div class></div>
-			<div class="contents">
-				<div class="content-body">
+			<div class="content-background">
+				<img alt="" src="backgroundImgFolder/mapOfWorld.jpg">
+			</div>
+			<div class="content-body">
+				<div class="contents">
 					<div class="bbs-content1 bbs-content">
 						<div class="board">
 							<div class="board-title">사원정보</div>
-							<div class="post">
-								<div class="post-info">부서 :
-									${empInfo.e_dept}/${empInfo.e_rank}</div>
-								<div class="post-info">이름 : ${empInfo.e_name}</div>
-								<div class="post-info">번호 : ${empInfo.e_tel}</div>
+							<div class="myself">
+								<div class="myself-info">
+									<div class="myself-line1">부서</div>
+									<div class="myself-line2">${empInfo.e_dept}/${empInfo.e_rank}</div>
+								</div>
+								<div class="myself-info">
+									<div class="myself-line1">이름</div>
+									<div class="myself-line2">${empInfo.e_name}</div>
+								</div>
+								<div class="myself-info">
+									<div class="myself-line1">직원번호</div>
+									<div class="myself-line2">${empInfo.e_no}</div>
+								</div>
+								<div class="myself-info">
+									<div class="myself-line1">전화번호</div>
+									<div class="myself-line2">${empInfo.e_tel}</div>
+								</div>
 								<div class="board-button">
 									<button>마이페이지</button>
 									<button>로그아웃</button>
@@ -42,8 +56,25 @@
 								<!-- 내용을 넣어주시면됩니다. -->
 								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
 									합ㄴ디ㅏ. ㅎ</div>
+
 							</div>
 							<%-- </c:forEach> --%>
+							<div class="post">
+								<div class="post-title">테스트입니다3.</div>
+								<div class="post-info">asdl;fkjri;asldkfjri;alsdkfjir;laksdjfr;liasdjfirl;aksdjfㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
+							</div>
+							<div class="post">
+								<div class="post-title">테스트입니다3.</div>
+								<div class="post-info">asdl;fkjri;asldkfjri;alsdkfjir;laksdjfr;liasdjfirl;aksdjfㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
+							</div>
+							<div class="post">
+								<div class="post-title">테스트입니다3.</div>
+								<div class="post-info">asdl;fkjri;asldkfjri;alsdkfjir;laksdjfr;liasdjfirl;aksdjfㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
+							</div>
+							<div class="post">
+								<div class="post-title">테스트입니다3.</div>
+								<div class="post-info">asdl;fkjri;asldkfjri;alsdkfjir;laksdjfr;liasdjfirl;aksdjfㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
+							</div>
 						</div>
 
 						<div class="board">
@@ -81,6 +112,14 @@
 								<div class="post-info">asdl;fkjri;asldkfjri;alsdkfjir;laksdjfr;liasdjfirl;aksdjf</div>
 							</div>
 
+							<div class="post">
+								<div class="post-title">테스트입니다3.</div>
+								<div class="post-info">asdl;fkjri;asldkfjri;alsdkfjir;laksdjfr;liasdjfirl;aksdjfㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
+							</div>
+							<div class="post">
+								<div class="post-title">테스트입니다3.</div>
+								<div class="post-info">asdl;fkjri;asldkfjri;alsdkfjir;laksdjfr;liasdjfirl;aksdjfㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
+							</div>
 							<div class="post">
 								<div class="post-title">테스트입니다3.</div>
 								<div class="post-info">asdl;fkjri;asldkfjri;alsdkfjir;laksdjfr;liasdjfirl;aksdjfㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>

@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 /* .content-border {
 	display: flex;
 	justify-content: center;
@@ -82,8 +81,6 @@
 	color : #007bff;
 } 
  */
- 
- 
 * {
 	margin: 0;
 	padding: 0;
@@ -95,101 +92,157 @@
 }
 
 .index-content {
-	background-image: url("https://cdn.pixabay.com/photo/2017/06/14/08/20/map-of-the-world-2401458_1280.jpg");
+	position: relative;
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	
 }
 
- 
+.content-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	overflow: hidden;
+}
+
+.content-background img {
+	object-fit: cover;
+}
+
 .contents {
 	margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
 
-
 .content-body {
+	position: relative;
+	z-index: 1;
 	width: 97%;
 	background-color: rgba(255, 255, 255, 0);
 	display: flex;
-	 padding: 20px 30px; 
+	padding: 20px 30px;
 	margin-bottom: 30px;
 }
+
 .bbs-content {
-  display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-    width: 100%; /* 부모 요소에 대한 너비 설정 */
-    padding: 20px; /* 간격을 위한 패딩 추가 */
-    box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: space-between;
+	width: 100%; /* 부모 요소에 대한 너비 설정 */
+	padding: 20px; /* 간격을 위한 패딩 추가 */
+	box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
 }
 
 .board {
 	background-color: rgba(255, 255, 255, 0.9);
-    /* background-color: #fff; */
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    box-sizing: border-box; /* 패딩을 요소 크기에 포함 */
+	/* background-color: #fff; */
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 20px;
+	box-sizing: border-box; /* 패딩을 요소 크기에 포함 */
 }
 
 /* 1,4번 넓이 조절 */
-.bbs-content .board:nth-child(1),
+.bbs-content .board:nth-child(1) {
+	width: calc(18% - 10px);
+	flex: 0 0 calc(18% - 20px);
+}
 .bbs-content .board:nth-child(4) {
-    width: calc(24% - 10px); 
-    flex: 0 0 calc(24% - 20px); 
+	width: calc(24% - 10px);
+	flex: 0 0 calc(24% - 20px);
 }
 
-
 /* 나머지 넓이 조절 */
-.bbs-content .board:nth-child(2),
-.bbs-content .board:nth-child(3),
-.bbs-content .board:nth-child(5),
-.bbs-content .board:nth-child(6) {
-    width: calc(36.5% - 10px); 
-    flex: 0 0 calc(36.5% - 20px); 
+.bbs-content .board:nth-child(2), .bbs-content .board:nth-child(3){
+	width: calc(39% - 10px);
+	flex: 0 0 calc(39% - 20px);
+}
+
+.bbs-content .board:nth-child(5), .bbs-content .board:nth-child(6) {
+	width: calc(36.5% - 10px);
+	flex: 0 0 calc(36.5% - 20px);
 }
 
 .board-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    border-bottom: 2px solid grey;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	border-bottom: 2px solid grey;
 }
 
 .post {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+	border-bottom: 1px solid #ddd;
+	padding: 10px 0;
 }
 
 .post-title {
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 5px;
+	font-weight: bold;
+	color: #007bff;
+	margin-bottom: 5px;
 }
 
 .post-info {
-    font-style: italic;
-    color: #888;
-    white-space: nowrap;
-  	overflow: hidden;
-  	text-overflow: ellipsis;
+	font-style: italic;
+	color: #888;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-.board-button{
-	margin-top : 10px;
-	 display: flex;
-    justify-content: flex-end; 
+.myself {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 20px;
+	margin-top: 30px;
+}
+
+.myself-info {
+	display: flex;
+	font-size: 18px;
+	color: black;
+	white-space: nowrap;
+	margin-bottom: 10px;
+}
+
+.myself-line1 {
+		
+}
+.myself-line2 {
+		
+}
+
+.board-button {
+	margin-top: 10px;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .board-button button {
-    margin-left: 10px; 
+	padding: 6px 12px;
+	margin-left: 10px;
+	background-color: #337ab7;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 15px;
+	transition: background-color 0.3s, color 0.3s;
 }
 
+.board-button button:hover {
+	background-color: #285e8e;
+	color: #fff;
+}
