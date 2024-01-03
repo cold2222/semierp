@@ -15,7 +15,7 @@ public class Contract {
 	private int c_type;
 	private String c_name;
 	private String e_name;
-	private String e_deptno;
+	private int e_deptno;
 	private String e_rank;
 
 	private List<ContractItems> items;
@@ -35,13 +35,17 @@ public class Contract {
 	}
 
 
-	public String getE_deptno() {
+	
+
+	public int getE_deptno() {
 		return e_deptno;
 	}
 
-	public void setE_deptno(String e_deptno) {
+
+	public void setE_deptno(int e_deptno) {
 		this.e_deptno = e_deptno;
 	}
+
 
 	public String getE_name() {
 		return e_name;

@@ -61,7 +61,7 @@ function addRow() {
 	if (table.children.length > 2) { // 테이블에 자식이 두 개 이상인 경우(첫 번째 행 제외)
 		var deleteButton = document.createElement('button');
 		deleteButton.textContent = '削除';
-		deleteButton.classList.add('delete-btn');
+		deleteButton.classList.add('insert-btn');
 		deleteButton.onclick = function() {
 			this.parentNode.remove(); // 해당 행 삭제
 		};

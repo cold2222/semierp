@@ -30,7 +30,6 @@
 				</form>
 			</div>
 			<div class="company-content">
-				<div class="company-content1 company-content">
 					<div class="company-content-main">
 						<div class="company-content-body">
 							<div class="company-content-company">
@@ -38,7 +37,7 @@
 									<div class="company-main-with">取引先名</div>
 									<div class="company-main-title">取引先の担当者</div>
 									<div class="company-main-title">取引先の連絡先</div>
-									<div class="company-main-title">詳細</div>
+									<div class="company-main-title">詳細／修正</div>
 								</div>
 								<c:forEach var="c" items="${cs }">
 									<div class="company-main">
@@ -46,7 +45,7 @@
 										<div class="company-main-text">${c.c_keeper }</div>
 										<div class="company-main-text">${c.c_phone}</div>
 										<div class="company-main-text">
-											<button onclick="location.href='UpdateComC?c_no=${c.c_no }'">詳細</button>
+											<button class="insert-btn" onclick="location.href='UpdateComC?c_no=${c.c_no }'">Move</button>
 										</div>
 									</div>
 								</c:forEach>
@@ -88,7 +87,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
 
 	

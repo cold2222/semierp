@@ -13,7 +13,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">注意/特異事項</div>
+			<div class="content-head-text">周知事項</div>
 		</div>
 		<div class="content-body">
 			<div class="search-container">
@@ -59,11 +59,13 @@
 										step="1">
 										<c:choose>
 											<c:when test="${i eq pageNum}">
-												<a href="DistributionSpecialNotePageC?pageNum=${i}&field=${param.field }&word=${param.word }"
+												<a
+													href="DistributionSpecialNotePageC?pageNum=${i}&field=${param.field }&word=${param.word }"
 													style="color: black; font-weight: bold;">${i}</a>
 											</c:when>
 											<c:otherwise>
-												<a href="DistributionSpecialNotePageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
+												<a
+													href="DistributionSpecialNotePageC?pageNum=${i}&field=${param.field }&word=${param.word }">${i}</a>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -77,9 +79,13 @@
 								</div>
 							</div>
 							<!-- 권한설정 해야됨 -->
-							<div class="insert-btn">
-								<button onclick="location.href='DistributionSpecialNoteInsertC'">掲示物作成</button>
-							</div>
+							<c:if
+								test="${sessionScope.empInfo.e_deptno eq 201 && sessionScope.empInfo.e_rank eq '部長' }">
+								<div class="insert-btn">
+									<button
+										onclick="location.href='DistributionSpecialNoteInsertC'">掲示物作成</button>
+								</div>
+							</c:if>
 						</div>
 					</div>
 				</div>

@@ -50,23 +50,47 @@
   border-collapse: collapse;
   font-family: Arial, sans-serif;
 }
-
-
-.item-details1 > div > span {
-  display: block;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
+.item{
+	font-size: 24px;
     font-weight: bold;
-    width: 16%;
+    padding: 10px;
+    background-color: #f0f0f0; /* 배경색 설정 */
+    border-bottom: 2px solid #ccc; /* 아래쪽 테두리 설정 */
 }
-.item-details2 > div > span {
-  display: block;
+
+
+
+.number{
+	display: block;
   padding: 8px;
   border-bottom: 1px solid #ddd;
   text-align: center;
   font-weight: bold;
-  width: 25%;
+  width: 5%;
+}
+.item-name{
+	display: block;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+  width: 45%;
+}
+.item-count{
+	display: block;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+  width: 8%;
+}
+.item-cost{
+	display: block;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-weight: bold;
+  width: 12%;
 }
 
 .contract-details {
@@ -74,6 +98,24 @@
   margin-top: 20px;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
+}
+
+
+.company{
+	 display: block;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-weight: bold;
+    width: 40%;
+}
+.date{
+	 display: block;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-weight: bold;
+    width: 15%;
 }
 
 .contract-details > span {
@@ -84,4 +126,8 @@
 }
 .span-wrap{
 	display: flex;
+}
+.span-wrap1{
+	display: flex;
+	margin-top: 2%;
 }

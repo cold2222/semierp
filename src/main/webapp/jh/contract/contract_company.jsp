@@ -73,12 +73,12 @@
 											<c:if test="${ct.c_type eq 2 }">販売</c:if>
 										</div>
 										<div class="bbs-main-text4 bbs-main-text">
-											<button
-												onclick="location.href='ContractDetailC?no=${ct.c_contract_no }'">詳細</button>
+											<button class="insert-btn"
+												onclick="location.href='ContractDetailC?no=${ct.c_contract_no }'">Move</button>
 										</div>
 										<div class="bbs-main-text4 bbs-main-text">
-											<button
-												onclick="location.href='UpdateContC?no=${ct.c_contract_no }'">修正</button>
+											<button class="insert-btn"
+												onclick="location.href='UpdateContC?no=${ct.c_contract_no }'">Move</button>
 										</div>
 									</div>
 								</c:forEach>

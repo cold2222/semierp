@@ -11,8 +11,17 @@ public class EmployeeDTO {
     private String e_tel;
     private String e_email;
     private Date e_joined_company;
+    private String d_dept;
     
-    public EmployeeDTO() {
+    public String getD_dept() {
+		return d_dept;
+	}
+
+	public void setD_dept(String d_dept) {
+		this.d_dept = d_dept;
+	}
+
+	public EmployeeDTO() {
 	}
 
 	public EmployeeDTO(int e_no, String e_pw, int e_deptno, String e_name, String e_rank, String e_tel, String e_email,

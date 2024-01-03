@@ -468,7 +468,7 @@ public class SupplyComDAO {
 		try {
 
 			request.setCharacterEncoding("utf-8");
-
+			System.out.println(request.getParameter("c_contract_no"));
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("c_c_no"));
@@ -715,7 +715,7 @@ public class SupplyComDAO {
 				contract.setC_type(rs.getInt("c_type"));
 				contract.setC_name(rs.getString("c_name"));
 				contract.setE_name(rs.getString("e_name"));
-				contract.setE_deptno(rs.getString("e_deptno"));
+				contract.setE_deptno(rs.getInt("e_deptno"));
 				contract.setE_rank(rs.getString("e_rank"));
 				pstmt.close();
 				rs.close();
