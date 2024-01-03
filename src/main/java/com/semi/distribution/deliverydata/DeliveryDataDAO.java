@@ -107,7 +107,7 @@ public class DeliveryDataDAO {
 				+ "INNER JOIN company b ON a.c_c_no = b.c_no "
 				+ "INNER JOIN shipping d ON a.c_contract_no = d.s_contract_no "
 				+ "INNER JOIN employee c ON d.s_e_no = c.e_no " 
-				+ "WHERE a.c_status = 2 and a.c_contract_no = ?"
+				+ "WHERE a.c_contract_no = ?"
 				+ "order by a.c_delivery_date desc";
 
 		try {
@@ -123,7 +123,6 @@ public class DeliveryDataDAO {
 				deliveryData.setC_delivery_date(rs.getDate("c_delivery_date"));
 				deliveryData.setC_name(rs.getString("c_name"));
 				deliveryData.setE_name(rs.getString("e_name"));
-				deliveryData.setC_type(rs.getString("c_type"));
 				if (rs.getString("c_type").equals("1")) {
 					deliveryData.setC_type("購買");
 				} else {
