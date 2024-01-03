@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.no-col{
+	width: 7%;
+}
+.idx-col{
+	width: 5%;
+}
+.idx-checkbox{
+	background-image: url( "../../../files/sjh/adminpage/checkbox-background.png" );
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50%;
+}
+#idx-checked{
+	background-image: url( "../../../files/sjh/adminpage/checked.png" );
+}
+.title-col{
+	width: 20%;
+}
+.content-col{
+	width: 31%;
+}

@@ -1,4 +1,4 @@
-package com.semi.adminpage;
+package com.semi.adminpage.controller.dept;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,18 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.adminpage.dept.DeptDAO;
+import com.semi.adminpage.product.AdminProductDAO;
 import com.semi.adminpage.staff.StaffDAO;
 import com.semi.login.EmployeeDAO;
 
-@WebServlet("/ImportDeptC")
-public class ImportDeptC extends HttpServlet {
+@WebServlet("/WarehouseDeptC")
+public class WarehouseDeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getContractDeptInfo(request, 1);
-				StaffDAO.getContractStaffsInfo(request, 1);
-				request.setAttribute("selectedPage", "importDept");
-				request.setAttribute("contentPage", "import_dept_info.jsp");
+				DeptDAO.getWarehouseDeptInfo(request);
+				StaffDAO.getWarehouseStffsInfo(request);
+				AdminProductDAO.getWarehouseProductsInfo(request);
+				request.setAttribute("selectedPage", "warehouseDept");
+				request.setAttribute("contentPage", "dept/warehouse_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);
@@ -29,6 +31,7 @@ public class ImportDeptC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

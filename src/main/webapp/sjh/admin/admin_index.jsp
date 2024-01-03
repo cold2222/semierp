@@ -14,7 +14,7 @@
 			<img class="company_logo" src="files/sjh/adminpage/adminPageLogo.jpg">
 			<hr style="margin: 50px 30px 0px 30px;">
 			<div class="side-menu-items">
-				<div class="side-menu-item ${selectedPage == 'staff' ? 'id="selected"' : ''} onclick="location.href='StaffC'" onclick="location.href=''">
+				<div class="side-menu-item" ${selectedPage == 'companyInform' ? 'id="selected"' : '' } onclick="location.href='CompanyInformC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/notice_white.png">&nbsp;&nbsp;<span class="side-menu-text">お知らせ</span>
 				</div>
 				<div class="side-menu-item" ${selectedPage == 'staff' ? 'id="selected"' : ''} onclick="location.href='StaffC'">

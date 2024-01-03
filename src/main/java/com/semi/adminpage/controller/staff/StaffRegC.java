@@ -1,4 +1,4 @@
-package com.semi.adminpage;
+package com.semi.adminpage.controller.staff;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ public class StaffRegC extends HttpServlet {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
 				DeptDAO.getDepts(request);
 				request.setAttribute("selectedPage", "staff");
-				request.setAttribute("contentPage", "staff_reg.jsp");
+				request.setAttribute("contentPage", "staff/staff_reg.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);

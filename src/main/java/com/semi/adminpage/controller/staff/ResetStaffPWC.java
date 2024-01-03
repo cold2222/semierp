@@ -1,4 +1,4 @@
-package com.semi.adminpage;
+package com.semi.adminpage.controller.staff;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

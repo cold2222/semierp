@@ -1,4 +1,4 @@
-package com.semi.adminpage;
+package com.semi.adminpage.controller.staff;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -19,7 +19,7 @@ public class StaffAdminModifyC extends HttpServlet {
 				DeptDAO.getDepts(request);
 				StaffDAO.getStaffInfo(request);
 				request.setAttribute("selectedPage", "staff");
-				request.setAttribute("contentPage", "staff_modify.jsp");
+				request.setAttribute("contentPage", "staff/staff_modify.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);
