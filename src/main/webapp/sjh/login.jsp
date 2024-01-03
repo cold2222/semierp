@@ -23,7 +23,7 @@
 							<label for="id">アカウント</label>
 						</div>
 						<div class="int-area">
-							<input name="pw" id="pw" type="text" autocomplete="off" required>
+							<input name="pw" id="pw" type="password" autocomplete="off" required>
 							<label for="pw">パスワード</label>
 						</div>
 						<div class="btn-area">

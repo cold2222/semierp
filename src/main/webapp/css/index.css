@@ -1,5 +1,89 @@
 @charset "UTF-8";
 
+
+/* .content-border {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid red;
+}
+
+.content-box {
+	display: flex;
+	width: 90%;
+	height: 500px;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid black;
+}
+
+.content1 {
+	width: 24%;
+	height: 450px;
+	background-color: white;
+    border-radius: 8px 8px 8px 8px;
+	
+}
+
+.content2 {
+	width: 36%;
+	height: 450px;
+	background-color: white;
+    border-radius: 8px 8px 8px 8px;
+	
+}
+
+.content-head {
+    height: 15%;
+    background-color: #337CCF;
+    border: 1px solid #1e5092;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.content-body {
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.content-line {
+    width: 80%;
+    height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+
+}
+
+.limited-line {
+	
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+ */
+
+/* 
+
+.contents a:link{
+	text-decoration: none;
+} 
+.contents a:visited,a:active{
+	color : #007bff;
+} 
+ */
+ 
+ 
 * {
 	margin: 0;
 	padding: 0;
@@ -11,71 +95,101 @@
 }
 
 .index-content {
+	background-image: url("https://cdn.pixabay.com/photo/2017/06/14/08/20/map-of-the-world-2401458_1280.jpg");
 	width: 100%;
-	background-color: #ccc;
 	justify-content: center;
 	align-items: center;
+	
 }
 
-.content-border {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.content-box {
-	display: flex;
-	width: 90%;
-	height: 500px;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.content1 {
-	width: 24%;
-	height: 450px;
-	background-color: white;
-}
-
-.content2 {
-	width: 36%;
-	height: 450px;
-	background-color: white;
-}
-
-.content3 {
-	background-color: white;
-	width: 32%;
-	height: 450px;
-}
-
-.content-head {
-	width: 100%;
-	height: 15%;
-	background-color: #337CCF;
-	color: white;
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.content-body{
-	width: 100%;
-	height: 85%;
-	display: flex;
-	flex-direction: column;
-    justify-content: space-around;
+ 
+.contents {
+	margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-	
+    width: 100%;
 }
-.content-line{
-	
-	width: 80%;
-	height: 15%;
+
+
+.content-body {
+	width: 97%;
+	background-color: rgba(255, 255, 255, 0);
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-bottom: 1px solid black;
-	
+	 padding: 20px 30px; 
+	margin-bottom: 30px;
 }
+.bbs-content {
+  display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%; /* 부모 요소에 대한 너비 설정 */
+    padding: 20px; /* 간격을 위한 패딩 추가 */
+    box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
+}
+
+.board {
+	background-color: rgba(255, 255, 255, 0.9);
+    /* background-color: #fff; */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box; /* 패딩을 요소 크기에 포함 */
+}
+
+/* 1,4번 넓이 조절 */
+.bbs-content .board:nth-child(1),
+.bbs-content .board:nth-child(4) {
+    width: calc(24% - 10px); 
+    flex: 0 0 calc(24% - 20px); 
+}
+
+
+/* 나머지 넓이 조절 */
+.bbs-content .board:nth-child(2),
+.bbs-content .board:nth-child(3),
+.bbs-content .board:nth-child(5),
+.bbs-content .board:nth-child(6) {
+    width: calc(36.5% - 10px); 
+    flex: 0 0 calc(36.5% - 20px); 
+}
+
+.board-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 2px solid grey;
+}
+
+.post {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.post-title {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+.post-info {
+    font-style: italic;
+    color: #888;
+    white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.board-button{
+	margin-top : 10px;
+	 display: flex;
+    justify-content: flex-end; 
+}
+
+.board-button button {
+    margin-left: 10px; 
+}
+
