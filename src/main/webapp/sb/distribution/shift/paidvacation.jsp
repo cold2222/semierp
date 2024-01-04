@@ -30,7 +30,12 @@
 						<td>${e.e_name }</td>
 						<c:forEach var="list" items="${paidVacation[e.e_no] }" varStatus="i">
 							<c:forEach var="p" items="${list }">
-								<td>${list }</td>
+								<c:if test="${i.count != 3 }">
+									<td>${p }回</td>
+								</c:if>
+								<c:if test="${i.count eq 3 }">
+									<td>${p }月</td>
+								</c:if>
 							</c:forEach>
 						</c:forEach>
 					</tr>

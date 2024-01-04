@@ -1,14 +1,12 @@
 @charset "UTF-8";
 
-.content_title{
-	font-size: 24px;
-}
+
 
 .dept_container{
 	display: flex;
 }
 
-.row-title{
+.row-titles{
 	border: 1px solid black;
 }
 
@@ -26,7 +24,7 @@
 	
 }
 
-.Staff_container{
+.staff_container{
 	margin-top: 25px;
 }
 
@@ -42,7 +40,7 @@
 	
 }
 
-.col-title{
+.col-titles{
 	display: flex;
 	border: 1px solid black;
 	
@@ -61,7 +59,7 @@
 	text-align: center;
 }
 
-.col-content{
+.col-contents{
 	display: flex;
 }
 .col-content-item{
@@ -72,6 +70,9 @@
 	border: 0.5px solid black; 
 	border-collapse: collapse;
 	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 	
 }
 .col-long{
@@ -81,7 +82,7 @@
 	width:100px;
 }
 .button{
-	width: 100px;
+	width: 60px;
 }
 .btn-area{
 	display: flex;
@@ -96,5 +97,11 @@
 	
 }
 .idx-btn{
-	height: 30px;
+	height: 24px;
+	background-color: #140652;
+	color: white;
+	border-radius: 3px;
+}
+.colorGold{
+	color: #FFD700;
 }

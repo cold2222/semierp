@@ -65,6 +65,7 @@ public class ExWarehouseDAO {
 		if (search.get("word") != null && !search.get("field").equals("all") && !search.get("word").equals("")) {
 			sql += "and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
 		}
+			sql += "order by a.c_delivery_date desc";
 
 		try {
 

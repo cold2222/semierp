@@ -20,6 +20,7 @@ public class Login extends HttpServlet {
 			response.sendRedirect("HC");
 		} else {
 			request.getRequestDispatcher("sjh/login.jsp").forward(request, response);
+			
 		}
 		
 	}

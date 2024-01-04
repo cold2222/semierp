@@ -13,8 +13,12 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+	<div class="content-head">
+		<div class="content-head-text">配送完了登録 (納品)</div>
+	</div>
 	<div class="content">
 		<div class="detail-info">
+			<input type="hidden" id="contractType" value="${dec.c_type }">
 			<div class="info-row">
 				<span class="info-label">契約書番号:</span> <span class="info-value">${dec.c_contract_no }</span>
 			</div>
@@ -32,37 +36,46 @@
 			</div>
 			<div class="info-row">
 				<c:if test="${deliveryData.c_type eq '購買'}">
-				<span class="info-label">配送場所:</span> <span class="info-value">長崎港</span>
+					<span class="info-label">配送場所:</span>
+					<span class="info-value">長崎港</span>
 				</c:if>
 				<c:if test="${deliveryData.c_type eq '販売'}">
-				<span class="info-label">配送場所:</span> <span class="info-value">${dec.c_addr }</span>
+					<span class="info-label">配送場所:</span>
+					<span class="info-value">${dec.c_addr }</span>
 				</c:if>
 			</div>
 			<div class="info-row">
-				<span class="info-label">납기일:</span> <span class="info-value"
-					id="c_due_date">${dec.c_due_date }</span>
+				<c:if test="${deliveryData.c_type eq '購買'}">
+					<span class="info-label">入港日:</span>
+					<span class="info-value" id="c_due_date">${dec.c_due_date }</span>
+				</c:if>
+				<c:if test="${deliveryData.c_type eq '販売'}">
+					<span class="info-label">納期日:</span>
+					<span class="info-value" id="c_due_date">${dec.c_due_date }</span>
+				</c:if>
 			</div>
 		</div>
 		<div class="item-list">
 			<h2 class="contract_items">契約書詳細</h2>
 			<c:forEach var="i" items="${itemList }">
 				<div class="item">
-					<span class="item-name">${i.p_name }</span> <span
-						class="item-details">${i.p_type } ${i.p_quantity }${i.p_si }
-						数: ${i.ci_count} 値段: ${i.ci_unit_price}</span>
+					<span class="item-name">アイテム名 : ${i.p_name }</span> <span
+						class="item-details"><span class="item-details-span">タイプ:
+					</span> ${i.p_type } <span class="item-details-span">単位: </span>${i.p_si }
+						<span class="item-details-span">単位量: </span>${i.p_quantity }</span> <span
+						class="item-details"><span class="item-details-span">数量:
+					</span>${i.ci_count} <span class="item-details-span">単価: </span>${i.ci_unit_price}</span>
 				</div>
 			</c:forEach>
 		</div>
 		<div class="item-list">
 			<h2 class="contract_items">配送情報</h2>
-				<div class="item">
-					<span class="item-name">配送担当者</span> 
-					<span class="item-details">${deliveryData.e_name }</span>
-				</div>
-				<div class="item">
-					<span class="item-name">配送日</span> 
-					<span class="item-details">${deliveryData.c_delivery_date }</span>
-				</div>
+			<div class="item">
+				<span class="item-name">配送担当者</span> <span class="item-details">${deliveryData.e_name }</span>
+			</div>
+			<div class="item">
+				<span class="item-name">配送日</span> <span class="item-details">${deliveryData.c_delivery_date }</span>
+			</div>
 		</div>
 		<!-- 버튼을 클릭하여 모달 열기 -->
 		<button id="openModal" class="modal-btn">配送情報修正</button>
@@ -90,8 +103,7 @@
 			<button onclick="closeModal()" class="modal-btn">모달 닫기</button>
 		</div>
 	</div>
-	<script type="text/javascript"
-		src="sb/distribution_js/deliverysaleview.js"></script>
+	<script type="text/javascript" src="sb/distribution_js/deliverydata.js"></script>
 	<script type="text/javascript" src="sb/distribution_js/worklistapi.js"></script>
 </body>
 </html>

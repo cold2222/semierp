@@ -1,16 +1,266 @@
 @charset "UTF-8";
 
+/* .content-border {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid red;
+}
+
+.content-box {
+	display: flex;
+	width: 90%;
+	height: 500px;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid black;
+}
+
+.content1 {
+	width: 24%;
+	height: 450px;
+	background-color: white;
+    border-radius: 8px 8px 8px 8px;
+	
+}
+
+.content2 {
+	width: 36%;
+	height: 450px;
+	background-color: white;
+    border-radius: 8px 8px 8px 8px;
+	
+}
+
+.content-head {
+    height: 15%;
+    background-color: #337CCF;
+    border: 1px solid #1e5092;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.content-body {
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.content-line {
+    width: 80%;
+    height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+
+}
+
+.limited-line {
+	
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+ */
+
+/* 
+
+.contents a:link{
+	text-decoration: none;
+} 
+.contents a:visited,a:active{
+	color : #007bff;
+} 
+ */
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .index-contents {
-  width: 100vw;
-  display: flex;
+	width: 100vw;
+	display: flex;
 }
 
 .index-content {
-  width: 100%;
-  background-color: #f0ece5;
+	position: relative;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.content-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	overflow: hidden;
+}
+
+.content-background img {
+	object-fit: cover;
+}
+
+.contents {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.content-body {
+	position: relative;
+	z-index: 1;
+	width: 97%;
+	background-color: rgba(255, 255, 255, 0);
+	display: flex;
+	padding: 20px 30px;
+	margin-bottom: 30px;
+}
+
+.bbs-content {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: space-between;
+	width: 100%; /* 부모 요소에 대한 너비 설정 */
+	padding: 20px; /* 간격을 위한 패딩 추가 */
+	box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
+}
+
+.board {
+	background-color: rgba(255, 255, 255, 0.9);
+	/* background-color: #fff; */
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 20px;
+	box-sizing: border-box; /* 패딩을 요소 크기에 포함 */
+}
+
+/* 1,4번 넓이 조절 */
+.bbs-content .board:nth-child(1) {
+	width: calc(18% - 10px);
+	flex: 0 0 calc(18% - 20px);
+}
+
+.bbs-content .board:nth-child(4) {
+	width: calc(24% - 10px);
+	flex: 0 0 calc(24% - 20px);
+}
+
+/* 나머지 넓이 조절 */
+.bbs-content .board:nth-child(2), .bbs-content .board:nth-child(3) {
+	width: calc(39% - 10px);
+	flex: 0 0 calc(39% - 20px);
+}
+
+.bbs-content .board:nth-child(5), .bbs-content .board:nth-child(6) {
+	width: calc(36.5% - 10px);
+	flex: 0 0 calc(36.5% - 20px);
+}
+
+.board-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	border-bottom: 2px solid grey;
+}
+
+.post {
+	border-bottom: 1px solid #ddd;
+	padding: 10px 0;
+}
+
+.post-title {
+	font-weight: bold;
+	color: #007bff;
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.post-info {
+	font-style: italic;
+	color: #888;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.myself {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 20px;
+	width: 90%;
+	margin-top: 30px;
+}
+
+.myself-info {
+	display: flex;
+	font-size: 18px;
+	color: black;
+	width: 100%;
+	white-space: nowrap;
+	margin-bottom: 10px;
+}
+
+.myself-line1 {
+	border-right: 2px solid black;
+	flex: 3;
+	text-align: right; /* 가운데 정렬 추가 */
+}
+
+.myself-line2 {
+	flex: 7;
+	text-align: left; /* 가운데 정렬 추가 */
+}
+
+.post-title-info {
+	display: flex;
+}
+
+.post-title-info-date {
+	font-style: italic;
+	color: black;
+}
+
+.board-button {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.board-button button {
+	padding: 6px 12px;
+	margin-left: 10px;
+	background-color: #337ab7;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 15px;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.board-button button:hover {
+	background-color: #285e8e;
+	color: #fff;
 }

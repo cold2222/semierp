@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+.contract-container {
+	margin-top: 25px;
+}
+
+.col-titles {
+	display: flex;
+	border-collapse: collapse;
+}
+
+.col-contents{
+	display: flex;
+	width: 100%;
+}
+.margin-top{
+	margin-top: 10px;
+}
+
+.contract{
+	display: block; 
+    width: 13%;
+    height: 30px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.col-title{
+    font-size: 20px;
+    border-style: outset;
+    border: 1px solid white;
+    border-collapse: collapse;
+    background-color: #140652;
+    color: #FFD700;
+    font-weight: 500;
+}
+
+.col-content{
+    font-size: 18px;
+    border: 1px solid black;
+}
+.distribution-container{
+	margin-top: 25px;
+}
+
+
+.distribution{
+	display: block; 
+    width: 16.6%;
+    height: 30px;
+    border-collapse: collapse;
+    text-align: center;
+}
+.warehouse-container{
+	margin-top: 25px;
+}
+.warehouse{ 
+	display: block; 
+    width: 12.4%;
+    height: 30px;
+    border-collapse: collapse;
+    text-align: center;
+}

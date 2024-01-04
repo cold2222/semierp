@@ -108,6 +108,18 @@ body {
 
 }
 
+
+.caption{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.caption span {
+	font-size: 15px;
+	color: red;
+	text-decoration: none;
+}
+
 .loginFormContainer {
     text-align: center;
 }
