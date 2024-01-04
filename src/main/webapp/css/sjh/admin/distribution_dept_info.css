@@ -1,12 +1,10 @@
 @charset "UTF-8";
 
-
-
 .dept_container{
 	display: flex;
 }
 
-.row-titles{
+.row-title{
 	border: 1px solid black;
 }
 
@@ -41,8 +39,6 @@
 }
 
 .col-titles{
-	display: flex;
-	border: 1px solid black;
 	
 }
 
@@ -70,17 +66,12 @@
 	border: 0.5px solid black; 
 	border-collapse: collapse;
 	text-align: center;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
 	
 }
 .col-long{
-	width: 18%;
+ 	width: 21%; 
 }
-.col-deptno{
-	width:100px;
-}
+
 .button{
 	width: 60px;
 }
@@ -90,12 +81,7 @@
 	justify-content: space-between;
 }
 
-.reg-btn{
-	display: block;
-	
-	height: 40px;
-	
-}
+
 .idx-btn{
 	height: 24px;
 	background-color: #140652;

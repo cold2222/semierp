@@ -1,12 +1,10 @@
 @charset "UTF-8";
 
-
-
 .dept_container{
 	display: flex;
 }
 
-.row-titles{
+.row-title{
 	border: 1px solid black;
 }
 
@@ -24,8 +22,8 @@
 	
 }
 
-.staff_container{
-	margin-top: 25px;
+.staffInfoArea{
+	height: 190px;
 }
 
 
@@ -40,15 +38,9 @@
 	
 }
 
-.col-titles{
-	display: flex;
-	border: 1px solid black;
-	
-}
-
 .col-title-item {
 	display: block;
-	width: 12%;
+	width: 20%;
 	font-size: 20px;
 	height: 30px;
 	border: 1px solid white; 
@@ -64,7 +56,7 @@
 }
 .col-content-item{
 	display: block;
-	width: 12%;
+	width: 20%;
 	font-size: 18px;
 	height: 30px;
 	border: 0.5px solid black; 
@@ -76,11 +68,12 @@
 	
 }
 .col-long{
-	width: 18%;
+ 	width: 28%; 
 }
-.col-deptno{
-	width:100px;
+.col-short{
+	width: 7%;
 }
+
 .button{
 	width: 60px;
 }
@@ -90,12 +83,7 @@
 	justify-content: space-between;
 }
 
-.reg-btn{
-	display: block;
-	
-	height: 40px;
-	
-}
+
 .idx-btn{
 	height: 24px;
 	background-color: #140652;
@@ -104,4 +92,10 @@
 }
 .colorGold{
 	color: #FFD700;
+}
+.tableName{
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 5px;
+
 }
