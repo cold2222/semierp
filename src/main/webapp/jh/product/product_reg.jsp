@@ -15,11 +15,6 @@
 			<div class="content-head-text">アイテム登録</div>
 		</div>
 		<div class="content-body">
-			<div>
-				<form action="UnitC">
-					<button>単位とタイプ</button>
-				</form>
-			</div>
 			<div class="bbs-content1">
 				<form action="ProductRegC" method="post">
 					<div class="input-container">

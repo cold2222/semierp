@@ -53,7 +53,7 @@
 
 					<span class="number">Num</span> <span class="item-cost">タイプ</span><span
 						class="item-name">アイテム名</span> <span class="item-count">単位</span><span
-						class="item-count">単位量</span> <span class="item-count">品の個数</span>
+						class="item-count">単位量</span> <span class="item-count">数量</span>
 					<span class="item-cost">単価</span>
 				</div>
 				<c:forEach var="item" items="${contract.items}" varStatus="loop">

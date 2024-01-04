@@ -29,7 +29,7 @@
 		<div id="empModal" class="modal-content">
 			<div>
 				<div class="search-input">
-					<input class="search-btn" placeholder="本社員検索" id="empSearchBtn">
+					<input class="search-btn" placeholder="本社員検索" id="empSearchBtn" >
 					<button class="close-button" id="empCloseModalBtn">
 						<div class="close-icon"></div>
 					</button>
@@ -78,17 +78,17 @@
 			<div class="content-head-text">契約書作成</div>
 		</div>
 		<div class="content-body">
-			<form action="MakeContractC" method="post">
+			<form action="MakeContractC" method="post" onsubmit="return valid();">
 				<div class="bbs-content1">
 					<div class="content1-main">
 						<div class="input-container-date">
-							作成日 <input type="date" readonly="readonly" name="c_created_date"
+							作成日 <input type="date"  name="c_created_date" readonly="readonly"
 								id="c_created_date">
 						</div>
 						<div class="content2-main">
 							<div class="input-container-date" id="dateField">
 								<label id="labelDate">入港日</label> <input type="date"
-									name="c_due_date" required="required">
+									name="c_due_date">
 							</div>
 							<div class="input-container-date2">
 								輸入／販売 <select id="transactionType" name="c_type"
@@ -99,7 +99,7 @@
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="c_c_no" readonly="readonly"
+					<input type="hidden" name="c_c_no" 
 						id="selectedValue">
 					<div class="text-input">
 						<div class="text-input-graph">
@@ -108,16 +108,16 @@
 						</div>
 						<div class="text-input-graph2">
 							<div class="input-container">
-								<input readonly="readonly" id="displayName" placeholder="取引先検索"
-									required="required" type="text">
+								<input id="displayName" placeholder="取引先検索" autocomplete="off"
+									 type="text">
 							</div>
 							<div class="input-container">
-								<input name="e_name" placeholder="社員検索" id="employeeSearch"
-									type="text" readonly="readonly" required="required">
+								<input name="e_name" placeholder="社員検索" autocomplete="off" id="employeeSearch"
+									type="text" >
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="c_e_id" id="e_id" required="required">
+					<input type="hidden" name="c_e_id" id="e_id" >
 					<div class="input-container"></div>
 				</div>
 
@@ -126,19 +126,19 @@
 
 				<div class="contract-reg-main">
 					<div class="company-item-title">アイテム名</div>
-					<div class="company-main-title">品の個数</div>
+					<div class="company-main-title">数量</div>
 					<div class="company-main-title">単価</div>
 				</div>
 				<div id="contractTable">
 					<div style="display: none;" class="bbs-content2">
-						<input name="ci_c_contract_no" type="hidden"> <input
-							type="hidden" name="ci_p_id" class="selectedValueP">
+						<input name="ci_c_contract_no" type="hidden">
+						<input	type="hidden" name="ci_p_id" class="selectedValueP">
 						<div class="input-container2">
-							<input readonly="readonly" class="displayNameP" type="text"
+							<input class="displayNameP" type="text" 
 								placeholder="アイテム名">
 						</div>
 						<div class="input-container2">
-							<input name="ci_count" placeholder="品の個数" type="text">
+							<input name="ci_count" placeholder="数量" type="text">
 						</div>
 						<div class="input-container2">
 							<input name="ci_unit_price" placeholder="単価" type="text">

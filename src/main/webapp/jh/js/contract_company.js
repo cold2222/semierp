@@ -39,7 +39,7 @@ function setValue(value, displayName) {
 	var selectedValueInput = document.getElementById('selectedValue');
 	var displayNameElement = document.getElementById('displayName');
 	selectedValueInput.value = value;
-	displayNameElement.placeholder = displayName;
+	displayNameElement.value = displayName;
 	closeModal();
 }
 // 회사검색기능 끝
