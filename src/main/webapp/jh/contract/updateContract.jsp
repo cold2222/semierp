@@ -159,11 +159,11 @@
 				</div>
 				<div id="contractTable">
 					<div style="display: none;" class="bbs-content2">
-						<input name="ci_c_contract_no" type="hidden"> <input
-							type="hidden" name="ci_p_id" class="selectedValueP">
+						<input name="ci_no" type="hidden" value="0">
+						<input name="ci_c_contract_no" type="hidden"> 
+						<input type="hidden" name="ci_p_id" class="selectedValueP">
 						<div class="input-container2">
-							<input readonly="readonly" class="displayNameP" type="text"
-								placeholder="アイテム名">
+							<input class="displayNameP" type="text" placeholder="アイテム名">
 						</div>
 						<div class="input-container2">
 							<input name="ci_count" placeholder="数量" type="number">
@@ -174,23 +174,23 @@
 					</div>
 					<c:forEach var="items" items="${contract.items}">
 						<div style="display: block;" class="bbs-content2">
-							<input name="ci_no" type="hidden" value="${items.ci_no}">
+							<input name="ci_no" type="hidden" value="${items.ci_no}" required="required">
 							<input name="ci_c_contract_no" type="hidden"
-								value="${items.ci_c_contract_no}"> <input type="hidden"
-								name="ci_p_id" class="selectedValueP" value="${items.ci_p_id}">
+								value="${items.ci_c_contract_no}" required="required"> <input type="hidden"
+								name="ci_p_id" class="selectedValueP" value="${items.ci_p_id}" required="required">
 							<div class="input-container2">
 								<input readonly="readonly" name="p_name" class="displayNameP"
-									type="text" value="${items.p_name}">
+									type="text" value="${items.p_name}" required="required">
 							</div>
 							<div class="input-container2">
-								<input name="ci_count" type="number" value="${items.ci_count}">
+								<input name="ci_count" type="number" value="${items.ci_count}" required="required">
 							</div>
 							<div class="input-container2">
 								<input name="ci_unit_price" placeholder="単価" type="number"
-									value="${items.ci_unit_price}">
+									value="${items.ci_unit_price}" required="required">
 							</div>
 							<button type="button" class="insert-btn"
-								onclick="deleteContractItem('${items.ci_no}','${contract.c_contract_no}')">削除</button>
+								onclick="deleteContractItem('${items.ci_no}','${contract.c_contract_no}')">詳細内容削除</button>
 						</div>
 					</c:forEach>
 				</div>
@@ -204,8 +204,7 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="jh/js/modal.js"></script>
-<script type="text/javascript" src="jh/js/add_row.js"></script>
+<script type="text/javascript" src="jh/js/updatecontract.js"></script>
 <script type="text/javascript" src="jh/js/updateCont.js"></script>
 <script type="text/javascript" src="jh/js/contract_company.js"></script>
 <script type="text/javascript" src="jh/js/employee_search.js"></script>
