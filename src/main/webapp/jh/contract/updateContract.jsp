@@ -166,10 +166,10 @@
 								placeholder="アイテム名">
 						</div>
 						<div class="input-container2">
-							<input name="ci_count" placeholder="数量" type="text">
+							<input name="ci_count" placeholder="数量" type="number">
 						</div>
 						<div class="input-container2">
-							<input name="ci_unit_price" placeholder="単価" type="text">
+							<input name="ci_unit_price" placeholder="単価" type="number">
 						</div>
 					</div>
 					<c:forEach var="items" items="${contract.items}">
@@ -183,10 +183,10 @@
 									type="text" value="${items.p_name}">
 							</div>
 							<div class="input-container2">
-								<input name="ci_count" type="text" value="${items.ci_count}">
+								<input name="ci_count" type="number" value="${items.ci_count}">
 							</div>
 							<div class="input-container2">
-								<input name="ci_unit_price" placeholder="単価" type="text"
+								<input name="ci_unit_price" placeholder="単価" type="number"
 									value="${items.ci_unit_price}">
 							</div>
 							<button type="button" class="insert-btn"
