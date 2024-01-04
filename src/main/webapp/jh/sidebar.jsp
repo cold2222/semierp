@@ -24,6 +24,7 @@
 			<ul>
 				<li onclick="location.href='ProductC'">&nbsp;- アイテム一覧</li>
 				<li onclick="location.href='ProductRegC'">&nbsp;- アイテム登録</li>
+				<li onclick="location.href='UnitC'">&nbsp;- 単位・タイプ登録／一覧</li>
 			</ul>
 		</div>
 	</div>

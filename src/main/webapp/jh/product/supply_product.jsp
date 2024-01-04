@@ -79,7 +79,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 									</div>
 									<div class="button">
 										<button class="insert-btn" onclick="location.href='UpdateProductC?id=${p.p_id}'">修正</button>
-										<button class="insert-btn" onclick="deleteProduct('${p.p_id}')">削除</button>
+										<button class="insert-btn2" onclick="deleteProduct('${p.p_id}')">削除</button>
 									</div> 
 								</div>
 							</c:forEach>

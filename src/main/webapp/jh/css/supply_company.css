@@ -180,12 +180,13 @@
 	font-weight: bold;
 }
 .insert-btn{
-	padding: 8px 16px;
-	background-color: #007bff;
-	color: #fff;
-	cursor: pointer;
+	padding: 10px 20px;
+	border: none;
 	border-radius: 4px;
-	transition: background-color 0.3s ease;
+	background-color: #007bff;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s;
 }
 .insert-btn:hover {
 	background-color: #0056b3;

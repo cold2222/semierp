@@ -16,7 +16,7 @@
 			<div class="footer-column">
 				<div class="colum1">
 					<div class="col">
-						<img alt="" src="logoFolder/info.PNG"> 
+						<img alt="" src="logoFolder/login.PNG"> 
 						<div class="col3_jp"><a href='#none'>ログイン</a></div>
 					</div>
 					<div class="col">

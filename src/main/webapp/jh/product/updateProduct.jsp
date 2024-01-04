@@ -24,8 +24,8 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 
 		<div class="content-body">
 			<div class="bbs-content1">
-			<input type="hidden" id="id" name="id" value="${p.p_id }">
-				<input type="hidden" id="type" value="${p.p_type }"> <input
+				<input type="hidden" id="id" name="id" value="${p.p_id }"> <input
+					type="hidden" id="type" value="${p.p_type }"> <input
 					type="hidden" id="si" value="${p.p_si }">
 				<div class="input-container">
 					<label for="p_si" class="input-label-select">単位</label> <select
@@ -124,6 +124,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 		}
 
 		function updateProduct() {
+			const id = document.getElementById('id').value;
 			const type = document.getElementById('typeSelect').value;
 			const si = document.getElementById('siSelect').value;
 			const quantity = document.getElementsByName('p_quantity')[0].value;
@@ -132,8 +133,14 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 			const minStock = document.getElementsByName('p_minStock')[0].value;
 			const maxStock = document.getElementsByName('p_maxStock')[0].value;
 			const manufacturer = document.getElementsByName('p_manufacturer')[0].value;
-
+			if (id === '' || type === '' || si === '' || quantity === ''
+					|| name === '' || unitCost === '' || minStock === ''
+					|| maxStock === '' || manufacturer === '') {
+				alert('컬럼 값에 빈 칸이 있습니다. 업데이트를 실행할 수 없습니다.');
+				return;
+			}
 			const formData = {
+				id : id,
 				p_type : type,
 				p_si : si,
 				p_quantity : quantity,
@@ -151,6 +158,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 				return;
 			}
 		}
+		
 	</script>
 </body>
 </html>
