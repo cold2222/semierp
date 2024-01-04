@@ -6,7 +6,7 @@
 }
 
 .index-contents {
-	width: 100vw;
+	width: 100%;
 	display: flex;
 }
 
@@ -44,10 +44,10 @@
 .content-body {
 	position: relative;
 	z-index: 1;
-	width: 97%;
+	width: 90%;
 	background-color: rgba(255, 255, 255, 0);
 	display: flex;
-	padding: 20px 30px;
+	padding: 20px 70px;
 	margin-bottom: 30px;
 	
 }
@@ -56,7 +56,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
-	justify-content: space-between;
+	justify-content: flex-start;
 	width: 20%; /* 부모 요소에 대한 너비 설정 */
 	padding: 20px; /* 간격을 위한 패딩 추가 */
 	box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
@@ -65,8 +65,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
-	justify-content: space-between;
-	width: 78%; /* 부모 요소에 대한 너비 설정 */
+	justify-content: center;
+	width: 80%; /* 부모 요소에 대한 너비 설정 */
 	padding: 20px; /* 간격을 위한 패딩 추가 */
 	box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
 }
