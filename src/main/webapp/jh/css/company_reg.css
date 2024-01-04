@@ -91,7 +91,11 @@ input[type=number]::-webkit-outer-spin-button {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 input[type="text"],input[type="number"],
 textarea {
 	resize: none; /* 사용자가 크기 조절할 수 없도록 함 */
