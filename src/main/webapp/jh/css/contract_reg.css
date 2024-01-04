@@ -236,13 +236,19 @@
 	box-sizing: border-box; /* 여백 포함 설정 */
 }
 
-.input-container2 input[type="text"] {
+.input-container2 input[type="text"],
+.input-container2 input[type="number"] {
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	box-sizing: border-box;
 	margin-top: 10px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .search-input{
 	display: flex;
