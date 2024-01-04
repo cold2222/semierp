@@ -223,11 +223,9 @@ public class SupplyComDAO {
 		}
 		if (selectKey.equals("계약서종류")) {
 			sql += "where a.c_type = "+ search.get("typeWord") + " ";
-			System.out.println(sql);
 		}
 		sql += "order by a.c_contract_no";
 
-		System.out.println(sql);
 		try {
 
 			con = DBManger.connect();
@@ -257,27 +255,7 @@ public class SupplyComDAO {
 		}
 	}
 	
-	public void getInsertContractNo(HttpServletRequest request) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "select contract.*, company.c_name from contract, company where contract.c_c_no = company.c_no order by c_contract_no desc";
-		try {
-			request.setCharacterEncoding("utf-8");
-
-			con = DBManger.connect();
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				request.setAttribute("c_contract_no", rs.getInt("c_contract_no"));
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManger.close(con, pstmt, rs);
-		}
-	}
+	
 
 	public void regCont(HttpServletRequest request) {
 		Connection con = null;
@@ -288,7 +266,7 @@ public class SupplyComDAO {
 			request.setCharacterEncoding("utf-8");
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, request.getParameter("s_c_no"));
+			pstmt.setString(1, request.getParameter("c_c_no"));
 			pstmt.setString(2, request.getParameter("c_e_id"));
 			pstmt.setString(3, request.getParameter("c_created_date"));
 			pstmt.setString(4, request.getParameter("c_due_date"));
@@ -372,7 +350,6 @@ public class SupplyComDAO {
 				pstmt.setString(2, ci_p_ids[i]);
 				pstmt.setString(3, ci_counts[i]);
 				pstmt.setString(4, ci_unit_prices[i]);
-
 				if (pstmt.executeUpdate() == 1) {
 					System.out.println("등록 성공");
 				}
@@ -491,7 +468,7 @@ public class SupplyComDAO {
 		try {
 
 			request.setCharacterEncoding("utf-8");
-
+			System.out.println(request.getParameter("c_contract_no"));
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, request.getParameter("c_c_no"));
@@ -518,8 +495,7 @@ public class SupplyComDAO {
 	}
 	
 	public void updateContractItems(HttpServletRequest request) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
+		
 		String sql = "MERGE INTO contract_items ci "
 		+ "USING ( "
 		+ "    SELECT ? AS ci_no, "
@@ -544,15 +520,17 @@ public class SupplyComDAO {
 		String ci_unit_price[] = request.getParameterValues("ci_unit_price");
 		String ci_no[] = request.getParameterValues("ci_no");
 		String c_contract_no = request.getParameter("c_contract_no");
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		try {
 			request.setCharacterEncoding("utf-8");
-
+			
 			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
 			for (int i = 0; i < ci_no.length; i++) {
 				if(i == 0) {
 					continue;
 				}
-				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, ci_no[i]);
 				pstmt.setString(2, c_contract_no);
 				pstmt.setString(3, ci_p_id[i]);
@@ -714,6 +692,7 @@ public class SupplyComDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String no = request.getParameter("no");
+		System.out.println(no);
 		String sql = "select a.*, b.e_name, b.e_deptno, b.e_rank, c.c_name from contract a inner join employee "
 				+ "b on a.c_e_id = b.e_no inner join company c "
 				+ "on a.c_c_no = c.c_no where a.c_contract_no = ?";
@@ -737,7 +716,7 @@ public class SupplyComDAO {
 				contract.setC_type(rs.getInt("c_type"));
 				contract.setC_name(rs.getString("c_name"));
 				contract.setE_name(rs.getString("e_name"));
-				contract.setE_deptno(rs.getString("e_deptno"));
+				contract.setE_deptno(rs.getInt("e_deptno"));
 				contract.setE_rank(rs.getString("e_rank"));
 				pstmt.close();
 				rs.close();

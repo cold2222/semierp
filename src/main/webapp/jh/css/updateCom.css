@@ -56,7 +56,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    justify-content: space-between; /* 요소들 사이의 간격을 최대로 벌리기 */
+    justify-content: center; /* 요소들 가운데 정렬 */
 }
 
 .input-label {
@@ -64,30 +64,73 @@
     text-align: right;
     padding-right: 20px;
     font-size: 16pt;
-    flex: 1; /* 레이블 영역이 오른쪽으로 밀리도록 설정 */
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
-
-input[type="text"],
-textarea {
-    flex: 3; /* 인풋창이 더 많은 공간을 차지하도록 설정 */
-    width: 95%;
+.input-label-select {
+   font-weight: bold;
+    text-align: right;
+    padding-right: 20px;
+    font-size: 16pt;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.select{
+	 flex: 2; /* 인풋창이 더 많은 공간을 차지하도록 설정 */
+    width: 100%;
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
+input[type="text"],input[type="number"],
 textarea {
-    flex: 3;
+	resize: none; /* 사용자가 크기 조절할 수 없도록 함 */
+    overflow: hidden; /* 스크롤바를 숨김 */
+    flex: 2;
     width: 100%; /* 텍스트영역의 너비를 더 크게 조정 */
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    resize: vertical;
 }
 
 .insert-btn {
+	padding: 12px 7px; /* 버튼 크기를 적당하게 조정 */
+	background-color: #2c3e50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block; /* 버튼을 블록 요소로 설정하여 가운데 정렬 */
+	margin-left: 81%;
+}
+.insert-btn1 {
+	padding: 6px 2px; /* 버튼 크기를 적당하게 조정 */
+	background-color: white;
+	color: #2c3e50;	
+	border: none;
+	cursor: pointer;
+	display: block; /* 버튼을 블록 요소로 설정하여 가운데 정렬 */
+	margin-left: 69%;
+	font-weight: bold;
+	font-size: 18pt;
+}
+.insert-btn2 {
+	padding: 12px 20px; /* 버튼 크기를 적당하게 조정 */
+	background-color: #2c3e50;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block; /* 버튼을 블록 요소로 설정하여 가운데 정렬 */
+	margin-left: 5%;
+}
+.insert-btn3 {
 	padding: 12px 20px; /* 버튼 크기를 적당하게 조정 */
 	background-color: #2c3e50;
 	color: #fff;
@@ -99,6 +142,7 @@ textarea {
 }
 
 .button{
+	display: flex;
 	width: 100%;
 }
 

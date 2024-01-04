@@ -27,6 +27,7 @@ public class UpdateProductC extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDAO.getPdao().updateProduct(request);
+		System.out.println(request.getParameter("id"));
 		response.sendRedirect("UpdateProductC?id="+request.getParameter("id"));	
 	}
 

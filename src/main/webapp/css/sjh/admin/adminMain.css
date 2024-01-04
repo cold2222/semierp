@@ -23,16 +23,15 @@ body {
 }
 
 .side-menu-items {
-	margin: 50px 50px 5px 50px;
+	margin: 50px 50px 5px 30px;
 }
 
 .side-menu-item {
 	justify-content: center;
 	color: white;
 	font-size: 30px;
-	line-height: 30px;
 	text-align: left;
-	margin-top: 35px;
+ 	margin-top: 20px; 
 }
 
 .side-menu-icon {
@@ -116,4 +115,10 @@ body {
 
 #selected{
 	color: #FFD700;
+} 
+.content_title {
+	display:flex;
+	font-size: 26px;
+	font-weight: 600;
+	justify-content: space-between;
 }

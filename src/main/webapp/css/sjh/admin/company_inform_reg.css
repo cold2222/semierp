@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.companyInformInput-content{
+	display: flex;
+	justify-content: space-around;
+}

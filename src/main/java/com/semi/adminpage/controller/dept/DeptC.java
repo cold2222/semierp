@@ -1,4 +1,4 @@
-package com.semi.adminpage;
+package com.semi.adminpage.controller.dept;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -19,9 +19,10 @@ public class DeptC extends HttpServlet {
 				DeptDAO.getContractDeptInfo(request, 1);
 				DeptDAO.getContractDeptInfo(request, 2);
 				DeptDAO.getDistributionDeptInfo(request);
-				request.setAttribute("currentYearMonth", AdminUtils.getCurrentYearMonth());
+				DeptDAO.getWarehouseDeptInfo(request);
+				request.setAttribute("currentDate", AdminUtils.getCurrentDate());
 				request.setAttribute("selectedPage", "dept");
-				request.setAttribute("contentPage", "dept_info.jsp");
+				request.setAttribute("contentPage", "dept/dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);

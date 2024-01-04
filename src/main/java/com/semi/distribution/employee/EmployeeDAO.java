@@ -50,7 +50,13 @@ public class EmployeeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from employee where e_deptno = 201 order by e_name";
+		String sql = "select * from employee where e_deptno = 201 order by "
+					+ "case e_rank when '社長' then 7 "
+					+ "when '部長' then 6 "
+					+ "when '課長' then 5 "
+					+ "when '係長' then 4 "
+					+ "when '主任' then 3 "
+					+ "when '社員' then 2 else 1 end, e_name ";
 		
 		try {
 			con = DBManger.connect();

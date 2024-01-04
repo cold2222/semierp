@@ -1,5 +1,6 @@
 package com.semi.distribution.db;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +10,7 @@ import java.sql.SQLException;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 public class DBManger {
+<<<<<<< HEAD
 	private static BasicDataSource dataSource;
 
 	// 클래스 초기화 블록에서 BasicDataSource 초기화
@@ -19,6 +21,15 @@ public class DBManger {
 				"jdbc:oracle:thin:@db202204301707_medium?TNS_ADMIN=/Users/sungjookim/Desktop/Ksj/Wallet_DB202204301707");
 		dataSource.setUsername("FORMAC");
 		dataSource.setPassword("Soldesk802!!");
+=======
+	
+
+	public static Connection connect() throws SQLException, ClassNotFoundException {
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		
+		return DriverManager.getConnection(url,"c##ysb836","tmdqls510");
+>>>>>>> 39c911dc34101e1730955c62f6917132e526631a
 	}
 
 	// 데이터베이스 연결을 가져오는 메서드
@@ -42,4 +53,8 @@ public class DBManger {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
 }

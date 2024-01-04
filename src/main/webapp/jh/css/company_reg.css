@@ -1,4 +1,9 @@
 @charset "UTF-8";
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .content-head {
 	width: 100%;
@@ -68,9 +73,33 @@
     display: flex;
     justify-content: flex-end;
 }
-
-input[type="text"],
+.input-label-select {
+   font-weight: bold;
+    text-align: right;
+    padding-right: 20px;
+    font-size: 16pt;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.select{
+	 flex: 2; /* 인풋창이 더 많은 공간을 차지하도록 설정 */
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="text"],input[type="number"],
 textarea {
+	resize: none; /* 사용자가 크기 조절할 수 없도록 함 */
+    overflow: hidden; /* 스크롤바를 숨김 */
     flex: 2; /* 인풋창이 더 많은 공간을 차지하도록 설정 */
     width: 100%;
     padding: 15px;
@@ -80,13 +109,14 @@ textarea {
 }
 
 textarea {
+	resize: none; /* 사용자가 크기 조절할 수 없도록 함 */
+    overflow: hidden; /* 스크롤바를 숨김 */
     flex: 2;
     width: 100%; /* 텍스트영역의 너비를 더 크게 조정 */
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    resize: vertical;
 }
 
 .insert-btn {
@@ -98,6 +128,15 @@ textarea {
 	cursor: pointer;
 	display: block; /* 버튼을 블록 요소로 설정하여 가운데 정렬 */
 	margin-left: 93%;
+}
+.insert-btn2 {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	background-color: #007bff;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s;
 }
 
 .button{

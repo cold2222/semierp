@@ -1,4 +1,4 @@
-package com.semi.adminpage;
+package com.semi.adminpage.controller.staff;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,14 +11,15 @@ import com.semi.adminpage.dept.DeptDAO;
 import com.semi.adminpage.staff.StaffDAO;
 import com.semi.login.EmployeeDAO;
 
-@WebServlet("/StaffRegC")
-public class StaffRegC extends HttpServlet {
+@WebServlet("/StaffC")
+public class StaffC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getDepts(request);
+				DeptDAO.getDeptsInfo(request);
+				StaffDAO.getStaffsInfo(request);
 				request.setAttribute("selectedPage", "staff");
-				request.setAttribute("contentPage", "staff_reg.jsp");
+				request.setAttribute("contentPage", "staff/staff_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);
@@ -28,15 +29,8 @@ public class StaffRegC extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
-			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				StaffDAO.staffReg(request);
-				response.sendRedirect("StaffAdminModifyC?e_no="+request.getParameter("e_no"));
-			} else
-				request.getRequestDispatcher("HC").forward(request, response);
-		}
-		else 
-			response.sendRedirect("Login");
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
