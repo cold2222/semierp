@@ -1,4 +1,4 @@
-package com.semi.adminpage;
+package com.semi.adminpage.controller.dept;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,26 +11,23 @@ import com.semi.adminpage.dept.DeptDAO;
 import com.semi.adminpage.staff.StaffDAO;
 import com.semi.login.EmployeeDAO;
 
-@WebServlet("/ResetStaffPWC")
-public class ResetStaffPWC extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+@WebServlet("/DistributionDeptC")
+public class DistributionDeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				StaffDAO.resetPW(request);
-				request.setAttribute("selectedPage", "dept");
-				response.sendRedirect("StaffAdminModifyC?e_no="+request.getParameter("e_no"));
+				DeptDAO.getDistributionDeptInfo(request);
+				StaffDAO.getDistributionStaffsInfo(request);
+				request.setAttribute("selectedPage", "distributionDept");
+				request.setAttribute("contentPage", "dept/distribution_dept_info.jsp");
+				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);
 		}
 		else 
-			response.sendRedirect("Login");
+			response.sendRedirect("Login"); 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

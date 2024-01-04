@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="content_title">社員修正</div>
+	<div class="content_title">社員登録</div>
 	<hr>
 
 	<div class="content_area">
@@ -75,5 +75,6 @@
 		</form>
 	</div>
 <script type="text/javascript" src="js/sjh/admin/staff_reg.js"></script>
+<script type="text/javascript" src="js/sjh/admin/utils/input_date_init.js"></script>
 </body>
 </html>

@@ -2,33 +2,43 @@
 
 .header{
 	width: 100%;
-	height: 120px;
+	height: 150px;
 }
 .header1{
 	height: 50%;
 	width : 100%;
 	display: flex;
+	justify-content: center;
+	align-items: center;
 
 }
+
+.header1-border{
+	
+	align-items: center;
+	display: flex;
+	width : 80%;
+	
+}
+
  .header1-logo{
+	justify-content: flex-start;
 	position: relative;
-	width: 300px;
-	height: 110px;
 }
 
 .header1-logo-img {
-    position: absolute;
-    top: 10px;
-    left: -70px;
+	cursor: pointer;
+    position: relative;
+    top: 5px;
     width: auto;  
     height: 50px; 
-    margin-left: 120px;
+    margin-left: 0;
 }
 
 
 #header1-empty{
 	height: 100%;
-	width: 1000px;
+	width: 1200px;
 }
 .header1-atag{
 	display: flex;
@@ -41,12 +51,15 @@
 	cursor: pointer;
 }
 .header1-select1{
+	
+	justify-content: flex-end;
 	display: flex;
 	width: 110px;
 	height: 100%;
 	font-size: 16px;
 	justify-content: center;
 	align-items: center;
+	
 }
 .header1-select1 select{
 	font-size: 16px;
@@ -57,6 +70,18 @@
 	height: 50%;
 	width : 100%;
 	display: flex;
+	
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.header2-border{
+	justify-content: space-between;
+	align-items: center;
+	display: flex;
+	width : 85%;
+	height : 100%;
 }
 
 .header2-item {
@@ -69,7 +94,6 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin-left: 100px; 
     transition: color 0.3s;
     z-index: 5;
 }
