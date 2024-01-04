@@ -138,10 +138,10 @@
 								placeholder="アイテム名">
 						</div>
 						<div class="input-container2">
-							<input name="ci_count" placeholder="数量" type="text">
+							<input name="ci_count" placeholder="数量" type="number">
 						</div>
 						<div class="input-container2">
-							<input name="ci_unit_price" placeholder="単価" type="text">
+							<input name="ci_unit_price" placeholder="単価" type="number">
 						</div>
 					</div>
 				</div>
