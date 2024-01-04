@@ -159,17 +159,17 @@
 				</div>
 				<div id="contractTable">
 					<div style="display: none;" class="bbs-content2">
+						<input name="ci_no" type="hidden" value="0">
 						<input name="ci_c_contract_no" type="hidden"> 
-						<input type="hidden" name="ci_p_id" class="selectedValueP" required="required">
+						<input type="hidden" name="ci_p_id" class="selectedValueP">
 						<div class="input-container2">
-							<input readonly="readonly" class="displayNameP" type="text"
-								placeholder="アイテム名" required="required">
+							<input class="displayNameP" type="text" placeholder="アイテム名">
 						</div>
 						<div class="input-container2">
-							<input name="ci_count" placeholder="数量" type="number" required="required">
+							<input name="ci_count" placeholder="数量" type="number">
 						</div>
 						<div class="input-container2">
-							<input name="ci_unit_price" placeholder="単価" type="number" required="required">
+							<input name="ci_unit_price" placeholder="単価" type="number">
 						</div>
 					</div>
 					<c:forEach var="items" items="${contract.items}">
@@ -190,7 +190,7 @@
 									value="${items.ci_unit_price}" required="required">
 							</div>
 							<button type="button" class="insert-btn"
-								onclick="deleteContractItem('${items.ci_no}','${contract.c_contract_no}')">削除</button>
+								onclick="deleteContractItem('${items.ci_no}','${contract.c_contract_no}')">詳細内容削除</button>
 						</div>
 					</c:forEach>
 				</div>
@@ -204,7 +204,7 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="jh/js/modal.js"></script>
+<script type="text/javascript" src="jh/js/updatecontract.js"></script>
 <script type="text/javascript" src="jh/js/updateCont.js"></script>
 <script type="text/javascript" src="jh/js/contract_company.js"></script>
 <script type="text/javascript" src="jh/js/employee_search.js"></script>

@@ -495,8 +495,7 @@ public class SupplyComDAO {
 	}
 	
 	public void updateContractItems(HttpServletRequest request) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
+		
 		String sql = "MERGE INTO contract_items ci "
 		+ "USING ( "
 		+ "    SELECT ? AS ci_no, "
@@ -521,15 +520,17 @@ public class SupplyComDAO {
 		String ci_unit_price[] = request.getParameterValues("ci_unit_price");
 		String ci_no[] = request.getParameterValues("ci_no");
 		String c_contract_no = request.getParameter("c_contract_no");
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		try {
 			request.setCharacterEncoding("utf-8");
-
+			
 			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
 			for (int i = 0; i < ci_no.length; i++) {
 				if(i == 0) {
 					continue;
 				}
-				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, ci_no[i]);
 				pstmt.setString(2, c_contract_no);
 				pstmt.setString(3, ci_p_id[i]);
