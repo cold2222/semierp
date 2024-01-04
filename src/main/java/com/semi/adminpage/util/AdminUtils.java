@@ -118,4 +118,13 @@ public class AdminUtils {
 		return arrayList.subList(startIndex, endIndex);
 
 	}
+	
+	public static int sumCi_deptsValues(String[] ci_depts) {
+		int sum = 0;
+		for (String dept : ci_depts) {
+			sum += Integer.parseInt(dept);
+		}
+		
+		return sum;
+	}
 }

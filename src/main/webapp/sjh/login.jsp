@@ -23,8 +23,8 @@
 							<label for="id">アカウント</label>
 						</div>
 						<div class="int-area">
-							<input name="pw" id="pw" type="password" autocomplete="off" required>
-							<label for="pw">パスワード</label>
+							<input name="pw" id="pw" type="password" autocomplete="off"
+								required> <label for="pw">パスワード</label>
 						</div>
 						<div class="btn-area">
 							<button class="loginBtn" id="btn">ログイン</button>
@@ -43,7 +43,7 @@
 		let btn = $('#btn');
 		let loginForm = $('#loginForm');
 		let loginError = $('#loginError');
-		
+
 		$(btn).on('click', function() {
 			if ($(id).val() == "") {
 				$(id).next('label').addClass('warning');
@@ -56,11 +56,10 @@
 				setTimeout(function() {
 					$('label').removeClass('warning');
 				}, 1500);
-			} 
-			
+			}
+
 		});
 	</script>
-
 </body>
 
 

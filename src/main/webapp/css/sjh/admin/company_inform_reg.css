@@ -1,5 +1,78 @@
 @charset "UTF-8";
-.companyInformInput-content{
+
+.companyInformInput-content {
+	margin-top: 20px;
+}
+
+.input-row-center {
+	margin-top: 10px;
+}
+
+.input-row {
 	display: flex;
-	justify-content: space-around;
+	margin-top: 10px;
+	width: 60%;
+}
+
+.input-title {
+	border-radius: 5px 0px 0px 5px;
+	border: 1px solid black;
+	text-align: center;
+	width: 10%;
+	line-height: 50px;
+	font-size: 25px;
+	font-weight: 600;
+	color: #FFD700;
+	background-color: #140652;
+}
+
+.textInput {
+	font-size: 23px;
+	border-radius: 0px 5px 5px 0px;
+	border: 2px solid black;
+	width: 90%;
+}
+
+.deptCheckbox-area{
+	width: 90%;
+	text-align: center;
+	line-height: 45px;
+	font-size: 35px;
+	border-radius: 0px 5px 5px 0px;
+	border: 2px solid black;
+}
+
+input[type="checkbox"]{
+	width: 25px;
+	height: 25px;
+	accent-color: #FFD700;
+	border: solid #140652;
+}
+
+.inform-textArea{
+	width: 90%;
+	height: 400px;
+    resize: none;
+    border: 2px solid black;
+    border-radius: 0px 5px 5px 0px;
+    line-height: 45px;
+	font-size: 23px;
+}
+
+.btn-area{
+	justify-content: space-between;
+}
+
+.bottom-btn{
+	margin-left: 10px;
+	width: 75px;
+	height: 50px;
+	font-size: 20px;
+	font-weight: 600;
+	border-radius: 5px;
+}
+
+.submit-btn{
+	background-color: rgb(10, 114, 225);
+	color: white;
 }
