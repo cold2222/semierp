@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -58,8 +59,9 @@ public class EmployeeDAO {
 			}
 			
 			
+		} catch(SQLSyntaxErrorException syntaxE) {
+			request.setAttribute("error", "アカウント「社員番号」が存在しません");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBManger.close(con, pstmt, rs);
