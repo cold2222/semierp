@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/Login")
-public class Login extends HttpServlet {
+public class LoginC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("sjh/login.jsp").forward(request, response);

@@ -15,7 +15,7 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
- 	background-image: url('../backgroundImgFolder/mapOfWorld.jpg');
+	background-image: url('../backgroundImgFolder/mapOfWorld.jpg');
 }
 
 .content-background {
@@ -38,18 +38,16 @@
 	justify-content: center;
 	align-items: baseline;
 	width: 100%;
-	flex-direction: row; 
+	flex-direction: row;
 }
 
 .content-body {
 	position: relative;
 	z-index: 1;
-	width: 90%;
+	width: 100%;
 	background-color: rgba(255, 255, 255, 0);
 	display: flex;
-	padding: 20px 70px;
 	margin-bottom: 30px;
-	
 }
 
 .bbs-content1 {
@@ -61,6 +59,7 @@
 	padding: 20px; /* 간격을 위한 패딩 추가 */
 	box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
 }
+
 .bbs-content2 {
 	display: flex;
 	flex-wrap: wrap;
@@ -76,21 +75,17 @@
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	padding: 20px;
-	margin-bottom: 20px;
 	box-sizing: border-box; /* 패딩을 요소 크기에 포함 */
-	
-	
 }
 
 /* 1,4번 넓이 조절 */
 .bbs-content1 .board:nth-child(1) {
-	width: calc(100% - 10px);
-	flex: 0 0 calc(100% - 20px);
+	width: 100%;
+	
 }
 
 .bbs-content1 .board:nth-child(2) {
-	width: calc(100% - 10px);
-	flex: 0 0 calc(100% - 20px);
+	width: 100%;
 }
 
 /* 나머지 넓이 조절 */
@@ -155,7 +150,6 @@
 	border-right: 2px solid black;
 	flex: 4;
 	text-align: right; /* 가운데 정렬 추가 */
-	
 }
 
 .myself-line2 {
@@ -196,12 +190,10 @@
 	color: #fff;
 }
 
-
-.contents a:link{
+.contents a:link {
 	text-decoration: none;
-} 
-.contents a:visited,a:active{
-	color : #007bff;
-} 
+}
 
-
+.contents a:visited, a:active {
+	color: #007bff;
+}

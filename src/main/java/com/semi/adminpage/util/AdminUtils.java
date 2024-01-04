@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.semi.adminpage.staff.StaffDTO;
+import com.semi.login.EmployeeDTO;
 
 public class AdminUtils {
 	// 현재 날짜의 yyyy-MM
@@ -126,5 +127,20 @@ public class AdminUtils {
 		}
 		
 		return sum;
+	}
+	
+	public static int getSessionDeptIndex(HttpServletRequest request) {
+		int[] deptLib = {1, 101, 102, 201, 202};
+		EmployeeDTO empInfo = (EmployeeDTO) request.getSession().getAttribute("empInfo");
+		
+		int idx = -1;
+		System.out.println(empInfo.getE_deptno());
+		int deptno = empInfo.getE_deptno();
+		for(int i = 0; i < deptLib.length; i++) {
+			if(deptLib[i] == deptno)
+				idx = i;
+		}
+		
+		return idx;
 	}
 }

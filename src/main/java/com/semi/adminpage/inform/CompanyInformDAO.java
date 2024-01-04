@@ -41,12 +41,12 @@ public class CompanyInformDAO {
 		
 	}
 	
-	public static void getCompanyInfromsForMainpage(HttpServletRequest request) {
+	public static void getBroadCastCompanyInfroms(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<CompanyInformDTO> companyInforms = new ArrayList<CompanyInformDTO>();
-		String sql = "select * from (select * from CompanyInform order by ci_no desc) where rownum <6";
+		String sql = "select * from (select * from CompanyInform where ci_broadcastidx=1 order by ci_no desc) where rownum <6";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
@@ -58,7 +58,7 @@ public class CompanyInformDAO {
 				
 				companyInforms.add(tempCompanyInform);
 			}
-			request.setAttribute("companyInforms", AdminUtils.setPaging(request, companyInforms, 18));
+			request.setAttribute("broadCastInforms", companyInforms);
 			
 			
 		} catch (Exception e) {
@@ -91,6 +91,36 @@ public class CompanyInformDAO {
 			request.setAttribute("error", "DBFail");
 		} finally {
 			DBManger.close(con, pstmt, null);
+		}
+		
+	}
+
+	public static void getSessionDeptInforms(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<CompanyInformDTO> companyInforms = new ArrayList<CompanyInformDTO>();
+		String sql = "select * from (select * from companyInform where ci_broadcastidx=0 and mod(ci_deptidxcode / power(10,?), 10) = 1 order by ci_no desc) where rownum <6";
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, AdminUtils.getSessionDeptIndex(request));
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				CompanyInformDTO tempCompanyInform = new CompanyInformDTO(
+						rs.getInt(1), rs.getString(2), rs.getString(3), 
+						rs.getDate(4), rs.getInt(5), rs.getInt(6));
+				
+				companyInforms.add(tempCompanyInform);
+			}
+			request.setAttribute("deptInforms", companyInforms);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("error", "DBFail");
+		} finally {
+			DBManger.close(con, pstmt, rs);
 		}
 		
 	}
