@@ -17,15 +17,19 @@
 					<img class="header1-logo-img" alt=""
 						src="logoFolder/SOLlogisticsHeaderLogoNewRemoveBackground.png">
 				</div>
-				<div id="header1-empty"></div>
+				
+				<!-- <div id="header1-empty"></div> -->
 
-				<div class="header1-select1">歓迎します</div>
+				<div class="header1-select1">ITA</div>
+				<div class="header1-select1">JETRO</div>
+				<div class="header1-select1">KOTRA</div>
 				<div class="header1-select1">
 					<select id="mySelect">
 						<option>${sessionScope.empInfo.e_name }様</option>
-						<option>ITA</option>
-						<option>JETRO</option>
-						<option value="AdminPage">AdminPage</option>
+		<!-- 				<option value="ITA">ITA</option>
+						<option value="JETRO">JETRO</option>
+						<option value="KOTRA">KOTRA</option>
+		 -->				<option value="AdminPage">AdminPage</option>
 						<option>ログアウト</option>
 					</select>
 					<!-- 셀렉트 자바스크립트 -->
