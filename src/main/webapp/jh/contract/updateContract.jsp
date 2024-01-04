@@ -134,16 +134,16 @@
 						<div class="text-input-graph2">
 							<div class="input-container">
 								<input readonly="readonly" id="displayName" placeholder="取引先検索"
-									required="required" type="text" value="${contract.c_name}">
+									 type="text" value="${contract.c_name}">
 							</div>
 							<div class="input-container">
 								<input name="e_name" placeholder="社員検索" id="employeeSearch"
-									type="text" readonly="readonly" required="required"
+									type="text" readonly="readonly" 
 									value="${contract.e_name}">
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="c_e_id" id="e_id" required="required"
+					<input type="hidden" name="c_e_id" id="e_id" 
 						value="${contract.c_e_id}">
 					<div class="input-container"></div>
 				</div>
@@ -205,6 +205,7 @@
 	</div>
 </body>
 <script type="text/javascript" src="jh/js/modal.js"></script>
+<script type="text/javascript" src="jh/js/add_row.js"></script>
 <script type="text/javascript" src="jh/js/updateCont.js"></script>
 <script type="text/javascript" src="jh/js/contract_company.js"></script>
 <script type="text/javascript" src="jh/js/employee_search.js"></script>
