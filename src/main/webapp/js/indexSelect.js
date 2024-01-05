@@ -5,7 +5,6 @@ selectElement.addEventListener("change", function () {
 
   if (selectedOption == "AdminPage") {
     window.location.href = "AdminPageC";
-    window.open("AdminPageC", "_blank");
   } else if (selectedOption == "ITA") {
    window.open("https://www.trade.gov/", "_blank");
   } else if (selectedOption == "JETRO") {
