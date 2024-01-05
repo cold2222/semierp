@@ -136,7 +136,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 			if (id === '' || type === '' || si === '' || quantity === ''
 					|| name === '' || unitCost === '' || minStock === ''
 					|| maxStock === '' || manufacturer === '') {
-				alert('컬럼 값에 빈 칸이 있습니다. 업데이트를 실행할 수 없습니다.');
+				alert('空白の欄があります。 アップデートを実行できません。');
 				return;
 			}
 			const formData = {
@@ -151,9 +151,9 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 				p_manufacturer : manufacturer
 			};
 
-			if (confirm('업데이트 하시겠습니까?')) {
+			if (confirm('アップデートしますか?')) {
 				postFormData('UpdateProductC', formData);
-				alert('업데이트 완료');
+				alert('アップデート完了');
 			} else {
 				return;
 			}

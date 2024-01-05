@@ -57,7 +57,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 									<div class="bbs-main-text-s">
 										<c:choose>
 											<c:when test="${p.p_quantity eq null}">
-            단위 없음
+            単位なし
         </c:when>
 											<c:otherwise>
             ${p.p_quantity}
@@ -70,7 +70,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 									<div class="bbs-main-text-s">
 										<c:choose>
 											<c:when test="${p.p_manufacturer == null}">
-            제조사 없음
+            製造社なし
         </c:when>
 											<c:otherwise>
             ${p.p_manufacturer}
@@ -117,7 +117,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 						</div>
 						<script type="text/javascript">
 							function deleteProduct(p_id) {
-								if (confirm('정말 삭제하시겠습니까?')) {
+								if (confirm('本当に削除しますか？')) {
 									location.href = 'DeleteProductC?p_id='
 											+ p_id;
 								} else {
