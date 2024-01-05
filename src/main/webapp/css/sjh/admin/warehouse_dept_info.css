@@ -85,7 +85,8 @@
 
 
 .idx-btn{
-	height: 24px;
+	height: 30px;
+	font-size: 20px;
 	background-color: #140652;
 	color: white;
 	border-radius: 3px;
@@ -97,5 +98,4 @@
 	font-size: 18px;
 	font-weight: 600;
 	margin-bottom: 5px;
-
 }

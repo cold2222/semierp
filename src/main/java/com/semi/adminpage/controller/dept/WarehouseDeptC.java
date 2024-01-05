@@ -27,7 +27,7 @@ public class WarehouseDeptC extends HttpServlet {
 				request.getRequestDispatcher("HC").forward(request, response);
 		}
 		else 
-			response.sendRedirect("Login"); 
+			response.sendRedirect("LoginC"); 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

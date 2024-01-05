@@ -1,4 +1,4 @@
-package com.semi.main;
+package com.semi.login;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.semi.adminpage.inform.CompanyInformDAO;
 
-@WebServlet("/HC")
-public class HC extends HttpServlet {
-
+@WebServlet("/LoginC")
+public class LoginC extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CompanyInformDAO.getBroadCastCompanyInfroms(request);
-		CompanyInformDAO.getSessionDeptInforms(request);
-		request.setAttribute("selectedHeader", "main");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("sjh/login.jsp").forward(request, response);
 	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(EmployeeDAO.getEmployeeManager().login(request)) {
+			response.sendRedirect("HC");
+		} else {
+			request.getRequestDispatcher("sjh/login.jsp").forward(request, response);
+			
+		}
+		
 	}
 
 }

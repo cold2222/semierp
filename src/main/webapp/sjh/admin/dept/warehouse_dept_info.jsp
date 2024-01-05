@@ -17,7 +17,7 @@
 		<div></div>
 		<div class="date">
 			日付 : <input type="date" id="dateInput" name="setDate" required
-				onchange="redirectToServletWithTowPaging('WarehouseDeptC','${param.pageNo1 }', '${param.pageNo1 }')">
+				onchange="redirectToServletWithTowPaging('WarehouseDeptC','${param.pageNo1 }', '${param.pageNo2 }')">
 		</div>
 	</div>
 	<hr>

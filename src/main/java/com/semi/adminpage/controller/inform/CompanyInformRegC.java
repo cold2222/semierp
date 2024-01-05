@@ -24,15 +24,20 @@ public class CompanyInformRegC extends HttpServlet {
 				request.getRequestDispatcher("HC").forward(request, response);
 		}
 		else 
-			response.sendRedirect("Login");
+			response.sendRedirect("LoginC");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
+			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
+				CompanyInformDAO.companyInformReg(request);
+				response.sendRedirect("CompanyInformC");
+			}
+		} else 
+			response.sendRedirect("LoginC");
 	}
 
 }

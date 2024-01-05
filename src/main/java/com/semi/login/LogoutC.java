@@ -7,22 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/Login")
-public class Login extends HttpServlet {
-	
+@WebServlet("/LogoutC")
+public class LogoutC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("sjh/login.jsp").forward(request, response);
+		request.getSession().removeAttribute("empInfo");
+		response.sendRedirect("LoginC");
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(EmployeeDAO.getEmployeeManager().login(request)) {
-			response.sendRedirect("HC");
-		} else {
-			request.getRequestDispatcher("sjh/login.jsp").forward(request, response);
-			
-		}
-		
 	}
 
 }

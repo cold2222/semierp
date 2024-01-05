@@ -1,115 +1,118 @@
 @charset "UTF-8";
 
-
 body {
-    margin: 0;
-    padding: 0;
-    
+	margin: 0;
+	padding: 0;
 }
 
 .loginTop {
-    position: relative;
-    height: 100vh; /* 100% 화면 높이로 설정 */     
+	position: relative;
+	height: 100vh; /* 100% 화면 높이로 설정 */
 }
 
-.loginTop::before{
+.loginTop::before {
 	content: "";
-    position: absolute ;
-    z-index: 1; 
-	top: 0; right: 0; left:0; bottom:0;
-	background-color: rgba(0,0,0,0.7); 	
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .backgroundContainer {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
 }
 
 .backgroundImage {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover; /* 화면에 맞게 이미지 크기 조절 */
+	width : 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+	width: 100%; /* 화면에 맞게 이미지 크기 조절 */
 }
 
 .topArea-login {
 	width: 350px;
 	height: 400px;
-    position: absolute;
-    top: 50%;
-    left: 75%;
-    transform: translate(-50%, -50%);
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    padding: 20px;
-    z-index: 2;
+	position: absolute;
+	top: 50%;
+	left: 75%;
+	transform: translate(-50%, -50%);
+	/* background-color: rgba(0, 0, 0, 0.6); */
+	padding: 20px;
+	z-index: 2;
 }
+
 .topArea-login h1 {
-	font-size: 32px; 
+	font-size: 32px;
 	color: white;
 	text-align: center;
 	margin-bottom: 60px;
 }
 
-.int-area{
+.int-area {
 	width: 350px;
 	position: relative;
 	margin-top: 20px;
 }
-.int-area:first-child{
+
+.int-area:first-child {
 	margin-top: 0;
-	 
 }
-.int-area input{
+
+.int-area input {
 	width: 100%;
 	padding: 20px 10px 10px;
 	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid white;
-	font-size: 18px; 
+	font-size: 18px;
 	color: #fff;
 	outline: none;
 }
 
-.int-area label.warning{
-	color:red !important; 
+.int-area label.warning {
+	color: red !important;
 	animation: warning .3s ease;
 	animation-iteration-count: 3;
 }
 
-.int-area label{
+.int-area label {
 	position: absolute;
-	left: 10px;	top:15px; 
+	left: 10px;
+	top: 15px;
 	font-size: 18px;
 	color: #999;
 	transition: all 0.5s ease;
- } 
+}
 
-.int-area input:focus + label,
-.int-area input:valid  + label{
-	top:0;
-	font-size: 13px; 
+.int-area input:focus+label, .int-area input:valid+label {
+	top: 0;
+	font-size: 13px;
 	color: #166cea;
 }
 
-.btn-area{
+.btn-area {
 	margin-top: 30px;
 }
 
 .btn-area button {
-	width: 100%; height: 50px; 
+	width: 100%;
+	height: 50px;
 	background-color: #166cea;
 	color: #fff;
 	font-size: 20px;
 	border: none;
 	border-radius: 25px;
-	cursor: pointer;	
-
+	cursor: pointer;
 }
 
-
-.caption{
+.caption {
 	margin-top: 20px;
 	text-align: center;
 }
@@ -121,25 +124,24 @@ body {
 }
 
 .loginFormContainer {
-    text-align: center;
+	text-align: center;
 }
 
 .loginLogo {
-    width: 300px;
-    height: auto;
+	width: 300px;
+	height: auto;
 }
 
 .loginForm {
-    font-size: 20pt;
+	font-size: 20pt;
 }
 
 .inputText {
-    display: inline-block;
-    width: 70px;
-    text-align: center;
-    
+	display: inline-block;
+	width: 70px;
+	text-align: center;
 }
 
 .loginBtn {
-    font-size: 16pt;
+	font-size: 16pt;
 }

@@ -17,20 +17,20 @@
 					<img class="header1-logo-img" alt=""
 						src="logoFolder/SOLlogisticsHeaderLogoNewRemoveBackground.png">
 				</div>
-				<div id="header1-empty"></div>
-
-				<div class="header1-select1">歓迎します</div>
+				
 				<div class="header1-select1">
+					<div class="header1-goToPage"><a href="https://www.trade.gov/" target="_blank">ITA</a></div>
+					<div class="header1-goToPage"><a href="https://www.jetro.go.jp/" target="_blank">JETRO</a></div>
+					<div class="header1-goToPage"><a href="https://www.kotra.or.kr/index.do" target="_blank">KOTRA</a></div>
 					<select id="mySelect">
 						<option>${sessionScope.empInfo.e_name }様</option>
-						<option>ITA</option>
-						<option>JETRO</option>
 						<option value="AdminPage">AdminPage</option>
-						<option>ログアウト</option>
+						<option value="Logout">ログアウト</option>
 					</select>
 					<!-- 셀렉트 자바스크립트 -->
 					<script type="text/javascript" src="js/indexSelect.js"></script>
 				</div>
+
 			</div>
 		</div>
 		<div class="header2">

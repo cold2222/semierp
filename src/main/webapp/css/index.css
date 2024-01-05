@@ -1,93 +1,12 @@
 @charset "UTF-8";
 
-/* .content-border {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 1px solid red;
-}
-
-.content-box {
-	display: flex;
-	width: 90%;
-	height: 500px;
-	align-items: center;
-	justify-content: space-between;
-	border: 1px solid black;
-}
-
-.content1 {
-	width: 24%;
-	height: 450px;
-	background-color: white;
-    border-radius: 8px 8px 8px 8px;
-	
-}
-
-.content2 {
-	width: 36%;
-	height: 450px;
-	background-color: white;
-    border-radius: 8px 8px 8px 8px;
-	
-}
-
-.content-head {
-    height: 15%;
-    background-color: #337CCF;
-    border: 1px solid #1e5092;
-    color: white;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px 8px 0 0;
-}
-
-.content-body {
-    height: 85%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px;
-}
-
-.content-line {
-    width: 80%;
-    height: 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 0 10px;
-
-}
-
-.limited-line {
-	
-	white-space: nowrap;
-  	overflow: hidden;
-  	text-overflow: ellipsis;
-}
- */
-
-/* 
-
-.contents a:link{
-	text-decoration: none;
-} 
-.contents a:visited,a:active{
-	color : #007bff;
-} 
- */
 * {
 	margin: 0;
 	padding: 0;
 }
 
 .index-contents {
-	width: 100vw;
+	width: 100%;
 	display: flex;
 }
 
@@ -96,6 +15,7 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
+	background-image: url('../backgroundImgFolder/mapOfWorld.jpg');
 }
 
 .content-background {
@@ -115,62 +35,68 @@
 .contents {
 	margin-top: 20px;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: baseline;
 	width: 100%;
+	flex-direction: row;
 }
 
 .content-body {
 	position: relative;
 	z-index: 1;
-	width: 97%;
+	width: 100%;
 	background-color: rgba(255, 255, 255, 0);
 	display: flex;
-	padding: 20px 30px;
 	margin-bottom: 30px;
 }
 
-.bbs-content {
+.bbs-content1 {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
-	justify-content: space-between;
-	width: 100%; /* 부모 요소에 대한 너비 설정 */
+	justify-content: flex-start;
+	width: 20%; /* 부모 요소에 대한 너비 설정 */
+	padding: 20px; /* 간격을 위한 패딩 추가 */
+	box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
+}
+
+.bbs-content2 {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+	width: 80%; /* 부모 요소에 대한 너비 설정 */
 	padding: 20px; /* 간격을 위한 패딩 추가 */
 	box-sizing: border-box; /* 패딩을 너비에 포함하여 요소 크기를 계산 */
 }
 
 .board {
 	background-color: rgba(255, 255, 255, 0.9);
-	/* background-color: #fff; */
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	padding: 20px;
-	margin-bottom: 20px;
 	box-sizing: border-box; /* 패딩을 요소 크기에 포함 */
 }
 
 /* 1,4번 넓이 조절 */
-.bbs-content .board:nth-child(1) {
-	width: calc(18% - 10px);
-	flex: 0 0 calc(18% - 20px);
+.bbs-content1 .board:nth-child(1) {
+	width: 100%;
+	
 }
 
-.bbs-content .board:nth-child(4) {
-	width: calc(24% - 10px);
-	flex: 0 0 calc(24% - 20px);
+.bbs-content1 .board:nth-child(2) {
+	width: 100%;
 }
 
 /* 나머지 넓이 조절 */
-.bbs-content .board:nth-child(2), .bbs-content .board:nth-child(3) {
-	width: calc(39% - 10px);
-	flex: 0 0 calc(39% - 20px);
+.bbs-content2 .board:nth-child(1), .bbs-content2 .board:nth-child(2) {
+	width: calc(50% - 10px);
+	flex: 0 0 calc(50% - 20px);
 }
 
-.bbs-content .board:nth-child(5), .bbs-content .board:nth-child(6) {
-	width: calc(36.5% - 10px);
-	flex: 0 0 calc(36.5% - 20px);
+.bbs-content2 .board:nth-child(3), .bbs-content2 .board:nth-child(4) {
+	width: calc(50% - 10px);
+	flex: 0 0 calc(50% - 20px);
 }
 
 .board-title {
@@ -207,9 +133,8 @@
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	padding: 20px;
-	width: 90%;
-	margin-top: 30px;
+	width: 100%;
+	margin-top: 0px;
 }
 
 .myself-info {
@@ -223,12 +148,12 @@
 
 .myself-line1 {
 	border-right: 2px solid black;
-	flex: 3;
+	flex: 4;
 	text-align: right; /* 가운데 정렬 추가 */
 }
 
 .myself-line2 {
-	flex: 7;
+	flex: 8;
 	text-align: left; /* 가운데 정렬 추가 */
 }
 
@@ -263,4 +188,12 @@
 .board-button button:hover {
 	background-color: #285e8e;
 	color: #fff;
+}
+
+.contents a:link {
+	text-decoration: none;
+}
+
+.contents a:visited, a:active {
+	color: #007bff;
 }
