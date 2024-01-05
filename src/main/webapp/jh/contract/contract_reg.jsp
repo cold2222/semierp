@@ -157,6 +157,8 @@
 </body>
 
 <script type="text/javascript" src="jh/js/modal.js"></script>
+<script type="text/javascript" src="jh/js/date.js"></script>
+<script type="text/javascript" src="jh/js/add_row.js"></script>
 <script type="text/javascript" src="jh/js/contract_company.js"></script>
 <script type="text/javascript" src="jh/js/employee_search.js"></script>
 </html>

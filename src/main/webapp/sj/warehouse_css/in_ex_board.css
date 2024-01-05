@@ -222,3 +222,10 @@
 	font-weight: bold;
 }
 
+.bbs-main-text1 a:link {
+	text-decoration: none;
+}
+
+.bbs-main-text1 a:visited, a:active {
+	color: black; /* 색깔 바꾸고 싶으시면 바꾸시면 됩니다. */
+}
