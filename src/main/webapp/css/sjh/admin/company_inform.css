@@ -21,3 +21,14 @@
 .content-col{
 	width: 31%;
 }
+
+.reg-btn{
+	width: 90px;
+	height: 48px;
+	font-size: 16px;
+	font-weight: 500;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background-color: rgb(10, 114, 225);
+	color: white;
+}

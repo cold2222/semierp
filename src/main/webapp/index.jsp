@@ -39,7 +39,7 @@
 								</div>
 								<div class="board-button">
 									<button>마이페이지</button>
-									<button>로그아웃</button>
+									<button onclick="location.href ='LogoutC'">로그아웃</button>
 								</div>
 							</div>
 						</div>
@@ -120,96 +120,32 @@
 
 						<div class="board">
 							<div class="board-title">공지사항</div>
-							<!-- forEach로 넣으셔서 내용 채우시면 됩니다. -->
-							<%-- <c:forEach var="" items=""> --%>
-							<div class="post">
-								<!-- 제목입니다. -->
+							<c:forEach var="broadCastInform" items="${broadCastInforms }" >
+								<div class="post">
 								<div class="post-title">
-									<div class="post-title-info"><a href="">테스트입니다.</a></div>
+									<div class="post-title-info"><a href="${broadCastInform.ci_no }">${broadCastInform.ci_title }</a></div>
 									<div class="post-title-info">
-										<span class="post-title-info-date">2024/01/03<%-- ${empInfo.date?} 등록한 날짜 넣으시면 됩니다. --%></span>
+										<span class="post-title-info-date">${broadCastInform.ci_date }</span>
 									</div>
 								</div>
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. 길게 나와도 괜찮은지보려고 합니다
-									ㅎㅎㅎㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
-
+								<div class="post-info">${broadCastInform.ci_content }</div>
 							</div>
-							<%-- </c:forEach> --%>
-							<div class="post">
-								<!-- 제목입니다. -->
-								<div class="post-title">
-									<div class="post-title-info">테스트입니다.</div>
-									<div class="post-title-info">
-										<span class="post-title-info-date">2024/01/03<%-- ${empInfo.date?} 등록한 날짜 넣으시면 됩니다. --%></span>
-									</div>
-								</div>
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. 길게 나와도 괜찮은지보려고 합니다
-									ㅎㅎㅎㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
-
-							</div>
-							<div class="post">
-								<!-- 제목입니다. -->
-								<div class="post-title">
-									<div class="post-title-info">테스트입니다.</div>
-									<div class="post-title-info">
-										<span class="post-title-info-date">2024/01/03<%-- ${empInfo.date?} 등록한 날짜 넣으시면 됩니다. --%></span>
-									</div>
-								</div>
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. 길게 나와도 괜찮은지보려고 합니다
-									ㅎㅎㅎㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
-
-							</div>
-							<div class="post">
-								<!-- 제목입니다. -->
-								<div class="post-title">
-									<div class="post-title-info"> <a href="">테스트입니다.</a></div>
-									<div class="post-title-info">
-										<span class="post-title-info-date">2024/01/03<%-- ${empInfo.date?} 등록한 날짜 넣으시면 됩니다. --%></span>
-									</div>
-								</div>
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. 길게 나와도 괜찮은지보려고 합니다
-									ㅎㅎㅎㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
-
-							</div>
-							<div class="post">
-								<!-- 제목입니다. -->
-								<div class="post-title">
-									<div class="post-title-info"><a href="">테스트입니다.</a></div>
-									<div class="post-title-info">
-										<span class="post-title-info-date">2024/01/03<%-- ${empInfo.date?} 등록한 날짜 넣으시면 됩니다. --%></span>
-									</div>
-								</div>
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. 길게 나와도 괜찮은지보려고 합니다
-									ㅎㅎㅎㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ</div>
-
-							</div>
-							
-							
-							
+							</c:forEach>	
 						</div>
 
 						<div class="board">
-							<div class="board-title">자기부서 정보</div>
-							<!-- forEach로 넣으셔서 내용 채우시면 됩니다. -->
-							<%-- <c:forEach var="" items=""> --%>
-							<div class="post">
-								<!-- 제목입니다. -->
+							<div class="board-title">부서 공지사항</div>
+							<c:forEach var="deptInform" items="${deptInforms }" >
+								<div class="post">
 								<div class="post-title">
-									<div class="post-title-info"><a href="">테스트입니다.</a></div>
+									<div class="post-title-info"><a href="${deptInform.ci_no }">${deptInform.ci_title }</a></div>
 									<div class="post-title-info">
-										<span class="post-title-info-date">2024/01/03<%-- ${empInfo.date?} 등록한 날짜 넣으시면 됩니다. --%></span>
+										<span class="post-title-info-date">${deptInform.ci_date }</span>
 									</div>
 								</div>
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
+								<div class="post-info">${deptInform.ci_content }</div>
 							</div>
-							<%-- </c:forEach> --%>
+							</c:forEach>
 						</div>
 
 						<div class="board">
