@@ -29,7 +29,7 @@
 		<div id="empModal" class="modal-content">
 			<div>
 				<div class="search-input">
-					<input class="search-btn" placeholder="本社員検索" id="empSearchBtn" >
+					<input class="search-btn" placeholder="本社員検索" id="empSearchBtn" autocomplete="off">
 					<button class="close-button" id="empCloseModalBtn">
 						<div class="close-icon"></div>
 					</button>
@@ -45,7 +45,7 @@
 		<div id="myModal" class="modal-content">
 			<div>
 				<div class="search-input">
-					<input class="search-btn" placeholder="取引先検索" id="search-btn">
+					<input class="search-btn" placeholder="取引先検索" id="search-btn" autocomplete="off">
 					<button class="close-button" id="closeModalBtn">
 						<div class="close-icon"></div>
 					</button>
@@ -61,7 +61,7 @@
 		<div id="productModal" class="modal-content">
 			<div>
 				<div class="search-input">
-					<input class="search-btn" placeholder="アイテム検索" id="productSearchInput">
+					<input class="search-btn" placeholder="アイテム検索" id="productSearchInput" autocomplete="off">
 					<button class="close-button" id="closeProductModalBtn">
 						<div class="close-icon"></div>
 					</button>
@@ -132,16 +132,16 @@
 				<div id="contractTable">
 					<div style="display: none;" class="bbs-content2">
 						<input name="ci_c_contract_no" type="hidden">
-						<input	type="hidden" name="ci_p_id" class="selectedValueP">
+						<input	type="hidden" name="ci_p_id" class="selectedValueP" >
 						<div class="input-container2">
-							<input class="displayNameP" type="text" 
+							<input class="displayNameP" type="text" autocomplete="off"
 								placeholder="アイテム名">
 						</div>
 						<div class="input-container2">
-							<input name="ci_count" placeholder="数量" type="number">
+							<input name="ci_count" placeholder="数量" type="number" autocomplete="off">
 						</div>
 						<div class="input-container2">
-							<input name="ci_unit_price" placeholder="単価" type="number">
+							<input name="ci_unit_price" placeholder="単価" type="number" autocomplete="off">
 						</div>
 					</div>
 				</div>

@@ -24,8 +24,8 @@
 						<option value="a.c_status">取引状態</option>
 						<option value="a.c_type">契約書の種類</option>
 					</select> <input type="text" placeholder="検索するキーワードを入力してください"
-						name="inputWord" id="searchWord" class="search-input"
-						style="display: none;"> <select id="statusSelect"
+						name="inputWord" id="searchWord" class="search-input" autocomplete="off"
+						style="display: none;"> <select id="statusSelect" class="search-input"
 						name="statusWord" style="display: none;">
 						<option value="1,1">輸入 : 配送未指定</option>
 						<option value="1,2">輸入 : 配送日確定</option>
@@ -35,7 +35,7 @@
 						<option value="2,2">販売 : 配送日確定</option>
 						<option value="2,3">販売 : 配送準備中</option>
 						<option value="2,4">販売 : 配送完了</option>
-					</select> <select id="typeSelect" name="typeWord" style="display: none;">
+					</select> <select id="typeSelect" name="typeWord" style="display: none;" class="search-input">
 						<option value="1">輸入</option>
 						<option value="2">販売</option>
 					</select>

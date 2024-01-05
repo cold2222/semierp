@@ -24,7 +24,7 @@
 						<option value="c_name">会社名</option>
 						<option value="c_keeper">取引先の担当者</option>
 						<option value="c_addr">住所</option>
-					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
+					</select> <input type="text" autocomplete="off" placeholder="検索するキーワードを入力してください" name="word"
 						id="searchWord" class="search-input" style="display: none;">
 					<button type="submit" class="search-button">検索</button>
 				</form>
