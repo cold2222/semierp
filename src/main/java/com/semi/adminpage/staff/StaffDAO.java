@@ -254,7 +254,49 @@ public class StaffDAO {
 		
 	}
 	public static void getDistributionStaffsInfo(HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<DistributionStaffDTO> distributionStaffsInfo = new ArrayList<DistributionStaffDTO>();
+		String sql = "select d_no, d_name, d_rank, d_tel, d_email, nvl(shippingthismonth, 0) as d_shippingThisMonth, nvl(COMPLETEDSHIPPINGTHISMONTH, 0) as d_completedThisMonth, nvl(SHIPPINGTODAY,0) as d_shippingtoday, nvl(COMPLETEDSHIPPINGTODAY, 0) as d_completedtoday\r\n"
+				+ "from (select e_no d_no, e_name d_name, e_rank d_rank, e_tel d_tel, e_email d_email from employee where e_deptno = 201)\r\n"
+				+ "left outer join\r\n"
+				+ "(select m_e_no, shippingthismonth, completedshippingthismonth, shippingtoday, completedshippingtoday from (select s_e_no as m_e_no, count(*) as shippingThisMonth, count(case when c_status=4 then 1 end) as completedShippingThisMonth from shipping join contract on s_contract_no = c_contract_no where to_char(c_delivery_date,'yyyy-MM') = ? group by s_e_no), \r\n"
+				+ "(select s_e_no as d_e_no, count(*) as shippingToday, count(case when c_status=4 then 1 end) as completedShippingToday from shipping join contract on s_contract_no = c_contract_no where to_char(c_delivery_date,'yyyy-MM-DD') = ? group by s_e_no)\r\n"
+				+ "where m_e_no = d_e_no)\r\n"
+				+ "on d_no = m_e_no";
+		
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, AdminUtils.getParamYearMonth(request));
+			pstmt.setString(2, AdminUtils.getParamDate(request));
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				DistributionStaffDTO tempDistributionStaffInfo = new DistributionStaffDTO();
+				tempDistributionStaffInfo.setDs_no(rs.getInt(1));
+				tempDistributionStaffInfo.setDs_name(rs.getString(2));
+				tempDistributionStaffInfo.setDs_rank(rs.getString(3));
+				tempDistributionStaffInfo.setDs_tel(rs.getString(4));
+				tempDistributionStaffInfo.setDs_email(rs.getNString(5));
+				tempDistributionStaffInfo.setDs_shippingThisMonth(rs.getInt(6));
+				tempDistributionStaffInfo.setDs_completedThisMonth(rs.getInt(7));
+				tempDistributionStaffInfo.setDs_shippingToday(rs.getInt(8));
+				tempDistributionStaffInfo.setDs_completedToday(rs.getInt(9));
+				
+				distributionStaffsInfo.add(tempDistributionStaffInfo);
+			}
+			
+			// 페이징
+	        request.setAttribute("distributionStaffsInfo", AdminUtils.setPaging(request, distributionStaffsInfo, 10));       
+	        	
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("error", "DBFail");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
 		
 	}
 	public static void getWarehouseStffsInfo(HttpServletRequest request) {
