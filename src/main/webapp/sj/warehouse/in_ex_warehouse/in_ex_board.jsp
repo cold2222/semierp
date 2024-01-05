@@ -85,7 +85,7 @@
 								<c:choose>
 									<c:when test="${pageNum != 1}">
 										<a
-											href="InExBoardC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">前のページ</a>
+											href="InExBoardC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">prev</a>
 									</c:when>
 								</c:choose>
 
@@ -106,7 +106,7 @@
 								<c:choose>
 									<c:when test="${pageNum != totalPage && totalPage != 0}">
 										<a
-											href="InExBoardC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">次のページ</a>
+											href="InExBoardC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">next</a>
 									</c:when>
 								</c:choose>
 							</div>
