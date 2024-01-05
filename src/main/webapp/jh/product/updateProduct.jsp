@@ -45,31 +45,31 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 				</div>
 				<div class="input-container">
 					<label for="p_quantity" class="input-label">単位量</label> <input
-						name="p_quantity" id="p_quantity" type="text"
+						name="p_quantity" id="p_quantity" type="text" autocomplete="off"
 						value="${p.p_quantity}">
 				</div>
 				<div class="input-container">
 					<label for="p_name" class="input-label">アイテム名</label> <input
-						name="p_name" id="p_name" type="text" value="${p.p_name}">
+						name="p_name" id="p_name" type="text" value="${p.p_name}" autocomplete="off">
 				</div>
 				<div class="input-container">
 					<label for="p_unitCost" class="input-label">価格</label> <input
-						name="p_unitCost" id="p_unitCost" type="number"
+						name="p_unitCost" id="p_unitCost" type="number" autocomplete="off"
 						value="${p.p_unitCost}">
 				</div>
 				<div class="input-container">
 					<label for="p_minStock" class="input-label">最小保有量</label> <input
-						name="p_minStock" id="p_minStock" type="number"
+						name="p_minStock" id="p_minStock" type="number" autocomplete="off"
 						value="${p.p_minStock}">
 				</div>
 				<div class="input-container">
 					<label for="p_maxStock" class="input-label">最大保有量</label> <input
-						name="p_maxStock" id="p_maxStock" type="number"
+						name="p_maxStock" id="p_maxStock" type="number" autocomplete="off"
 						value="${p.p_maxStock}">
 				</div>
 				<div class="input-container">
 					<label for="p_manufacturer" class="input-label">製造社</label> <input
-						name="p_manufacturer" id="p_manufacturer" type="text"
+						name="p_manufacturer" id="p_manufacturer" type="text" autocomplete="off"
 						value="${p.p_manufacturer}">
 				</div>
 				<div class="button" id="saveButton">
