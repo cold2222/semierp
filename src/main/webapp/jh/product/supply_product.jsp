@@ -30,7 +30,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 						<option value="p_type">タイプ</option>
 						<option value="p_name">アイテム名</option>
 					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
-						id="searchWord" class="search-input" style="display: none;">
+						id="searchWord" class="search-input" style="display: none;" autocomplete="off">
 					<button type="submit" class="search-button">検索</button>
 				</form>
 			</div>
