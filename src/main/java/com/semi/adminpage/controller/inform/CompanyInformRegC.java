@@ -24,7 +24,7 @@ public class CompanyInformRegC extends HttpServlet {
 				request.getRequestDispatcher("HC").forward(request, response);
 		}
 		else 
-			response.sendRedirect("Login");
+			response.sendRedirect("LoginC");
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class CompanyInformRegC extends HttpServlet {
 				response.sendRedirect("CompanyInformC");
 			}
 		} else 
-			response.sendRedirect("Login");
+			response.sendRedirect("LoginC");
 	}
 
 }

@@ -20,9 +20,8 @@
 				<div class="header1-select1">
 					<select id="mySelect">
 						<option>${sessionScope.empInfo.e_name }様</option>
-
 						<option value="AdminPage">AdminPage</option>
-						<option>ログアウト</option>
+						<option value="Logout">ログアウト</option>
 					</select>
 					<!-- 셀렉트 자바스크립트 -->
 					<script type="text/javascript" src="js/indexSelect.js"></script>

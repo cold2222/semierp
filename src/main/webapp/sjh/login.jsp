@@ -16,7 +16,7 @@
 				<div class="loginFormContainer">
 					<img src="logoFolder/SOLlogisticsHeaderLogoNewRemoveBackground.png"
 						class="loginLogo">
-					<form class="loginForm" action="Login" method="POST">
+					<form class="loginForm" action="LoginC" method="POST">
 						<h1>ログイン</h1>
 						<div class="int-area">
 							<input name="id" id="id" type="text" autocomplete="off" required>

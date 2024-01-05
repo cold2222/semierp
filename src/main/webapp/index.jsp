@@ -39,7 +39,7 @@
 								</div>
 								<div class="board-button">
 									<button>마이페이지</button>
-									<button>로그아웃</button>
+									<button onclick="location.href ='LogoutC'">로그아웃</button>
 								</div>
 							</div>
 						</div>

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LogoutC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("empInfo");
-		response.sendRedirect("HC");
+		response.sendRedirect("LoginC");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

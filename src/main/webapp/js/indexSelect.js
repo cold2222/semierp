@@ -12,5 +12,7 @@ selectElement.addEventListener("change", function () {
     window.open("https://www.jetro.go.jp/", "_blank");
   } else if (selectedOption == "KOTRA") {
     window.open("https://www.kotra.or.kr/index.do", "_blank"); 
+  } else if (selectedOption == "Logout"){
+	 window.location.href = "LogoutC"; 
   }
 });
