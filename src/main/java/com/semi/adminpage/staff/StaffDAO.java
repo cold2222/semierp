@@ -283,7 +283,7 @@ public class StaffDAO {
 				tempDistributionStaffInfo.setDs_completedThisMonth(rs.getInt(7));
 				tempDistributionStaffInfo.setDs_shippingToday(rs.getInt(8));
 				tempDistributionStaffInfo.setDs_completedToday(rs.getInt(9));
-				
+				System.out.println(tempDistributionStaffInfo);
 				distributionStaffsInfo.add(tempDistributionStaffInfo);
 			}
 			
