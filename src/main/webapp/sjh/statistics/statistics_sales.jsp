@@ -103,37 +103,37 @@
 					<div class="row-contents">
 						<div class="row-type"> ${selectedYear } </div>
 						<c:forEach var="ia" items="${contractCostArr1 }">
-							<div class="col-content">${ia }</div>
+							<div class="col-content">${ia / 1000 }K</div>
 						</c:forEach>
-							<div class="col-content">${cost1 }</div>
+							<div class="col-content">${cost1/ 1000 }K</div>
 					</div>
 					<div class="row-contents margin-top">
 						<div class="row-type"> ${selectedYear-1 } </div>
 						<c:forEach var="ia" items="${contractCostArr2 }">
-							<div class="col-content">${ia }</div>
+							<div class="col-content">${ia/ 1000 }K</div>
 						</c:forEach>
-							<div class="col-content">${cost2 }</div>
+							<div class="col-content">${cost2/ 1000 }K</div>
 					</div>
 					<div class="row-contents">
 						<div class="row-type"> 차 </div>
 						<c:forEach var="ia" items="${diffCostArr1 }">
-							<div class="col-content">${ia }</div>
+							<div class="col-content">${ia / 1000 }K</div>
 						</c:forEach>
-							<div class="col-content">${difCos1 }</div>
+							<div class="col-content">${difCos1/ 1000 }K</div>
 					</div>
 					<div class="row-contents margin-top">
 						<div class="row-type"> ${selectedYear-2 } </div>
 						<c:forEach var="ia" items="${contractCostArr3 }">
-							<div class="col-content">${ia }</div>
+							<div class="col-content">${ia / 1000 }K</div>
 						</c:forEach>
-							<div class="col-content">${cost3 }</div>
+							<div class="col-content">${cost3 / 1000 }K</div>
 					</div>
 					<div class="row-contents">
 						<div class="row-type"> 차 </div>
 						<c:forEach var="ia" items="${diffCostArr2 }">
-							<div class="col-content">${ia }</div>
+							<div class="col-content">${ia / 1000 }K</div>
 						</c:forEach>
-							<div class="col-content">${difCos2 }</div>
+							<div class="col-content">${difCos2 /1000 }</div>
 					</div>
 					
 				</div>
