@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.EmployeeDAO;
 import com.semi.sales.supply.SupplyComDAO;
 
 @WebServlet("/DeleteUnitC")
 public class DeleteUnitC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (EmployeeDAO.getEmployeeManager().loginCheck(request)) {
+			if (EmployeeDAO.getEmployeeManager().authorization(request, 101)
+					|| EmployeeDAO.getEmployeeManager().authorization(request, 102)) {
 		ProductDAO.getPdao().getUnit(request);
 		ProductDAO.getPdao().deleteUnit(request);
 		ProductDAO.getPdao().getAllUnit(request);
@@ -20,6 +24,10 @@ public class DeleteUnitC extends HttpServlet {
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.setAttribute("selectedHeader", "contract");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
+			} else
+				request.getRequestDispatcher("UnitC").forward(request, response);
+		} else
+			response.sendRedirect("LoginC");
 	
 	}
 
