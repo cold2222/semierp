@@ -18,7 +18,7 @@ public class StatisticsImportC extends HttpServlet {
 			// 기능 위치
 			ContractDAO.getContractsInfoByType(request, 1);
 			request.setAttribute("sidebar","sjh/statistics/statistics_sidebar.jsp");
-			request.setAttribute("contentPage","sjh/statistics/statistics_import.jsp");
+			request.setAttribute("contentPage","sjh/statistics/contract/statistics_import.jsp");
 			
 			request.setAttribute("selectedHeader", "statistics");
 			

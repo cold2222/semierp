@@ -10,19 +10,19 @@
 <body>
 	<div class="sidebar">
 		<div class="sidebar-1">
-			<div class="sidebar-index">계약정보</div>
+			<div class="sidebar-index">계약 결산</div>
 			<ul>
 				<li onclick="location.href='StatisticsMainC'">&nbsp; - 계약 정보(年)　</li>
-				<li onclick="location.href='StatisticsImportC'">&nbsp; - 수입 정보</li>
-				<li onclick="location.href='StatisticsSalesC'">&nbsp; - 수출 정보</li>
+				<li onclick="location.href='StatisticsImportC'">&nbsp; - 수입 정보(年)</li>
+				<li onclick="location.href='StatisticsSalesC'">&nbsp; - 수출 정보(年)</li>
 			</ul>
 			
 		</div>
 		<div class="sidebar-1">
-			<div class="sidebar-index">상품정보</div>
+			<div class="sidebar-index">상품 결산</div>
 			<ul>
-				<li onclick="location.href='StatisticsMainC'">&nbsp; - 계약 정보(年)　</li>
-				<li onclick="location.href='StatisticsImportC'">&nbsp; - 수입 정보</li>
+				<li onclick="location.href='ImportProductStatisticByMonthC?pageNo=1'">&nbsp; - 상품 수입(月)　</li>
+				<li onclick="location.href='SalesProductStatisticByMonthC?pageNo=1'">&nbsp; - 상품 판매(月)</li>
 			</ul>
 			
 		</div>

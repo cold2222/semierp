@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.login.EmployeeDAO;
-import com.semi.statistics.contract.ContractDAO;
+import com.semi.statistics.product.StatisticsProductDAO;
 
 
-@WebServlet("/ProductStatisticByMonthC")
-public class ProductStatisticByMonthC extends HttpServlet {
+@WebServlet("/SalesProductStatisticByMonthC")
+public class SalesProductStatisticByMonthC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			// 기능 위치
-			ContractDAO.getContractsInfo(request);
+			StatisticsProductDAO.getProductsOrderByCountAll(request, 2);
 			request.setAttribute("sidebar","sjh/statistics/statistics_sidebar.jsp");
-			request.setAttribute("contentPage","sjh/statistics/statistics_main.jsp");
+			request.setAttribute("contentPage","sjh/statistics/product/import_product_static.jsp");
 			
 			request.setAttribute("selectedHeader", "statistics");
 			

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.button {
+	width: 60px;
+}
+
+.btn-area {
+	display: flex;
+	margin-top: 10px;
+	justify-content: space-between;
+}
+
+.idx-btn {
+	font-size: 16px;
+	color: black;
+	background-color: #ffffff;
+	border-radius: 4px;
+	margin: 0px 4px;
+	padding: 8px 12px;
+}
+
+.idx-btn:hover {
+	background-color: #007BFF;
+}
+
+.colorGold {
+	font-weight: bolder;
+}
+
+.product {
+	width: 11%;
+}

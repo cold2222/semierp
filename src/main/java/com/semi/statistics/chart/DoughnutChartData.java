@@ -5,7 +5,8 @@ import java.util.Arrays;
 
 public class DoughnutChartData {
 	private String[] labels;
-	private ArrayList<DoughnutChartDatasets> datasets;
+	private ArrayList<DoughnutChartDatasets> datasets = new ArrayList<DoughnutChartDatasets>();
+	
 	public String[] getLabels() {
 		return labels;
 	}

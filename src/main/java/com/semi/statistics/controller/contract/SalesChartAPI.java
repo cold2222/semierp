@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.semi.login.EmployeeDAO;
 import com.semi.statistics.contract.ContractDAO;
 
-/**
- * Servlet implementation class SalesChartAPI
- */
 @WebServlet("/SalesChartAPI")
 public class SalesChartAPI extends HttpServlet {
 	

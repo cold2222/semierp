@@ -18,7 +18,7 @@ public class StatisticsMainC extends HttpServlet {
 			// 기능 위치
 			ContractDAO.getContractsInfo(request);
 			request.setAttribute("sidebar","sjh/statistics/statistics_sidebar.jsp");
-			request.setAttribute("contentPage","sjh/statistics/statistics_main.jsp");
+			request.setAttribute("contentPage","sjh/statistics/contract/statistics_main.jsp");
 			
 			request.setAttribute("selectedHeader", "statistics");
 			
