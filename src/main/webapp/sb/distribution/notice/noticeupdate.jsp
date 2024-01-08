@@ -17,7 +17,7 @@
 		enctype="multipart/form-data">
 		<div class="contents">
 			<div class="content-head">
-				<div class="content-head-text">공지 작성 페이지</div>
+				<div class="content-head-text">告知作成ページ</div>
 			</div>
 			<div class="content-body">
 				<div class="bbs-content">
@@ -28,7 +28,7 @@
 									<div class="bbs-main">
 										<input type="hidden" name="n_num" value="${bbs.n_num }">
 										<input class="input-title" name="n_title"
-											placeholder="タイトルを入力してください。" required="required" value="${bbs.n_title }">
+											placeholder="タイトルを入力してください。" required="required" value="${bbs.n_title }" autocomplete="off">
 										<textarea name="n_content" class="input-content" placeholder="内容を入力してください。" required="required">${bbs.n_content }</textarea>
 										<div class="filebox">
 											<input type="hidden" name="old_img" value="${bbs.n_img }">

@@ -27,8 +27,8 @@
 								<div class="bbs-content-bbs">
 									<div class="bbs-main">
 										<input class="input-title" name="s_title"
-											required="required" placeholder="タイトルを入力してください。">
-										<textarea name="s_content" class="input-content" required="required" placeholder="内容を入力してください。"></textarea>
+											required="required" placeholder="タイトルを入力してください。" autocomplete="off">
+										<textarea name="s_content" class="input-content" required="required" placeholder="内容を入力してください。" autocomplete="off"></textarea>
 										<div class="filebox">
 											<label for="file">イメージ登録</label> <input type="file" name="s_img" id="file">
 											<input class="upload-name" readonly="readonly" value="登録されたイメージ" placeholder="登録されたイメージ">
