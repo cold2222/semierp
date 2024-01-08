@@ -7,12 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.EmployeeDAO;
 import com.semi.sales.supply.SupplyComDAO;
 
 @WebServlet("/ProductC")
 public class ProductC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		if (EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 		ProductDAO.getPdao().getAllProduct(request);
 		ProductDAO.getPdao().getAllUnit(request);
 		ProductDAO.getPdao().getAllType(request);
@@ -21,7 +22,8 @@ public class ProductC extends HttpServlet {
 		request.setAttribute("sidebar", "jh/sidebar.jsp");
 		request.setAttribute("selectedHeader", "contract");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
-	
+		} else
+			response.sendRedirect("LoginC");
 	
 	}
 
