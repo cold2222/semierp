@@ -43,7 +43,7 @@
 								<option value="p_name">商品名</option>
 								<option value="p_type">タイプ</option>
 							</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
-								class="search-input" style="display: none;">
+								class="search-input" style="display: none;" autocomplete="off">
 							<button type="submit" class="search-button">確認</button>
 					</form>
 				</div>

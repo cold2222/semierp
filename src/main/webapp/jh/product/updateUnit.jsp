@@ -19,7 +19,7 @@
             <div class="table-row">
                 <div class="table-cell">
                     <label for="unitInput">単位</label>
-                    <input id="unitInput" name="unit" value="${u.unit}" class="input-field">
+                    <input id="unitInput" name="unit" value="${u.unit}" class="input-field" autocomplete="off">
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">공지</div>
+			<div class="content-head-text">告知</div>
 		</div>
 		<div class="content-body">
 			<div class="bbs-content">

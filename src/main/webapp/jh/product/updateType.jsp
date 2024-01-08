@@ -18,7 +18,7 @@
 				<div class="table-container">
 					<div class="table-row">
 						<div class="table-cell">
-							<label for="typeInput">タイプ</label> <input id="typeInput"
+							<label for="typeInput">タイプ</label> <input id="typeInput" autocomplete="off"
 								name="type" value="${t.type}" class="input-field">
 						</div>
 					</div>
