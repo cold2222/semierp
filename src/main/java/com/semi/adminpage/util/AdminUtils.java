@@ -11,6 +11,19 @@ import com.semi.adminpage.staff.StaffDTO;
 import com.semi.login.EmployeeDTO;
 
 public class AdminUtils {
+
+	// 현재 날짜의 yyyy
+	public static String getCurrentYear() {
+		// 현재 날짜 정보 가져오기
+		LocalDate currentDate = LocalDate.now();
+
+		// 형식화된 년월 가져오기 (YY-MM 형식)
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy");
+		String currentYear = currentDate.format(formatter);
+
+		return currentYear;
+	}
+
 	// 현재 날짜의 yyyy-MM
 	public static String getCurrentYearMonth() {
 		// 현재 날짜 정보 가져오기
@@ -53,6 +66,17 @@ public class AdminUtils {
 		}
 		String[] dateSplit = ParamDate.split("-");
 		return dateSplit[0] + "-" + dateSplit[1];
+
+	}
+
+	// 파라미터의 yyyy-MM 값 리턴, 값이 없을 경우 현재의 날자값 기준으로 반환
+	public static String getParamYear(HttpServletRequest request) {
+		String ParamDate = request.getParameter("setDate");
+		if (ParamDate == null || ParamDate.isEmpty()) {
+			return getCurrentYear();
+		}
+		String[] dateSplit = ParamDate.split("-");
+		return dateSplit[0];
 
 	}
 
@@ -119,28 +143,28 @@ public class AdminUtils {
 		return arrayList.subList(startIndex, endIndex);
 
 	}
-	
+
 	public static int sumCi_deptsValues(String[] ci_depts) {
 		int sum = 0;
 		for (String dept : ci_depts) {
 			sum += Integer.parseInt(dept);
 		}
-		
+
 		return sum;
 	}
-	
+
 	public static int getSessionDeptIndex(HttpServletRequest request) {
-		int[] deptLib = {1, 101, 102, 201, 202};
+		int[] deptLib = { 1, 101, 102, 201, 202 };
 		EmployeeDTO empInfo = (EmployeeDTO) request.getSession().getAttribute("empInfo");
-		
+
 		int idx = -1;
 		System.out.println(empInfo.getE_deptno());
 		int deptno = empInfo.getE_deptno();
-		for(int i = 0; i < deptLib.length; i++) {
-			if(deptLib[i] == deptno)
+		for (int i = 0; i < deptLib.length; i++) {
+			if (deptLib[i] == deptno)
 				idx = i;
 		}
-		
+
 		return idx;
 	}
 }

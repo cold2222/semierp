@@ -22,7 +22,7 @@ public class LoginC extends HttpServlet {
 			request.getRequestDispatcher("sjh/login.jsp").forward(request, response);
 			
 		}
-		
+         		
 	}
-
+				
 }

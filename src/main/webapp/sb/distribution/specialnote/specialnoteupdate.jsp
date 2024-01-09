@@ -28,7 +28,7 @@
 									<div class="bbs-main">
 										<input type="hidden" name="s_num" value="${bbs.s_num }">
 										<input class="input-title" name="s_title"
-											placeholder="タイトルを入力してください。" required="required" value="${bbs.s_title }">
+											placeholder="タイトルを入力してください。" required="required" value="${bbs.s_title }" autocomplete="off">
 										<textarea name="s_content" class="input-content" placeholder="内容を入力してください。" required="required">${bbs.s_content }</textarea>
 										<div class="filebox">
 											<input type="hidden" name="old_img" value="${bbs.s_img }">

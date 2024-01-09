@@ -14,7 +14,7 @@ public class ExWarehouseDetailC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (EmployeeDAO.getEmployeeManager().loginCheck(request)) {
-			// 권한 확인 일단은 202만 들어가게 설정해놓음
+			
 			if (EmployeeDAO.getEmployeeManager().authorization(request, 202)) {
 
 				ExWarehouseDAO.getEwdao().getExDetail(request);

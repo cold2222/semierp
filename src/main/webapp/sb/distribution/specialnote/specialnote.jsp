@@ -24,7 +24,7 @@
 						<option value="bbs2_title">タイトル</option>
 						<option value="bbs2_content">内容</option>
 					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
-						id="searchWord" class="search-input" style="display: none;">
+						id="searchWord" class="search-input" style="display: none;" autocomplete="off">
 					<button type="submit" class="search-button">検索</button>
 				</form>
 			</div>

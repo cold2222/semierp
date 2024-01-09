@@ -25,7 +25,7 @@ public class InWarehouseC extends HttpServlet {
 				request.setAttribute("selectedHeader", "stock");
 				request.getRequestDispatcher("index2.jsp").forward(request, response);
 			} else {
-				// 권한이 없는 경우에 대한 처리(처음 들어온 페이지로 할 수 있도록)
+				// 권한이 없는 경우에 대한 처리(들어온 페이지로)
 				request.getRequestDispatcher("WarehouseBoardC").forward(request, response);
 			}
 		} else {

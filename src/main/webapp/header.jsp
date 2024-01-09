@@ -48,8 +48,8 @@
 					${selectedHeader == 'distribution' ? 'id="selectedHeader"' : '' }
 					onclick="location.href='DistributionMainBBSC'">運送</div>
 				<div class="header2-item"
-					${selectedHeader == 'statistic' ? 'id="selectedHeader"' : ''}
-					onclick="location.href=''">決算</div>
+					${selectedHeader == 'statistics' ? 'id="selectedHeader"' : ''}
+					onclick="location.href='StatisticsMainC'">決算</div>
 			</div>
 
 		</div>

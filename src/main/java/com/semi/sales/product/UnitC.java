@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.semi.login.EmployeeDAO;
 import com.semi.sales.supply.SupplyComDAO;
 @WebServlet("/UnitC")
 public class UnitC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		if (EmployeeDAO.getEmployeeManager().loginCheck(request)) {
+
 		ProductDAO.getPdao().getAllUnit(request);
 		ProductDAO.getPdao().getAllType(request);
 		request.setAttribute("contentPage", "jh/product/unit.jsp");
@@ -19,7 +21,8 @@ public class UnitC extends HttpServlet {
 		request.setAttribute("selectedHeader", "contract");
 		request.getRequestDispatcher("index2.jsp").forward(request, response);
 	
-	
+		} else
+			response.sendRedirect("LoginC");
 	
 	}
 

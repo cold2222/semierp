@@ -90,18 +90,18 @@
 			<div class="btn-area-mid">
 				<c:if test="${currentPage != 1 }">
 					<button class="idx-btn colorGold"
-						onclick="location.href='ImportDeptC?pageNo=${currentPage - 1}&setDate=${param.setDate}'">
+						onclick="location.href='DistributionDeptC?pageNo=${currentPage - 1}&setDate=${param.setDate}'">
 						prev</button>
 				</c:if>
 				<c:forEach var="index" items="${indexList}">
 					<c:if test="${index ne 0}">
 						<button class="idx-btn ${currentPage == index ? 'colorGold' : ''}"
-							onclick="location.href='ImportDeptC?pageNo=${index}&setDate=${param.setDate}'">${index}</button>
+							onclick="location.href='DistributionDeptC?pageNo=${index}&setDate=${param.setDate}'">${index}</button>
 					</c:if>
 				</c:forEach>
 				<c:if test="${currentPage != lastPage }">
 					<button class="idx-btn colorGold"
-						onclick="location.href='ImportDeptC?pageNo=${currentPage + 1}&setDate=${param.setDate}'">
+						onclick="location.href='DistributionDeptC?pageNo=${currentPage + 1}&setDate=${param.setDate}'">
 						next</button>
 				</c:if>
 			</div>

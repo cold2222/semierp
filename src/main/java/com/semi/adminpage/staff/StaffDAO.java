@@ -258,13 +258,21 @@ public class StaffDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<DistributionStaffDTO> distributionStaffsInfo = new ArrayList<DistributionStaffDTO>();
-		String sql = "select d_no, d_name, d_rank, d_tel, d_email, nvl(shippingthismonth, 0) as d_shippingThisMonth, nvl(COMPLETEDSHIPPINGTHISMONTH, 0) as d_completedThisMonth, nvl(SHIPPINGTODAY,0) as d_shippingtoday, nvl(COMPLETEDSHIPPINGTODAY, 0) as d_completedtoday\r\n"
-				+ "from (select e_no d_no, e_name d_name, e_rank d_rank, e_tel d_tel, e_email d_email from employee where e_deptno = 201)\r\n"
+		String sql = "select e_no, e_name, e_rank, e_tel, e_email, nvl(shippingthismonth,0), nvl(completedshippingthismonth,0), nvl(shippingtoday,0), nvl(completedshippingtoday,0)\r\n"
+				+ "from\r\n"
+				+ "(select e_no, e_name, e_rank, e_tel, e_email, shippingthisMonth, completedshippingThismonth\r\n"
+				+ "from\r\n"
+				+ "(select * from employee where e_deptno = 201)\r\n"
 				+ "left outer join\r\n"
-				+ "(select m_e_no, shippingthismonth, completedshippingthismonth, shippingtoday, completedshippingtoday from (select s_e_no as m_e_no, count(*) as shippingThisMonth, count(case when c_status=4 then 1 end) as completedShippingThisMonth from shipping join contract on s_contract_no = c_contract_no where to_char(c_delivery_date,'yyyy-MM') = ? group by s_e_no), \r\n"
-				+ "(select s_e_no as d_e_no, count(*) as shippingToday, count(case when c_status=4 then 1 end) as completedShippingToday from shipping join contract on s_contract_no = c_contract_no where to_char(c_delivery_date,'yyyy-MM-DD') = ? group by s_e_no)\r\n"
-				+ "where m_e_no = d_e_no)\r\n"
-				+ "on d_no = m_e_no";
+				+ "(select s_e_no as m_e_no, count(*) as shippingThisMonth, count(case when c_status=4 then 1 end) as completedSHippingTHisMonth\r\n"
+				+ "from shipping\r\n"
+				+ "join contract on s_contract_no = c_contract_no where to_char(c_delivery_date, 'yyyy-MM') = ? group by s_e_no)\r\n"
+				+ "on e_no = m_e_no)\r\n"
+				+ "left outer join\r\n"
+				+ "(select s_e_no as d_e_no, count(*) as shippingToday, count(case when c_status=4 then 1 end) as completedSHippingToDay\r\n"
+				+ "from shipping\r\n"
+				+ "join contract on s_contract_no = c_contract_no where to_char(c_delivery_date, 'yyyy-MM-DD') = ? group by s_e_no)\r\n"
+				+ "on e_no = d_e_no";
 		
 		try {
 			con = DBManger.connect();
@@ -283,7 +291,7 @@ public class StaffDAO {
 				tempDistributionStaffInfo.setDs_completedThisMonth(rs.getInt(7));
 				tempDistributionStaffInfo.setDs_shippingToday(rs.getInt(8));
 				tempDistributionStaffInfo.setDs_completedToday(rs.getInt(9));
-				
+				System.out.println(tempDistributionStaffInfo);
 				distributionStaffsInfo.add(tempDistributionStaffInfo);
 			}
 			

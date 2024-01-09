@@ -18,7 +18,7 @@
             <div style="flex: 1; height: 80px; border: 1px solid black;" class="registration-form">
                 <form action="RegUnitC" method="post">
                     <div style="display: flex; align-items: center;">
-                        <input name="unit" style="flex: 1;">
+                        <input name="unit" style="flex: 1;" autocomplete="off">
                         <button style="margin-left: 10px;">単位登録</button>
                     </div>
                 </form>
@@ -26,7 +26,7 @@
             <div style="flex: 1; height: 80px; border: 1px solid black; margin-left: 10px;" class="registration-form">
                 <form action="RegTypeC" method="post">
                     <div style="display: flex; align-items: center;">
-                        <input name="type" style="flex: 1;">
+                        <input name="type" style="flex: 1;" autocomplete="off">
                         <button style="margin-left: 10px;">タイプ登録</button>
                     </div>
                 </form>

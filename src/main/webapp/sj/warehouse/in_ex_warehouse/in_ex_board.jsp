@@ -43,7 +43,7 @@
 								<option value="p_name">商品名</option>
 								<option value="p_type">タイプ</option>
 							</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
-								class="search-input" style="display: none;">
+								class="search-input" style="display: none;" autocomplete="off">
 							<button type="submit" class="search-button">確認</button>
 					</form>
 				</div>
@@ -85,7 +85,7 @@
 								<c:choose>
 									<c:when test="${pageNum != 1}">
 										<a
-											href="InExBoardC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">前のページ</a>
+											href="InExBoardC?pageNum=${pageNum - 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">prev</a>
 									</c:when>
 								</c:choose>
 
@@ -106,7 +106,7 @@
 								<c:choose>
 									<c:when test="${pageNum != totalPage && totalPage != 0}">
 										<a
-											href="InExBoardC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">次のページ</a>
+											href="InExBoardC?pageNum=${pageNum + 1}&operationType=${param.operationType}&searchOption=${param.searchOption}&word=${param.word}">next</a>
 									</c:when>
 								</c:choose>
 							</div>

@@ -6,27 +6,42 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.semi.login.EmployeeDAO;
+
 @WebServlet("/UpdateComC")
 public class UpdateComC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	SupplyComDAO.getSdao().getCom(request);
+		if (EmployeeDAO.getEmployeeManager().loginCheck(request)) {
+			if (EmployeeDAO.getEmployeeManager().authorization(request, 101)
+					|| EmployeeDAO.getEmployeeManager().authorization(request, 102)) {
+		SupplyComDAO.getSdao().getCom(request);
 	request.setAttribute("contentPage", "jh/company/updateCom.jsp");
 	request.setAttribute("sidebar", "jh/sidebar.jsp");
 	request.setAttribute("selectedHeader", "contract");
 	request.getRequestDispatcher("index2.jsp").forward(request, response);
-		
+			} else
+				request.getRequestDispatcher("CompanyC").forward(request, response);
+		} else
+			response.sendRedirect("LoginC");
 		
 		
 		
 	
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	SupplyComDAO.getSdao().updateCom(request);
-	response.sendRedirect("UpdateComC?c_no="+request.getParameter("c_no")+"&isSuccess="
-			+ request.getAttribute("isSuccess"));	
-	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if (EmployeeDAO.getEmployeeManager().loginCheck(request)) {
+			if (EmployeeDAO.getEmployeeManager().authorization(request, 101)
+					|| EmployeeDAO.getEmployeeManager().authorization(request, 102)) {
+		SupplyComDAO.getSdao().updateCom(request);
+		response.sendRedirect(
+				"UpdateComC?c_no=" + request.getParameter("c_no") + "&isSuccess=" + request.getAttribute("isSuccess"));
+			} else
+				request.getRequestDispatcher("CompanyC").forward(request, response);
+		} else
+			response.sendRedirect("LoginC");
 	}
 
 }

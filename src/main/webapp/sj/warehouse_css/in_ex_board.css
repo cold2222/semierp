@@ -155,7 +155,11 @@
 	justify-content: center;
 	align-items: center;
 }
-
+.bbs-main-text1 {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
 .bbs-main-text-l {
 	padding: 2px;
 	font-size: 14px;

@@ -23,7 +23,7 @@
 						<option value="b.c_name">取引先</option>
 						<option value="c.e_name">取引担当者</option>
 					</select> <input type="text" placeholder="検索するキーワードを入力してください" name="word"
-						id="searchWord" class="search-input" style="display: none;">
+						id="searchWord" class="search-input" style="display: none;" autocomplete="off">
 					<button type="submit" class="search-button">検索</button>
 				</form>
 			</div>

@@ -45,7 +45,7 @@ public class InExWarehouseDAO {
 		request.setAttribute("totalPage", totalPage);
 
 	}
-
+	// 입고 출고 전체 데이터 Read
 	public void getallWare(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -112,7 +112,7 @@ public class InExWarehouseDAO {
 		}
 
 	}
-
+	// 출고 데이터만 따로 정렬(Read)
 	public void getExWare(HttpServletRequest request) {
 		String searchOption = request.getParameter("searchOption");
 		String searchWord = request.getParameter("word");
@@ -189,7 +189,7 @@ public class InExWarehouseDAO {
 		}
 
 	}
-
+	// 입고 데이터만 따로 정렬(Read)
 	public void getInWare(HttpServletRequest request) {
 
 		String searchOption = request.getParameter("searchOption");
@@ -265,7 +265,8 @@ public class InExWarehouseDAO {
 		}
 
 	}
-
+	
+	// 검색 기능
 	public void getSearchedWare(HttpServletRequest request) {
 
 		String searchOption = request.getParameter("searchOption");

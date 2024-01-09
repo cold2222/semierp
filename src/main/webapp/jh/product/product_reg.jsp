@@ -35,30 +35,30 @@
 					</div>
 					<div class="input-container">
 						<label for="p_quantity" class="input-label">単位量</label> <input
-							name="p_quantity" id="p_quantity" required="required" type="text">
+							name="p_quantity" id="p_quantity" required="required" type="text" autocomplete="off">
 					</div>
 					<div class="input-container">
 						<label for="p_name" class="input-label">アイテム名</label> <input
-							name="p_name" id="p_name" required="required" type="text">
+							name="p_name" id="p_name" required="required" type="text" autocomplete="off">
 					</div>
 					<div class="input-container">
 						<label for="p_unitCost" class="input-label">価格</label> <input
-							name="p_unitCost" id="p_unitCost" required="required"
+							name="p_unitCost" id="p_unitCost" required="required" autocomplete="off"
 							type="number">
 					</div>
 					<div class="input-container">
 						<label for="p_minStock" class="input-label">最小保有量</label> <input
-							name="p_minStock" id="p_minStock" required="required"
+							name="p_minStock" id="p_minStock" required="required" autocomplete="off"
 							type="number">
 					</div>
 					<div class="input-container">
 						<label for="p_maxStock" class="input-label">最大保有量</label> <input
-							name="p_maxStock" id="p_maxStock" required="required"
+							name="p_maxStock" id="p_maxStock" required="required" autocomplete="off"
 							type="number">
 					</div>
 					<div class="input-container">
 						<label for="p_manufacturer" class="input-label">製造社</label> <input
-							name="p_manufacturer" id="p_manufacturer" required="required"
+							name="p_manufacturer" id="p_manufacturer" required="required" autocomplete="off"
 							type="text">
 					</div>
 

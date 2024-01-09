@@ -25,7 +25,7 @@ public class ExWarehouseDAO {
 	}
 
 	private Connection con = null;
-
+	// 페이징 처리
 	public void paging(int pageNum, HttpServletRequest request) {
 		int pageSize = 10; // 한 페이지당 보여줄 개수
 		int totalData = exWarehouses.size();
@@ -45,7 +45,7 @@ public class ExWarehouseDAO {
 		request.setAttribute("totalPage", totalPage);
 
 	}
-
+	// 출고 확인 
 	public void getExAll(HttpServletRequest request) {
 
 		PreparedStatement pstmt = null;
@@ -94,7 +94,7 @@ public class ExWarehouseDAO {
 		}
 
 	}
-
+	// 출고 페이지에서
 	public void getExDetail(HttpServletRequest request) {
 
 		PreparedStatement pstmt = null;
@@ -161,7 +161,8 @@ public class ExWarehouseDAO {
 		}
 
 	}
-
+	
+	// 출고 등록 (Create)
 	public void regExWare(HttpServletRequest request) {
 		
 		String[] p_id = request.getParameterValues("ci_p_id");
@@ -195,7 +196,7 @@ public class ExWarehouseDAO {
 		}
 
 	}
-
+	
 	public void upStock(HttpServletRequest request) {
 
 		String[] p_id = request.getParameterValues("ci_p_id");
