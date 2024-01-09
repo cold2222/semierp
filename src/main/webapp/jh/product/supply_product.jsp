@@ -50,8 +50,8 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 								<div class="bbs-main-title-s">製造社</div>
 							</div>
 							<!-- 전체 데이터 표시 -->
-							<c:forEach var="p" items="${productItems}">
-								<div class="bbs-main">
+							<c:forEach var="p" items="${productItems}" varStatus="loop">
+								<div class="bbs-main"  style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 									<div class="bbs-main-text-s">${p.p_si}</div>
 									<div class="bbs-main-text-s">${p.p_type}</div>
 									<div class="bbs-main-text-s">
