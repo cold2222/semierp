@@ -15,7 +15,7 @@ public class SalesProductChartByMonthAPI extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
-			StatisticsProductDAO.getProductsChart(request, response, 1);
+			StatisticsProductDAO.getProductsChart(request, response, 2);
 		}
 		else 
 			response.sendRedirect("LoginC");
