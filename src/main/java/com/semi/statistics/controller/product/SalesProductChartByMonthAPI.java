@@ -10,19 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.semi.login.EmployeeDAO;
 import com.semi.statistics.product.StatisticsProductDAO;
 
+@WebServlet("/SalesProductChartByMonthAPI")
+public class SalesProductChartByMonthAPI extends HttpServlet {
 
-@WebServlet("/SalesProductStatisticByMonthC")
-public class SalesProductStatisticByMonthC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
-			// 기능 위치
-			StatisticsProductDAO.getProductsOrderByCountAll(request, 2);
-			request.setAttribute("sidebar","sjh/statistics/statistics_sidebar.jsp");
-			request.setAttribute("contentPage","sjh/statistics/product/sales_product_static.jsp");
-			
-			request.setAttribute("selectedHeader", "statistics");
-			
-			request.getRequestDispatcher("index2.jsp").forward(request, response);
+			StatisticsProductDAO.getProductsChart(request, response, 1);
 		}
 		else 
 			response.sendRedirect("LoginC");

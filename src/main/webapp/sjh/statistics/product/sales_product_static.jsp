@@ -16,29 +16,29 @@
 <link rel="stylesheet" href="sb/distribution_css/mainbbs/main_bbs.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/sjh/admin/utils/input_date_init.js"></script>
-<script src="js/sjh/statistics/statics_import_product.js"></script>
+<script src="js/sjh/statistics/statics_sales_product.js"></script>
 
 </head>
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">수입 상품 정보</div>
+			<div class="content-head-text">판매 상품 정보</div>
 		</div>
 		<div class="content-body">
 			<div class="bbs-content1 bbs-content">
 				<div class="date">
 					日付 : <input type="date" id="dateInput" name="setDate" required
-						onchange="redirectToServlet('ImportProductStatisticByMonthC','${param.pageNo }')">
+						onchange="redirectToServlet('SalesProductStatisticByMonthC','${param.pageNo }')">
 				</div>
 				<div class="board">
-					<div class="board-title">수입 Top 7</div>
+					<div class="board-title">판매 Top 7</div>
 					<div class="post">
 						<canvas id="contractOfYear"></canvas>
 					</div>
 				</div>
 
 				<div class="board">
-					<div class="board-title">수입 Cost Top 7</div>
+					<div class="board-title">판매 Cost Top7</div>
 					<div class="post">
 						<canvas id="contractCostOfYear"></canvas>
 					</div>
@@ -68,7 +68,7 @@
 							<div class="col-content product">${product.p_countAll }</div>
 							<div class="col-content product">${product.p_sumByRealCost }</div>
 							<div class="col-content product">${product.p_sumByUnitCost }</div>
-							<div class="col-content product">${product.p_sumByUnitCost - product.p_sumByRealCost}</div>
+							<div class="col-content product">${product.p_sumByRealCost - product.p_sumByUnitCost }</div>
 						</div>
 					</c:forEach>
 					<div class="btn-area">
@@ -76,19 +76,19 @@
 						<div class="btn-area-mid">
 							<c:if test="${currentPage != 1 }">
 								<button class="idx-btn colorGold"
-									onclick="location.href='ImportProductStatisticByMonthC?pageNo=${currentPage - 1}&setDate=${param.setDate}'">
+									onclick="location.href='SalesProductStatisticByMonthC?pageNo=${currentPage - 1}&setDate=${param.setDate}'">
 									prev</button>
 							</c:if>
 							<c:forEach var="index" items="${indexList}">
 								<c:if test="${index ne 0}">
 									<button
 										class="idx-btn ${currentPage == index ? 'colorGold' : ''}"
-										onclick="location.href='ImportProductStatisticByMonthC?pageNo=${index}&setDate=${param.setDate}'">${index}</button>
+										onclick="location.href='SalesProductStatisticByMonthC?pageNo=${index}&setDate=${param.setDate}'">${index}</button>
 								</c:if>
 							</c:forEach>
 							<c:if test="${currentPage != lastPage }">
 								<button class="idx-btn colorGold"
-									onclick="location.href='ImportProductStatisticByMonthC?pageNo=${currentPage + 1}&setDate=${param.setDate}'">
+									onclick="location.href='SalesProductStatisticByMonthC?pageNo=${currentPage + 1}&setDate=${param.setDate}'">
 									next</button>
 							</c:if>
 						</div>
