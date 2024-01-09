@@ -286,7 +286,7 @@ public class InExWarehouseDAO {
 
 		String sql = "SELECT a.p_id,a.p_name,a.p_type,a.p_quantity,a.p_si, "
 				+ "b.in_warehouse_quantity AS quantity, b.in_warehouse_date AS warehouse_date, "
-				+ "'입고' AS warehouse_type,c.warehouse_id,c.warehouse_name AS warehouse_name " + "FROM in_warehouse b "
+				+ "'入庫' AS warehouse_type,c.warehouse_id,c.warehouse_name AS warehouse_name " + "FROM in_warehouse b "
 				+ "LEFT JOIN product a ON a.p_id = b.p_id "
 				+ "LEFT JOIN warehouse c ON b.warehouse_id = c.warehouse_id ";
 		if (!search.get("searchOption").equals("x") && search.get("searchWord") != null) {
@@ -296,7 +296,7 @@ public class InExWarehouseDAO {
 
 		sql += "UNION " + "SELECT d.p_id, d.p_name, d.p_type, d.p_quantity, d.p_si, "
 				+ "e.ex_warehouse_quantity AS quantity, e.ex_warehouse_date AS warehouse_date, "
-				+ "'출고' AS warehouse_type, e.warehouse_id, f.warehouse_name AS warehouse_name " + "FROM ex_warehouse e "
+				+ "'出庫' AS warehouse_type, e.warehouse_id, f.warehouse_name AS warehouse_name " + "FROM ex_warehouse e "
 				+ "LEFT JOIN product d ON d.p_id = e.p_id "
 				+ "LEFT JOIN warehouse f ON e.warehouse_id = f.warehouse_id ";
 		if (!search.get("searchOption").equals("x") && search.get("searchWord") != null) {
