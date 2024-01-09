@@ -39,8 +39,8 @@
 									<div class="company-main-title">取引先の連絡先</div>
 									<div class="company-main-title">詳細／修正</div>
 								</div>
-								<c:forEach var="c" items="${cs }">
-									<div class="company-main">
+								<c:forEach var="c" items="${cs }"  varStatus="loop">
+									<div class="company-main"  style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										<div class="company-main-text1">${c.c_name }</div>
 										<div class="company-main-text">${c.c_keeper }</div>
 										<div class="company-main-text">${c.c_phone}</div>
