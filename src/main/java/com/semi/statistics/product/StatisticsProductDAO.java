@@ -40,7 +40,6 @@ public class StatisticsProductDAO {
 				StatistcsProductDTO tempProduct = new StatistcsProductDTO(rs.getString(1), rs.getString(2),
 						rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getString(8),
 						rs.getLong(9), rs.getLong(10));
-				System.out.println(tempProduct);
 
 				products.add(tempProduct);
 			}
