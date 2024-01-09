@@ -18,7 +18,7 @@ public class ImportProductStatisticByMonthC extends HttpServlet {
 			// 기능 위치
 			StatisticsProductDAO.getProductsOrderByCountAll(request, 1);
 			request.setAttribute("sidebar","sjh/statistics/statistics_sidebar.jsp");
-			request.setAttribute("contentPage","sjh/statistics/product/import_product_static.jsp");
+			request.setAttribute("contentPage","sjh/statistics/product/import_product_statistic.jsp");
 			
 			request.setAttribute("selectedHeader", "statistics");
 			

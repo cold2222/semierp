@@ -43,7 +43,7 @@
 				<div class="col-content-item idx-col idx-checkbox" ${companyInform.ci_warehouseIdx == 1 ? 'id="idx-checked"' : ''}></div>
 				<div class="col-content-item button">
 					<button
-						onclick="location.href='CompanyInformModifyC?e_no=${staff.e_no }'">修正</button>
+						onclick="location.href='CompanyInformModifyC?ci_no=${companyInform.ci_no }'">修正</button>
 				</div>
 			</div>
 		</c:forEach>

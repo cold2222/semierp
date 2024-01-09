@@ -26,6 +26,15 @@
 			</ul>
 			
 		</div>
+		<div class="sidebar-1">
+			<div class="sidebar-index">운송 지표</div>
+			<ul>
+				<li onclick="location.href='StatisticDistributionC'">&nbsp; - 운송 현황(年)　</li>
+			</ul>
+			
+		</div>
+		
+		
 	</div>
 </body>
 </html>
