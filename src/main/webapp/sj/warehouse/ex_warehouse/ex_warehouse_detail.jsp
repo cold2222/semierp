@@ -91,9 +91,9 @@
 										</div>
 										<div class="bbs-main-text2 bbs-main-text-s">
 											<select name="warehouse_id">
-												<option value="1">1倉庫</option>
-												<option value="2">2倉庫</option>
-												<option value="3">3倉庫</option>
+												<option value="1">一般資材倉庫</option>
+													<option value="2">油類倉庫</option>
+													<option value="3">臨時倉庫</option>
 											</select>
 										</div>
 									</div>

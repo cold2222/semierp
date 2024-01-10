@@ -8,11 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-    function handleGoBack() {
+	function handleGoBack() {
 
-        event.preventDefault(); // 폼으로 제출 안되게 함
-        history.back();
-    }
+		event.preventDefault(); // 폼으로 제출 안되게 함
+		history.back();
+	}
 </script>
 <link rel="stylesheet" href="sj/warehouse_css/in_warehouse_detail.css">
 </head>
@@ -29,12 +29,16 @@
 						<div class="bbs-content-body">
 							<div class="bbs-content-bbs">
 								<div class="bbs-main contract-bbs">
-									<div class="bbs-main-text3 bbs-main-title-a">契約ID : ${contract.c_contract_no}</div>
-									<div class="bbs-main-text4 bbs-main-title-b">契約日 : ${contract.c_created_date}</div>
+									<div class="bbs-main-text3 bbs-main-title-a">契約ID :
+										${contract.c_contract_no}</div>
+									<div class="bbs-main-text4 bbs-main-title-b">契約日 :
+										${contract.c_created_date}</div>
 								</div>
 								<div class="bbs-main contract-bbs bbs-main-between">
-									<div class="bbs-main-text3 bbs-main-title-a">取引先名 : ${contract.c_name}</div>
-									<div class="bbs-main-text4 bbs-main-title-b">取引担当社員 : ${contract.e_name}</div>
+									<div class="bbs-main-text3 bbs-main-title-a">取引先名 :
+										${contract.c_name}</div>
+									<div class="bbs-main-text4 bbs-main-title-b">取引担当社員 :
+										${contract.e_name}</div>
 								</div>
 								<form action="InWarehouseDetailC" method="post"
 									id="warehouseForm">
@@ -48,43 +52,54 @@
 										<div class="bbs-main-text2 bbs-main-title-s">倉庫</div>
 									</div>
 									<c:forEach var="t" items="${inWarehouse}" varStatus="loop">
-												<input type="hidden" name="c_contract_no" value="${param.c_contract_no }" >
-										<div class="bbs-main" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+										<input type="hidden" name="c_contract_no"
+											value="${param.c_contract_no }">
+										<div class="bbs-main"
+											style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 											<div class="bbs-main-text2 bbs-main-text-s">
-												<input name="ci_p_id" value="${t.ci_p_id}"
-													class="input-s" readonly="readonly" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+												<input name="ci_p_id" value="${t.ci_p_id}" class="input-s"
+													readonly="readonly"
+													style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 											</div>
 											<div class="bbs-main-text2 bbs-main-text-l">
-												<input class="input-l" name="p_type" value="${t.p_type}" readonly="readonly" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+												<input class="input-l" name="p_type" value="${t.p_type}"
+													readonly="readonly"
+													style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 											</div>
 											<div class="bbs-main-text2 bbs-main-text-l">
-												<input class="input-l" name="p_name" value="${t.p_name}" readonly="readonly" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+												<input class="input-l" name="p_name" value="${t.p_name}"
+													readonly="readonly"
+													style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 											</div>
 											<div class="bbs-main-text2 bbs-main-text-s">
-												<input class="input-s" name="p_quantity" value="${t.p_quantity}"
-													readonly="readonly" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+												<input class="input-s" name="p_quantity"
+													value="${t.p_quantity}" readonly="readonly"
+													style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 											</div>
 											<div class="bbs-main-text2 bbs-main-text-s">
-												<input class="input-s" name="p_si" value="${t.p_si}" readonly="readonly" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
-												
+												<input class="input-s" name="p_si" value="${t.p_si}"
+													readonly="readonly"
+													style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+
 											</div>
 											<div class="bbs-main-text2 bbs-main-text-s">
 												<input class="input-s" name="ci_count" value="${t.ci_count}"
-													readonly="readonly" style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
+													readonly="readonly"
+													style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 											</div>
 											<div class="bbs-main-text2 bbs-main-text-s">
-												<select name="warehouse_id" >
-													<option value="1">1倉庫</option>
-													<option value="2">2倉庫</option>
-													<option value="3">3倉庫</option>
+												<select name="warehouse_id">
+													<option value="1">一般資材倉庫</option>
+													<option value="2">油類倉庫</option>
+													<option value="3">臨時倉庫</option>
 												</select>
 											</div>
 										</div>
 									</c:forEach>
-								<div class="button-container">
-									<button onclick="handleGoBack()">戻る</button>
-									<button id="fromBtn">入庫確認</button>
-								</div>
+									<div class="button-container">
+										<button onclick="handleGoBack()">戻る</button>
+										<button id="fromBtn">入庫確認</button>
+									</div>
 								</form>
 							</div>
 						</div>
