@@ -63,7 +63,7 @@
 							<option value="all">全体</option>
 							<option value="one">一般資材倉庫</option>
 							<option value="two">油類倉庫</option>
-							<option value="three">仮設倉庫</option>
+							<option value="three">臨時倉庫</option>
 						</select> <span class="value-box"> 検索 : </span> <select id="searchOption"
 							name="searchOption" class="search-select">
 							<option value="x">検索条件</option>
