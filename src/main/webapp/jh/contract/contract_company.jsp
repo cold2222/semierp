@@ -53,8 +53,8 @@
 									<div class="bbs-main-title">契約商品の詳細</div>
 									<div class="bbs-main-title">修正</div>
 								</div>
-								<c:forEach var="ct" items="${cts }">
-									<div class="bbs-main">
+								<c:forEach var="ct" items="${cts }" varStatus="loop">
+									<div class="bbs-main"  style="background-color: ${loop.index % 2 == 0 ? 'white' : '#f0f0f0'};">
 										<div class="bbs-main-with">
 											<a href='CompanyC?field=c_name&word=${ct.c_name }'>${ct.c_name }	</a>
 										</div>
