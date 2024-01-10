@@ -55,7 +55,7 @@ public class SupplyComDAO {
 	}
 	
 	public void pagingContract(int pageNum, HttpServletRequest request) {
-		int pageSize = 4; // 한 페이지당 보여줄 개수
+		int pageSize = 10; // 한 페이지당 보여줄 개수
 		int totalData = cts.size();
 		int totalPage = (int) Math.ceil((double) totalData / pageSize);
 		int startDataNum = totalData - (pageSize * (pageNum - 1));
