@@ -64,7 +64,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 2\r\n"
-				+ "        AND (c_completed_date >= c_due_date OR c_completed_date IS NULL)\r\n"
+				+ "        AND (c_completed_date <= c_due_date OR c_completed_date IS NULL)\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c3 ON m.month = c3.month\r\n"
 				+ "LEFT JOIN (\r\n"
@@ -73,7 +73,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 2\r\n"
-				+ "        AND c_completed_date < c_due_date\r\n"
+				+ "        AND c_completed_date > c_due_date\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c4 ON m.month = c4.month\r\n"
 				+ "ORDER BY m.month"; 
@@ -112,7 +112,7 @@ public class StatisticsDistributionDAO {
 			
 			Gson gson = new Gson();
 			String data = gson.toJson(tempData);
-			
+			System.out.println(gson.toJson("buchu.png"));
 			response.getWriter().print("["+data+"]");
 			
 			
@@ -169,7 +169,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 2\r\n"
-				+ "        AND (c_completed_date >= c_due_date OR c_completed_date IS NULL)\r\n"
+				+ "        AND (c_completed_date <= c_due_date OR c_completed_date IS NULL)\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c3 ON m.month = c3.month\r\n"
 				+ "LEFT JOIN (\r\n"
@@ -178,7 +178,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 2\r\n"
-				+ "        AND c_completed_date < c_due_date\r\n"
+				+ "        AND c_completed_date > c_due_date\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c4 ON m.month = c4.month\r\n"
 				+ "ORDER BY m.month"; 
