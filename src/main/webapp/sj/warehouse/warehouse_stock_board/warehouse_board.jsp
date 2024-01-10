@@ -61,9 +61,9 @@
 						</label> <select name="operationType" id="operationType"
 							class="search-select">
 							<option value="all">全体</option>
-							<option value="one">1倉庫</option>
-							<option value="two">2倉庫</option>
-							<option value="three">3倉庫</option>
+							<option value="one">一般資材倉庫</option>
+							<option value="two">油類倉庫</option>
+							<option value="three">仮設倉庫</option>
 						</select> <span class="value-box"> 検索 : </span> <select id="searchOption"
 							name="searchOption" class="search-select">
 							<option value="x">検索条件</option>
