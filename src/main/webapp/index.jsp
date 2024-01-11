@@ -22,20 +22,20 @@
 							<div class="board-title">사원정보</div>
 							<div class="myself">
 								<div class="myself-info">
-									<div class="myself-line1">부서&nbsp&nbsp</div>
-									<div class="myself-line2">&nbsp&nbsp${empInfo.e_dept}/${empInfo.e_rank}</div>
+									<div class="myself-line1">부서&nbsp;&nbsp;</div>
+									<div class="myself-line2">&nbsp;&nbsp;${empInfo.e_dept}/${empInfo.e_rank}</div>
 								</div>
 								<div class="myself-info">
-									<div class="myself-line1">이름&nbsp&nbsp</div>
-									<div class="myself-line2">&nbsp&nbsp${empInfo.e_name}</div>
+									<div class="myself-line1">이름&nbsp;&nbsp;</div>
+									<div class="myself-line2">&nbsp;&nbsp;${empInfo.e_name}</div>
 								</div>
 								<div class="myself-info">
-									<div class="myself-line1">직원번호&nbsp&nbsp</div>
-									<div class="myself-line2">&nbsp&nbsp${empInfo.e_no}</div>
+									<div class="myself-line1">직원번호&nbsp;&nbsp;</div>
+									<div class="myself-line2">&nbsp;&nbsp;${empInfo.e_no}</div>
 								</div>
 								<div class="myself-info">
-									<div class="myself-line1">전화번호&nbsp&nbsp</div>
-									<div class="myself-line2">&nbsp&nbsp${empInfo.e_tel}</div>
+									<div class="myself-line1">전화번호&nbsp;&nbsp;</div>
+									<div class="myself-line2">&nbsp;&nbsp;${empInfo.e_tel}</div>
 								</div>
 								<div class="board-button">
 									<button>마이페이지</button>
