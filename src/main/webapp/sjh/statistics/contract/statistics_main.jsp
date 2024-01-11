@@ -22,7 +22,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">계약 현황</div>
+			<div class="content-head-text">契約情報</div>
 		</div>
 		<div class="content-body">
 			<div class="bbs-content1 bbs-content">
@@ -31,22 +31,22 @@
 						onchange="redirectToServlet('StatisticsMainC','${param.pageNo }')">
 				</div>
 				<div class="board">
-					<div class="board-title">계약건수</div>
+					<div class="board-title">契約件数(年)</div>
 					<div class="post">
 						<canvas id="contractOfYear"></canvas>
 					</div>
 				</div>
 
 				<div class="board">
-					<div class="board-title">계약Cost</div>
+					<div class="board-title">契約金額(年)</div>
 					<div class="post">
 						<canvas id="contractCostOfYear"></canvas>
 					</div>
 				</div>
 				<div class="long-board">
-					<div class="board-title">수입, 판매 정보</div>
+					<div class="board-title">契約情報(輸入、販売)</div>
 					<div class="row-titles">
-						<div class="col-title contract">타입</div>
+						<div class="col-title contract">タイプ</div>
 						<div class="col-title contract">01月</div>
 						<div class="col-title contract">02月</div>
 						<div class="col-title contract">03月</div>
@@ -59,17 +59,17 @@
 						<div class="col-title contract">10月</div>
 						<div class="col-title contract">11月</div>
 						<div class="col-title contract">12月</div>
-						<div class="col-title contract">총 합</div>
+						<div class="col-title contract">総合</div>
 					</div>
 					<div class="row-contents">
-						<div class="row-type contract">수입</div>
+						<div class="row-type contract">輸入</div>
 						<c:forEach var="ia" items="${contractsInfo.importArr }">
 							<div class="col-content contract-cost">${ia }</div>
 						</c:forEach>
 							<div class="col-content contract-cost">${contractsInfo.importCount }</div>
 					</div>
 					<div class="row-contents">
-						<div class="row-type contract">판매</div>
+						<div class="row-type contract">販売</div>
 						<c:forEach var="ia" items="${contractsInfo.salesArr }">
 							<div class="col-content contract-cost">${ia }</div>
 						</c:forEach>
@@ -77,9 +77,9 @@
 					</div>
 				</div>
 				<div class="long-board">
-					<div class="board-title">수입, 판매 정보</div>
+					<div class="board-title">契約金額情報(輸入、販売)</div>
 					<div class="row-titles">
-						<div class="col-title contract">타입</div>
+						<div class="col-title contract">タイプ</div>
 						<div class="col-title contract">01月</div>
 						<div class="col-title contract">02月</div>
 						<div class="col-title contract">03月</div>
@@ -92,24 +92,24 @@
 						<div class="col-title contract">10月</div>
 						<div class="col-title contract">11月</div>
 						<div class="col-title contract">12月</div>
-						<div class="col-title contract">총 합</div>
+						<div class="col-title contract">総合</div>
 					</div>
 					<div class="row-contents">
-						<div class="row-type contract">수입</div>
+						<div class="row-type contract">輸入</div>
 						<c:forEach var="ia" items="${contractsInfo.importCostArr }">
 							<div class="col-content contract-cost">${ia/1000 }K</div>
 						</c:forEach>
 							<div class="col-content contract-cost">${contractsInfo.importCostSum/1000 }K</div>
 					</div>
 					<div class="row-contents">
-						<div class="row-type contract">판매</div>
+						<div class="row-type contract">販売</div>
 						<c:forEach var="ia" items="${contractsInfo.salesCostArr }">
 							<div class="col-content contract-cost">${ia/1000 }K</div>
 						</c:forEach>
 							<div class="col-content contract-cost">${contractsInfo.salesCostSum/1000 }K</div>
 					</div>
 					<div class="row-contents">
-						<div class="row-type contract">차</div>
+						<div class="row-type contract">金額差</div>
 						<c:forEach var="ia" items="${contractsInfo.diffCostArr }">
 							<div class="col-content contract-cost">${ia/1000 }K</div>
 						</c:forEach>
