@@ -22,7 +22,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">판매 상품 정보</div>
+			<div class="content-head-text">販売商品情報</div>
 		</div>
 		<div class="content-body">
 			<div class="bbs-content1 bbs-content">
@@ -31,30 +31,30 @@
 						onchange="redirectToServlet('SalesProductStatisticByMonthC','${param.pageNo }')">
 				</div>
 				<div class="board">
-					<div class="board-title">판매 Top 7</div>
+					<div class="board-title">商品販売量(Top 7)</div>
 					<div class="post">
 						<canvas id="contractOfYear"></canvas>
 					</div>
 				</div>
 
 				<div class="board">
-					<div class="board-title">판매 Cost Top7</div>
+					<div class="board-title">商品販売金額(Top 7)</div>
 					<div class="post">
 						<canvas id="contractCostOfYear"></canvas>
 					</div>
 				</div>
 				<div class="long-board">
-					<div class="board-title">수입</div>
+					<div class="board-title">販売</div>
 					<div class="row-titles">
-						<div class="col-title product">상품명</div>
-						<div class="col-title product">정보</div>
-						<div class="col-title product">가격</div>
-						<div class="col-title product">[Min, Max]Stock</div>
-						<div class="col-title product">제조사</div>
-						<div class="col-title product">수입량</div>
-						<div class="col-title product">수입액수</div>
-						<div class="col-title product">시세환산</div>
-						<div class="col-title product">시세차액</div>
+						<div class="col-title product">商品名</div>
+						<div class="col-title product">商品情報</div>
+						<div class="col-title product">価格(基準)</div>
+						<div class="col-title product">在庫[Min, Max]</div>
+						<div class="col-title product">メーカー</div>
+						<div class="col-title product">販売量</div>
+						<div class="col-title product">輸入金額差</div>
+						<div class="col-title product">基準価値</div>
+						<div class="col-title product">金額差</div>
 					</div>
 					<c:forEach var="product" items="${products }">
 						<div class="row-contents">

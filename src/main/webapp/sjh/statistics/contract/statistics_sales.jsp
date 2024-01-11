@@ -22,7 +22,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">수입 정보</div>
+			<div class="content-head-text">販売情報</div>
 		</div>
 		<div class="content-body">
 			<div class="bbs-content1 bbs-content">
@@ -31,22 +31,22 @@
 						onchange="redirectToServlet('StatisticsSalesC','${param.pageNo }')">
 				</div>
 				<div class="board">
-					<div class="board-title">계약건수</div>
+					<div class="board-title">契約件数(３年)</div>
 					<div class="post">
 						<canvas id="contractOfYear"></canvas>
 					</div>
 				</div>
 
 				<div class="board">
-					<div class="board-title">계약Cost</div>
+					<div class="board-title">契約金額(3年)</div>
 					<div class="post">
 						<canvas id="contractCostOfYear"></canvas>
 					</div>
 				</div>
 				<div class="long-board">
-					<div class="board-title">수출</div>
+					<div class="board-title">販売契約</div>
 					<div class="row-titles">
-						<div class="col-title contract">년도</div>
+						<div class="col-title contract">年度</div>
 						<div class="col-title contract">01月</div>
 						<div class="col-title contract">02月</div>
 						<div class="col-title contract">03月</div>
@@ -59,7 +59,7 @@
 						<div class="col-title contract">10月</div>
 						<div class="col-title contract">11月</div>
 						<div class="col-title contract">12月</div>
-						<div class="col-title contract">총 합</div>
+						<div class="col-title contract">総合</div>
 					</div>
 					<div class="row-contents">
 						<div class="row-type contract"> ${selectedYear } </div>
@@ -84,9 +84,9 @@
 					</div>
 				</div>
 				<div class="long-board">
-					<div class="board-title">수입 금액</div>
+					<div class="board-title">販売金額</div>
 					<div class="row-titles">
-						<div class="col-title contract">년도</div>
+						<div class="col-title contract">年度</div>
 						<div class="col-title contract">01月</div>
 						<div class="col-title contract">02月</div>
 						<div class="col-title contract">03月</div>
@@ -99,7 +99,7 @@
 						<div class="col-title contract">10月</div>
 						<div class="col-title contract">11月</div>
 						<div class="col-title contract">12月</div>
-						<div class="col-title contract">총 합</div>
+						<div class="col-title contract">総合</div>
 					</div>
 					<div class="row-contents">
 						<div class="row-type contract"> ${selectedYear } </div>
@@ -116,7 +116,7 @@
 							<div class="col-content contract-cost">${cost2/ 1000 }K</div>
 					</div>
 					<div class="row-contents">
-						<div class="row-type contract"> 차 </div>
+						<div class="row-type contract"> 金額差 </div>
 						<c:forEach var="ia" items="${diffCostArr1 }">
 							<div class="col-content contract-cost">${ia / 1000 }K</div>
 						</c:forEach>
@@ -130,7 +130,7 @@
 							<div class="col-content contract-cost">${cost3 / 1000 }K</div>
 					</div>
 					<div class="row-contents">
-						<div class="row-type contract"> 차 </div>
+						<div class="row-type contract"> 金額差 </div>
 						<c:forEach var="ia" items="${diffCostArr2 }">
 							<div class="col-content contract-cost">${ia / 1000 }K</div>
 						</c:forEach>

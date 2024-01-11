@@ -23,7 +23,7 @@
 <body>
 	<div class="contents">
 		<div class="content-head">
-			<div class="content-head-text">판매 상품 정보</div>
+			<div class="content-head-text">運送指標</div>
 		</div>
 		<div class="content-body">
 			<div class="bbs-content1 bbs-content">
@@ -32,16 +32,16 @@
 						onchange="redirectToServlet('StatisticDistributionC','${param.pageNo }')">
 				</div>
 				<div class="long-board">
-					<div class="board-title">운송 지표</div>
+					<div class="board-title">運送現狀</div>
 					<div class="post">
 						<canvas id="distributionYear"></canvas>
 					</div>
 				</div>
 
 				<div class="long-board">
-					<div class="board-title">계약 운송 정보</div>
+					<div class="board-title">契約運送情報</div>
 					<div class="row-titles">
-						<div class="col-title distribution">타입</div>
+						<div class="col-title distribution">タイプ</div>
 						<div class="col-title distribution">01月</div>
 						<div class="col-title distribution">02月</div>
 						<div class="col-title distribution">03月</div>
@@ -54,11 +54,11 @@
 						<div class="col-title distribution">10月</div>
 						<div class="col-title distribution">11月</div>
 						<div class="col-title distribution">12月</div>
-						<div class="col-title distribution">총 합</div>
+						<div class="col-title distribution">総合</div>
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">정상</div>
+						<div class="row-type distribution">正常</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<div class="col-content distribution">${iter.type1Completed + iter.type2Completed }</div>
 						</c:forEach>
@@ -66,7 +66,7 @@
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">지연</div>
+						<div class="row-type distribution">遅延</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<div class="col-content distribution">${iter.type1Delayed + iter.type2Delayed }</div>
 						</c:forEach>
@@ -74,7 +74,7 @@
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">실패 비율</div>
+						<div class="row-type distribution">遅延比率</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<c:if
 								test="${iter.type1Completed + iter.type2Completed + iter.type1Delayed + iter.type2Delayed == 0}">
@@ -100,9 +100,9 @@
 				</div>
 
 				<div class="long-board">
-					<div class="board-title">수입 운송 정보</div>
+					<div class="board-title">輸入運送情報</div>
 					<div class="row-titles">
-						<div class="col-title distribution">타입</div>
+						<div class="col-title distribution">タイプ</div>
 						<div class="col-title distribution">01月</div>
 						<div class="col-title distribution">02月</div>
 						<div class="col-title distribution">03月</div>
@@ -115,11 +115,11 @@
 						<div class="col-title distribution">10月</div>
 						<div class="col-title distribution">11月</div>
 						<div class="col-title distribution">12月</div>
-						<div class="col-title distribution">총 합</div>
+						<div class="col-title distribution">総合</div>
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">정상</div>
+						<div class="row-type distribution">正常</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<div class="col-content distribution">${iter.type1Completed }</div>
 						</c:forEach>
@@ -127,7 +127,7 @@
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">지연</div>
+						<div class="row-type distribution">遅延</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<div class="col-content distribution">${iter.type1Delayed }</div>
 						</c:forEach>
@@ -135,7 +135,7 @@
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">실패 비율</div>
+						<div class="row-type distribution">遅延比率</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<c:if test="${iter.type1Completed + iter.type1Delayed == 0}">
 								<div class="col-content distribution">-</div>
@@ -159,9 +159,9 @@
 				</div>
 
 				<div class="long-board">
-					<div class="board-title">판매 운송 정보</div>
+					<div class="board-title">販売運送情報</div>
 					<div class="row-titles">
-						<div class="col-title distribution">타입</div>
+						<div class="col-title distribution">タイプ</div>
 						<div class="col-title distribution">01月</div>
 						<div class="col-title distribution">02月</div>
 						<div class="col-title distribution">03月</div>
@@ -174,11 +174,11 @@
 						<div class="col-title distribution">10月</div>
 						<div class="col-title distribution">11月</div>
 						<div class="col-title distribution">12月</div>
-						<div class="col-title distribution">총 합</div>
+						<div class="col-title distribution">総合</div>
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">정상</div>
+						<div class="row-type distribution">正常</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<div class="col-content distribution">${iter.type2Completed }</div>
 						</c:forEach>
@@ -186,7 +186,7 @@
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">지연</div>
+						<div class="row-type distribution">遅延</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<div class="col-content distribution">${iter.type2Delayed }</div>
 						</c:forEach>
@@ -194,7 +194,7 @@
 					</div>
 
 					<div class="row-contents">
-						<div class="row-type distribution">실패 비율</div>
+						<div class="row-type distribution">遅延比率</div>
 						<c:forEach var="iter" items="${distributionStatistic}">
 							<c:if test="${iter.type2Completed + iter.type2Delayed == 0}">
 								<div class="col-content distribution">-</div>
