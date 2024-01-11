@@ -66,7 +66,7 @@
 										</div>
 										<div class="bbs-main-text1 bbs-main-text">
 											<a href="InWarehouseDetailC?c_contract_no=${t.c_contract_no}"><button
-													class="detail-button">詳細ページ</button></a>
+													class="detail-button">Move</button></a>
 										</div>
 									</div>
 								</c:forEach>

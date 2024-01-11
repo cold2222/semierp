@@ -12,7 +12,7 @@
 		document.getElementById('searchOption').addEventListener(
 				'change',
 				function() {
-					var input = document.querySelector('.searchInput');
+					var input = document.querySelector('.search-input');
 					input.style.display = this.value === 'x' ? 'none'
 							: 'inline-block';
 				});
