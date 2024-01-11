@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.semi.distribution.db.DBManger;
+import com.semi.notice.CompanyNoticeDAO;
 import com.semi.sales.product.Product;
 
 public class SupplyComDAO {
@@ -285,6 +286,9 @@ public class SupplyComDAO {
 					String currval = rs.getString(1); // 시퀀스의 현재 값
 					System.out.println("현재 시퀀스 값: " + currval);
 					request.setAttribute("val", currval);
+					
+					//알림 등록
+					CompanyNoticeDAO.regContractNotice(Integer.parseInt(request.getParameter("c_type")), rs.getInt(1));
 				}
 			}
 

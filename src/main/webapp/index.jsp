@@ -45,72 +45,12 @@
 						</div>
 						<div class="board">
 							<div class="board-title">알림창</div>
-							<!-- forEach로 넣으셔서 내용 채우시면 됩니다. -->
-							<%-- <c:forEach var="" items=""> --%>
-							<!-- 밑줄 만들어주는 border-bottom 적용class 입니다. -->
+							<c:forEach var="notice" items="${notices }">
 							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
+								<div class="post-info">${notice.cn_content }</div>
 							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
-							<div class="post">
-								<!-- 내용을 넣어주시면됩니다. -->
-								<div class="post-info">내용 테스트입니다. ㄴㅇㄹㅇㄹㅇㄹㅇㄹㅇ길게 나와도 괜찮은지보려고
-									합ㄴ디ㅏ. ㅎ</div>
-							</div>
+							</c:forEach>
 							
-							
-							<%-- </c:forEach> --%>
 							
 						</div>
 					</div>
