@@ -40,7 +40,7 @@
 			<div class="input-row">
 				<div class="input-title">内容</div>
 				<textarea class="inform-textArea" name="ci_content" >${companyInform.ci_content }</textarea>
-			</div>
+			</div>.
 			<div class="input-row btn-area">
 			<div></div>
 			<div>

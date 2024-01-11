@@ -26,8 +26,8 @@
 			<div class="col-title distribution">コード</div>
 			<div class="col-title distribution">部 署</div>
 			<div class="col-title distribution">員 数</div>
-			<div class="col-title distribution">배차대기</div>
-			<div class="col-title distribution">배차완료</div>
+			<div class="col-title distribution">配車待機</div>
+			<div class="col-title distribution">配車完了</div>
 		</div>
 		<div class="col-contents">
 			<div class="col-content distribution">${distributionDept.d_deptno }</div>
@@ -37,12 +37,12 @@
 			<div class="col-content distribution">${distributionDept.d_allocated }</div>
 		</div>
 		<div class="col-titles">
-			<div class="col-title distribution">배차 완료(月)</div>
-			<div class="col-title distribution">배송 완료(月)</div>
-			<div class="col-title distribution">만기된 운송</div>
-			<div class="col-title distribution">만기일</div>
-			<div class="col-title distribution">운송(日)</div>
-			<div class="col-title distribution">운송 완료(日)</div>
+			<div class="col-title distribution">配車完了(月)</div>
+			<div class="col-title distribution">運送完了(月)</div>
+			<div class="col-title distribution">運送遅延</div>
+			<div class="col-title distribution">満期日</div>
+			<div class="col-title distribution">運送件(日)</div>
+			<div class="col-title distribution">運送完了(日)</div>
 		</div>
 		<div class="col-contents">
 			<div class="col-content distribution">${distributionDept.d_allocatedThisMonth }</div>
@@ -62,10 +62,10 @@
 				<div class="col-title-item">職 級</div>
 				<div class="col-title-item">Tel</div>
 				<div class="col-title-item col-long">E-Mail</div>
-				<div class="col-title-item">총운송(月)</div>
-				<div class="col-title-item">운송완료(月)</div>
-				<div class="col-title-item">총운송(日)</div>
-				<div class="col-title-item">운송완료(日)</div>
+				<div class="col-title-item">運送件数(月)</div>
+				<div class="col-title-item">運送完了(月)</div>
+				<div class="col-title-item">運送件数(日)</div>
+				<div class="col-title-item">運送完了(日)</div>
 				<div class="col-title-item button">Detail</div>
 			</div>
 			<c:forEach var="distributionStaffInfo" items="${distributionStaffsInfo}">

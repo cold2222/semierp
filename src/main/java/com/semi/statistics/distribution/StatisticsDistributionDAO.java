@@ -23,7 +23,7 @@ public class StatisticsDistributionDAO {
 		
 		ArrayList<BarChartDataSets> datasets = new ArrayList<BarChartDataSets>();
 		int[][] dataArrs = new int[6][12];
-		String[] label = {"계약 운송 정상건", "수입 운송 정상건", "판매 운송 정상건", "계약 운송 지연건", "수입 운송 지연건", "판매 운송 지연건"};
+		String[] label = {"契約ー運送正常件", "輸入ー運送正常件", "販売ー運送正常件", "契約ー運送遅延件", "輸入ー運送遅延件", "販売ー運送遅延件"};
 		String[][] color = {{"rgb(255, 99, 132)","rgb(255, 99, 132)"},{"rgb(255, 205, 86)","rgb(255, 205, 86)"},{"rgb(75, 192, 192)", "rgb(75, 192, 192)"},
 							{"rgb(255, 99, 132)","rgba(255, 99, 132, 0.2)"}, {"rgb(255, 205, 86)","rgba(255, 205, 86, 0.2)"},{"rgb(75, 192, 192)", "rgba(75, 192, 192, 0.2)"}};
 		
@@ -46,7 +46,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 1\r\n"
-				+ "        AND (c_completed_date >= c_delivery_date OR c_completed_date IS NULL)\r\n"
+				+ "        AND (c_completed_date <= c_delivery_date)\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c1 ON m.month = c1.month\r\n"
 				+ "LEFT JOIN (\r\n"
@@ -55,7 +55,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 1\r\n"
-				+ "        AND c_completed_date < c_delivery_date\r\n"
+				+ "        AND c_completed_date > c_delivery_date\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c2 ON m.month = c2.month\r\n"
 				+ "LEFT JOIN (\r\n"
@@ -64,7 +64,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 2\r\n"
-				+ "        AND (c_completed_date <= c_due_date OR c_completed_date IS NULL)\r\n"
+				+ "        AND (c_completed_date <= c_due_date)\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c3 ON m.month = c3.month\r\n"
 				+ "LEFT JOIN (\r\n"
@@ -76,7 +76,7 @@ public class StatisticsDistributionDAO {
 				+ "        AND c_completed_date > c_due_date\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c4 ON m.month = c4.month\r\n"
-				+ "ORDER BY m.month"; 
+				+ "ORDER BY m.month";
 		try {
 			request.setCharacterEncoding("utf-8");
 			response.setCharacterEncoding("utf-8");
@@ -112,7 +112,6 @@ public class StatisticsDistributionDAO {
 			
 			Gson gson = new Gson();
 			String data = gson.toJson(tempData);
-			System.out.println(gson.toJson("buchu.png"));
 			response.getWriter().print("["+data+"]");
 			
 			
@@ -151,7 +150,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 1\r\n"
-				+ "        AND (c_completed_date >= c_delivery_date OR c_completed_date IS NULL)\r\n"
+				+ "        AND (c_completed_date <= c_delivery_date)\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c1 ON m.month = c1.month\r\n"
 				+ "LEFT JOIN (\r\n"
@@ -160,7 +159,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 1\r\n"
-				+ "        AND c_completed_date < c_delivery_date\r\n"
+				+ "        AND c_completed_date > c_delivery_date\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c2 ON m.month = c2.month\r\n"
 				+ "LEFT JOIN (\r\n"
@@ -169,7 +168,7 @@ public class StatisticsDistributionDAO {
 				+ "    WHERE EXTRACT(YEAR FROM c_created_date) = ?\r\n"
 				+ "        AND c_status = 4\r\n"
 				+ "        AND c_type = 2\r\n"
-				+ "        AND (c_completed_date <= c_due_date OR c_completed_date IS NULL)\r\n"
+				+ "        AND (c_completed_date <= c_due_date)\r\n"
 				+ "    GROUP BY to_char(c_created_date, 'yyyy-mm')\r\n"
 				+ ") c3 ON m.month = c3.month\r\n"
 				+ "LEFT JOIN (\r\n"

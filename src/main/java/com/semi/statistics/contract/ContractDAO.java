@@ -121,10 +121,10 @@ public class ContractDAO {
 				}
 			}
 
-			contractsCount.add(new LineChartDatasets("월별 수입계약", importCountArr, "#f9c00c"));
-			contractsCount.add(new LineChartDatasets("월별 판매계약", salesCountArr, "#00b9f1"));
-			contractsCost.add(new LineChartDatasets("월별 수입액", importCostArr, "#f9c00c"));
-			contractsCost.add(new LineChartDatasets("월별 매출", salesCostArr, "#00b9f1"));
+			contractsCount.add(new LineChartDatasets("輸入契約件数(月)", importCountArr, "#f9c00c"));
+			contractsCount.add(new LineChartDatasets("販売契約件数(月)", salesCountArr, "#00b9f1"));
+			contractsCost.add(new LineChartDatasets("輸入金額(月)", importCostArr, "#f9c00c"));
+			contractsCost.add(new LineChartDatasets("販売金額(月)", salesCostArr, "#00b9f1"));
 
 			LineChartOfYear contractLineChartOfYear = new LineChartOfYear();
 			contractLineChartOfYear.setDatasets(contractsCount);
@@ -188,12 +188,12 @@ public class ContractDAO {
 				}
 			}
 
-			contractsCount.add(new LineChartDatasets(selectedYear + "년도", contractCountArr1, "#333300"));
-			contractsCount.add(new LineChartDatasets((selectedYear - 1) + "년도", contractCountArr2, "#999900"));
-			contractsCount.add(new LineChartDatasets((selectedYear - 2) + "년도", contractCountArr3, "#FFFF99"));
-			contractsCost.add(new LineChartDatasets(selectedYear + "년도", contractCostArr1, "#002D62"));
-			contractsCost.add(new LineChartDatasets((selectedYear - 1) + "년도", contractCostArr2, "#0066b2"));
-			contractsCost.add(new LineChartDatasets((selectedYear - 2) + "년도", contractCostArr3, "#89CFF0"));
+			contractsCount.add(new LineChartDatasets(selectedYear + "年度", contractCountArr1, "#333300"));
+			contractsCount.add(new LineChartDatasets((selectedYear - 1) + "年度", contractCountArr2, "#999900"));
+			contractsCount.add(new LineChartDatasets((selectedYear - 2) + "年度", contractCountArr3, "#FFFF99"));
+			contractsCost.add(new LineChartDatasets(selectedYear + "年度", contractCostArr1, "#002D62"));
+			contractsCost.add(new LineChartDatasets((selectedYear - 1) + "年度", contractCostArr2, "#0066b2"));
+			contractsCost.add(new LineChartDatasets((selectedYear - 2) + "年度", contractCostArr3, "#89CFF0"));
 
 			LineChartOfYear contractLineChartOfYear = new LineChartOfYear();
 			contractLineChartOfYear.setDatasets(contractsCount);
@@ -273,7 +273,7 @@ public class ContractDAO {
 				count2 += contractCountArr2[i];
 				count3 += contractCountArr3[i];
 				cost1 += contractCostArr1[i];
-				cost2 += contractCostArr1[i];
+				cost2 += contractCostArr2[i];
 				cost3 += contractCostArr3[i];
 				difCos1 += diffCostArr1[i];
 				difCos2 += diffCostArr2[i];

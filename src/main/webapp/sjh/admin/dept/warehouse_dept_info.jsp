@@ -26,9 +26,9 @@
 			<div class="col-title warehouse">コード</div>
 			<div class="col-title warehouse">部 署</div>
 			<div class="col-title warehouse">員 数</div>
-			<div class="col-title warehouse">상품종류</div>
-			<div class="col-title warehouse">총가치</div>
-			<div class="col-title warehouse">재고부족상품</div>
+			<div class="col-title warehouse">商品種類</div>
+			<div class="col-title warehouse">総合価値</div>
+			<div class="col-title warehouse">在庫未満</div>
 			<div class="col-title warehouse">재고초과상품</div>
 		</div>
 		<div class="col-contents">
@@ -42,22 +42,22 @@
 		</div>
 
 		<div class="col-titles">
-			<div class="col-title warehouse">입고완료(月)</div>
-			<div class="col-title warehouse">입고대기(月)</div>
-			<div class="col-title warehouse">입고(日)</div>
-			<div class="col-title warehouse">입고완료(日)</div>
-			<div class="col-title warehouse">출고완료(月)</div>
-			<div class="col-title warehouse">출고대기(月)</div>
-			<div class="col-title warehouse">출고(日)</div>
-			<div class="col-title warehouse">출고완료(日)</div>
+			<div class="col-title warehouse">入庫予定(月)</div>
+			<div class="col-title warehouse">入庫完了(月)</div>
+			<div class="col-title warehouse">入庫(日)</div>
+			<div class="col-title warehouse">入庫完了(日)</div>
+			<div class="col-title warehouse">出庫予定(月)</div>
+			<div class="col-title warehouse">出庫完了(月)</div>
+			<div class="col-title warehouse">出庫(日)</div>
+			<div class="col-title warehouse">出庫完了(日)</div>
 		</div>
 		<div class="col-contents">
-			<div class="col-content warehouse">${warehouseDept.w_stockInCompletedThisMonth }</div>
 			<div class="col-content warehouse">${warehouseDept.w_watingStockInThisMonth }</div>
+			<div class="col-content warehouse">${warehouseDept.w_stockInCompletedThisMonth }</div>
 			<div class="col-content warehouse">${warehouseDept.w_stockInToday }</div>
 			<div class="col-content warehouse">${warehouseDept.w_stockInCompletedToday }</div>
-			<div class="col-content warehouse">${warehouseDept.w_stockOutCompletedThisMonth }</div>
 			<div class="col-content warehouse">${warehouseDept.w_watingStockOutThisMonth }</div>
+			<div class="col-content warehouse">${warehouseDept.w_stockOutCompletedThisMonth }</div>
 			<div class="col-content warehouse">${warehouseDept.w_stockOutToday }</div>
 			<div class="col-content warehouse">${warehouseDept.w_stockOutCompletedToday }</div>
 		</div>
