@@ -24,7 +24,9 @@
 					<div class="header1-goToPage"><a href="https://www.kotra.or.kr/index.do" target="_blank">KOTRA</a></div>
 					<select id="mySelect">
 						<option>${sessionScope.empInfo.e_name }様</option>
-						<option value="AdminPage">AdminPage</option>
+						<c:if test="${sessionScope.empInfo.e_deptno < 100 }">
+						<option value="AdminPage">管理ページ</option>
+						</c:if>
 						<option value="Logout">ログアウト</option>
 					</select>
 					<!-- 셀렉트 자바스크립트 -->
