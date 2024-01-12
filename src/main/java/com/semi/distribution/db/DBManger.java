@@ -11,10 +11,10 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 public class DBManger {
 	public static Connection connect() throws SQLException, ClassNotFoundException {
-		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		
-		return DriverManager.getConnection(url,"jh940502","jh940502");
+		return DriverManager.getConnection(url,"c##ysb836","tmdqls510");
 	}
 
 	public static void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
