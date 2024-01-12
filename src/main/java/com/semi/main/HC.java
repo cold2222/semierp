@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.semi.adminpage.inform.CompanyInformDAO;
+import com.semi.notice.CompanyNoticeDAO;
 
 @WebServlet("/HC")
 public class HC extends HttpServlet {
@@ -16,6 +17,7 @@ public class HC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CompanyInformDAO.getBroadCastCompanyInfroms(request);
 		CompanyInformDAO.getSessionDeptInforms(request);
+		CompanyNoticeDAO.getMainPageNotice(request);
 		request.setAttribute("selectedHeader", "main");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

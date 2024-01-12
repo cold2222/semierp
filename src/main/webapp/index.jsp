@@ -48,7 +48,9 @@
 							<div class="board-title">お知らせ</div>
 							<c:forEach var="notice" items="${notices }">
 							<div class="post">
+								<a href="${notice.cn_url }">
 								<div class="post-info">${notice.cn_content }</div>
+								</a>
 							</div>
 							</c:forEach>
 							
