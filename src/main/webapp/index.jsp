@@ -44,15 +44,9 @@
 							</div>
 						</div>
 						<div class="board">
-<<<<<<< HEAD
-							<div class="board-title">알림창</div>
-							<c:forEach var="notice" items="${notices }">
-=======
+
 							<div class="board-title">お知らせ</div>
-							<!-- forEach로 넣으셔서 내용 채우시면 됩니다. -->
-							<%-- <c:forEach var="" items=""> --%>
-							<!-- 밑줄 만들어주는 border-bottom 적용class 입니다. -->
->>>>>>> 6d27cdcd7d0cad56c7f7e487c5f8d46692babb31
+							<c:forEach var="notice" items="${notices }">
 							<div class="post">
 								<div class="post-info">${notice.cn_content }</div>
 							</div>
