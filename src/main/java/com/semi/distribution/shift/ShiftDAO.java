@@ -47,8 +47,6 @@ public class ShiftDAO {
 		}finally {
 			DBManger.close(con, pstmt, rs);
 		}
-		
-		
 		return null;
 	}
 
@@ -81,7 +79,6 @@ public class ShiftDAO {
 		if(month >= 10) {
 			monthString = month + "";
 		}
-		
 		
 		String sql = "select e_no, work_num, TO_CHAR(work_date, 'YYYY-MM-DD') as work_date"
 				+ " from distribution_shift where to_char(work_date,'YYYY-MM') = ? order by e_no";
@@ -150,7 +147,6 @@ public class ShiftDAO {
 			if(count == dayOfWeekArr.length) {
 				break;
 			}
-
 			if(i == 7) {
 				i = 0;
 			}

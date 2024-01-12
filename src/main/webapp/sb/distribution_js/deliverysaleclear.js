@@ -1,4 +1,4 @@
-function DistributionReceiptClear(num){
+function DistributionDeliverySaleClear(num){
 	if(confirm("配送を完了しますか？")){
 		location.href="DistributionDeliverySaleCompleteC?c_contract_no="+num;
 	}

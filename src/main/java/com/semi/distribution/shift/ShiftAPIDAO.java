@@ -14,11 +14,6 @@ public class ShiftAPIDAO {
 		String e_date = request.getParameter("e_date");
 		String e_status = request.getParameter("e_status");
 
-		System.out.println("ajax");
-		System.out.println(e_no);
-		System.out.println(e_date);
-		System.out.println(e_status);
-
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

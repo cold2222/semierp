@@ -37,10 +37,5 @@ public class PaidVacationDAO {
 		}
 		return null;
 		
-		
-		
 	}
-
-	
-
 }

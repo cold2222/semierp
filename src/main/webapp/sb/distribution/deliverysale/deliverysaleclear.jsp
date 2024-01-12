@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="sb/distribution_css/receipt/receiptclear.css">
-<script type="text/javascript" src="sb/distribution_js/receiptclear.js"></script>
+<script type="text/javascript" src="sb/distribution_js/deliverysaleclear.js"></script>
 <script type="text/javascript" src="sb/distribution_js/search.js"></script>
 </head>
 <body>
@@ -50,7 +50,7 @@
 									<div class="bbs-main-text3 bbs-main-text">${d.e_name}</div>
 									<div class="bbs-main-text3 bbs-main-text">${d.c_delivery_date }</div>
 									<div class="bbs-main-text3 bbs-main-text"><button class="select-btn" onclick="location.href='DistributionDeliverySaleViewC?c_contract_no=${d.c_contract_no }&page=clearList'">Move</button></div>
-									<div class="bbs-main-text4 bbs-main-text"><button class="clear-btn" onclick="DistributionReceiptClear('${d.c_contract_no}')">完了</button></div>
+									<div class="bbs-main-text4 bbs-main-text"><button class="clear-btn" onclick="DistributionDeliverySaleClear('${d.c_contract_no}')">完了</button></div>
 								</div>
 								</c:forEach>
 							</div>

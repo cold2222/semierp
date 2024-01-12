@@ -100,7 +100,7 @@
 					<button class="modal-btn" type="submit">登録</button>
 				</form>
 			</div>
-			<button onclick="closeModal()" class="modal-btn">모달 닫기</button>
+			<button onclick="closeModal()" class="modal-btn">閉じる</button>
 		</div>
 	</div>
 	<script type="text/javascript" src="sb/distribution_js/deliverydata.js"></script>
