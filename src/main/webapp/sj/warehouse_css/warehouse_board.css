@@ -153,11 +153,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	
 }
 .bbs-main-text1 {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	color: balck;
 }
 
 .bbs-main-text-l {
@@ -226,9 +228,14 @@
 }
 
 
+.bbs-main-text1 a{
+	color: balck;	
+}
+
 .bbs-main-text1 a:link {
 	text-decoration: none;
 }
+
 
 .bbs-main-text1 a:visited, a:active {
 	color: black; /* 색깔 바꾸고 싶으시면 바꾸시면 됩니다. */

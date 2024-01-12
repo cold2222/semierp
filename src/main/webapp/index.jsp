@@ -19,33 +19,40 @@
 				<div class="contents ">
 					<div class="bbs-content1">
 						<div class="board">
-							<div class="board-title">사원정보</div>
+							<div class="board-title">社員情報</div>
 							<div class="myself">
 								<div class="myself-info">
-									<div class="myself-line1">부서&nbsp;&nbsp;</div>
+									<div class="myself-line1">部署&nbsp;&nbsp;</div>
 									<div class="myself-line2">&nbsp;&nbsp;${empInfo.e_dept}/${empInfo.e_rank}</div>
 								</div>
 								<div class="myself-info">
-									<div class="myself-line1">이름&nbsp;&nbsp;</div>
+									<div class="myself-line1">名前&nbsp;&nbsp;</div>
 									<div class="myself-line2">&nbsp;&nbsp;${empInfo.e_name}</div>
 								</div>
 								<div class="myself-info">
-									<div class="myself-line1">직원번호&nbsp;&nbsp;</div>
+									<div class="myself-line1">職員番号&nbsp;&nbsp;</div>
 									<div class="myself-line2">&nbsp;&nbsp;${empInfo.e_no}</div>
 								</div>
 								<div class="myself-info">
-									<div class="myself-line1">전화번호&nbsp;&nbsp;</div>
+									<div class="myself-line1">電話番号&nbsp;&nbsp;</div>
 									<div class="myself-line2">&nbsp;&nbsp;${empInfo.e_tel}</div>
 								</div>
 								<div class="board-button">
-									<button>마이페이지</button>
-									<button onclick="location.href ='LogoutC'">로그아웃</button>
+									<button>マイページ</button>
+									<button onclick="location.href ='LogoutC'">ログアウト</button>
 								</div>
 							</div>
 						</div>
 						<div class="board">
+<<<<<<< HEAD
 							<div class="board-title">알림창</div>
 							<c:forEach var="notice" items="${notices }">
+=======
+							<div class="board-title">お知らせ</div>
+							<!-- forEach로 넣으셔서 내용 채우시면 됩니다. -->
+							<%-- <c:forEach var="" items=""> --%>
+							<!-- 밑줄 만들어주는 border-bottom 적용class 입니다. -->
+>>>>>>> 6d27cdcd7d0cad56c7f7e487c5f8d46692babb31
 							<div class="post">
 								<div class="post-info">${notice.cn_content }</div>
 							</div>
@@ -59,7 +66,7 @@
 					<div class="bbs-content2">
 
 						<div class="board">
-							<div class="board-title">공지사항</div>
+							<div class="board-title">周知事項</div>
 							<c:forEach var="broadCastInform" items="${broadCastInforms }" >
 								<div class="post">
 								<div class="post-title">
@@ -74,7 +81,7 @@
 						</div>
 
 						<div class="board">
-							<div class="board-title">부서 공지사항</div>
+							<div class="board-title">部署周知事項</div>
 							<c:forEach var="deptInform" items="${deptInforms }" >
 								<div class="post">
 								<div class="post-title">
@@ -89,7 +96,7 @@
 						</div>
 
 						<div class="board">
-							<div class="board-title">게시판1</div>
+							<div class="board-title">掲示板1</div>
 							<!-- forEach로 넣으셔서 내용 채우시면 됩니다. -->
 							<%-- <c:forEach var="" items=""> --%>
 							<!-- 밑줄 만들어주는 border-bottom 적용class 입니다. -->
@@ -121,7 +128,7 @@
 							</div>
 						</div>
 						<div class="board">
-							<div class="board-title">게시판2</div>
+							<div class="board-title">掲示板2</div>
 							<!-- forEach로 넣으셔서 내용 채우시면 됩니다. -->
 							<%-- <c:forEach var="" items=""> --%>
 							<div class="post">
