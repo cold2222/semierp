@@ -52,7 +52,7 @@ public class CompanyNoticeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "INSERT INTO checkcompanynotice (ccn_e_no, ccn_cn_no, ccn_checked) SELECT ?, 1, 0 FROM employee WHERE e_deptno = ?";
+		String sql = "INSERT INTO checkcompanynotice (ccn_e_no, ccn_cn_no, ccn_checked) SELECT e_no, 1, 0 FROM employee WHERE e_deptno = ?";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
