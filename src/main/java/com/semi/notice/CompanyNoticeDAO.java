@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.semi.adminpage.util.AdminUtils;
 import com.semi.distribution.db.DBManger;
@@ -18,17 +19,20 @@ public class CompanyNoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String dept = "販売";
-		String  url = "http://localhost:8080/semi_erp_project/DistributionDeliverySaleViewC?c_contract_no=" + c_contract_id + "&&page=List";
-		if(c_type == 1) {
+		String url = "http://localhost:8080/semi_erp_project/DistributionDeliverySaleViewC?c_contract_no="
+				+ c_contract_id + "&&page=List";
+		if (c_type == 1) {
 			dept = "受領";
-			url = "http://localhost:8080/semi_erp_project/DistributionReceiptViewC?c_contract_no=" + c_contract_id + "&page=List";
+			url = "http://localhost:8080/semi_erp_project/DistributionReceiptViewC?c_contract_no=" + c_contract_id
+					+ "&page=List";
 		}
-		String sql = "insert into CompanyNotice values(seq_companyNotice.nextval, '配車を待つ" + dept + "契約があります。', sysdate, 6, 20102, ?)";
+		String sql = "insert into CompanyNotice values(seq_companyNotice.nextval, '配車を待つ" + dept
+				+ "契約があります。', sysdate, 6, 20102, ?)";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, url);
-			if(pstmt.executeUpdate() == 1) {
+			if (pstmt.executeUpdate() == 1) {
 				System.out.println("regNotice success");
 				String currvalQuery = "SELECT seq_companyNotice.CURRVAL FROM dual";
 				Statement stmt = con.createStatement();
@@ -44,10 +48,10 @@ public class CompanyNoticeDAO {
 			System.out.println("regNotice error");
 		} finally {
 			DBManger.close(con, pstmt, rs);
-		}		
-		
-	}	
-	
+		}
+
+	}
+
 	public static void regCheckCompanyNoticeByDeptNo(int seq_no, int deptno) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -58,9 +62,9 @@ public class CompanyNoticeDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, seq_no);
 			pstmt.setInt(2, deptno);
-			if(pstmt.executeUpdate() > 0) {
+			if (pstmt.executeUpdate() > 0) {
 				System.out.println("regCheckCompanyNotice success");
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,9 +72,9 @@ public class CompanyNoticeDAO {
 		} finally {
 			DBManger.close(con, pstmt, rs);
 		}
-		
+
 	}
-	
+
 	public static void regCheckCompanyNoticeByDeptRank(int seq_no, int deptno, String rank) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -82,9 +86,9 @@ public class CompanyNoticeDAO {
 			pstmt.setInt(1, seq_no);
 			pstmt.setInt(2, deptno);
 			pstmt.setString(3, rank);
-			if(pstmt.executeUpdate() > 0) {
+			if (pstmt.executeUpdate() > 0) {
 				System.out.println("regCheckCompanyNotice success");
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,9 +96,9 @@ public class CompanyNoticeDAO {
 		} finally {
 			DBManger.close(con, pstmt, rs);
 		}
-		
+
 	}
-	
+
 	public static void getMainPageNotice(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -106,29 +110,66 @@ public class CompanyNoticeDAO {
 			pstmt = con.prepareStatement(sql);
 			EmployeeDTO empInfo = (EmployeeDTO) request.getSession().getAttribute("empInfo");
 			pstmt.setInt(1, Integer.parseInt(empInfo.getE_no()));
-			
+
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				CompanyNoticeDTO tempCN = new CompanyNoticeDTO(
-						rs.getInt(1),
-						rs.getString(2),
-						rs.getDate(3),
-						rs.getInt(4),
-						rs.getInt(5),
-						rs.getString(6),
-						rs.getInt(7),
-						rs.getInt(8),
-						rs.getInt(9));
+			while (rs.next()) {
+				CompanyNoticeDTO tempCN = new CompanyNoticeDTO(rs.getInt(1), rs.getString(2), rs.getDate(3),
+						rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getInt(9));
 				noticeArr.add(tempCN);
-				
-					
+
 			}
-			
+
 			request.setAttribute("notices", AdminUtils.setPaging(request, noticeArr, 10));
-			System.out.println("getMainPageNotice success");	
+			System.out.println("getMainPageNotice success");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("regCheckCompanyNotice error");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+	}
+
+	public static void checkRead(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "update checkcompanynotice set ccn_checked = 1 where ccn_e_no = ? and ccn_cn_no = ?";
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("ccn_e_no")));
+			pstmt.setInt(2, Integer.parseInt(request.getParameter("ccn_cn_no")));
+
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("checkRead success");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("checkReadNotice error");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+
+	}
+
+	public static void redirect(HttpServletRequest request, HttpServletResponse response) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select url from companynotice where cn_no = ?";
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(request.getParameter("ccn_cn_no")));
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				System.out.println("redirect success");
+				response.sendRedirect(rs.getString("url"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("redirect error");
 		} finally {
 			DBManger.close(con, pstmt, rs);
 		}

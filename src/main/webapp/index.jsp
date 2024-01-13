@@ -48,9 +48,7 @@
 							<div class="board-title">お知らせ</div>
 							<c:forEach var="notice" items="${notices }">
 							<div class="post">
-								<a href="${notice.cn_url }">
-								<div class="post-info">${notice.cn_content }</div>
-								</a>
+								<div class="post-info"><a href="NoticeRedirectC?ccn_e_no=${notice.ccn_e_no }&ccn_cn_no=${notice.ccn_cn_no }">${notice.cn_content }</a></div>
 							</div>
 							</c:forEach>
 							
