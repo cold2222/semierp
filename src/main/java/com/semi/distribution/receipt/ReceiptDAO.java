@@ -13,6 +13,7 @@ import com.semi.distribution.db.DBManger;
 import com.semi.distribution.employee.EmployeeDTO;
 import com.semi.distribution.notice.NoticeDTO;
 import com.semi.distribution.shift.ShiftDTO;
+import com.semi.notice.CompanyNoticeDAO;
 
 public class ReceiptDAO {
 
@@ -220,6 +221,7 @@ public class ReceiptDAO {
 			pstmt.setString(3, request.getParameter("s_memo"));
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("배차등록 성공");
+				CompanyNoticeDAO.regShippingNotice(Integer.parseInt(request.getParameter("e_no")), Integer.parseInt(request.getParameter("c_contract_no")));
 			}
 
 		} catch (Exception e) {
@@ -301,6 +303,7 @@ public class ReceiptDAO {
 
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("status 3 업데이트 성공");
+				
 			}
 
 		} catch (Exception e) {
