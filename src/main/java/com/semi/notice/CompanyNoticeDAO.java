@@ -1,5 +1,6 @@
 package com.semi.notice;
 
+import java.security.interfaces.RSAKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,17 +15,15 @@ import com.semi.distribution.db.DBManger;
 import com.semi.login.EmployeeDTO;
 
 public class CompanyNoticeDAO {
-	public static void regContractNotice(int c_type, int c_contract_id) {
+	public static void regContractNotice(int c_type, int c_contract_no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String dept = "販売";
-		String url = "http://localhost:8080/semi_erp_project/DistributionDeliverySaleViewC?c_contract_no="
-				+ c_contract_id + "&&page=List";
+		String url = "DistributionDeliverySaleViewC?c_contract_no=" + c_contract_no + "&&page=List";
 		if (c_type == 1) {
 			dept = "受領";
-			url = "http://localhost:8080/semi_erp_project/DistributionReceiptViewC?c_contract_no=" + c_contract_id
-					+ "&page=List";
+			url = "DistributionReceiptViewC?c_contract_no=" + c_contract_no + "&page=List";
 		}
 		String sql = "insert into CompanyNotice values(seq_companyNotice.nextval, '配車を待つ" + dept
 				+ "契約があります。', sysdate, 6, 20102, ?)";
@@ -46,6 +45,105 @@ public class CompanyNoticeDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("regNotice error");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+
+	}
+
+	public static void regShippingNotice(int e_no, int c_contract_no) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String url = "DistributionDeliveryDataViewC?c_contract_no=" + c_contract_no;
+		String sql = "insert into CompanyNotice values(seq_companyNotice.nextval, '配車された契約があります。', sysdate, 1, ?, ?)";
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, e_no);
+			pstmt.setString(2, url);
+			if (pstmt.executeUpdate() == 1) {
+				System.out.println("regNotice success");
+				String currvalQuery = "SELECT seq_companyNotice.CURRVAL FROM dual";
+				Statement stmt = con.createStatement();
+				rs = stmt.executeQuery(currvalQuery);
+				if (rs.next()) {
+					int currval = rs.getInt(1); // 시퀀스의 현재 값
+					System.out.println("current notice_seq: " + currval);
+					regCheckCompanyNoticeToEmployee(e_no, currval);
+					System.out.println("regShippingNotice");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("regNotice error");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+	}
+
+	public static void regDeliveryArriveNotice(int c_contract_no) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql1 = "select c_type from contract where c_contract_no=?";
+		String url = "ExWarehouseDetailC?c_contract_no=";
+		String sql2 = "insert into CompanyNotice values(seq_companyNotice.nextval, '運送完了した契約があります。', sysdate, 6, 20202, ?)";
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql1);
+			pstmt.setInt(1, c_contract_no);
+			rs = pstmt.executeQuery();
+	
+			if (rs.next()) {
+				if(rs.getInt(1)==1) {
+					url = "InWarehouseDetailC?c_contract_no=";
+				}
+				rs.close();
+				url = url + c_contract_no;
+				pstmt.close();
+				pstmt = con.prepareStatement(sql2);
+				pstmt.setString(1, url);
+				if (pstmt.executeUpdate() == 1) {
+					System.out.println("regNotice success");
+					String currvalQuery = "SELECT seq_companyNotice.CURRVAL FROM dual";
+					Statement stmt = con.createStatement();
+					rs = stmt.executeQuery(currvalQuery);
+					if (rs.next()) {
+						int currval = rs.getInt(1); // 시퀀스의 현재 값
+						System.out.println("current notice_seq: " + currval);
+						regCheckCompanyNoticeByDeptRank(currval, 202, "部長");
+					}
+				}
+			} else {
+				System.out.println("regDeliveryArriveNotice Error : 계약이 존재하지 않습니다");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("regNotice error");
+		} finally {
+			DBManger.close(con, pstmt, rs);
+		}
+
+	}
+
+	private static void regCheckCompanyNoticeToEmployee(int e_no, int currval) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "insert into checkcompanynotice values(?, ?, 0)";
+		try {
+			con = DBManger.connect();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, e_no);
+			pstmt.setInt(2, currval);
+			if (pstmt.executeUpdate() > 0) {
+				System.out.println("regCheckCompanyNotice success");
+				System.out.println("regCheckShippingNotice");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("regCheckCompanyNotice error");
 		} finally {
 			DBManger.close(con, pstmt, rs);
 		}
@@ -157,15 +255,15 @@ public class CompanyNoticeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select url from companynotice where cn_no = ?";
+		String sql = "select cn_url from companynotice where cn_no = ?";
 		try {
 			con = DBManger.connect();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(request.getParameter("ccn_cn_no")));
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				System.out.println("redirect success");
-				response.sendRedirect(rs.getString("url"));
+				response.sendRedirect(rs.getString("cn_url"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
