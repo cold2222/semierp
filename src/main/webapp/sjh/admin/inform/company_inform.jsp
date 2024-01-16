@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="content_title">
-		<div>お知らせ</div>
+		<div>周知事項</div>
 		<div></div>
 		<div class="date">
 		</div>

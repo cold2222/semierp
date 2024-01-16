@@ -21,7 +21,7 @@
 					<img class="side-menu-icon" src="files/sjh/adminpage/staff_white.png">&nbsp;&nbsp;<span class="side-menu-text">社員一覽</span>
 				</div>
 				<div class="side-menu-item" ${selectedPage == 'companyInform' ? 'id="selected"' : '' } onclick="location.href='CompanyInformC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/notice_white.png">&nbsp;&nbsp;<span class="side-menu-text">お知らせ</span>
+					<img class="side-menu-icon" src="files/sjh/adminpage/notice_white.png">&nbsp;&nbsp;<span class="side-menu-text">周知事項</span>
 				</div>
 				<div class="side-menu-item" ${selectedPage == 'importDept' ? 'id="selected"' : ''} onclick="location.href='ImportDeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;<span class="side-menu-text">輸入事業部</span> 
