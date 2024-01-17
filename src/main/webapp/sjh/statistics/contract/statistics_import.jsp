@@ -109,7 +109,7 @@
 							<div class="col-content contract-cost">${cost1 /1000 }K</div>
 					</div>
 					<div class="row-contents margin-top">
-						<div class="row-type contract-cost"> ${selectedYear-1 } </div>
+						<div class="row-type contract"> ${selectedYear-1 } </div>
 						<c:forEach var="ia" items="${contractCostArr2 }">
 							<div class="col-content contract-cost">${ia / 1000 }K</div>
 						</c:forEach>

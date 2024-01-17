@@ -111,15 +111,15 @@ public class StatisticsProductDAO {
 
 			DoughnutChartDatasets datasets1 = new DoughnutChartDatasets();
 			DoughnutChartDatasets datasets2 = new DoughnutChartDatasets();
-			datasets1.setLabel("상품 거래량(거래량순)");
-			datasets2.setLabel("상품 금액(거래량순)");
+			datasets1.setLabel("取り引き量(取り引き量順)");
+			datasets2.setLabel("取り引き金額(取り引き量順)");
 			datasets1.setData(proCount1);
 			datasets2.setData(proCost1);
 			
 			DoughnutChartDatasets datasets3 = new DoughnutChartDatasets();
 			DoughnutChartDatasets datasets4 = new DoughnutChartDatasets();
-			datasets3.setLabel("상품 금액(금액순)");
-			datasets4.setLabel("상품 거래량(금액순)");
+			datasets3.setLabel("取り引き金額(取り引き金額順)");
+			datasets4.setLabel("取り引き量(取り引き金額順)");
 			datasets3.setData(proCost2);
 			datasets4.setData(proCount2);
 			
