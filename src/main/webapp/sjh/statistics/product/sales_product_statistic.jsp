@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div class="long-board">
-					<div class="board-title">販売</div>
+					<div class="board-title">商品販売情報</div>
 					<div class="row-titles">
 						<div class="col-title product">商品名</div>
 						<div class="col-title product">商品情報</div>
@@ -52,7 +52,7 @@
 						<div class="col-title product">在庫[Min, Max]</div>
 						<div class="col-title product">メーカー</div>
 						<div class="col-title product">販売量</div>
-						<div class="col-title product">輸入金額差</div>
+						<div class="col-title product">販売金額</div>
 						<div class="col-title product">基準価値</div>
 						<div class="col-title product">金額差</div>
 					</div>

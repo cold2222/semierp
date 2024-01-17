@@ -29,7 +29,7 @@
 			<div class="col-title warehouse">商品種類</div>
 			<div class="col-title warehouse">総合価値</div>
 			<div class="col-title warehouse">在庫未満</div>
-			<div class="col-title warehouse">재고초과상품</div>
+			<div class="col-title warehouse">在庫超過</div>
 		</div>
 		<div class="col-contents">
 			<div class="col-content warehouse">${warehouseDept.w_deptno }</div>
