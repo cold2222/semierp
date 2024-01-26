@@ -59,6 +59,7 @@ public class AdminProductDAO {
 						rs.getInt(11));
 				
 				productsInfo.add(tempProductDTO);
+				System.out.println(tempProductDTO);
 			}
 
 			// 페이징

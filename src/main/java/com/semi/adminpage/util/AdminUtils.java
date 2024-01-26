@@ -135,7 +135,7 @@ public class AdminUtils {
 			for (int i = startPageIndex; i <= currentPage + 2; i++)
 				indexList[count++] = i;
 		} else {
-			for (int i = startPageIndex; i <= totalPages; i++)
+			for (int i = startPageIndex; i < totalPages; i++)
 				indexList[count++] = i;
 		}
 		request.setAttribute("indexList" + index, indexList);

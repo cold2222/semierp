@@ -17,7 +17,6 @@ $(function() {
 	let pValue = $(this).val();
 	let pArr = pValue.split('/');
 	let status = pArr[2];
-       
 		if(status === '1'){
 			$(this).css("color","red");
 			$(this).css("background-color","red");
@@ -40,7 +39,6 @@ $(function() {
 	}else{
 		status = '1';
 	}
-	
 		
 	$.ajax({
     url: 'ShiftAPI', 
@@ -53,7 +51,7 @@ $(function() {
     success: function(response) {
     },
     error: function(xhr, status, error) {
-		console.log("에러 발생");
+		console.log("エラー");
 		console.log('xhr : ',xhr);
 		console.log('status : ',status);
 		console.log('error : ',error);       
