@@ -17,12 +17,6 @@
 				<div class="side-menu-item" ${selectedPage == 'dept' ? 'id="selected"' : ''} onclick="location.href='DeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/depart_white.png">&nbsp;&nbsp;<span class="side-menu-text">部署一覽</span>
 				</div>
-				<div class="side-menu-item" ${selectedPage == 'staff' ? 'id="selected"' : ''} onclick="location.href='StaffC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/staff_white.png">&nbsp;&nbsp;<span class="side-menu-text">社員一覽</span>
-				</div>
-				<div class="side-menu-item" ${selectedPage == 'companyInform' ? 'id="selected"' : '' } onclick="location.href='CompanyInformC'">
-					<img class="side-menu-icon" src="files/sjh/adminpage/notice_white.png">&nbsp;&nbsp;<span class="side-menu-text">お知らせ</span>
-				</div>
 				<div class="side-menu-item" ${selectedPage == 'importDept' ? 'id="selected"' : ''} onclick="location.href='ImportDeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/import_white.png">&nbsp;&nbsp;<span class="side-menu-text">輸入事業部</span> 
 				</div>
@@ -34,6 +28,12 @@
 				</div>
 				<div class="side-menu-item" ${selectedPage == 'warehouseDept' ? 'id="selected"' : ''} onclick="location.href='WarehouseDeptC'">
 					<img class="side-menu-icon" src="files/sjh/adminpage/warehouse_white.png">&nbsp;&nbsp;<span class="side-menu-text">倉庫管理部</span>
+				</div>
+				<div class="side-menu-item" ${selectedPage == 'staff' ? 'id="selected"' : ''} onclick="location.href='StaffC'">
+					<img class="side-menu-icon" src="files/sjh/adminpage/staff_white.png">&nbsp;&nbsp;<span class="side-menu-text">社員一覽</span>
+				</div>
+				<div class="side-menu-item" ${selectedPage == 'companyInform' ? 'id="selected"' : '' } onclick="location.href='CompanyInformC'">
+					<img class="side-menu-icon" src="files/sjh/adminpage/notice_white.png">&nbsp;&nbsp;<span class="side-menu-text">周知事項</span>
 				</div>
 			</div>
 		</div>

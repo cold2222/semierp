@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.semi.adminpage.inform.CompanyInformDAO;
 import com.semi.notice.CompanyNoticeDAO;
 
-@WebServlet("/HC")
-public class HC extends HttpServlet {
-
-	
+@WebServlet("/HCTest")
+public class HCTest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CompanyInformDAO.getBroadCastCompanyInfroms(request);
 		CompanyInformDAO.getSessionDeptInforms(request);
@@ -23,6 +21,8 @@ public class HC extends HttpServlet {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

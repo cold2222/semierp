@@ -39,6 +39,7 @@ public class SpecialNoteDAO {
 			for (int i = startDataNum-1; i > endDataNum; i--) {
 				items.add(bbsList.get(i));
 			}
+			
 		}
 		request.setAttribute("bbsList", items);
 		request.setAttribute("pageNum", pageNum);

@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="content_title">
-		<div>お知らせ</div>
+		<div>周知事項</div>
 		<div></div>
 		<div class="date">
 		</div>
@@ -69,7 +69,7 @@
 					</button>
 				</c:if>
 			</div>
-			<button class="reg-btn" onclick="location.href='CompanyInformRegC'">お知らせ登録</button>
+			<button class="reg-btn" onclick="location.href='CompanyInformRegC'">周知事項登録</button>
 		</div>
 	</div>
 	

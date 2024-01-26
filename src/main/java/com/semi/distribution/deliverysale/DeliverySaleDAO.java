@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.semi.distribution.db.DBManger;
 import com.semi.distribution.employee.EmployeeDTO;
+import com.semi.distribution.notice.NoticeDAO;
 import com.semi.distribution.receipt.ReceiptDTO;
 import com.semi.distribution.shift.ShiftDTO;
+import com.semi.notice.CompanyNoticeDAO;
 
 public class DeliverySaleDAO {
 
@@ -60,10 +62,8 @@ public class DeliverySaleDAO {
 		}
 
 		String sql = "select a.c_contract_no, a.c_c_no, a.c_e_id, a.c_created_date, a.c_due_date, a.c_status, "
-				+ "b.c_name, c.e_name " 
-				+ "from contract a inner join company b on a.c_c_no = b.c_no "
-				+ "inner join employee c on  a.c_e_id = c.e_no " 
-				+ "where a.c_status = 1 and a.c_type = 2 ";
+				+ "b.c_name, c.e_name " + "from contract a inner join company b on a.c_c_no = b.c_no "
+				+ "inner join employee c on  a.c_e_id = c.e_no " + "where a.c_status = 1 and a.c_type = 2 ";
 		if (search.get("word") != null && !search.get("field").equals("all")) {
 			sql += "and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
 		}
@@ -148,8 +148,7 @@ public class DeliverySaleDAO {
 
 		String sql = "select p_name,p_quantity,p_si,p_type,ci_count,ci_unit_price "
 				+ "from contract a inner join contract_items b on a.c_contract_no = b.ci_c_contract_no "
-				+ "inner join product c on b.ci_p_id = c.p_id " 
-				+ "where a.c_contract_no = ? order by p_name";
+				+ "inner join product c on b.ci_p_id = c.p_id " + "where a.c_contract_no = ? order by p_name";
 
 		try {
 			con = DBManger.connect();
@@ -221,6 +220,9 @@ public class DeliverySaleDAO {
 			pstmt.setString(3, request.getParameter("s_memo"));
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("배차등록 성공");
+				System.out.println("test");
+				CompanyNoticeDAO.regShippingNotice(Integer.parseInt(request.getParameter("e_no")),
+						Integer.parseInt(request.getParameter("c_contract_no")));
 			}
 
 		} catch (Exception e) {
@@ -270,15 +272,10 @@ public class DeliverySaleDAO {
 			search.put("word", word);
 		}
 
-		String sql = "SELECT a.c_contract_no, c.e_name, " 
-				+ "a.c_delivery_date, a.c_due_date, a.c_status, d.c_name "
-				+ "FROM contract a " 
-				+ "INNER JOIN shipping b ON a.c_contract_no = b.s_contract_no "
-				+ "INNER JOIN employee c ON b.s_e_no = c.e_no " 
-				+ "INNER JOIN company d ON a.c_c_no = d.c_no "
-				+ "WHERE a.c_type = 2 " 
-				+ "AND a.c_status = 3 " 
-				+ "AND a.c_delivery_date <= SYSDATE ";
+		String sql = "SELECT a.c_contract_no, c.e_name, " + "a.c_delivery_date, a.c_due_date, a.c_status, d.c_name "
+				+ "FROM contract a " + "INNER JOIN shipping b ON a.c_contract_no = b.s_contract_no "
+				+ "INNER JOIN employee c ON b.s_e_no = c.e_no " + "INNER JOIN company d ON a.c_c_no = d.c_no "
+				+ "WHERE a.c_type = 2 " + "AND a.c_status = 3 " + "AND a.c_delivery_date <= SYSDATE ";
 		if (search.get("word") != null && !search.get("field").equals("all")) {
 			sql += " and LOWER(" + search.get("field") + ") " + "like LOWER ('%" + search.get("word") + "%') ";
 		}

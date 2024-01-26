@@ -81,8 +81,8 @@
 		<div class="col-titles margin-top">
 			<div class="col-title distribution">配車完了(月)</div>
 			<div class="col-title distribution">運送完了(月)</div>
-			<div class="col-title distribution">運送遅延</div>
-			<div class="col-title distribution">満期日</div>
+			<div class="col-title distribution">運送遅延(日)</div>
+			<div class="col-title distribution">満期日(日)</div>
 			<div class="col-title distribution">運送件(日)</div>
 			<div class="col-title distribution">運送完了(日)</div>
 		</div>

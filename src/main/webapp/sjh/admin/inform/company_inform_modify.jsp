@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="content_title">
-		<div>お知らせ登録</div>
+		<div>周知事項修正</div>
 		<div></div>
 		<div class="date"></div>
 	</div>
