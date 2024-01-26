@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="content-head">
-		<div class="content-head-text">配送完了登録 (納品)</div>
+		<div class="content-head-text">配送情報確認</div>
 	</div>
 	<div class="content">
 		<div class="detail-info">
