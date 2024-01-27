@@ -16,10 +16,10 @@ public class DeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getContractDeptInfo(request, 1);
-				DeptDAO.getContractDeptInfo(request, 2);
-				DeptDAO.getDistributionDeptInfo(request);
-				DeptDAO.getWarehouseDeptInfo(request);
+				DeptDAO.getDeptManager().getContractDeptInfo(request, 1);
+				DeptDAO.getDeptManager().getContractDeptInfo(request, 2);
+				DeptDAO.getDeptManager().getDistributionDeptInfo(request);
+				DeptDAO.getDeptManager().getWarehouseDeptInfo(request);
 				request.setAttribute("currentDate", AdminUtils.getCurrentDate());
 				request.setAttribute("selectedPage", "dept");
 				request.setAttribute("contentPage", "dept/dept_info.jsp");

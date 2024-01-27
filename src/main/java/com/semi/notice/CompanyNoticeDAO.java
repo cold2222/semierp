@@ -15,7 +15,15 @@ import com.semi.distribution.db.DBManger;
 import com.semi.login.EmployeeDTO;
 
 public class CompanyNoticeDAO {
-	public static void regContractNotice(int c_type, int c_contract_no) {
+	
+	private static CompanyNoticeDAO companyNoticeManager = null;
+	public static CompanyNoticeDAO getCompanyNoticeManager() {
+		if(companyNoticeManager == null) {
+			companyNoticeManager = new CompanyNoticeDAO();
+		}
+		return companyNoticeManager;
+	}
+	public void regContractNotice(int c_type, int c_contract_no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -51,7 +59,7 @@ public class CompanyNoticeDAO {
 
 	}
 
-	public static void regShippingNotice(int e_no, int c_contract_no) {
+	public void regShippingNotice(int e_no, int c_contract_no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -82,7 +90,7 @@ public class CompanyNoticeDAO {
 		}
 	}
 
-	public static void regDeliveryArriveNotice(int c_contract_no) {
+	public void regDeliveryArriveNotice(int c_contract_no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -127,7 +135,7 @@ public class CompanyNoticeDAO {
 
 	}
 
-	private static void regCheckCompanyNoticeToEmployee(int e_no, int currval) {
+	private void regCheckCompanyNoticeToEmployee(int e_no, int currval) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -150,7 +158,7 @@ public class CompanyNoticeDAO {
 
 	}
 
-	public static void regCheckCompanyNoticeByDeptNo(int seq_no, int deptno) {
+	public void regCheckCompanyNoticeByDeptNo(int seq_no, int deptno) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -173,7 +181,7 @@ public class CompanyNoticeDAO {
 
 	}
 
-	public static void regCheckCompanyNoticeByDeptRank(int seq_no, int deptno, String rank) {
+	public void regCheckCompanyNoticeByDeptRank(int seq_no, int deptno, String rank) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -197,7 +205,7 @@ public class CompanyNoticeDAO {
 
 	}
 
-	public static void getMainPageNotice(HttpServletRequest request) {
+	public void getMainPageNotice(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -227,7 +235,7 @@ public class CompanyNoticeDAO {
 		}
 	}
 
-	public static void checkRead(HttpServletRequest request) {
+	public void checkRead(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -251,7 +259,7 @@ public class CompanyNoticeDAO {
 
 	}
 
-	public static void redirect(HttpServletRequest request, HttpServletResponse response) {
+	public void redirect(HttpServletRequest request, HttpServletResponse response) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

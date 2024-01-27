@@ -33,7 +33,7 @@ public class CompanyInformRegC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				CompanyInformDAO.companyInformReg(request);
+				CompanyInformDAO.getCompanyInfromManager().companyInformReg(request);
 				response.sendRedirect("CompanyInformC");
 			}
 		} else 

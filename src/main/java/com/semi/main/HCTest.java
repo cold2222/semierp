@@ -13,9 +13,9 @@ import com.semi.notice.CompanyNoticeDAO;
 @WebServlet("/HCTest")
 public class HCTest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CompanyInformDAO.getBroadCastCompanyInfroms(request);
-		CompanyInformDAO.getSessionDeptInforms(request);
-		CompanyNoticeDAO.getMainPageNotice(request);
+		CompanyInformDAO.getCompanyInfromManager().getBroadCastCompanyInfroms(request);
+		CompanyInformDAO.getCompanyInfromManager().getSessionDeptInforms(request);
+		CompanyNoticeDAO.getCompanyNoticeManager().getMainPageNotice(request);
 		request.setAttribute("selectedHeader", "main");
 		request.setAttribute("contentPage", "sjh/main/main.jsp");
 		request.getRequestDispatcher("index.jsp").forward(request, response);

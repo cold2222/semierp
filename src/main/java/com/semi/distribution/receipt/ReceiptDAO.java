@@ -221,7 +221,7 @@ public class ReceiptDAO {
 			pstmt.setString(3, request.getParameter("s_memo"));
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("배차등록 성공");
-				CompanyNoticeDAO.regShippingNotice(Integer.parseInt(request.getParameter("e_no")), Integer.parseInt(request.getParameter("c_contract_no")));
+				CompanyNoticeDAO.getCompanyNoticeManager().regShippingNotice(Integer.parseInt(request.getParameter("e_no")), Integer.parseInt(request.getParameter("c_contract_no")));
 			}
 
 		} catch (Exception e) {

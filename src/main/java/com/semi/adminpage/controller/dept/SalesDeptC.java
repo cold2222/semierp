@@ -17,8 +17,8 @@ public class SalesDeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getContractDeptInfo(request, 2);
-				StaffDAO.getContractStaffsInfo(request, 2);
+				DeptDAO.getDeptManager().getContractDeptInfo(request, 2);
+				StaffDAO.getStaffManager().getContractStaffsInfo(request, 2);
 				request.setAttribute("selectedPage", "salesDept");
 				request.setAttribute("contentPage", "dept/sales_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);

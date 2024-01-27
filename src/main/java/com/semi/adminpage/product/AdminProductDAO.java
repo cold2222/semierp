@@ -11,7 +11,15 @@ import com.semi.adminpage.util.AdminUtils;
 import com.semi.distribution.db.DBManger;
 
 public class AdminProductDAO {
-	public static void getWarehouseProductsInfo(HttpServletRequest request) {
+	
+	private static AdminProductDAO adminProductManager = null;
+	public static AdminProductDAO getAdminProductManager() {
+		if(adminProductManager == null) {
+			adminProductManager = new AdminProductDAO();
+		}
+		return adminProductManager;
+	}
+	public void getWarehouseProductsInfo(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

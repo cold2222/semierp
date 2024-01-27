@@ -16,7 +16,7 @@ public class StaffRegC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getDepts(request);
+				DeptDAO.getDeptManager().getDepts(request);
 				request.setAttribute("selectedPage", "staff");
 				request.setAttribute("contentPage", "staff/staff_reg.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
@@ -30,7 +30,7 @@ public class StaffRegC extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				StaffDAO.staffReg(request);
+				StaffDAO.getStaffManager().staffReg(request);
 				response.sendRedirect("StaffAdminModifyC?e_no="+request.getParameter("e_no"));
 			} else
 				request.getRequestDispatcher("HC").forward(request, response);

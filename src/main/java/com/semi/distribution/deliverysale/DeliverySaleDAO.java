@@ -221,7 +221,7 @@ public class DeliverySaleDAO {
 			if (pstmt.executeUpdate() == 1) {
 				System.out.println("배차등록 성공");
 				System.out.println("test");
-				CompanyNoticeDAO.regShippingNotice(Integer.parseInt(request.getParameter("e_no")),
+				CompanyNoticeDAO.getCompanyNoticeManager().regShippingNotice(Integer.parseInt(request.getParameter("e_no")),
 						Integer.parseInt(request.getParameter("c_contract_no")));
 			}
 

@@ -16,8 +16,8 @@ public class ImportDeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getContractDeptInfo(request, 1);
-				StaffDAO.getContractStaffsInfo(request, 1);
+				DeptDAO.getDeptManager().getContractDeptInfo(request, 1);
+				StaffDAO.getStaffManager().getContractStaffsInfo(request, 1);
 				request.setAttribute("selectedPage", "importDept");
 				request.setAttribute("contentPage", "dept/import_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);

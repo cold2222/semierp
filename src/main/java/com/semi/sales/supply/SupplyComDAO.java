@@ -288,7 +288,7 @@ public class SupplyComDAO {
 					request.setAttribute("val", currval);
 					
 					//알림 등록
-					CompanyNoticeDAO.regContractNotice(Integer.parseInt(request.getParameter("c_type")), Integer.parseInt(currval));
+					CompanyNoticeDAO.getCompanyNoticeManager().regContractNotice(Integer.parseInt(request.getParameter("c_type")), Integer.parseInt(currval));
 				}
 			}
 

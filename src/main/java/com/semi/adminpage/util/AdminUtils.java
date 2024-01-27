@@ -98,11 +98,15 @@ public class AdminUtils {
 
 		int startPageIndex = 1;
 		int count = 0;
-		if (currentPage > 3 && totalPages > 5) {
+		if(currentPage <= 3) {
+			for (int i = startPageIndex; i <= totalPages; i++)
+				indexList[count++] = i;
+		} else if (currentPage > 3 && currentPage + 2 <= totalPages) {
 			startPageIndex = currentPage - 2;
 			for (int i = startPageIndex; i <= currentPage + 2; i++)
 				indexList[count++] = i;
 		} else {
+			startPageIndex = totalPages - 4;
 			for (int i = startPageIndex; i <= totalPages; i++)
 				indexList[count++] = i;
 		}
@@ -130,12 +134,16 @@ public class AdminUtils {
 
 		int startPageIndex = 1;
 		int count = 0;
-		if (currentPage > 3 && totalPages > 5) {
+		if(currentPage <= 3) {
+			for (int i = startPageIndex; i <= totalPages; i++)
+				indexList[count++] = i;
+		} else if (currentPage > 3 && currentPage + 2 <= totalPages) {
 			startPageIndex = currentPage - 2;
 			for (int i = startPageIndex; i <= currentPage + 2; i++)
 				indexList[count++] = i;
 		} else {
-			for (int i = startPageIndex; i < totalPages; i++)
+			startPageIndex = totalPages - 4;
+			for (int i = startPageIndex; i <= totalPages; i++)
 				indexList[count++] = i;
 		}
 		request.setAttribute("indexList" + index, indexList);

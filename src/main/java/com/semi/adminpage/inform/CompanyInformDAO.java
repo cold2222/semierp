@@ -12,7 +12,16 @@ import com.semi.adminpage.util.AdminUtils;
 import com.semi.distribution.db.DBManger;
 
 public class CompanyInformDAO {
-	public static void getCompanyInfroms(HttpServletRequest request) {
+	
+	private static CompanyInformDAO companyInformManager = null;
+	public static CompanyInformDAO getCompanyInfromManager() {
+		if(companyInformManager == null) {
+			companyInformManager = new CompanyInformDAO();
+		}
+		return companyInformManager;
+	}
+	
+	public void getCompanyInfroms(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -39,7 +48,7 @@ public class CompanyInformDAO {
 
 	}
 
-	public static void getBroadCastCompanyInfroms(HttpServletRequest request) {
+	public void getBroadCastCompanyInfroms(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -66,7 +75,7 @@ public class CompanyInformDAO {
 
 	}
 
-	public static void companyInformReg(HttpServletRequest request) {
+	public void companyInformReg(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into CompanyInform values(seq_companyinfrom.nextval, ?, ?, sysdate, ?, ?)";
@@ -92,7 +101,7 @@ public class CompanyInformDAO {
 
 	}
 
-	public static void getSessionDeptInforms(HttpServletRequest request) {
+	public void getSessionDeptInforms(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -120,7 +129,7 @@ public class CompanyInformDAO {
 
 	}
 
-	public static void getCompanyInform(HttpServletRequest request) {
+	public void getCompanyInform(HttpServletRequest request) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

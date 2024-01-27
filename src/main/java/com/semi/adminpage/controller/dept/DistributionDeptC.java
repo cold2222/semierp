@@ -16,8 +16,8 @@ public class DistributionDeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getDistributionDeptInfo(request);
-				StaffDAO.getDistributionStaffsInfo(request);
+				DeptDAO.getDeptManager().getDistributionDeptInfo(request);
+				StaffDAO.getStaffManager().getDistributionStaffsInfo(request);
 				request.setAttribute("selectedPage", "distributionDept");
 				request.setAttribute("contentPage", "dept/distribution_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);

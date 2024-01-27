@@ -17,7 +17,7 @@ public class CompanyInformModifyC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				CompanyInformDAO.getCompanyInform(request);
+				CompanyInformDAO.getCompanyInfromManager().getCompanyInform(request);
 				request.setAttribute("selectedPage", "companyInform");
 				request.setAttribute("contentPage", "inform/company_inform_modify.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);

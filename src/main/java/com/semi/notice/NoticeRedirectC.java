@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/NoticeRedirectC")
 public class NoticeRedirectC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CompanyNoticeDAO.checkRead(request);
-		CompanyNoticeDAO.redirect(request, response);
+		CompanyNoticeDAO.getCompanyNoticeManager().checkRead(request);
+		CompanyNoticeDAO.getCompanyNoticeManager().redirect(request, response);
 	}
 
 	

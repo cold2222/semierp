@@ -17,9 +17,9 @@ public class WarehouseDeptC extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(EmployeeDAO.getEmployeeManager().loginCheck(request)) {
 			if(EmployeeDAO.getEmployeeManager().authorization(request, 1)) {
-				DeptDAO.getWarehouseDeptInfo(request);
-				StaffDAO.getWarehouseStffsInfo(request);
-				AdminProductDAO.getWarehouseProductsInfo(request);
+				DeptDAO.getDeptManager().getWarehouseDeptInfo(request);
+				StaffDAO.getStaffManager().getWarehouseStffsInfo(request);
+				AdminProductDAO.getAdminProductManager().getWarehouseProductsInfo(request);
 				request.setAttribute("selectedPage", "warehouseDept");
 				request.setAttribute("contentPage", "dept/warehouse_dept_info.jsp");
 				request.getRequestDispatcher("sjh/admin/admin_index.jsp").forward(request, response);
